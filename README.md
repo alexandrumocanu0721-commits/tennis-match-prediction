@@ -1,215 +1,254 @@
-# Tennis Match Prediction Model
+# Tennis Match Prediction System using Machine Learning
 
-## Objective
+## Overview
 
-Build a machine learning pipeline capable of predicting ATP singles match outcomes using historical tennis data and pre-match features.
+This project is an end-to-end machine learning pipeline designed to predict professional tennis match outcomes using historical ATP data.
 
-The model outputs:
+The system dynamically reconstructs player strength over time using Elo ratings, surface-specific Elo, rankings, recent form, and other engineered features, then predicts match win probabilities using gradient boosted decision trees (XGBoost).
 
-- probability that Player A wins against Player B
-- comparison against bookmaker implied probabilities
+The project was built as a practical introduction to:
 
----
-
-# Dataset
-
-Source:
-
-- Jeff Sackmann ATP Match Data
-
-Data used:
-
-- ATP singles matches
-- Historical data from 2020–2024 for training
-- 2025 for testing
-- Future deployment for real 2026 matches
+* data science
+* machine learning
+* feature engineering
+* probabilistic prediction
+* explainable AI
+* model evaluation
+* ML pipelines
 
 ---
 
-# Core Principles
+## Main Features
 
-## 1. Time-Aware Modeling
+### Dynamic Player State Reconstruction
 
-For every match, only information available BEFORE the match date may be used.
+The system chronologically replays historical ATP matches and continuously updates:
 
-No future information leakage is allowed.
+* global Elo rating
+* surface-specific Elo ratings
+* recent form
+* surface-specific recent form
+* win percentage
+* experience (matches played)
+* ATP ranking and points
 
----
-
-## 2. Probabilistic Prediction
-
-The model predicts probabilities, not only winners.
-
-Example:
-
-- Player A win probability = 0.73
+This allows the model to simulate realistic player strength at any point in time.
 
 ---
 
-## 3. Sequential Feature Generation
+## Feature Engineering
 
-Features are generated chronologically:
+The final model uses the following features:
 
-1. compute features before match
-2. store training row
-3. update ratings/history
-4. move to next match
-
----
-
-# Initial Feature Set
-
-## Player Strength Features
-
-- elo_diff
-- surface_elo_diff
-- rank_diff
-
-## Recent Form Features
-
-- recent_form_diff
-- recent_surface_form_diff
-
-## Surface Features
-
-- hard_win_pct_diff
-- clay_win_pct_diff
-- grass_win_pct_diff
+| Feature                  | Description                                |
+| ------------------------ | ------------------------------------------ |
+| elo_diff                 | Difference in global Elo ratings           |
+| surface_elo_diff         | Difference in surface-specific Elo ratings |
+| rank_diff                | ATP ranking difference                     |
+| points_diff              | ATP points difference                      |
+| recent_form_diff         | Recent win-rate difference                 |
+| recent_surface_form_diff | Recent surface win-rate difference         |
+| win_pct_diff             | Overall historical win-rate difference     |
+| matches_played_diff      | Difference in career experience            |
 
 ---
 
-# Feature Definitions
+## Machine Learning Models
 
-## Elo Rating
+The project explored several machine learning approaches and model refinements throughout development.
 
-Dynamic rating representing overall player strength.
+The project explored multiple approaches:
 
-## Surface Elo
+### Logistic Regression
 
-Separate Elo rating per surface:
+Used as the baseline probabilistic classifier.
 
-- hard
-- clay
-- grass
+### XGBoost
 
-## Rank Difference
+Main production model used for final predictions.
 
-ATP ranking difference between players.
+The final system uses a tuned XGBoost classifier trained on engineered tennis features extracted chronologically from ATP match history.
 
-## Recent Form
+### Optuna Hyperparameter Optimization
 
-Win percentage over recent matches.
+Used automated hyperparameter tuning to improve model performance.
 
-## Surface Win Percentage
+Parameters explored included:
 
-Win percentage on a specific surface only.
+* number of estimators
+* tree depth
+* learning rate
+* subsampling
+* column sampling
 
----
+Optuna was used to minimize log loss on a temporally separated validation set.
 
-# Dataset Structure
+### DART Booster Experiments
 
-Each row represents one pre-match snapshot.
+Explored dropout-based boosted trees for robustness and generalization.
 
-Example:
-
-
-| date | player_a | player_b | elo_diff | surface_elo_diff | rank_diff | recent_form_diff | result |
-| ---- | -------- | -------- | -------- | ---------------- | --------- | ---------------- | ------ |
-
-
-Target:
-
-- result = 1 if Player A wins
-- result = 0 otherwise
+Although DART slightly improved classification accuracy, the final selected model prioritized lower log loss and cleaner probability estimates for bookmaker probability comparison.
 
 ---
 
-# Project Architecture
+## Model Evaluation
 
-```text
-tennis-ml/
+The project intentionally used a temporal split rather than random shuffling in order to simulate real-world forecasting conditions and avoid future information leakage.
 
-data/
-    raw/
-    processed/
+The project uses:
 
-notebooks/
+* temporal train/test split
+* accuracy
+* log loss
+* calibration analysis
 
-scripts/
-    build_features.py
-    train_model.py
-    evaluate_model.py
-    predict_today.py
+Final tuned XGBoost model achieved approximately:
 
-models/
+| Metric   | Result |
+| -------- | ------ |
+| Accuracy | 64.41%  |
+| Log Loss | 0.623  |
+
+The project also experimented with DART boosting, calibration analysis, and probability consistency validation.
+
+---
+
+## Calibration Analysis
+
+Calibration curves were used to verify whether predicted probabilities matched real-world outcome frequencies.
+
+This was particularly important because the project focuses on probability estimation rather than only winner prediction.
+
+---
+
+## Explainable AI (SHAP)
+
+The project uses SHAP values to explain:
+
+* global feature importance
+* individual match predictions
+* feature contribution to predicted probabilities
+
+This allowed inspection of how factors such as Elo, recent form, and rankings influence model decisions.
+
+---
+
+## Live Prediction System
+
+The project includes a standalone prediction pipeline for forecasting future ATP matches using the latest reconstructed player states.
+
+A batch prediction workflow was implemented.
+
+Users can provide a CSV file containing upcoming matches:
+
+```csv
+player_a,player_b,surface
+Novak Djokovic,Carlos Alcaraz,Clay
+Jannik Sinner,Daniil Medvedev,Hard
 ```
 
----
+The system outputs predicted win probabilities for all matches.
 
-# Modeling Pipeline
-
-## Step 1 — Raw Data
-
-Load historical ATP match data.
-
-## Step 2 — Feature Generation
-
-Generate chronological pre-match features.
-
-## Step 3 — Training
-
-Train models on historical matches.
-
-## Step 4 — Evaluation
-
-Evaluate:
-
-- accuracy
-- log loss
-- calibration
-
-## Step 5 — Prediction
-
-Generate probabilities for future ATP matches.
+Predictions are generated using only historical information available before the match date, preserving realistic forecasting conditions.
 
 ---
 
-# Models
+## Scripts
 
-## Baseline
-
-- Elo system
-
-## First ML Model
-
-- Logistic Regression
-
-## Advanced Model
-
-- XGBoost / LightGBM
+| Script            | Purpose                                                                   |
+| ----------------- | ------------------------------------------------------------------------- |
+| build_features.py | Chronologically reconstructs player states and creates ML features        |
+| train_model.py    | Trains and saves the XGBoost model                                        |
+| evaluate_model.py  | Generates calibration curves, SHAP analysis, and feature importance plots |
+| predict_match.py  | Predicts future match probabilities from CSV input                        |
 
 ---
 
-# Validation Strategy
+## Technologies Used
 
-Chronological split only.
-
-Example:
-
-- Train: 2020–2024
-- Test: 2025
-
-No random shuffling allowed.
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* XGBoost
+* Optuna
+* SHAP
+* Matplotlib
 
 ---
 
-# Long-Term Goal
+## Project Structure
 
-Create an updatable prediction pipeline capable of:
+```text
+project/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── predict/
+│
+├── models/
+│   └── xgboost_model.pkl
+│
+├── scripts/
+│   ├── build_features.py
+│   ├── train_model.py
+│   ├── evaluate_model.py
+│   └── predict_match.py
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+````
 
-- ingesting new ATP matches
-- updating features
-- retraining models
-- predicting future matches in real time
-- comparing predictions against bookmaker odds
+---
 
+## Engineering Challenges Solved
+
+Throughout development, the project addressed several real-world ML engineering problems:
+
+* chronological feature generation
+* avoiding temporal leakage
+* maintaining train/inference consistency
+* symmetric feature handling for mirrored predictions
+* calibration of probabilistic outputs
+* model explainability using SHAP
+* automated hyperparameter optimization
+
+---
+
+## Key Concepts Learned
+
+This project involved practical experience with:
+
+* feature engineering
+* time-aware validation
+* Elo systems
+* probabilistic prediction
+* calibration
+* explainable AI
+* hyperparameter optimization
+* train/inference consistency
+* machine learning experimentation
+* predictive pipelines
+
+---
+
+## Future Improvements
+
+Potential future additions:
+
+* injury/fatigue information
+* head-to-head statistics
+* tournament context
+* automated odds comparison
+* web deployment
+* real-time ATP data ingestion
+
+---
+
+## Disclaimer
+
+This project was built primarily for educational purposes and as a practical introduction to machine learning and predictive systems.
+
+It is not intended as financial or betting advice.
