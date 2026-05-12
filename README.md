@@ -108,8 +108,8 @@ Final tuned XGBoost model achieved approximately:
 
 | Metric   | Result |
 | -------- | ------ |
-| Accuracy | 65.65%  |
-| Log Loss | 0.612  |
+| Accuracy | 65.82%  |
+| Log Loss | 0.604  |
 
 The project also experimented with DART boosting, calibration analysis, and probability consistency validation.
 
@@ -141,12 +141,12 @@ The project includes a standalone prediction pipeline for forecasting future ATP
 
 A batch prediction workflow was implemented.
 
-Users can provide a CSV file containing upcoming matches:
+Users can provide a CSV file containing upcoming matches. Include a **`date`** column (ISO `YYYY-MM-DD` or any format `pandas.to_datetime` accepts) so ATP rank and points use the correct weekly snapshot for that event; if `date` is omitted, the pipeline uses the latest match date found in the raw ATP history.
 
 ```csv
-player_a,player_b,surface
-Novak Djokovic,Carlos Alcaraz,Clay
-Jannik Sinner,Daniil Medvedev,Hard
+player_a,player_b,surface,date
+Novak Djokovic,Carlos Alcaraz,Clay,2026-05-15
+Jannik Sinner,Daniil Medvedev,Hard,2026-05-15
 ```
 
 The system outputs predicted win probabilities for all matches.

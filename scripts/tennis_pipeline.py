@@ -128,6 +128,73 @@ def get_player_ranking(
     return latest_entry["rank"], latest_entry["points"]
 
 
+def resolve_rank_points_for_player(
+    player_id: Any,
+    match_date: pd.Timestamp,
+    rankings_by_player: dict[Any, pd.DataFrame],
+    row_rank: Any = None,
+    row_points: Any = None,
+) -> tuple[int, int]:
+    """ATP rank/points for this player at ``match_date``.
+
+    Prefer non-null values from the ATP match row (same event snapshot); otherwise
+    the latest weekly row in ``atp_rankings_20s`` on or before ``match_date``.
+    """
+    if row_rank is not None and row_points is not None:
+        if pd.notna(row_rank) and pd.notna(row_points):
+            return int(row_rank), int(row_points)
+    rank, points = get_player_ranking(player_id, match_date, rankings_by_player)
+    return int(rank), int(points)
+
+
+def refresh_two_players_rankings(
+    players: dict,
+    rankings_by_player: dict[Any, pd.DataFrame],
+    left_id: Any,
+    right_id: Any,
+    match_date: pd.Timestamp,
+    *,
+    left_rank: Any = None,
+    left_points: Any = None,
+    right_rank: Any = None,
+    right_points: Any = None,
+) -> None:
+    """Overwrite stored ``rank``/``points`` before building rank/points feature diffs."""
+    lr, lp = resolve_rank_points_for_player(
+        left_id, match_date, rankings_by_player, left_rank, left_points
+    )
+    rr, rp = resolve_rank_points_for_player(
+        right_id, match_date, rankings_by_player, right_rank, right_points
+    )
+    players[left_id]["rank"] = lr
+    players[left_id]["points"] = lp
+    players[right_id]["rank"] = rr
+    players[right_id]["points"] = rp
+
+
+def reference_date_for_prediction_row(
+    row: Any,
+    predict_df_columns: pd.Index,
+    default_as_of: pd.Timestamp,
+) -> pd.Timestamp:
+    """Optional per-row event date from ``today_matches``.
+
+    Prefers ``date`` (recommended), then ``match_date`` or ``tourney_date`` for
+    backward compatibility. Falls back to ``default_as_of`` when all are absent
+    or empty.
+    """
+    for col in ("date", "match_date", "tourney_date"):
+        if col not in predict_df_columns:
+            continue
+        raw = getattr(row, col, None)
+        if raw is None or pd.isna(raw):
+            continue
+        parsed = pd.to_datetime(raw, errors="coerce")
+        if pd.notna(parsed):
+            return pd.Timestamp(parsed)
+    return default_as_of
+
+
 def recent_win_rate(results: list, window: int = 10) -> float:
     """Mean of the last ``window`` binary results (1/0); 0.5 if no history yet."""
     if len(results) == 0:
@@ -143,7 +210,7 @@ def initialize_player(
     player_name: str,
     match_date: pd.Timestamp,
 ) -> None:
-    """Create default state + rank/points from rankings the first time we see ``player_id``."""
+    """Create default state the first time we see ``player_id`` (rank/points set from file)."""
     if player_id in players:
         return
 

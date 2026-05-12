@@ -3,7 +3,9 @@
 # =============================================================================
 # Rebuilds the same player state as build_features (through latest raw match),
 # then reads upcoming pairings, stacks features, runs one predict_proba batch,
-# and writes predictions.csv. Model + paths come from tennis_pipeline.
+# and writes predictions.csv. Column ``date`` on today_matches.csv (ISO or any
+# pandas-parsable value) sets the ATP ranking snapshot per row; ``match_date`` /
+# ``tourney_date`` are accepted as aliases. If omitted, last tourney_date in raw matches.
 # =============================================================================
 
 import joblib
@@ -25,6 +27,8 @@ from tennis_pipeline import (
     prepare_matches_dataframe,
     prepare_rankings_dataframe,
     project_root,
+    reference_date_for_prediction_row,
+    refresh_two_players_rankings,
     update_elo_and_match_counts,
 )
 
@@ -63,6 +67,8 @@ for player_id, info in players.items():
     name_to_id[info["name"]] = player_id
 
 predict_df = pd.read_csv(path_predict_today_csv(root))
+predict_columns = predict_df.columns
+default_prediction_as_of = df["tourney_date"].max()
 
 # --- Batch inference: one matrix → one predict_proba (column order = FEATURES) ---
 feature_dicts: list[dict] = []
@@ -75,6 +81,13 @@ for row in predict_df.itertuples(index=False):
 
     player_a_id = name_to_id[player_a_name]
     player_b_id = name_to_id[player_b_name]
+
+    ref_date = reference_date_for_prediction_row(
+        row, predict_columns, default_prediction_as_of
+    )
+    refresh_two_players_rankings(
+        players, rankings_by_player, player_a_id, player_b_id, ref_date
+    )
 
     feature_dicts.append(
         compute_player_a_perspective_features(

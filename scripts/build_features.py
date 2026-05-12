@@ -1,9 +1,9 @@
 # =============================================================================
 # build_features.py — Chronological ATP feature generation for model training
 # =============================================================================
-# Replays every match in date order, updates Elo / form / rank state, and writes
-# two symmetric labeled rows per match (A=winner vs A=loser). Output feeds
-# train_model.py. All simulation rules live in tennis_pipeline.py.
+# Replays every match in date order, updates Elo / form, snapshots ATP rank/points
+# per match date, then writes two symmetric labeled rows per match (A=winner vs A=loser).
+# Output feeds train_model.py. All simulation rules live in tennis_pipeline.py.
 # =============================================================================
 
 import pandas as pd
@@ -22,6 +22,7 @@ from tennis_pipeline import (
     prepare_matches_dataframe,
     prepare_rankings_dataframe,
     project_root,
+    refresh_two_players_rankings,
     update_elo_and_match_counts,
 )
 
@@ -52,6 +53,22 @@ for row in df.itertuples(index=False):
     )
     initialize_player(
         players, rankings_by_player, loser, player_names[loser], match_date
+    )
+
+    wr = getattr(row, "winner_rank", None)
+    wp = getattr(row, "winner_rank_points", None)
+    lr = getattr(row, "loser_rank", None)
+    lp = getattr(row, "loser_rank_points", None)
+    refresh_two_players_rankings(
+        players,
+        rankings_by_player,
+        winner,
+        loser,
+        match_date,
+        left_rank=wr,
+        left_points=wp,
+        right_rank=lr,
+        right_points=lp,
     )
 
     diffs = compute_winner_perspective_diffs(winner, loser, surface, players)
