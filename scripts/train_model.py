@@ -1,111 +1,90 @@
-import pandas as pd
-from pathlib import Path
+# =============================================================================
+# train_model.py — Optuna-tuned XGBoost on engineered tennis features
+# =============================================================================
+# Flow: load features.csv → temporal split (see tennis_pipeline.MODEL_EVAL_CUTOFF_DATE) →
+# Optuna minimizes validation log loss on the test year → refit best params on
+# full train → print metrics → save models/xgboost_model.pkl.
+# =============================================================================
 
-import optuna
-from xgboost import XGBClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import log_loss
+from functools import partial
 
 import joblib
+import optuna
+import pandas as pd
+from sklearn.metrics import accuracy_score, log_loss
+from xgboost import XGBClassifier
 
-df = pd.read_csv("./data/processed/features.csv")
+from tennis_pipeline import (
+    FEATURES,
+    path_processed_features_csv,
+    path_trained_model_pkl,
+    project_root,
+    temporal_train_test_split_for_modeling,
+)
 
-df["date"] = pd.to_datetime(df["date"])
-train_df = df[df["date"].dt.year <= 2024]
-test_df = df[df["date"].dt.year == 2025]
 
-def objective(trial):
-
+def objective(
+    trial: optuna.Trial,
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+) -> float:
+    """One Optuna trial: suggest hyperparams, fit on train, return test log loss."""
     params = {
-        "n_estimators": trial.suggest_int(
-            "n_estimators",
-            50,
-            300
-        ),
-
-        "max_depth": trial.suggest_int(
-            "max_depth",
-            3,
-            10
-        ),
-
+        "n_estimators": trial.suggest_int("n_estimators", 50, 300),
+        "max_depth": trial.suggest_int("max_depth", 3, 10),
         "learning_rate": trial.suggest_float(
-            "learning_rate",
-            0.01,
-            0.3,
-            log=True
+            "learning_rate", 0.01, 0.3, log=True
         ),
-
-        "subsample": trial.suggest_float(
-            "subsample",
-            0.5,
-            1.0
-        ),
-
-        "colsample_bytree": trial.suggest_float(
-            "colsample_bytree",
-            0.5,
-            1.0
-        ),
-
-        "random_state": 42
+        "subsample": trial.suggest_float("subsample", 0.5, 1.0),
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.5, 1.0),
+        "random_state": 42,
     }
-
     model = XGBClassifier(**params)
-
     model.fit(X_train, y_train)
-
     pred_probs = model.predict_proba(X_test)[:, 1]
+    return log_loss(y_test, pred_probs)
 
-    loss = log_loss(y_test, pred_probs)
 
-    return loss
+root = project_root()
+df = pd.read_csv(path_processed_features_csv(root))
+df["date"] = pd.to_datetime(df["date"])
 
-FEATURES = [
-    "elo_diff",
-    "surface_elo_diff",
-    "rank_diff",
-    "points_diff",
-
-    "recent_form_diff", 
-    "recent_surface_form_diff", 
-    "win_pct_diff", 
-    "matches_played_diff",
-]
+# Same split as evaluate_model: train date < cutoff, test date >= MODEL_EVAL_CUTOFF_DATE.
+train_df, test_df = temporal_train_test_split_for_modeling(df, date_column="date")
 
 X_train = train_df[FEATURES]
 y_train = train_df["result"]
 X_test = test_df[FEATURES]
 y_test = test_df["result"]
 
-study = optuna.create_study(
-    direction="minimize"
-)
-
+study = optuna.create_study(direction="minimize")
 study.optimize(
-    objective,
-    n_trials=30
+    partial(
+        objective,
+        X_train=X_train,
+        y_train=y_train,
+        X_test=X_test,
+        y_test=y_test,
+    ),
+    n_trials=30,
 )
 
 best_params = study.best_params
-
 model = XGBClassifier(
     n_estimators=best_params["n_estimators"],
     max_depth=best_params["max_depth"],
     learning_rate=best_params["learning_rate"],
     subsample=best_params["subsample"],
     colsample_bytree=best_params["colsample_bytree"],
-    random_state=42
+    random_state=42,
 )
 model.fit(X_train, y_train)
 
 pred_probs = model.predict_proba(X_test)[:, 1]
 preds = (pred_probs >= 0.5).astype(int)
+print("Accuracy:", accuracy_score(y_test, preds))
+print("Log Loss:", log_loss(y_test, pred_probs))
 
-accuracy = accuracy_score(y_test, preds)
-loss = log_loss(y_test, pred_probs)
-
-print("Accuracy:", accuracy)
-print("Log Loss:", loss)
-
-joblib.dump(model, "./models/xgboost_model.pkl")
+joblib.dump(model, path_trained_model_pkl(root))

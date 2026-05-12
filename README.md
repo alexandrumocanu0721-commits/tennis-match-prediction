@@ -95,6 +95,8 @@ Although DART slightly improved classification accuracy, the final selected mode
 
 The project intentionally used a temporal split rather than random shuffling in order to simulate real-world forecasting conditions and avoid future information leakage.
 
+By default, training and Optuna validation use every feature row with match **date strictly before 2026-01-01**; evaluation uses **2026-01-01 and later** (so all of 2026 and any later years in `features.csv`). Change the cutoff in `scripts/tennis_pipeline.py` (`MODEL_EVAL_CUTOFF_DATE`).
+
 The project uses:
 
 * temporal train/test split
@@ -106,8 +108,8 @@ Final tuned XGBoost model achieved approximately:
 
 | Metric   | Result |
 | -------- | ------ |
-| Accuracy | 64.41%  |
-| Log Loss | 0.623  |
+| Accuracy | 65.65%  |
+| Log Loss | 0.612  |
 
 The project also experimented with DART boosting, calibration analysis, and probability consistency validation.
 
@@ -155,12 +157,13 @@ Predictions are generated using only historical information available before the
 
 ## Scripts
 
-| Script            | Purpose                                                                   |
-| ----------------- | ------------------------------------------------------------------------- |
-| build_features.py | Chronologically reconstructs player states and creates ML features        |
-| train_model.py    | Trains and saves the XGBoost model                                        |
-| evaluate_model.py  | Generates calibration curves, SHAP analysis, and feature importance plots |
-| predict_match.py  | Predicts future match probabilities from CSV input                        |
+| Script              | Purpose                                                                   |
+| ------------------- | ------------------------------------------------------------------------- |
+| tennis_pipeline.py  | Shared paths, temporal split constants, and match-state / feature logic |
+| build_features.py   | Chronologically reconstructs player states and creates ML features        |
+| train_model.py      | Trains and saves the XGBoost model                                        |
+| evaluate_model.py   | Generates calibration curves, SHAP analysis, and feature importance plots |
+| predict_match.py    | Predicts future match probabilities from CSV input                        |
 
 ---
 
@@ -191,6 +194,7 @@ project/
 │   └── xgboost_model.pkl
 │
 ├── scripts/
+│   ├── tennis_pipeline.py
 │   ├── build_features.py
 │   ├── train_model.py
 │   ├── evaluate_model.py
