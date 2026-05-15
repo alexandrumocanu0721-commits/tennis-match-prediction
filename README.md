@@ -114,7 +114,6 @@ Git-tracked structure:
 │   ├── predict/
 │   │   ├── today_matches.csv
 │   │   └── predictions.csv
-├── notebooks/
 ├── scripts/
 │   ├── tennis_pipeline.py
 │   ├── build_features.py
@@ -133,6 +132,7 @@ Local directories used by the pipeline but ignored by git (see `.gitignore`):
 - `data/backtest/` (odds snapshots such as `real_2026_odds.csv`)
 - `models/` (trained model artifact)
 - `env/` (local virtual environment)
+- `notebooks/` (local exploratory notebooks)
 
 ## Running the Pipeline
 
