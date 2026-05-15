@@ -2,8 +2,9 @@
 # train_model.py — Optuna-tuned XGBoost on engineered tennis features
 # =============================================================================
 # Flow: load features.csv → temporal split (see tennis_pipeline.MODEL_EVAL_CUTOFF_DATE) →
-# Optuna minimizes validation log loss on the test year → refit best params on
-# full train → print metrics → save models/xgboost_model.pkl.
+# Optuna minimizes log loss on a late slice of pre-cutoff data (no test leakage) →
+# refit best params on full pre-cutoff train → print held-out test metrics →
+# save models/xgboost_model.pkl.
 # =============================================================================
 
 from functools import partial
@@ -19,18 +20,19 @@ from tennis_pipeline import (
     path_processed_features_csv,
     path_trained_model_pkl,
     project_root,
+    temporal_train_validation_split,
     temporal_train_test_split_for_modeling,
 )
 
 
 def objective(
     trial: optuna.Trial,
-    X_train,
-    y_train,
-    X_test,
-    y_test,
+    X_fit,
+    y_fit,
+    X_val,
+    y_val,
 ) -> float:
-    """One Optuna trial: suggest hyperparams, fit on train, return test log loss."""
+    """One Optuna trial: suggest hyperparams, fit on fit window, return validation log loss."""
     params = {
         "n_estimators": trial.suggest_int("n_estimators", 50, 300),
         "max_depth": trial.suggest_int("max_depth", 3, 10),
@@ -42,31 +44,36 @@ def objective(
         "random_state": 42,
     }
     model = XGBClassifier(**params)
-    model.fit(X_train, y_train)
-    pred_probs = model.predict_proba(X_test)[:, 1]
-    return log_loss(y_test, pred_probs)
+    model.fit(X_fit, y_fit)
+    pred_probs = model.predict_proba(X_val)[:, 1]
+    return log_loss(y_val, pred_probs)
 
 
 root = project_root()
 df = pd.read_csv(path_processed_features_csv(root))
 df["date"] = pd.to_datetime(df["date"])
 
-# Same split as evaluate_model: train date < cutoff, test date >= MODEL_EVAL_CUTOFF_DATE.
+# Same outer split as evaluate_model: train date < cutoff, test date >= cutoff.
 train_df, test_df = temporal_train_test_split_for_modeling(df, date_column="date")
+fit_df, val_df = temporal_train_validation_split(train_df, date_column="date")
 
 X_train = train_df[FEATURES]
 y_train = train_df["result"]
+X_fit = fit_df[FEATURES]
+y_fit = fit_df["result"]
+X_val = val_df[FEATURES]
+y_val = val_df["result"]
 X_test = test_df[FEATURES]
 y_test = test_df["result"]
 
-study = optuna.create_study(direction="minimize")
+study = optuna.create_study(direction="minimize", sampler=optuna.samplers.TPESampler(seed=42))
 study.optimize(
     partial(
         objective,
-        X_train=X_train,
-        y_train=y_train,
-        X_test=X_test,
-        y_test=y_test,
+        X_fit=X_fit,
+        y_fit=y_fit,
+        X_val=X_val,
+        y_val=y_val,
     ),
     n_trials=30,
 )
@@ -81,6 +88,9 @@ model = XGBClassifier(
     random_state=42,
 )
 model.fit(X_train, y_train)
+
+val_probs = model.predict_proba(X_val)[:, 1]
+print("Validation Log Loss (pre-2026 tail):", log_loss(y_val, val_probs))
 
 pred_probs = model.predict_proba(X_test)[:, 1]
 preds = (pred_probs >= 0.5).astype(int)

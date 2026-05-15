@@ -39,6 +39,9 @@ ELO_K = 32
 # Train / Optuna never see rows at or after this instant; evaluation uses this instant onward.
 MODEL_EVAL_CUTOFF_DATE = "2026-01-01"
 
+# Portion of pre-cutoff training dates reserved for Optuna temporal validation.
+MODEL_TUNING_VALIDATION_FRACTION = 0.20
+
 
 def project_root() -> Path:
     """Return repo root (directory above ``scripts/``)."""
@@ -63,6 +66,21 @@ def path_predict_today_csv(root: Path | None = None) -> Path:
 def path_predict_output_csv(root: Path | None = None) -> Path:
     """Output: batch predictions from ``predict_match.py``."""
     return (root or project_root()) / "data" / "predict" / "predictions.csv"
+
+
+def path_processed_backtest_predictions_csv(root: Path | None = None) -> Path:
+    """Output: retroactive predictions from ``backtest_predictions.py``."""
+    return (root or project_root()) / "data" / "processed" / "backtest_predictions.csv"
+
+
+def path_processed_clv_results_csv(root: Path | None = None) -> Path:
+    """Output: CLV report built from backtest predictions and historical odds."""
+    return (root or project_root()) / "data" / "processed" / "clv_results.csv"
+
+
+def path_backtest_real_2026_odds_csv(root: Path | None = None) -> Path:
+    """Historical odds snapshot used to benchmark backtest predictions."""
+    return (root or project_root()) / "data" / "backtest" / "real_2026_odds.csv"
 
 
 def path_trained_model_pkl(root: Path | None = None) -> Path:
@@ -132,17 +150,13 @@ def resolve_rank_points_for_player(
     player_id: Any,
     match_date: pd.Timestamp,
     rankings_by_player: dict[Any, pd.DataFrame],
-    row_rank: Any = None,
-    row_points: Any = None,
 ) -> tuple[int, int]:
     """ATP rank/points for this player at ``match_date``.
 
-    Prefer non-null values from the ATP match row (same event snapshot); otherwise
-    the latest weekly row in ``atp_rankings_20s`` on or before ``match_date``.
+    Uses the latest weekly row in ``atp_rankings_20s`` on or before ``match_date``.
+    This keeps rank/points logic consistent between training feature generation and
+    live inference.
     """
-    if row_rank is not None and row_points is not None:
-        if pd.notna(row_rank) and pd.notna(row_points):
-            return int(row_rank), int(row_points)
     rank, points = get_player_ranking(player_id, match_date, rankings_by_player)
     return int(rank), int(points)
 
@@ -153,19 +167,10 @@ def refresh_two_players_rankings(
     left_id: Any,
     right_id: Any,
     match_date: pd.Timestamp,
-    *,
-    left_rank: Any = None,
-    left_points: Any = None,
-    right_rank: Any = None,
-    right_points: Any = None,
 ) -> None:
     """Overwrite stored ``rank``/``points`` before building rank/points feature diffs."""
-    lr, lp = resolve_rank_points_for_player(
-        left_id, match_date, rankings_by_player, left_rank, left_points
-    )
-    rr, rp = resolve_rank_points_for_player(
-        right_id, match_date, rankings_by_player, right_rank, right_points
-    )
+    lr, lp = resolve_rank_points_for_player(left_id, match_date, rankings_by_player)
+    rr, rp = resolve_rank_points_for_player(right_id, match_date, rankings_by_player)
     players[left_id]["rank"] = lr
     players[left_id]["points"] = lp
     players[right_id]["rank"] = rr
@@ -438,3 +443,32 @@ def temporal_train_test_split_for_modeling(
     train_mask = dates < cutoff
     test_mask = dates >= cutoff
     return df[train_mask], df[test_mask]
+
+
+def temporal_train_validation_split(
+    train_df: pd.DataFrame,
+    date_column: str = "date",
+    validation_fraction: float = MODEL_TUNING_VALIDATION_FRACTION,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Split pre-cutoff training rows into earlier-train and later-validation windows."""
+    if not 0 < validation_fraction < 1:
+        raise ValueError("validation_fraction must be between 0 and 1.")
+
+    dates = pd.to_datetime(train_df[date_column])
+    unique_dates = sorted(dates.dropna().unique())
+    if len(unique_dates) < 2:
+        raise ValueError("Need at least two unique dates to create temporal validation split.")
+
+    split_index = int(len(unique_dates) * (1 - validation_fraction))
+    split_index = max(1, min(split_index, len(unique_dates) - 1))
+    validation_start = pd.Timestamp(unique_dates[split_index])
+
+    fit_mask = dates < validation_start
+    val_mask = dates >= validation_start
+
+    fit_df = train_df[fit_mask]
+    val_df = train_df[val_mask]
+    if fit_df.empty or val_df.empty:
+        raise ValueError("Temporal validation split produced an empty partition.")
+
+    return fit_df, val_df

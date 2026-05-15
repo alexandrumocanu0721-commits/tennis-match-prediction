@@ -1,258 +1,174 @@
-# Tennis Match Prediction System using Machine Learning
+# Tennis Match Prediction System
 
-## Overview
+## Project Overview
 
-This project is an end-to-end machine learning pipeline designed to predict professional tennis match outcomes using historical ATP data.
+This repository contains an end-to-end ATP match prediction pipeline built around chronological player-state reconstruction and an XGBoost classifier.
 
-The system dynamically reconstructs player strength over time using Elo ratings, surface-specific Elo, rankings, recent form, and other engineered features, then predicts match win probabilities using gradient boosted decision trees (XGBoost).
+The project replays historical ATP matches in strict date order, continuously updates player strength signals, and creates pre-match features that are later used for classification and probability estimation.
 
-The project was built as a practical introduction to:
+The core forecasting setup is intentionally time-aware:
 
-* data science
-* machine learning
-* feature engineering
-* probabilistic prediction
-* explainable AI
-* model evaluation
-* ML pipelines
+- train on history before `2026-01-01`
+- evaluate on `2026-01-01` onward
 
----
+To keep training and inference consistent, shared logic in `scripts/tennis_pipeline.py` is reused across feature generation, model training, evaluation, live prediction, and backtesting.
 
-## Main Features
+## Current Pipeline
 
-### Dynamic Player State Reconstruction
+Run scripts in this order:
 
-The system chronologically replays historical ATP matches and continuously updates:
+1. `scripts/build_features.py`
+2. `scripts/train_model.py`
+3. `scripts/evaluate_model.py`
+4. `scripts/predict_match.py`
+5. `scripts/backtest_predictions.py`
+6. `scripts/clv_calculator.py`
 
-* global Elo rating
-* surface-specific Elo ratings
-* recent form
-* surface-specific recent form
-* win percentage
-* experience (matches played)
-* ATP ranking and points
+### What each stage does
 
-This allows the model to simulate realistic player strength at any point in time.
+- `build_features.py`: replays ATP history chronologically, updates player state (global Elo, surface Elo, form, win rate, matches played, rank, points), and writes `data/processed/features.csv`. Each match is stored in mirrored form (player-A winner row + player-A loser row).
+- `train_model.py`: loads features, applies temporal split, tunes XGBoost with Optuna on a pre-2026 temporal validation tail (to avoid test leakage), then retrains on full pre-2026 data and saves `models/xgboost_model.pkl`.
+- `evaluate_model.py`: evaluates the saved model on the held-out 2026+ window and generates calibration/importance/SHAP diagnostics.
+- `predict_match.py`: reconstructs current player state from raw history and predicts probabilities for rows in `data/predict/today_matches.csv`, saving output to `data/predict/predictions.csv`.
+- `backtest_predictions.py`: generates historical predictions on the 2026+ period and writes one canonical row per match to `data/processed/backtest_predictions.csv`.
+- `clv_calculator.py`: joins backtest predictions with historical odds snapshots and computes CLV benchmarks in `data/processed/clv_results.csv`.
 
----
+### Engineered Features
 
-## Feature Engineering
+The model currently uses eight pre-match differential features:
 
-The final model uses the following features:
+- `elo_diff`
+- `surface_elo_diff`
+- `rank_diff`
+- `points_diff`
+- `recent_form_diff`
+- `recent_surface_form_diff`
+- `win_pct_diff`
+- `matches_played_diff`
 
-| Feature                  | Description                                |
-| ------------------------ | ------------------------------------------ |
-| elo_diff                 | Difference in global Elo ratings           |
-| surface_elo_diff         | Difference in surface-specific Elo ratings |
-| rank_diff                | ATP ranking difference                     |
-| points_diff              | ATP points difference                      |
-| recent_form_diff         | Recent win-rate difference                 |
-| recent_surface_form_diff | Recent surface win-rate difference         |
-| win_pct_diff             | Overall historical win-rate difference     |
-| matches_played_diff      | Difference in career experience            |
+## Train/Test Split
 
----
+- Split rule: `date < 2026-01-01` for training, `date >= 2026-01-01` for testing.
+- Current processed dataset:
+  - Total rows: `34,468`
+  - Train rows: `32,130`
+  - Test rows: `2,338`
+  - Unique test matches: `1,169` (features are mirrored, so 2 rows per match before canonicalization)
 
-## Machine Learning Models
+## Current Model Performance
 
-The project explored several machine learning approaches and model refinements throughout development.
+Using the latest saved model in `models/xgboost_model.pkl` evaluated on the 2026+ test split:
 
-The project explored multiple approaches:
+- Accuracy: `65.57%`
+- Log loss: `0.6109`
 
-### Logistic Regression
+Notes:
+- Hyperparameter search is now done only inside the pre-2026 training window.
+- Final test metrics above are from the untouched 2026+ holdout.
 
-Used as the baseline probabilistic classifier.
+This is a stricter and more realistic evaluation setup than tuning directly on the test period.
 
-### XGBoost
+## CLV Backtesting (2026 Odds Snapshot)
 
-Main production model used for final predictions.
+From `data/processed/clv_results.csv`:
 
-The final system uses a tuned XGBoost classifier trained on engineered tennis features extracted chronologically from ATP match history.
+- Matched matches: `557`
+- Average Betfair CLV: `+0.0197`
 
-### Optuna Hyperparameter Optimization
+### CLV by surface (average `clv_betfair`)
 
-Used automated hyperparameter tuning to improve model performance.
+- Clay: `+0.0324`
+- Hard: `+0.0150`
 
-Parameters explored included:
+### CLV by month (average `clv_betfair`)
 
-* number of estimators
-* tree depth
-* learning rate
-* subsampling
-* column sampling
+- 2026-01: `+0.0117` (`160` matches)
+- 2026-02: `+0.0178` (`182` matches)
+- 2026-03: `+0.0214` (`138` matches)
+- 2026-04: `+0.0376` (`77` matches)
 
-Optuna was used to minimize log loss on a temporally separated validation set.
+Interpretation:
+- CLV is positive overall across the matched sample.
+- Clay currently shows stronger average CLV than Hard in this snapshot.
+- Monthly CLV trends upward across the observed January-April 2026 window.
 
-### DART Booster Experiments
+## Data Sources
 
-Explored dropout-based boosted trees for robustness and generalization.
+- Historical ATP results and rankings: Jeff Sackmann ATP datasets (stored locally under `data/raw/atp_matches_*.csv` and `data/raw/atp_rankings_20s.csv`).
+- Historical bookmaker/market odds for backtesting: tennis-data.co.uk exports (local file `data/backtest/real_2026_odds.csv`).
 
-Although DART slightly improved classification accuracy, the final selected model prioritized lower log loss and cleaner probability estimates for bookmaker probability comparison.
+The pipeline assumes these local files are present, even if they are ignored by git.
 
----
+## Repository Structure
 
-## Model Evaluation
-
-The project intentionally used a temporal split rather than random shuffling in order to simulate real-world forecasting conditions and avoid future information leakage.
-
-By default, training and Optuna validation use every feature row with match **date strictly before 2026-01-01**; evaluation uses **2026-01-01 and later** (so all of 2026 and any later years in `features.csv`). Change the cutoff in `scripts/tennis_pipeline.py` (`MODEL_EVAL_CUTOFF_DATE`).
-
-The project uses:
-
-* temporal train/test split
-* accuracy
-* log loss
-* calibration analysis
-
-Final tuned XGBoost model achieved approximately:
-
-| Metric   | Result |
-| -------- | ------ |
-| Accuracy | 65.82%  |
-| Log Loss | 0.604  |
-
-The project also experimented with DART boosting, calibration analysis, and probability consistency validation.
-
----
-
-## Calibration Analysis
-
-Calibration curves were used to verify whether predicted probabilities matched real-world outcome frequencies.
-
-This was particularly important because the project focuses on probability estimation rather than only winner prediction.
-
----
-
-## Explainable AI (SHAP)
-
-The project uses SHAP values to explain:
-
-* global feature importance
-* individual match predictions
-* feature contribution to predicted probabilities
-
-This allowed inspection of how factors such as Elo, recent form, and rankings influence model decisions.
-
----
-
-## Live Prediction System
-
-The project includes a standalone prediction pipeline for forecasting future ATP matches using the latest reconstructed player states.
-
-A batch prediction workflow was implemented.
-
-Users can provide a CSV file containing upcoming matches. Include a **`date`** column (ISO `YYYY-MM-DD` or any format `pandas.to_datetime` accepts) so ATP rank and points use the correct weekly snapshot for that event; if `date` is omitted, the pipeline uses the latest match date found in the raw ATP history.
-
-```csv
-player_a,player_b,surface,date
-Novak Djokovic,Carlos Alcaraz,Clay,2026-05-15
-Jannik Sinner,Daniil Medvedev,Hard,2026-05-15
-```
-
-The system outputs predicted win probabilities for all matches.
-
-Predictions are generated using only historical information available before the match date, preserving realistic forecasting conditions.
-
----
-
-## Scripts
-
-| Script              | Purpose                                                                   |
-| ------------------- | ------------------------------------------------------------------------- |
-| tennis_pipeline.py  | Shared paths, temporal split constants, and match-state / feature logic |
-| build_features.py   | Chronologically reconstructs player states and creates ML features        |
-| train_model.py      | Trains and saves the XGBoost model                                        |
-| evaluate_model.py   | Generates calibration curves, SHAP analysis, and feature importance plots |
-| predict_match.py    | Predicts future match probabilities from CSV input                        |
-
----
-
-## Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Scikit-learn
-* XGBoost
-* Optuna
-* SHAP
-* Matplotlib
-
----
-
-## Project Structure
+Git-tracked structure:
 
 ```text
-project/
-│
+.
 ├── data/
-│   ├── raw/
 │   ├── processed/
-│   └── predict/
-│
-├── models/
-│   └── xgboost_model.pkl
-│
+│   │   ├── features.csv
+│   │   ├── backtest_predictions.csv
+│   │   ├── clv_results.csv
+│   │   └── clv_cumulative.png
+│   ├── predict/
+│   │   ├── today_matches.csv
+│   │   └── predictions.csv
+├── notebooks/
 ├── scripts/
 │   ├── tennis_pipeline.py
 │   ├── build_features.py
 │   ├── train_model.py
 │   ├── evaluate_model.py
-│   └── predict_match.py
-│
-├── README.md
+│   ├── predict_match.py
+│   ├── backtest_predictions.py
+│   └── clv_calculator.py
 ├── requirements.txt
-└── .gitignore
-````
+└── README.md
+```
 
----
+Local directories used by the pipeline but ignored by git (see `.gitignore`):
 
-## Engineering Challenges Solved
+- `data/raw/` (Sackmann match/ranking inputs)
+- `data/backtest/` (odds snapshots such as `real_2026_odds.csv`)
+- `models/` (trained model artifact)
+- `env/` (local virtual environment)
 
-Throughout development, the project addressed several real-world ML engineering problems:
+## Running the Pipeline
 
-* chronological feature generation
-* avoiding temporal leakage
-* maintaining train/inference consistency
-* symmetric feature handling for mirrored predictions
-* calibration of probabilistic outputs
-* model explainability using SHAP
-* automated hyperparameter optimization
+Typical run sequence:
 
----
+```bash
+./env/bin/python scripts/build_features.py
+./env/bin/python scripts/train_model.py
+./env/bin/python scripts/evaluate_model.py
+./env/bin/python scripts/predict_match.py
+./env/bin/python scripts/backtest_predictions.py
+./env/bin/python scripts/clv_calculator.py
+```
 
-## Key Concepts Learned
+Input/output checkpoints:
 
-This project involved practical experience with:
+- Prediction input: `data/predict/today_matches.csv`
+- Prediction output: `data/predict/predictions.csv`
+- Backtest output: `data/processed/backtest_predictions.csv`
+- CLV output: `data/processed/clv_results.csv`
 
-* feature engineering
-* time-aware validation
-* Elo systems
-* probabilistic prediction
-* calibration
-* explainable AI
-* hyperparameter optimization
-* train/inference consistency
-* machine learning experimentation
-* predictive pipelines
+## Technical Notes
 
----
+- Feature generation is chronological by construction, so each row only uses information available before that match.
+- Rank/points logic is aligned between training and inference through shared ranking-history lookups.
+- Hyperparameter tuning uses a temporal validation slice inside pre-2026 data, leaving 2026+ for final holdout testing.
+- CLV matching uses fuzzy player-name keys plus a date window and surface sanity checks.
 
-## Future Improvements
+## Planned Future Improvements
 
-Potential future additions:
-
-* injury/fatigue information
-* head-to-head statistics
-* tournament context
-* automated odds comparison
-* web deployment
-* real-time ATP data ingestion
-
----
+- Replace single holdout tuning with rolling time-based cross-validation.
+- Add robust ID-level matching for CLV joins (instead of fuzzy name/date matching).
+- Add richer features: rest/fatigue windows, tournament round/context, and travel/surface transition effects.
+- Explicitly model uncertainty and calibration drift over time.
+- Add automated data validation checks (date ranges, duplicate detection, missing odds coverage).
 
 ## Disclaimer
 
-This project was built primarily for educational purposes and as a practical introduction to machine learning and predictive systems.
-
-It is not intended as financial or betting advice.
+This project is for research and educational use. It is not financial or betting advice.

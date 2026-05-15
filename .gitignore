@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 
 data/raw/
+data/backtest/
 models/
 
 .DS_Store
