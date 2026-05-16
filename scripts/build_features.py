@@ -18,6 +18,7 @@ from tennis_pipeline import (
     compute_fatigue_stats,
     compute_winner_perspective_diffs,
     compute_serve_return_stats,
+    encode_tourney_level,
     fill_player_names_from_matches,
     initialize_h2h_records,
     initialize_player,
@@ -43,8 +44,9 @@ df = df[
     ~df["score"].str.contains(
         "RET|W/O|Walkover|DEF", case=False, na=False
     )
+    & ~df["tourney_level"].isin(["D", "O"])
 ]
-print(f"Removed {original_len - len(df)} retirement/walkover rows")
+print(f"Removed {original_len - len(df)} retirement/walkover/Davis Cup/Olympics rows")
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
 rankings_by_player = build_rankings_by_player(rankings_df)
 
@@ -62,6 +64,7 @@ for row in df.itertuples(index=False):
     surface = row.surface
     if pd.isna(surface):
         continue
+    tourney_level_encoded = encode_tourney_level(row.tourney_level)
 
     initialize_player(
         players, rankings_by_player, winner, player_names[winner], match_date
@@ -89,7 +92,13 @@ for row in df.itertuples(index=False):
         fatigue_stats=fatigue_stats,
     )
     winner_row, loser_row = build_symmetric_training_rows(
-        match_date, winner, loser, surface, player_names, diffs
+        match_date,
+        winner,
+        loser,
+        surface,
+        player_names,
+        diffs,
+        tourney_level_encoded,
     )
 
     serve_stats = compute_serve_return_stats(row)

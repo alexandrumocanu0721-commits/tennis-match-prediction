@@ -75,7 +75,7 @@ study.optimize(
         X_val=X_val,
         y_val=y_val,
     ),
-    n_trials=30,
+    n_trials=50,
 )
 
 best_params = study.best_params

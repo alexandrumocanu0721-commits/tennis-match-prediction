@@ -19,6 +19,7 @@ from tennis_pipeline import (
     compute_player_a_perspective_features,
     compute_serve_return_stats,
     FEATURES,
+    encode_tourney_level,
     fill_player_names_from_matches,
     initialize_h2h_records,
     initialize_player,
@@ -106,6 +107,7 @@ for row in predict_df.itertuples(index=False):
     player_a_name = row.player_a
     player_b_name = row.player_b
     surface = row.surface
+    tourney_level_encoded = encode_tourney_level(row.tourney_level)
 
     player_a_id = name_to_id[player_a_name]
     player_b_id = name_to_id[player_b_name]
@@ -122,7 +124,12 @@ for row in predict_df.itertuples(index=False):
     )
     feature_dicts.append(
         compute_player_a_perspective_features(
-            player_a_id, player_b_id, surface, players, h2h_diffs=h2h_diffs
+            player_a_id,
+            player_b_id,
+            surface,
+            players,
+            tourney_level_encoded,
+            h2h_diffs=h2h_diffs,
         )
     )
     meta_rows.append((player_a_name, player_b_name))

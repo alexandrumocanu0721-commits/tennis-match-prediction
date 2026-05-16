@@ -23,6 +23,9 @@ import pandas as pd
 FEATURES: list[str] = [
     "elo_diff",
     "surface_elo_diff",
+    "is_grand_slam",
+    "is_masters",
+    "is_atp_open",
     "rank_diff",
     "points_diff",
     "recent_form_diff",
@@ -33,6 +36,10 @@ FEATURES: list[str] = [
     "return_rating_diff",
     "bp_save_rate_diff",
     "bp_convert_rate_diff",
+    "serve_rating_surface_diff",
+    "return_rating_surface_diff",
+    "bp_save_rate_surface_diff",
+    "bp_convert_rate_surface_diff",
     "h2h_win_rate_diff",
     "h2h_surface_win_rate_diff",
 ]
@@ -206,20 +213,48 @@ def reference_date_for_prediction_row(
     return default_as_of
 
 
-def recent_win_rate(results: list, window: int = 10) -> float:
-    """Mean of the last ``window`` binary results (1/0); 0.5 if no history yet."""
-    if len(results) == 0:
+def _exponential_decay_mean(values: list, alpha: float) -> float:
+    """Return an exponential-decay weighted mean over an already-sliced window."""
+    if not values:
         return 0.5
+
+    weighted_total = 0.0
+    weight_sum = 0.0
+    n = len(values)
+    for idx, value in enumerate(values):
+        weight = alpha ** (n - 1 - idx)
+        weighted_total += float(value) * weight
+        weight_sum += weight
+    return weighted_total / weight_sum
+
+
+def recent_win_rate(
+    results: list, window: int = 10, alpha: float = 0.85
+) -> float:
+    """Decay-weighted mean of the last ``window`` binary results (1/0); 0.5 if no history yet."""
     recent = results[-window:]
-    return sum(recent) / len(recent)
+    return _exponential_decay_mean(recent, alpha)
 
 
-def rolling_serve_stat(history: list, window: int = 20) -> float:
-    """Mean of the last ``window`` values; 0.5 if no history yet."""
-    if len(history) == 0:
-        return 0.5
+def rolling_serve_stat(
+    history: list, window: int = 20, alpha: float = 0.85
+) -> float:
+    """Decay-weighted mean of the last ``window`` values; 0.5 if no history yet."""
     recent = history[-window:]
-    return sum(recent) / len(recent)
+    return _exponential_decay_mean(recent, alpha)
+
+
+def surface_or_global_stat(
+    surface_history: list,
+    global_history: list,
+    min_matches: int = 5,
+    window: int = 20,
+    alpha: float = 0.85,
+) -> float:
+    """Use the surface history once it is long enough, otherwise fall back to global history."""
+    if len(surface_history) >= min_matches:
+        return rolling_serve_stat(surface_history, window, alpha)
+    return rolling_serve_stat(global_history, window, alpha)
 
 
 def encode_round(round_str: str) -> int:
@@ -238,6 +273,23 @@ def encode_round(round_str: str) -> int:
         "RR": 3,
     }
     return round_map.get(str(round_str), 3)
+
+
+def encode_tourney_level(tourney_level: str) -> dict[str, int]:
+    """Encode tournament level as three one-hot flags with finals and unknowns as baseline."""
+    if tourney_level is None or pd.isna(tourney_level):
+        return {
+            "is_grand_slam": 0,
+            "is_masters": 0,
+            "is_atp_open": 0,
+        }
+
+    level = str(tourney_level).strip().upper()
+    return {
+        "is_grand_slam": int(level == "G"),
+        "is_masters": int(level == "M"),
+        "is_atp_open": int(level == "A"),
+    }
 
 
 def initialize_player(
@@ -277,6 +329,26 @@ def initialize_player(
         "return_rating_history": [],
         "bp_save_rate_history": [],
         "bp_convert_rate_history": [],
+        "surface_serve_rating_history": {
+            "Hard": [],
+            "Clay": [],
+            "Grass": [],
+        },
+        "surface_return_rating_history": {
+            "Hard": [],
+            "Clay": [],
+            "Grass": [],
+        },
+        "surface_bp_save_rate_history": {
+            "Hard": [],
+            "Clay": [],
+            "Grass": [],
+        },
+        "surface_bp_convert_rate_history": {
+            "Hard": [],
+            "Clay": [],
+            "Grass": [],
+        },
         "matches_played": 0,
         "wins": 0,
         "last_match_date": None,
@@ -447,6 +519,34 @@ def compute_winner_perspective_diffs(
     bp_convert_rate_diff = rolling_serve_stat(
         players[winner]["bp_convert_rate_history"]
     ) - rolling_serve_stat(players[loser]["bp_convert_rate_history"])
+    serve_rating_surface_diff = surface_or_global_stat(
+        players[winner]["surface_serve_rating_history"][surface],
+        players[winner]["serve_rating_history"],
+    ) - surface_or_global_stat(
+        players[loser]["surface_serve_rating_history"][surface],
+        players[loser]["serve_rating_history"],
+    )
+    return_rating_surface_diff = surface_or_global_stat(
+        players[winner]["surface_return_rating_history"][surface],
+        players[winner]["return_rating_history"],
+    ) - surface_or_global_stat(
+        players[loser]["surface_return_rating_history"][surface],
+        players[loser]["return_rating_history"],
+    )
+    bp_save_rate_surface_diff = surface_or_global_stat(
+        players[winner]["surface_bp_save_rate_history"][surface],
+        players[winner]["bp_save_rate_history"],
+    ) - surface_or_global_stat(
+        players[loser]["surface_bp_save_rate_history"][surface],
+        players[loser]["bp_save_rate_history"],
+    )
+    bp_convert_rate_surface_diff = surface_or_global_stat(
+        players[winner]["surface_bp_convert_rate_history"][surface],
+        players[winner]["bp_convert_rate_history"],
+    ) - surface_or_global_stat(
+        players[loser]["surface_bp_convert_rate_history"][surface],
+        players[loser]["bp_convert_rate_history"],
+    )
     h2h_win_rate_diff = 0.0
     h2h_surface_win_rate_diff = 0.0
     if h2h_diffs is not None:
@@ -468,6 +568,10 @@ def compute_winner_perspective_diffs(
         "return_rating_diff": return_rating_diff,
         "bp_save_rate_diff": bp_save_rate_diff,
         "bp_convert_rate_diff": bp_convert_rate_diff,
+        "serve_rating_surface_diff": serve_rating_surface_diff,
+        "return_rating_surface_diff": return_rating_surface_diff,
+        "bp_save_rate_surface_diff": bp_save_rate_surface_diff,
+        "bp_convert_rate_surface_diff": bp_convert_rate_surface_diff,
         "h2h_win_rate_diff": h2h_win_rate_diff,
         "h2h_surface_win_rate_diff": h2h_surface_win_rate_diff,
     }
@@ -480,6 +584,7 @@ def build_symmetric_training_rows(
     surface: str,
     player_names: dict[Any, str],
     diffs: dict[str, float],
+    tourney_level_encoded: dict[str, int],
 ) -> tuple[dict, dict]:
     """Return two labeled rows: player A = winner (y=1) and player A = loser (y=0), mirrored features."""
     winner_row = {
@@ -491,6 +596,9 @@ def build_symmetric_training_rows(
         "surface": surface,
         "elo_diff": diffs["elo_diff"],
         "surface_elo_diff": diffs["surface_elo_diff"],
+        "is_grand_slam": tourney_level_encoded["is_grand_slam"],
+        "is_masters": tourney_level_encoded["is_masters"],
+        "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": diffs["rank_diff"],
         "points_diff": diffs["points_diff"],
         "recent_form_diff": diffs["recent_form_diff"],
@@ -501,6 +609,10 @@ def build_symmetric_training_rows(
         "return_rating_diff": diffs["return_rating_diff"],
         "bp_save_rate_diff": diffs["bp_save_rate_diff"],
         "bp_convert_rate_diff": diffs["bp_convert_rate_diff"],
+        "serve_rating_surface_diff": diffs["serve_rating_surface_diff"],
+        "return_rating_surface_diff": diffs["return_rating_surface_diff"],
+        "bp_save_rate_surface_diff": diffs["bp_save_rate_surface_diff"],
+        "bp_convert_rate_surface_diff": diffs["bp_convert_rate_surface_diff"],
         "h2h_win_rate_diff": diffs["h2h_win_rate_diff"],
         "h2h_surface_win_rate_diff": diffs["h2h_surface_win_rate_diff"],
         "result": 1,
@@ -514,6 +626,9 @@ def build_symmetric_training_rows(
         "surface": surface,
         "elo_diff": (-1) * diffs["elo_diff"],
         "surface_elo_diff": (-1) * diffs["surface_elo_diff"],
+        "is_grand_slam": tourney_level_encoded["is_grand_slam"],
+        "is_masters": tourney_level_encoded["is_masters"],
+        "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": (-1) * diffs["rank_diff"],
         "points_diff": (-1) * diffs["points_diff"],
         "recent_form_diff": -diffs["recent_form_diff"],
@@ -524,6 +639,10 @@ def build_symmetric_training_rows(
         "return_rating_diff": -diffs["return_rating_diff"],
         "bp_save_rate_diff": -diffs["bp_save_rate_diff"],
         "bp_convert_rate_diff": -diffs["bp_convert_rate_diff"],
+        "serve_rating_surface_diff": -diffs["serve_rating_surface_diff"],
+        "return_rating_surface_diff": -diffs["return_rating_surface_diff"],
+        "bp_save_rate_surface_diff": -diffs["bp_save_rate_surface_diff"],
+        "bp_convert_rate_surface_diff": -diffs["bp_convert_rate_surface_diff"],
         "h2h_win_rate_diff": -diffs["h2h_win_rate_diff"],
         "h2h_surface_win_rate_diff": -diffs["h2h_surface_win_rate_diff"],
         "result": 0,
@@ -568,6 +687,30 @@ def append_recent_result_lists(
         serve_stats["winner"]["bp_convert_rate"]
     )
     players[loser]["bp_convert_rate_history"].append(
+        serve_stats["loser"]["bp_convert_rate"]
+    )
+    players[winner]["surface_serve_rating_history"][surface].append(
+        serve_stats["winner"]["serve_rating"]
+    )
+    players[loser]["surface_serve_rating_history"][surface].append(
+        serve_stats["loser"]["serve_rating"]
+    )
+    players[winner]["surface_return_rating_history"][surface].append(
+        serve_stats["winner"]["return_rating"]
+    )
+    players[loser]["surface_return_rating_history"][surface].append(
+        serve_stats["loser"]["return_rating"]
+    )
+    players[winner]["surface_bp_save_rate_history"][surface].append(
+        serve_stats["winner"]["bp_save_rate"]
+    )
+    players[loser]["surface_bp_save_rate_history"][surface].append(
+        serve_stats["loser"]["bp_save_rate"]
+    )
+    players[winner]["surface_bp_convert_rate_history"][surface].append(
+        serve_stats["winner"]["bp_convert_rate"]
+    )
+    players[loser]["surface_bp_convert_rate_history"][surface].append(
         serve_stats["loser"]["bp_convert_rate"]
     )
 
@@ -698,6 +841,7 @@ def compute_player_a_perspective_features(
     player_b_id: Any,
     surface: str,
     players: dict,
+    tourney_level_encoded: dict[str, int],
     h2h_diffs: dict | None = None,
     fatigue_stats: dict | None = None,
 ) -> dict[str, float]:
@@ -743,6 +887,34 @@ def compute_player_a_perspective_features(
     bp_convert_rate_diff = rolling_serve_stat(
         players[player_a_id]["bp_convert_rate_history"]
     ) - rolling_serve_stat(players[player_b_id]["bp_convert_rate_history"])
+    serve_rating_surface_diff = surface_or_global_stat(
+        players[player_a_id]["surface_serve_rating_history"][surface],
+        players[player_a_id]["serve_rating_history"],
+    ) - surface_or_global_stat(
+        players[player_b_id]["surface_serve_rating_history"][surface],
+        players[player_b_id]["serve_rating_history"],
+    )
+    return_rating_surface_diff = surface_or_global_stat(
+        players[player_a_id]["surface_return_rating_history"][surface],
+        players[player_a_id]["return_rating_history"],
+    ) - surface_or_global_stat(
+        players[player_b_id]["surface_return_rating_history"][surface],
+        players[player_b_id]["return_rating_history"],
+    )
+    bp_save_rate_surface_diff = surface_or_global_stat(
+        players[player_a_id]["surface_bp_save_rate_history"][surface],
+        players[player_a_id]["bp_save_rate_history"],
+    ) - surface_or_global_stat(
+        players[player_b_id]["surface_bp_save_rate_history"][surface],
+        players[player_b_id]["bp_save_rate_history"],
+    )
+    bp_convert_rate_surface_diff = surface_or_global_stat(
+        players[player_a_id]["surface_bp_convert_rate_history"][surface],
+        players[player_a_id]["bp_convert_rate_history"],
+    ) - surface_or_global_stat(
+        players[player_b_id]["surface_bp_convert_rate_history"][surface],
+        players[player_b_id]["bp_convert_rate_history"],
+    )
     h2h_win_rate_diff = 0.0
     h2h_surface_win_rate_diff = 0.0
     if h2h_diffs is not None:
@@ -753,6 +925,9 @@ def compute_player_a_perspective_features(
     return {
         "elo_diff": elo_diff,
         "surface_elo_diff": surface_elo_diff,
+        "is_grand_slam": tourney_level_encoded["is_grand_slam"],
+        "is_masters": tourney_level_encoded["is_masters"],
+        "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": rank_diff,
         "points_diff": points_diff,
         "recent_form_diff": recent_form_diff,
@@ -763,6 +938,10 @@ def compute_player_a_perspective_features(
         "return_rating_diff": return_rating_diff,
         "bp_save_rate_diff": bp_save_rate_diff,
         "bp_convert_rate_diff": bp_convert_rate_diff,
+        "serve_rating_surface_diff": serve_rating_surface_diff,
+        "return_rating_surface_diff": return_rating_surface_diff,
+        "bp_save_rate_surface_diff": bp_save_rate_surface_diff,
+        "bp_convert_rate_surface_diff": bp_convert_rate_surface_diff,
         "h2h_win_rate_diff": h2h_win_rate_diff,
         "h2h_surface_win_rate_diff": h2h_surface_win_rate_diff,
     }
