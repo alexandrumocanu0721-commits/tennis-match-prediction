@@ -29,6 +29,12 @@ FEATURES: list[str] = [
     "recent_surface_form_diff",
     "win_pct_diff",
     "matches_played_diff",
+    "serve_rating_diff",
+    "return_rating_diff",
+    "bp_save_rate_diff",
+    "bp_convert_rate_diff",
+    "h2h_win_rate_diff",
+    "h2h_surface_win_rate_diff",
 ]
 TARGET = "result"
 
@@ -208,6 +214,32 @@ def recent_win_rate(results: list, window: int = 10) -> float:
     return sum(recent) / len(recent)
 
 
+def rolling_serve_stat(history: list, window: int = 20) -> float:
+    """Mean of the last ``window`` values; 0.5 if no history yet."""
+    if len(history) == 0:
+        return 0.5
+    recent = history[-window:]
+    return sum(recent) / len(recent)
+
+
+def encode_round(round_str: str) -> int:
+    """Encode ATP round labels into a compact ordinal scale."""
+    if round_str is None or pd.isna(round_str):
+        return 3
+
+    round_map = {
+        "R128": 1,
+        "R64": 2,
+        "R32": 3,
+        "R16": 4,
+        "QF": 5,
+        "SF": 6,
+        "F": 7,
+        "RR": 3,
+    }
+    return round_map.get(str(round_str), 3)
+
+
 def initialize_player(
     players: dict,
     rankings_by_player: dict[Any, pd.DataFrame],
@@ -241,8 +273,119 @@ def initialize_player(
             "Clay": [],
             "Grass": [],
         },
+        "serve_rating_history": [],
+        "return_rating_history": [],
+        "bp_save_rate_history": [],
+        "bp_convert_rate_history": [],
         "matches_played": 0,
         "wins": 0,
+        "last_match_date": None,
+        "recent_minutes": [],
+        "tournament_round": 0,
+    }
+
+
+def initialize_h2h_records() -> dict:
+    """Create empty head-to-head state."""
+    return {}
+
+
+def compute_serve_return_stats(row: Any) -> dict[str, dict[str, float]]:
+    """Compute match serve/return stats from raw ATP match columns."""
+    row_dict = row._asdict()
+
+    def safe_value(key: str) -> float | None:
+        value = row_dict.get(key)
+        if value is None or pd.isna(value):
+            return None
+        return value
+
+    def safe_ratio_value(numerator: float | None, denominator: float | None) -> float:
+        if numerator is None or denominator is None or denominator == 0:
+            return 0.5
+        return numerator / denominator
+
+    def serve_rating(prefix: str) -> float:
+        first_in = safe_ratio_value(
+            safe_value(f"{prefix}_1stIn"), safe_value(f"{prefix}_svpt")
+        )
+        first_won = safe_ratio_value(
+            safe_value(f"{prefix}_1stWon"), safe_value(f"{prefix}_1stIn")
+        )
+        second_denominator = safe_value(f"{prefix}_svpt")
+        first_in_raw = safe_value(f"{prefix}_1stIn")
+        second_won = safe_ratio_value(
+            safe_value(f"{prefix}_2ndWon"),
+            None
+            if second_denominator is None or first_in_raw is None
+            else second_denominator - first_in_raw,
+        )
+        return (first_in * 0.4) + (first_won * 0.35) + (second_won * 0.25)
+
+    def bp_save_rate(prefix: str) -> float:
+        numerator = safe_value(f"{prefix}_bpSaved")
+        denominator = safe_value(f"{prefix}_bpFaced")
+        if numerator is None or denominator is None or denominator == 0:
+            return 0.5
+        return numerator / denominator
+
+    winner_serve_rating = serve_rating("w")
+    loser_serve_rating = serve_rating("l")
+    winner_bp_save_rate = bp_save_rate("w")
+    loser_bp_save_rate = bp_save_rate("l")
+    winner_svpt = safe_value("w_svpt")
+    serve_data_valid = winner_svpt is not None and winner_svpt > 0
+
+    return {
+        "valid": serve_data_valid,
+        "winner": {
+            "serve_rating": winner_serve_rating,
+            "return_rating": 1 - loser_serve_rating,
+            "bp_save_rate": winner_bp_save_rate,
+            "bp_convert_rate": 1 - loser_bp_save_rate,
+        },
+        "loser": {
+            "serve_rating": loser_serve_rating,
+            "return_rating": 1 - winner_serve_rating,
+            "bp_save_rate": loser_bp_save_rate,
+            "bp_convert_rate": 1 - winner_bp_save_rate,
+        },
+    }
+
+
+def compute_fatigue_stats(row: Any, players: dict, winner: Any, loser: Any) -> dict[str, float]:
+    """Compute pre-match fatigue deltas from current row and player state."""
+    row_dict = row._asdict()
+    match_date = row_dict.get("tourney_date")
+    if match_date is None or pd.isna(match_date):
+        match_date = None
+
+    def safe_days_rest(player_id: Any) -> float:
+        last_match_date = players[player_id]["last_match_date"]
+        if last_match_date is None or match_date is None:
+            return 30.0
+        try:
+            days_rest = (match_date - last_match_date).days
+        except Exception:
+            return 30.0
+        if days_rest is None or pd.isna(days_rest):
+            return 30.0
+        return float(min(days_rest, 30))
+
+    def safe_fatigue_minutes(player_id: Any) -> float:
+        history = players[player_id]["recent_minutes"]
+        if len(history) == 0:
+            return 90.0
+        return float(rolling_serve_stat(history, window=5))
+
+    days_rest_winner = safe_days_rest(winner)
+    days_rest_loser = safe_days_rest(loser)
+    fatigue_minutes_winner = safe_fatigue_minutes(winner)
+    fatigue_minutes_loser = safe_fatigue_minutes(loser)
+
+    return {
+        "days_rest_diff": days_rest_winner - days_rest_loser,
+        "fatigue_minutes_diff": fatigue_minutes_winner - fatigue_minutes_loser,
     }
 
 
@@ -260,6 +403,8 @@ def compute_winner_perspective_diffs(
     loser: Any,
     surface: str,
     players: dict,
+    h2h_diffs: dict | None = None,
+    fatigue_stats: dict | None = None,
 ) -> dict[str, float]:
     """All feature deltas from the real winner’s perspective vs loser (pre-match snapshot)."""
     winner_recent_form = recent_win_rate(players[winner]["recent_results"])
@@ -290,6 +435,25 @@ def compute_winner_perspective_diffs(
     )
     rank_diff = players[loser]["rank"] - players[winner]["rank"]
     points_diff = players[winner]["points"] - players[loser]["points"]
+    serve_rating_diff = rolling_serve_stat(
+        players[winner]["serve_rating_history"]
+    ) - rolling_serve_stat(players[loser]["serve_rating_history"])
+    return_rating_diff = rolling_serve_stat(
+        players[winner]["return_rating_history"]
+    ) - rolling_serve_stat(players[loser]["return_rating_history"])
+    bp_save_rate_diff = rolling_serve_stat(
+        players[winner]["bp_save_rate_history"]
+    ) - rolling_serve_stat(players[loser]["bp_save_rate_history"])
+    bp_convert_rate_diff = rolling_serve_stat(
+        players[winner]["bp_convert_rate_history"]
+    ) - rolling_serve_stat(players[loser]["bp_convert_rate_history"])
+    h2h_win_rate_diff = 0.0
+    h2h_surface_win_rate_diff = 0.0
+    if h2h_diffs is not None:
+        h2h_win_rate_diff = h2h_diffs.get("h2h_win_rate_diff", 0.0)
+        h2h_surface_win_rate_diff = h2h_diffs.get(
+            "h2h_surface_win_rate_diff", 0.0
+        )
 
     return {
         "elo_diff": elo_diff,
@@ -300,6 +464,12 @@ def compute_winner_perspective_diffs(
         "recent_surface_form_diff": recent_surface_form_diff,
         "win_pct_diff": win_pct_diff,
         "matches_played_diff": matches_played_diff,
+        "serve_rating_diff": serve_rating_diff,
+        "return_rating_diff": return_rating_diff,
+        "bp_save_rate_diff": bp_save_rate_diff,
+        "bp_convert_rate_diff": bp_convert_rate_diff,
+        "h2h_win_rate_diff": h2h_win_rate_diff,
+        "h2h_surface_win_rate_diff": h2h_surface_win_rate_diff,
     }
 
 
@@ -327,6 +497,12 @@ def build_symmetric_training_rows(
         "recent_surface_form_diff": diffs["recent_surface_form_diff"],
         "win_pct_diff": diffs["win_pct_diff"],
         "matches_played_diff": diffs["matches_played_diff"],
+        "serve_rating_diff": diffs["serve_rating_diff"],
+        "return_rating_diff": diffs["return_rating_diff"],
+        "bp_save_rate_diff": diffs["bp_save_rate_diff"],
+        "bp_convert_rate_diff": diffs["bp_convert_rate_diff"],
+        "h2h_win_rate_diff": diffs["h2h_win_rate_diff"],
+        "h2h_surface_win_rate_diff": diffs["h2h_surface_win_rate_diff"],
         "result": 1,
     }
     loser_row = {
@@ -344,19 +520,96 @@ def build_symmetric_training_rows(
         "recent_surface_form_diff": -diffs["recent_surface_form_diff"],
         "win_pct_diff": -diffs["win_pct_diff"],
         "matches_played_diff": -diffs["matches_played_diff"],
+        "serve_rating_diff": -diffs["serve_rating_diff"],
+        "return_rating_diff": -diffs["return_rating_diff"],
+        "bp_save_rate_diff": -diffs["bp_save_rate_diff"],
+        "bp_convert_rate_diff": -diffs["bp_convert_rate_diff"],
+        "h2h_win_rate_diff": -diffs["h2h_win_rate_diff"],
+        "h2h_surface_win_rate_diff": -diffs["h2h_surface_win_rate_diff"],
         "result": 0,
     }
     return winner_row, loser_row
 
 
 def append_recent_result_lists(
-    players: dict, winner: Any, loser: Any, surface: str
+    players: dict,
+    winner: Any,
+    loser: Any,
+    surface: str,
+    serve_stats: dict[str, dict[str, float]] | None = None,
+    serve_data_valid: bool = True,
 ) -> None:
     """Push this match’s 1/0 outcomes onto overall and surface-specific form deques (lists)."""
     players[winner]["recent_results"].append(1)
     players[loser]["recent_results"].append(0)
     players[winner]["surface_recent_results"][surface].append(1)
     players[loser]["surface_recent_results"][surface].append(0)
+    if serve_stats is None or not serve_data_valid:
+        return
+    players[winner]["serve_rating_history"].append(
+        serve_stats["winner"]["serve_rating"]
+    )
+    players[loser]["serve_rating_history"].append(
+        serve_stats["loser"]["serve_rating"]
+    )
+    players[winner]["return_rating_history"].append(
+        serve_stats["winner"]["return_rating"]
+    )
+    players[loser]["return_rating_history"].append(
+        serve_stats["loser"]["return_rating"]
+    )
+    players[winner]["bp_save_rate_history"].append(
+        serve_stats["winner"]["bp_save_rate"]
+    )
+    players[loser]["bp_save_rate_history"].append(
+        serve_stats["loser"]["bp_save_rate"]
+    )
+    players[winner]["bp_convert_rate_history"].append(
+        serve_stats["winner"]["bp_convert_rate"]
+    )
+    players[loser]["bp_convert_rate_history"].append(
+        serve_stats["loser"]["bp_convert_rate"]
+    )
+
+
+def update_h2h_records(
+    h2h_records: dict,
+    winner: Any,
+    loser: Any,
+    surface: str,
+    match_date: pd.Timestamp,
+) -> None:
+    """Append this match to the symmetric H2H history bucket."""
+    key = frozenset({winner, loser})
+    if key not in h2h_records:
+        h2h_records[key] = []
+    h2h_records[key].append((match_date, surface, winner))
+
+
+def update_fatigue_state(
+    players: dict,
+    winner: Any,
+    loser: Any,
+    match_date: pd.Timestamp,
+    row: Any,
+) -> None:
+    """Update fatigue-related player state after the match is saved."""
+    row_dict = row._asdict()
+    raw_minutes = row_dict.get("minutes")
+    minutes = 90.0
+    if raw_minutes is not None and not pd.isna(raw_minutes):
+        try:
+            minutes = float(raw_minutes)
+        except (TypeError, ValueError):
+            minutes = 90.0
+
+    round_value = encode_round(row_dict.get("round"))
+    players[winner]["last_match_date"] = match_date
+    players[loser]["last_match_date"] = match_date
+    players[winner]["recent_minutes"].append(minutes)
+    players[loser]["recent_minutes"].append(minutes)
+    players[winner]["tournament_round"] = round_value
+    players[loser]["tournament_round"] = round_value
 
 
 def update_elo_and_match_counts(
@@ -382,13 +635,73 @@ def update_elo_and_match_counts(
     players[loser]["matches_played"] += 1
 
 
+def compute_h2h_win_rate(
+    h2h_records: dict,
+    player_a: Any,
+    player_b: Any,
+    match_date: pd.Timestamp,
+    surface_filter: str | None = None,
+) -> float:
+    """Time-decayed win rate for ``player_a`` against ``player_b``."""
+    key = frozenset({player_a, player_b})
+    records = h2h_records.get(key)
+    if not records:
+        return 0.5
+
+    weighted_wins = 0.0
+    weighted_total = 0.0
+    for entry_date, entry_surface, winner_id in records:
+        if surface_filter is not None and entry_surface != surface_filter:
+            continue
+        years_ago = (match_date - entry_date).days / 365.25
+        if years_ago <= 1:
+            weight = 1.0
+        elif years_ago <= 3:
+            weight = 0.75
+        elif years_ago <= 5:
+            weight = 0.5
+        else:
+            weight = 0.25
+        weighted_total += weight
+        if winner_id == player_a:
+            weighted_wins += weight
+
+    if weighted_total < 2.0:
+        return 0.5
+    return weighted_wins / weighted_total
+
+
+def compute_h2h_diffs(
+    h2h_records: dict,
+    winner: Any,
+    loser: Any,
+    surface: str,
+    match_date: pd.Timestamp,
+) -> dict[str, float]:
+    """Head-to-head feature deltas from the winner's perspective."""
+    return {
+        "h2h_win_rate_diff": compute_h2h_win_rate(
+            h2h_records, winner, loser, match_date
+        )
+        - compute_h2h_win_rate(h2h_records, loser, winner, match_date),
+        "h2h_surface_win_rate_diff": compute_h2h_win_rate(
+            h2h_records, winner, loser, match_date, surface_filter=surface
+        )
+        - compute_h2h_win_rate(
+            h2h_records, loser, winner, match_date, surface_filter=surface
+        ),
+    }
+
+
 def compute_player_a_perspective_features(
     player_a_id: Any,
     player_b_id: Any,
     surface: str,
     players: dict,
+    h2h_diffs: dict | None = None,
+    fatigue_stats: dict | None = None,
 ) -> dict[str, float]:
-    """Same eight features as training, with player A fixed as the “positive” side."""
+    """Same features as training, with player A fixed as the “positive” side."""
     elo_diff = players[player_a_id]["elo"] - players[player_b_id]["elo"]
     surface_elo_diff = (
         players[player_a_id]["surface_elo"][surface]
@@ -418,6 +731,25 @@ def compute_player_a_perspective_features(
         players[player_a_id]["matches_played"]
         - players[player_b_id]["matches_played"]
     )
+    serve_rating_diff = rolling_serve_stat(
+        players[player_a_id]["serve_rating_history"]
+    ) - rolling_serve_stat(players[player_b_id]["serve_rating_history"])
+    return_rating_diff = rolling_serve_stat(
+        players[player_a_id]["return_rating_history"]
+    ) - rolling_serve_stat(players[player_b_id]["return_rating_history"])
+    bp_save_rate_diff = rolling_serve_stat(
+        players[player_a_id]["bp_save_rate_history"]
+    ) - rolling_serve_stat(players[player_b_id]["bp_save_rate_history"])
+    bp_convert_rate_diff = rolling_serve_stat(
+        players[player_a_id]["bp_convert_rate_history"]
+    ) - rolling_serve_stat(players[player_b_id]["bp_convert_rate_history"])
+    h2h_win_rate_diff = 0.0
+    h2h_surface_win_rate_diff = 0.0
+    if h2h_diffs is not None:
+        h2h_win_rate_diff = h2h_diffs.get("h2h_win_rate_diff", 0.0)
+        h2h_surface_win_rate_diff = h2h_diffs.get(
+            "h2h_surface_win_rate_diff", 0.0
+        )
     return {
         "elo_diff": elo_diff,
         "surface_elo_diff": surface_elo_diff,
@@ -427,6 +759,12 @@ def compute_player_a_perspective_features(
         "recent_surface_form_diff": recent_surface_form_diff,
         "win_pct_diff": win_pct_diff,
         "matches_played_diff": matches_played_diff,
+        "serve_rating_diff": serve_rating_diff,
+        "return_rating_diff": return_rating_diff,
+        "bp_save_rate_diff": bp_save_rate_diff,
+        "bp_convert_rate_diff": bp_convert_rate_diff,
+        "h2h_win_rate_diff": h2h_win_rate_diff,
+        "h2h_surface_win_rate_diff": h2h_surface_win_rate_diff,
     }
 
 

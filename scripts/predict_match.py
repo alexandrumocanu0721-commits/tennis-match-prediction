@@ -15,9 +15,12 @@ from tennis_pipeline import (
     ELO_K,
     append_recent_result_lists,
     build_rankings_by_player,
+    compute_h2h_diffs,
     compute_player_a_perspective_features,
+    compute_serve_return_stats,
     FEATURES,
     fill_player_names_from_matches,
+    initialize_h2h_records,
     initialize_player,
     load_match_history_csvs,
     load_rankings_csv,
@@ -30,6 +33,7 @@ from tennis_pipeline import (
     reference_date_for_prediction_row,
     refresh_two_players_rankings,
     update_elo_and_match_counts,
+    update_h2h_records,
 )
 
 root = project_root()
@@ -37,11 +41,18 @@ model = joblib.load(path_trained_model_pkl(root))
 
 # --- Converge state on full ATP history (no training rows written here) ---
 df = prepare_matches_dataframe(load_match_history_csvs(root))
+original_len = len(df)
+df = df[
+    ~df["score"].str.contains(
+        "RET|W/O|Walkover|DEF", case=False, na=False
+    )
+]
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
 rankings_by_player = build_rankings_by_player(rankings_df)
 
 players: dict = {}
 player_names = fill_player_names_from_matches(df)
+h2h_records = initialize_h2h_records()
 
 for row in df.itertuples(index=False):
     winner = row.winner_id
@@ -58,8 +69,25 @@ for row in df.itertuples(index=False):
         players, rankings_by_player, loser, player_names[loser], match_date
     )
 
-    append_recent_result_lists(players, winner, loser, surface)
+    refresh_two_players_rankings(
+        players,
+        rankings_by_player,
+        winner,
+        loser,
+        match_date,
+    )
+
+    serve_stats = compute_serve_return_stats(row)
+    append_recent_result_lists(
+        players,
+        winner,
+        loser,
+        surface,
+        serve_stats,
+        serve_data_valid=serve_stats["valid"],
+    )
     update_elo_and_match_counts(players, winner, loser, surface, k=ELO_K)
+    update_h2h_records(h2h_records, winner, loser, surface, match_date)
 
 # --- Resolve CSV names to internal ids (last id wins on duplicate spellings) ---
 name_to_id: dict[str, object] = {}
@@ -89,9 +117,12 @@ for row in predict_df.itertuples(index=False):
         players, rankings_by_player, player_a_id, player_b_id, ref_date
     )
 
+    h2h_diffs = compute_h2h_diffs(
+        h2h_records, player_a_id, player_b_id, surface, ref_date
+    )
     feature_dicts.append(
         compute_player_a_perspective_features(
-            player_a_id, player_b_id, surface, players
+            player_a_id, player_b_id, surface, players, h2h_diffs=h2h_diffs
         )
     )
     meta_rows.append((player_a_name, player_b_name))

@@ -1,6 +1,11 @@
 env/
 __pycache__/
 *.pyc
+.cache/
+.jupyter/
+.ipython/
+.matplotlib/
+.vscode/.env
 
 data/raw/
 data/backtest/

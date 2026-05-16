@@ -14,8 +14,12 @@ from tennis_pipeline import (
     append_recent_result_lists,
     build_rankings_by_player,
     build_symmetric_training_rows,
+    compute_h2h_diffs,
+    compute_fatigue_stats,
     compute_winner_perspective_diffs,
+    compute_serve_return_stats,
     fill_player_names_from_matches,
+    initialize_h2h_records,
     initialize_player,
     load_match_history_csvs,
     load_rankings_csv,
@@ -25,6 +29,8 @@ from tennis_pipeline import (
     project_root,
     refresh_two_players_rankings,
     update_elo_and_match_counts,
+    update_h2h_records,
+    update_fatigue_state,
 )
 
 # --- Paths: always relative to repo root (not the shell’s cwd) ---
@@ -32,6 +38,13 @@ root = project_root()
 
 # --- Raw ATP matches + rankings, chronologically ordered ---
 df = prepare_matches_dataframe(load_match_history_csvs(root))
+original_len = len(df)
+df = df[
+    ~df["score"].str.contains(
+        "RET|W/O|Walkover|DEF", case=False, na=False
+    )
+]
+print(f"Removed {original_len - len(df)} retirement/walkover rows")
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
 rankings_by_player = build_rankings_by_player(rankings_df)
 
@@ -39,8 +52,9 @@ rankings_by_player = build_rankings_by_player(rankings_df)
 players: dict = {}
 player_names = fill_player_names_from_matches(df)
 feature_rows: list[dict] = []
+h2h_records = initialize_h2h_records()
 
-# --- One match at a time: snapshot → append form lists → save rows → update Elo ---
+# --- One match at a time: snapshot → build rows → save rows → update state ---
 for row in df.itertuples(index=False):
     winner = row.winner_id
     loser = row.loser_id
@@ -64,15 +78,34 @@ for row in df.itertuples(index=False):
         match_date,
     )
 
-    diffs = compute_winner_perspective_diffs(winner, loser, surface, players)
+    h2h_diffs = compute_h2h_diffs(h2h_records, winner, loser, surface, match_date)
+    fatigue_stats = compute_fatigue_stats(row, players, winner, loser)
+    diffs = compute_winner_perspective_diffs(
+        winner,
+        loser,
+        surface,
+        players,
+        h2h_diffs=h2h_diffs,
+        fatigue_stats=fatigue_stats,
+    )
     winner_row, loser_row = build_symmetric_training_rows(
         match_date, winner, loser, surface, player_names, diffs
     )
 
-    append_recent_result_lists(players, winner, loser, surface)
+    serve_stats = compute_serve_return_stats(row)
+    append_recent_result_lists(
+        players,
+        winner,
+        loser,
+        surface,
+        serve_stats,
+        serve_data_valid=serve_stats["valid"],
+    )
     feature_rows.append(winner_row)
     feature_rows.append(loser_row)
     update_elo_and_match_counts(players, winner, loser, surface, k=ELO_K)
+    update_h2h_records(h2h_records, winner, loser, surface, match_date)
+    update_fatigue_state(players, winner, loser, match_date, row)
 
 features_df = pd.DataFrame(feature_rows)
 features_df.to_csv(path_processed_features_csv(root), index=False)
