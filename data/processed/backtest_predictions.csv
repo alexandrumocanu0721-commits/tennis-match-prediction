@@ -1,1010 +1,1010 @@
 date,player_a,player_b,surface,predicted_prob_a,actual_winner
-2026-01-04,Grigor Dimitrov,Pablo Carreno Busta,Hard,0.66678107,1
-2026-01-04,Grigor Dimitrov,Raphael Collignon,Hard,0.7310486,0
-2026-01-04,James Duckworth,Alex Michelsen,Hard,0.3714276,0
-2026-01-04,Marton Fucsovics,Daniil Medvedev,Hard,0.2348729,0
-2026-01-04,Nick Kyrgios,Aleksandar Kovacevic,Hard,0.6377059,0
-2026-01-04,Daniil Medvedev,Kamil Majchrzak,Hard,0.72302186,1
-2026-01-04,Daniil Medvedev,Frances Tiafoe,Hard,0.7134046,1
-2026-01-04,Daniil Medvedev,Brandon Nakashima,Hard,0.7176202,1
-2026-01-04,Daniil Medvedev,Alex Michelsen,Hard,0.74798167,1
-2026-01-04,Quentin Halys,Alexei Popyrin,Hard,0.32019496,1
-2026-01-04,Quentin Halys,Brandon Nakashima,Hard,0.3179347,0
-2026-01-04,Kamil Majchrzak,Reilly Opelka,Hard,0.44177413,1
-2026-01-04,Kamil Majchrzak,Daniel Altmaier,Hard,0.5200994,1
-2026-01-04,Cameron Norrie,Ugo Humbert,Hard,0.44406095,1
-2026-01-04,Cameron Norrie,Aleksandar Kovacevic,Hard,0.8040918,0
-2026-01-04,Reilly Opelka,Dane Sweeny,Hard,0.7965376,1
-2026-01-04,Tommy Paul,Giovanni Mpetshi Perricard,Hard,0.5843206,0
-2026-01-04,Frances Tiafoe,Aleksandar Vukic,Hard,0.6404481,1
-2026-01-04,Denis Shapovalov,Raphael Collignon,Hard,0.6531087,0
-2026-01-04,Camilo Ugo Carabelli,Learner Tien,Hard,0.24316213,0
-2026-01-04,Alejandro Davidovich Fokina,Brandon Nakashima,Hard,0.61668986,0
-2026-01-04,Adam Walton,Rinky Hijikata,Hard,0.55793613,0
-2026-01-04,Valentin Vacherot,Sebastian Korda,Hard,0.46668765,0
-2026-01-04,Sebastian Korda,Alex Michelsen,Hard,0.58453673,0
-2026-01-04,Aleksandar Kovacevic,Brandon Nakashima,Hard,0.33620054,0
-2026-01-04,Aleksandar Kovacevic,Giovanni Mpetshi Perricard,Hard,0.27773157,1
-2026-01-04,Brandon Nakashima,Raphael Collignon,Hard,0.623358,1
-2026-01-04,Tomas Machac,Jiri Lehecka,Hard,0.43852025,0
-2026-01-04,Rinky Hijikata,Giovanni Mpetshi Perricard,Hard,0.25883645,0
-2026-01-04,Alex Michelsen,Learner Tien,Hard,0.3420368,1
-2026-01-05,Alexander Zverev,Hubert Hurkacz,Hard,0.6674685,0
-2026-01-05,Alexander Zverev,Tallon Griekspoor,Hard,0.82990324,1
-2026-01-05,Stan Wawrinka,Arthur Rinderknech,Hard,0.2738763,1
-2026-01-05,Stan Wawrinka,Hubert Hurkacz,Hard,0.23765688,0
-2026-01-05,Stan Wawrinka,Zizou Bergs,Hard,0.40274754,0
-2026-01-05,Stan Wawrinka,Sebastian Baez,Hard,0.49947637,0
-2026-01-05,Stan Wawrinka,Flavio Cobolli,Hard,0.2834567,0
-2026-01-05,Adrian Mannarino,Marin Cilic,Hard,0.46603927,0
-2026-01-05,Marin Cilic,Nuno Borges,Hard,0.5116895,0
-2026-01-05,Jan Lennard Struff,Botic Van De Zandschulp,Hard,0.48917627,0
-2026-01-05,Damir Dzumhur,Nuno Borges,Hard,0.34671128,0
-2026-01-05,Marcos Giron,Laslo Djere,Hard,0.50026494,1
-2026-01-05,Marcos Giron,Alexander Bublik,Hard,0.27766508,0
-2026-01-05,Marcos Giron,Alexandre Muller,Hard,0.4975767,1
-2026-01-05,Zhizhen Zhang,Felix Auger Aliassime,Hard,0.13186818,0
-2026-01-05,Zhizhen Zhang,Zizou Bergs,Hard,0.29790166,1
-2026-01-05,Karen Khachanov,Michael Mmoh,Hard,0.7669136,0
-2026-01-05,Michael Mmoh,Alejandro Tabilo,Hard,0.33230227,1
-2026-01-05,Botic Van De Zandschulp,Alexander Bublik,Hard,0.28090468,0
-2026-01-05,Alexander Bublik,Lorenzo Musetti,Hard,0.38577002,1
-2026-01-05,Alexander Bublik,Juncheng Shang,Hard,0.7435148,1
-2026-01-05,Alexandre Muller,Miomir Kecmanovic,Hard,0.52236164,1
-2026-01-05,Andrey Rublev,Nuno Borges,Hard,0.6392385,1
-2026-01-05,Andrey Rublev,Yibing Wu,Hard,0.6845159,1
-2026-01-05,Andrey Rublev,Lorenzo Musetti,Hard,0.34387687,0
-2026-01-05,Billy Harris,Stefanos Tsitsipas,Hard,0.22036171,0
-2026-01-05,Billy Harris,Shintaro Mochizuki,Hard,0.56799674,1
-2026-01-05,Taylor Fritz,Stefanos Tsitsipas,Hard,0.7569255,0
-2026-01-05,Taylor Fritz,Hubert Hurkacz,Hard,0.6742457,0
-2026-01-05,Taylor Fritz,Jaume Munar,Hard,0.7820673,1
-2026-01-05,Taylor Fritz,Sebastian Baez,Hard,0.83915114,0
-2026-01-05,Arthur Rinderknech,Flavio Cobolli,Hard,0.4936853,1
-2026-01-05,Stefanos Tsitsipas,Shintaro Mochizuki,Hard,0.8532521,1
-2026-01-05,Hubert Hurkacz,Tallon Griekspoor,Hard,0.54772824,1
-2026-01-05,Hubert Hurkacz,Alex De Minaur,Hard,0.37487748,0
-2026-01-05,Lorenzo Sonego,Juncheng Shang,Hard,0.5941149,0
-2026-01-05,Lorenzo Sonego,Rei Sakamoto,Hard,0.73222,1
-2026-01-05,Casper Ruud,Alex De Minaur,Hard,0.3838395,1
-2026-01-05,Casper Ruud,Jakub Mensik,Hard,0.6882868,0
-2026-01-05,Jaume Munar,Sebastian Baez,Hard,0.6806916,0
-2026-01-05,Tomas Martin Etcheverry,Lorenzo Musetti,Hard,0.25431424,0
-2026-01-05,Tomas Martin Etcheverry,Valentin Royer,Hard,0.48179722,1
-2026-01-05,Felix Auger Aliassime,Zizou Bergs,Hard,0.8472397,0
-2026-01-05,Yibing Wu,Fabian Marozsan,Hard,0.37667108,1
-2026-01-05,Zizou Bergs,Jakub Mensik,Hard,0.331362,1
-2026-01-05,Alex De Minaur,Jakub Mensik,Hard,0.71792454,1
-2026-01-05,Jesper De Jong,Gabriel Diallo,Hard,0.41164422,0
-2026-01-05,Lorenzo Musetti,Coleman Wong,Hard,0.8229736,1
-2026-01-05,Francisco Comesana,Juncheng Shang,Hard,0.51080656,0
-2026-01-05,Mariano Navone,Coleman Wong,Hard,0.54473126,0
-2026-01-05,Gabriel Diallo,Coleman Wong,Hard,0.7288927,0
-2026-01-12,Gael Monfils,Fabian Marozsan,Hard,0.50559026,0
-2026-01-12,Roberto Bautista Agut,Giovanni Mpetshi Perricard,Hard,0.33672643,0
-2026-01-12,Adrian Mannarino,Eliot Spizzirri,Hard,0.5952578,0
-2026-01-12,James Duckworth,Tomas Machac,Hard,0.24747814,0
-2026-01-12,Marton Fucsovics,Alexander Shevchenko,Hard,0.60930556,0
-2026-01-12,Marton Fucsovics,Ethan Quinn,Hard,0.6349977,1
-2026-01-12,Damir Dzumhur,Alexander Shevchenko,Hard,0.44737104,0
-2026-01-12,Marcos Giron,Alexandre Muller,Hard,0.51137954,1
-2026-01-12,Marcos Giron,Sebastian Baez,Hard,0.5307747,0
-2026-01-12,Marcos Giron,Luciano Darderi,Hard,0.51960397,1
-2026-01-12,Marcos Giron,Alex Michelsen,Hard,0.44492695,1
-2026-01-12,Thanasi Kokkinakis,Sebastian Korda,Hard,0.28947765,1
-2026-01-12,Quentin Halys,Tomas Machac,Hard,0.24107687,0
-2026-01-12,Quentin Halys,Jacob Fearnley,Hard,0.45081782,1
-2026-01-12,Cameron Norrie,Hugo Gaston,Hard,0.802288,1
-2026-01-12,Cameron Norrie,Giovanni Mpetshi Perricard,Hard,0.5470523,0
-2026-01-12,Reilly Opelka,Tommy Paul,Hard,0.3716936,0
-2026-01-12,Reilly Opelka,Alexei Popyrin,Hard,0.5277691,1
-2026-01-12,Tommy Paul,Aleksandar Vukic,Hard,0.7863055,1
-2026-01-12,Tommy Paul,Tomas Machac,Hard,0.5527557,0
-2026-01-12,Alejandro Tabilo,Camilo Ugo Carabelli,Hard,0.5999005,1
-2026-01-12,Alejandro Tabilo,Luciano Darderi,Hard,0.5651128,0
-2026-01-12,Stefanos Tsitsipas,Aleksandar Vukic,Hard,0.74512875,0
-2026-01-12,Aleksandar Vukic,Andrea Vavassori,Hard,0.5892732,1
-2026-01-12,Daniel Altmaier,Jaume Munar,Hard,0.4077543,0
-2026-01-12,Andrea Vavassori,Gabriel Diallo,Hard,0.26640385,1
-2026-01-12,Nuno Borges,Tomas Martin Etcheverry,Hard,0.5170574,1
-2026-01-12,Nuno Borges,Eliot Spizzirri,Hard,0.60636663,0
-2026-01-12,Casper Ruud,Fabian Marozsan,Hard,0.69929534,0
-2026-01-12,Tallon Griekspoor,Ugo Humbert,Hard,0.47193485,0
-2026-01-12,Jaume Munar,Francisco Cerundolo,Hard,0.4737698,1
-2026-01-12,Jaume Munar,Tomas Machac,Hard,0.42645973,0
-2026-01-12,Ugo Humbert,Alejandro Davidovich Fokina,Hard,0.46775877,1
-2026-01-12,Ugo Humbert,Alexander Shevchenko,Hard,0.71870756,1
-2026-01-12,Ugo Humbert,Tomas Machac,Hard,0.5100188,0
-2026-01-12,Ugo Humbert,Terence Atmane,Hard,0.7484938,1
-2026-01-12,Miomir Kecmanovic,Valentin Vacherot,Hard,0.36969152,0
-2026-01-12,Alejandro Davidovich Fokina,Valentin Vacherot,Hard,0.6279313,1
-2026-01-12,Alejandro Davidovich Fokina,Rinky Hijikata,Hard,0.7950449,1
-2026-01-12,Sebastian Baez,Jenson Brooksby,Hard,0.35951197,1
-2026-01-12,Sebastian Baez,Emilio Nava,Hard,0.5433139,1
-2026-01-12,Sebastian Baez,Ben Shelton,Hard,0.16041146,1
-2026-01-12,Sebastian Baez,Jakub Mensik,Hard,0.36277133,0
-2026-01-12,Jenson Brooksby,James Watt,Hard,0.9235917,1
-2026-01-12,Aleksandar Kovacevic,Hamad Medjedovic,Hard,0.37949368,0
-2026-01-12,Fabian Marozsan,Eliot Spizzirri,Hard,0.61944157,1
-2026-01-12,Fabian Marozsan,Jakub Mensik,Hard,0.40531185,0
-2026-01-12,Francisco Comesana,Valentin Royer,Hard,0.4472762,1
-2026-01-12,Francisco Comesana,Ben Shelton,Hard,0.17731646,0
-2026-01-12,Rinky Hijikata,Tristan Schoolkate,Hard,0.45064777,1
-2026-01-12,Mariano Navone,Alex Michelsen,Hard,0.4010469,0
-2026-01-12,Giovanni Mpetshi Perricard,Jakub Mensik,Hard,0.39069042,0
-2026-01-12,Hamad Medjedovic,Jakub Mensik,Hard,0.40198535,0
-2026-01-19,Alexander Zverev,Cameron Norrie,Hard,0.81406474,1
-2026-01-19,Alexander Zverev,Alexandre Muller,Hard,0.89501524,1
-2026-01-19,Alexander Zverev,Francisco Cerundolo,Hard,0.8364345,1
-2026-01-19,Alexander Zverev,Carlos Alcaraz,Hard,0.16830753,0
-2026-01-19,Alexander Zverev,Gabriel Diallo,Hard,0.8453899,1
-2026-01-19,Alexander Zverev,Learner Tien,Hard,0.7611541,1
-2026-01-19,Martin Damm,Valentin Vacherot,Hard,0.2938396,0
-2026-01-19,Stan Wawrinka,Laslo Djere,Hard,0.42776883,1
-2026-01-19,Stan Wawrinka,Taylor Fritz,Hard,0.1685777,0
-2026-01-19,Stan Wawrinka,Arthur Gea,Hard,0.4829146,1
-2026-01-19,Gael Monfils,Dane Sweeny,Hard,0.7813246,0
-2026-01-19,Novak Djokovic,Botic Van De Zandschulp,Hard,0.8973214,1
-2026-01-19,Novak Djokovic,Pedro Martinez,Hard,0.91777486,1
-2026-01-19,Novak Djokovic,Jannik Sinner,Hard,0.13246684,1
-2026-01-19,Novak Djokovic,Carlos Alcaraz,Hard,0.2695588,0
-2026-01-19,Novak Djokovic,Francesco Maestrelli,Hard,0.88563174,1
-2026-01-19,Roberto Bautista Agut,Juncheng Shang,Hard,0.5686425,0
-2026-01-19,Adrian Mannarino,Rinky Hijikata,Hard,0.6054223,0
-2026-01-19,Marin Cilic,Daniel Altmaier,Hard,0.5404669,1
-2026-01-19,Marin Cilic,Denis Shapovalov,Hard,0.3985002,1
-2026-01-19,Marin Cilic,Casper Ruud,Hard,0.24021237,0
-2026-01-19,Jan Lennard Struff,Vit Kopriva,Hard,0.6308196,0
-2026-01-19,Grigor Dimitrov,Tomas Machac,Hard,0.5448011,0
-2026-01-19,Pablo Carreno Busta,Jakub Mensik,Hard,0.31505066,0
-2026-01-19,Yannick Hanfmann,Carlos Alcaraz,Hard,0.06865003,0
-2026-01-19,Yannick Hanfmann,Zachary Svajda,Hard,0.6986205,1
-2026-01-19,James Duckworth,Jannik Sinner,Hard,0.055475608,0
-2026-01-19,James Duckworth,Dino Prizmic,Hard,0.51508784,1
-2026-01-19,Marton Fucsovics,Alexander Bublik,Hard,0.22542687,0
-2026-01-19,Marton Fucsovics,Camilo Ugo Carabelli,Hard,0.59948957,1
-2026-01-19,Damir Dzumhur,Francisco Cerundolo,Hard,0.21355034,0
-2026-01-19,Damir Dzumhur,Liam Draxl,Hard,0.39278474,1
-2026-01-19,Jason Kubler,Frances Tiafoe,Hard,0.23277299,0
-2026-01-19,Marcos Giron,Learner Tien,Hard,0.2776531,0
-2026-01-19,Christopher Oconnell,Nishesh Basavareddy,Hard,0.51375264,0
-2026-01-19,Daniil Medvedev,Quentin Halys,Hard,0.86986035,1
-2026-01-19,Daniil Medvedev,Fabian Marozsan,Hard,0.7079959,1
-2026-01-19,Daniil Medvedev,Jesper De Jong,Hard,0.7947601,1
-2026-01-19,Daniil Medvedev,Learner Tien,Hard,0.6610652,0
-2026-01-19,Cristian Garin,Luciano Darderi,Hard,0.46682873,0
-2026-01-19,Zhizhen Zhang,Francisco Cerundolo,Hard,0.22352867,0
-2026-01-19,Elias Ymer,Alexander Shevchenko,Hard,0.43142372,0
-2026-01-19,Jordan Thompson,Nuno Borges,Hard,0.54276866,0
-2026-01-19,Jordan Thompson,Juan Manuel Cerundolo,Hard,0.6327111,1
-2026-01-19,Mackenzie Mcdonald,Alex De Minaur,Hard,0.16944754,0
-2026-01-19,Quentin Halys,Alejandro Tabilo,Hard,0.31989664,1
-2026-01-19,Karen Khachanov,Luciano Darderi,Hard,0.75309616,0
-2026-01-19,Karen Khachanov,Nishesh Basavareddy,Hard,0.82267344,1
-2026-01-19,Karen Khachanov,Alex Michelsen,Hard,0.6837965,1
-2026-01-19,Kamil Majchrzak,Fabian Marozsan,Hard,0.4541239,0
-2026-01-19,Kamil Majchrzak,Jacob Fearnley,Hard,0.65510494,1
-2026-01-19,Cameron Norrie,Benjamin Bonzi,Hard,0.629553,1
-2026-01-19,Cameron Norrie,Emilio Nava,Hard,0.75505453,1
-2026-01-19,Botic Van De Zandschulp,Brandon Nakashima,Hard,0.42443484,1
-2026-01-19,Botic Van De Zandschulp,Juncheng Shang,Hard,0.5698703,1
-2026-01-19,Alexander Bublik,Tomas Martin Etcheverry,Hard,0.7236718,1
-2026-01-19,Alexander Bublik,Alex De Minaur,Hard,0.38578007,0
-2026-01-19,Alexander Bublik,Jenson Brooksby,Hard,0.70899004,1
-2026-01-19,Alexandre Muller,Alexei Popyrin,Hard,0.4135942,1
-2026-01-19,Reilly Opelka,Nicolai Budkov Kjaer,Hard,0.7427592,1
-2026-01-19,Reilly Opelka,Alejandro Davidovich Fokina,Hard,0.3437581,0
-2026-01-19,Andrey Rublev,Francisco Cerundolo,Hard,0.5504553,0
-2026-01-19,Andrey Rublev,Matteo Arnaldi,Hard,0.6504701,1
-2026-01-19,Andrey Rublev,Jaime Faria,Hard,0.8294534,1
-2026-01-19,Taylor Fritz,Vit Kopriva,Hard,0.88824433,1
-2026-01-19,Taylor Fritz,Lorenzo Musetti,Hard,0.5815835,0
-2026-01-19,Taylor Fritz,Valentin Royer,Hard,0.79544365,1
-2026-01-19,Tommy Paul,Thiago Agustin Tirante,Hard,0.77919257,1
-2026-01-19,Tommy Paul,Aleksandar Kovacevic,Hard,0.80845624,1
-2026-01-19,Tommy Paul,Carlos Alcaraz,Hard,0.076661274,0
-2026-01-19,Frances Tiafoe,Alex De Minaur,Hard,0.20274302,0
-2026-01-19,Frances Tiafoe,Francisco Comesana,Hard,0.63999236,1
-2026-01-19,Arthur Rinderknech,Fabian Marozsan,Hard,0.49422118,0
-2026-01-19,Carlos Taberner,Lorenzo Sonego,Hard,0.3128239,0
-2026-01-19,Stefanos Tsitsipas,Tomas Machac,Hard,0.47569937,0
-2026-01-19,Stefanos Tsitsipas,Shintaro Mochizuki,Hard,0.86658007,1
-2026-01-19,Aleksandar Vukic,Thiago Agustin Tirante,Hard,0.5132796,0
-2026-01-19,Hubert Hurkacz,Zizou Bergs,Hard,0.6254678,1
-2026-01-19,Hubert Hurkacz,Ethan Quinn,Hard,0.7240461,0
-2026-01-19,Lorenzo Sonego,Lorenzo Musetti,Hard,0.21734343,0
-2026-01-19,Nuno Borges,Learner Tien,Hard,0.37773463,0
-2026-01-19,Denis Shapovalov,Bu Yunchaokete,Hard,0.7142291,1
-2026-01-19,Casper Ruud,Jaume Munar,Hard,0.70492995,1
-2026-01-19,Casper Ruud,Mattia Bellucci,Hard,0.82111734,1
-2026-01-19,Casper Ruud,Ben Shelton,Hard,0.42381048,0
-2026-01-19,Tallon Griekspoor,Ethan Quinn,Hard,0.67911863,0
-2026-01-19,Jaume Munar,Dalibor Svrcina,Hard,0.74577445,1
-2026-01-19,Tomas Martin Etcheverry,Miomir Kecmanovic,Hard,0.59687215,1
-2026-01-19,Tomas Martin Etcheverry,Arthur Fery,Hard,0.7340508,1
-2026-01-19,Corentin Moutet,Carlos Alcaraz,Hard,0.06876051,0
-2026-01-19,Corentin Moutet,Tristan Schoolkate,Hard,0.72017974,1
-2026-01-19,Ugo Humbert,Ben Shelton,Hard,0.32726756,0
-2026-01-19,Yibing Wu,Eliot Spizzirri,Hard,0.47143665,0
-2026-01-19,Yibing Wu,Luca Nardi,Hard,0.64231294,1
-2026-01-19,Alejandro Davidovich Fokina,Filip Misolic,Hard,0.794207,1
-2026-01-19,Alex De Minaur,Carlos Alcaraz,Hard,0.105418384,0
-2026-01-19,Alex De Minaur,Hamad Medjedovic,Hard,0.76282644,1
-2026-01-19,Adam Walton,Carlos Alcaraz,Hard,0.053112254,0
-2026-01-19,Valentin Vacherot,Rinky Hijikata,Hard,0.7329853,1
-2026-01-19,Valentin Vacherot,Ben Shelton,Hard,0.27339098,0
-2026-01-19,Patrick Kypson,Francisco Comesana,Hard,0.42846185,0
-2026-01-19,Sebastian Korda,Michael Zheng,Hard,0.9089508,0
-2026-01-19,Sebastian Baez,Giovanni Mpetshi Perricard,Hard,0.43049216,1
-2026-01-19,Sebastian Baez,Luciano Darderi,Hard,0.5535608,0
-2026-01-19,Jannik Sinner,Eliot Spizzirri,Hard,0.94763726,1
-2026-01-19,Jannik Sinner,Luciano Darderi,Hard,0.94946706,1
-2026-01-19,Jannik Sinner,Ben Shelton,Hard,0.93000674,1
-2026-01-19,Emilio Nava,Kyrian Jacquet,Hard,0.53647643,1
-2026-01-19,Lorenzo Musetti,Tomas Machac,Hard,0.6371548,1
-2026-01-19,Alexander Shevchenko,Learner Tien,Hard,0.2184986,0
-2026-01-19,Flavio Cobolli,Arthur Fery,Hard,0.7947426,0
-2026-01-19,Dane Sweeny,Ben Shelton,Hard,0.12192772,0
-2026-01-19,Jiri Lehecka,Arthur Gea,Hard,0.86662585,0
-2026-01-19,Eliot Spizzirri,Joao Fonseca,Hard,0.32997274,1
-2026-01-19,Francesco Maestrelli,Terence Atmane,Hard,0.48500165,1
-2026-01-19,Mariano Navone,Hamad Medjedovic,Hard,0.32516262,0
-2026-01-19,Jakub Mensik,Ethan Quinn,Hard,0.8204039,1
-2026-01-19,Jakub Mensik,Rafael Jodar,Hard,0.78122133,1
-2026-01-19,Jaime Faria,Alexander Blockx,Hard,0.41819575,1
-2026-01-19,Rei Sakamoto,Rafael Jodar,Hard,0.445282,0
-2026-02-02,Martin Damm,Roberto Bautista Agut,Hard,0.50993997,1
-2026-02-02,Martin Damm,Adrian Mannarino,Hard,0.46349034,0
-2026-02-02,Martin Damm,Hubert Hurkacz,Hard,0.33656844,1
-2026-02-02,Martin Damm,Luca Nardi,Hard,0.55981475,1
-2026-02-02,Stan Wawrinka,Felix Auger Aliassime,Hard,0.15214099,0
-2026-02-02,Stan Wawrinka,Hamad Medjedovic,Hard,0.37957805,1
-2026-02-02,Roberto Bautista Agut,Christopher Oconnell,Hard,0.62061507,1
-2026-02-02,Adrian Mannarino,Pedro Martinez,Hard,0.62186986,1
-2026-02-02,Adrian Mannarino,Felix Auger Aliassime,Hard,0.16187423,0
-2026-02-02,Adrian Mannarino,Ugo Humbert,Hard,0.3093505,1
-2026-02-02,Adrian Mannarino,Arthur Gea,Hard,0.6442113,1
-2026-02-02,Pablo Carreno Busta,Tallon Griekspoor,Hard,0.43368718,0
-2026-02-02,Pablo Carreno Busta,Miomir Kecmanovic,Hard,0.5515126,1
-2026-02-02,Nikoloz Basilashvili,Luca Nardi,Hard,0.45273337,0
-2026-02-02,Botic Van De Zandschulp,Ugo Humbert,Hard,0.3232405,0
-2026-02-02,Jan Choinski,Titouan Droguet,Hard,0.55891967,0
-2026-02-02,Andrea Vavassori,Ugo Blanchet,Hard,0.48677686,0
-2026-02-02,Tallon Griekspoor,Titouan Droguet,Hard,0.6959027,0
-2026-02-02,Felix Auger Aliassime,Titouan Droguet,Hard,0.84696406,1
-2026-02-02,Felix Auger Aliassime,Arthur Fils,Hard,0.6613009,1
-2026-02-02,Ugo Blanchet,Arthur Fils,Hard,0.230567,0
-2026-02-02,Aleksandar Kovacevic,Titouan Droguet,Hard,0.52042556,0
-2026-02-02,Aleksandar Kovacevic,Moise Kouame,Hard,0.83818185,1
-2026-02-02,Flavio Cobolli,Luca Nardi,Hard,0.7159129,0
-2026-02-02,Valentin Royer,Arthur Fils,Hard,0.3259237,0
-2026-02-09,Federico Coria,Matteo Berrettini,Clay,0.12915343,0
-2026-02-09,Damir Dzumhur,Hugo Dellien,Clay,0.57140017,0
-2026-02-09,Hugo Dellien,Francisco Cerundolo,Clay,0.22776157,0
-2026-02-09,Laslo Djere,Roman Andres Burruchaga,Clay,0.60878545,0
-2026-02-09,Pedro Martinez,Juan Manuel Cerundolo,Clay,0.5083422,1
-2026-02-09,Pedro Martinez,Luciano Darderi,Clay,0.313364,0
-2026-02-09,Pedro Martinez,Lautaro Midon,Clay,0.7870985,1
-2026-02-09,Alejandro Tabilo,Tomas Martin Etcheverry,Clay,0.45064273,0
-2026-02-09,Alejandro Tabilo,Facundo Diaz Acosta,Clay,0.60025287,1
-2026-02-09,Alejandro Tabilo,Joao Fonseca,Clay,0.40971136,1
-2026-02-09,Andrea Pellegrino,Tomas Martin Etcheverry,Clay,0.34921685,0
-2026-02-09,Matteo Berrettini,Vit Kopriva,Clay,0.7970543,0
-2026-02-09,Daniel Altmaier,Juan Manuel Cerundolo,Clay,0.535616,0
-2026-02-09,Tomas Barrios Vera,Luciano Darderi,Clay,0.19456887,0
-2026-02-09,Tomas Martin Etcheverry,Francisco Cerundolo,Clay,0.37725165,0
-2026-02-09,Tomas Martin Etcheverry,Roman Andres Burruchaga,Clay,0.621513,1
-2026-02-09,Camilo Ugo Carabelli,Sebastian Baez,Clay,0.31062567,0
-2026-02-09,Camilo Ugo Carabelli,Francisco Comesana,Clay,0.4267976,1
-2026-02-09,Camilo Ugo Carabelli,Mariano Navone,Clay,0.4552107,1
-2026-02-09,Vit Kopriva,Francisco Cerundolo,Clay,0.24235502,0
-2026-02-09,Vit Kopriva,Alex Barrena,Clay,0.7173702,1
-2026-02-09,Francisco Cerundolo,Luciano Darderi,Clay,0.60174394,1
-2026-02-09,Sebastian Baez,Luciano Darderi,Clay,0.5119523,0
-2026-02-09,Sebastian Baez,Ignacio Buse,Clay,0.69304746,1
-2026-02-09,Emilio Nava,Mariano Navone,Clay,0.525034,0
-2026-02-09,Francesco Passaro,Ignacio Buse,Clay,0.45378256,0
-2026-02-09,Stan Wawrinka,Alex De Minaur,Hard,0.19610316,0
-2026-02-09,Stan Wawrinka,Thijs Boogaard,Hard,0.84087664,1
-2026-02-09,Roberto Bautista Agut,Cameron Norrie,Hard,0.34025165,0
-2026-02-09,Adrian Mannarino,Adam Walton,Hard,0.5609431,1
-2026-02-09,Adrian Mannarino,Ben Shelton,Hard,0.21898556,0
-2026-02-09,Marin Cilic,Taylor Fritz,Hard,0.30846944,0
-2026-02-09,Marin Cilic,Jack Pinnington Jones,Hard,0.7030275,1
-2026-02-09,Marin Cilic,Ethan Quinn,Hard,0.6205461,1
-2026-02-09,Marin Cilic,Learner Tien,Hard,0.3678846,1
-2026-02-09,Jan Lennard Struff,Alexander Bublik,Hard,0.26838565,0
-2026-02-09,Jan Lennard Struff,Hugo Grenier,Hard,0.6443192,1
-2026-02-09,Grigor Dimitrov,Alex Michelsen,Hard,0.6683731,0
-2026-02-09,James Duckworth,Eliot Spizzirri,Hard,0.42304277,0
-2026-02-09,Marton Fucsovics,Guy Den Ouden,Hard,0.71506387,0
-2026-02-09,Marcos Giron,Taylor Fritz,Hard,0.19636972,0
-2026-02-09,Christopher Oconnell,Cameron Norrie,Hard,0.2435104,1
-2026-02-09,Christopher Oconnell,Ugo Humbert,Hard,0.21915692,0
-2026-02-09,Christopher Oconnell,Valentin Royer,Hard,0.3869397,1
-2026-02-09,Daniil Medvedev,Ugo Humbert,Hard,0.6243362,0
-2026-02-09,Quentin Halys,Tallon Griekspoor,Hard,0.36035505,0
-2026-02-09,Quentin Halys,Mees Rottgering,Hard,0.74271744,1
-2026-02-09,Karen Khachanov,Jaume Munar,Hard,0.5806302,0
-2026-02-09,Karen Khachanov,Jesper De Jong,Hard,0.68729603,1
-2026-02-09,Botic Van De Zandschulp,Stefanos Tsitsipas,Hard,0.3915489,1
-2026-02-09,Botic Van De Zandschulp,Alex De Minaur,Hard,0.21300559,0
-2026-02-09,Botic Van De Zandschulp,Luka Pavlovic,Hard,0.87475896,1
-2026-02-09,Alexander Bublik,Hubert Hurkacz,Hard,0.5703656,1
-2026-02-09,Alexander Bublik,Jaume Munar,Hard,0.7038918,1
-2026-02-09,Alexander Bublik,Felix Auger Aliassime,Hard,0.3257165,0
-2026-02-09,Taylor Fritz,Sebastian Korda,Hard,0.6675387,1
-2026-02-09,Taylor Fritz,Brandon Nakashima,Hard,0.7090849,1
-2026-02-09,Taylor Fritz,Ben Shelton,Hard,0.5010651,0
-2026-02-09,Tommy Paul,Miomir Kecmanovic,Hard,0.7681885,0
-2026-02-09,Tommy Paul,Jenson Brooksby,Hard,0.63591146,1
-2026-02-09,Frances Tiafoe,Sebastian Korda,Hard,0.48249102,0
-2026-02-09,Frances Tiafoe,Terence Atmane,Hard,0.6707972,1
-2026-02-09,Arthur Rinderknech,Stefanos Tsitsipas,Hard,0.5011777,0
-2026-02-09,Denis Shapovalov,Alejandro Davidovich Fokina,Hard,0.3914962,1
-2026-02-09,Denis Shapovalov,Aleksandar Kovacevic,Hard,0.6520708,1
-2026-02-09,Denis Shapovalov,Ben Shelton,Hard,0.25813496,0
-2026-02-09,Denis Shapovalov,Rafael Jodar,Hard,0.7112307,1
-2026-02-09,Tallon Griekspoor,Felix Auger Aliassime,Hard,0.17321512,0
-2026-02-09,Tallon Griekspoor,Giovanni Mpetshi Perricard,Hard,0.5238667,1
-2026-02-09,Jaume Munar,Nicolai Budkov Kjaer,Hard,0.7254921,1
-2026-02-09,Felix Auger Aliassime,Alex De Minaur,Hard,0.5709201,0
-2026-02-09,Felix Auger Aliassime,Alexei Popyrin,Hard,0.83259165,1
-2026-02-09,Felix Auger Aliassime,Hamad Medjedovic,Hard,0.82415104,1
-2026-02-09,Ugo Humbert,Alex De Minaur,Hard,0.30159315,0
-2026-02-09,Ugo Humbert,Guy Den Ouden,Hard,0.9061264,1
-2026-02-09,Miomir Kecmanovic,Sho Shimabukuro,Hard,0.59729594,1
-2026-02-09,Miomir Kecmanovic,Ben Shelton,Hard,0.20445265,0
-2026-02-09,Alejandro Davidovich Fokina,Zachary Svajda,Hard,0.8296677,1
-2026-02-09,Alejandro Davidovich Fokina,Alex Michelsen,Hard,0.63382924,1
-2026-02-09,Zizou Bergs,Hamad Medjedovic,Hard,0.5191764,0
-2026-02-09,Alex De Minaur,Arthur Fils,Hard,0.6767857,1
-2026-02-09,Patrick Kypson,Aleksandar Kovacevic,Hard,0.50006276,0
-2026-02-09,Sebastian Korda,Michael Zheng,Hard,0.7266107,1
-2026-02-09,Brandon Nakashima,Mattia Bellucci,Hard,0.67778903,1
-2026-02-09,Flavio Cobolli,Jack Pinnington Jones,Hard,0.73212975,0
-2026-02-09,Eliot Spizzirri,Jack Pinnington Jones,Hard,0.6664027,0
-2026-02-09,Gabriel Diallo,Ben Shelton,Hard,0.20320968,0
-2026-02-09,Ethan Quinn,Trevor Svajda,Hard,0.59186995,1
-2026-02-16,Dusan Lajovic,Matteo Berrettini,Clay,0.20746976,0
-2026-02-16,Dusan Lajovic,Daniel Altmaier,Clay,0.51970154,1
-2026-02-16,Yannick Hanfmann,Joao Lucas Reis Da Silva,Clay,0.84140515,1
-2026-02-16,Yannick Hanfmann,Juan Manuel Cerundolo,Clay,0.6121571,0
-2026-02-16,Damir Dzumhur,Pedro Martinez,Clay,0.49456128,1
-2026-02-16,Damir Dzumhur,Jaime Faria,Clay,0.5086678,0
-2026-02-16,Thiago Monteiro,Joao Fonseca,Clay,0.26724872,0
-2026-02-16,Cristian Garin,Thiago Agustin Tirante,Clay,0.56748194,0
-2026-02-16,Alejandro Tabilo,Tomas Martin Etcheverry,Clay,0.4629977,0
-2026-02-16,Alejandro Tabilo,Thiago Agustin Tirante,Clay,0.6315715,1
-2026-02-16,Alejandro Tabilo,Emilio Nava,Clay,0.58109665,1
-2026-02-16,Alejandro Tabilo,Francesco Passaro,Clay,0.61202717,1
-2026-02-16,Alejandro Tabilo,Ignacio Buse,Clay,0.5904208,1
-2026-02-16,Matteo Berrettini,Tomas Barrios Vera,Clay,0.83882827,1
-2026-02-16,Matteo Berrettini,Ignacio Buse,Clay,0.7649026,0
-2026-02-16,Igor Ribeiro Marcondes,Ignacio Buse,Clay,0.17361413,0
-2026-02-16,Tomas Martin Etcheverry,Vit Kopriva,Clay,0.5860193,1
-2026-02-16,Tomas Martin Etcheverry,Francisco Comesana,Clay,0.54445034,1
-2026-02-16,Tomas Martin Etcheverry,Vilius Gaubas,Clay,0.6453183,1
-2026-02-16,Tomas Martin Etcheverry,Jaime Faria,Clay,0.6791581,1
-2026-02-16,Camilo Ugo Carabelli,Roman Andres Burruchaga,Clay,0.49707776,0
-2026-02-16,Vit Kopriva,Juan Manuel Cerundolo,Clay,0.49773094,1
-2026-02-16,Vit Kopriva,Gustavo Heide,Clay,0.54888886,1
-2026-02-16,Vit Kopriva,Roman Andres Burruchaga,Clay,0.46007812,1
-2026-02-16,Francisco Cerundolo,Mariano Navone,Clay,0.73408246,1
-2026-02-16,Sebastian Baez,Jaime Faria,Clay,0.7264881,0
-2026-02-16,Juan Manuel Cerundolo,Luciano Darderi,Clay,0.32959038,1
-2026-02-16,Francesco Passaro,Dino Prizmic,Clay,0.5051973,1
-2026-02-16,Vilius Gaubas,Luis Guto Miguel,Clay,0.83574533,1
-2026-02-16,Ignacio Buse,Joao Fonseca,Clay,0.29834285,1
-2026-02-16,Marin Cilic,Brandon Nakashima,Hard,0.43316823,0
-2026-02-16,Pierre Hugues Herbert,Valentin Royer,Hard,0.41089854,0
-2026-02-16,Pablo Carreno Busta,Quentin Halys,Hard,0.5767162,0
-2026-02-16,Marton Fucsovics,Karen Khachanov,Hard,0.32277432,0
-2026-02-16,Marton Fucsovics,Hady Habib,Hard,0.6711181,1
-2026-02-16,Roberto Carballes Baena,Zhizhen Zhang,Hard,0.56181836,0
-2026-02-16,Marcos Giron,Casper Ruud,Hard,0.23498107,0
-2026-02-16,Marcos Giron,Sho Shimabukuro,Hard,0.58209014,1
-2026-02-16,Daniil Medvedev,Stefanos Tsitsipas,Hard,0.7005791,0
-2026-02-16,Daniil Medvedev,Juncheng Shang,Hard,0.7841972,1
-2026-02-16,Zhizhen Zhang,Jakub Mensik,Hard,0.2002761,0
-2026-02-16,Mackenzie Mcdonald,Sebastian Korda,Hard,0.280357,0
-2026-02-16,Quentin Halys,Arthur Fils,Hard,0.262597,0
-2026-02-16,Karen Khachanov,Carlos Alcaraz,Hard,0.13286014,0
-2026-02-16,Karen Khachanov,Shintaro Mochizuki,Hard,0.87070256,1
-2026-02-16,Kamil Majchrzak,Arthur Fils,Hard,0.3347141,0
-2026-02-16,Moez Echargui,Stefanos Tsitsipas,Hard,0.24802417,0
-2026-02-16,Mubarak Shannan Zayid,Alexei Popyrin,Hard,0.11930902,0
-2026-02-16,Jan Choinski,Jakub Mensik,Hard,0.16517487,0
-2026-02-16,Andrey Rublev,Stefanos Tsitsipas,Hard,0.55509734,1
-2026-02-16,Andrey Rublev,Fabian Marozsan,Hard,0.58353305,1
-2026-02-16,Andrey Rublev,Jesper De Jong,Hard,0.70834816,1
-2026-02-16,Andrey Rublev,Carlos Alcaraz,Hard,0.11652688,0
-2026-02-16,Taylor Fritz,Tommy Paul,Hard,0.6396378,0
-2026-02-16,Taylor Fritz,Rafael Jodar,Hard,0.8528083,1
-2026-02-16,Tommy Paul,Corentin Moutet,Hard,0.6302565,1
-2026-02-16,Tommy Paul,Adam Walton,Hard,0.80868846,1
-2026-02-16,Tommy Paul,Sebastian Korda,Hard,0.5995466,0
-2026-02-16,Tommy Paul,Learner Tien,Hard,0.5050702,1
-2026-02-16,Frances Tiafoe,Rinky Hijikata,Hard,0.7043957,1
-2026-02-16,Frances Tiafoe,Zachary Svajda,Hard,0.7663088,1
-2026-02-16,Frances Tiafoe,Learner Tien,Hard,0.42726564,0
-2026-02-16,Arthur Rinderknech,Carlos Alcaraz,Hard,0.08341753,0
-2026-02-16,Nuno Borges,Coleman Wong,Hard,0.67145115,0
-2026-02-16,Casper Ruud,Sebastian Korda,Hard,0.63587344,0
-2026-02-16,Ugo Humbert,Fabian Marozsan,Hard,0.5525186,0
-2026-02-16,Miomir Kecmanovic,Mattia Bellucci,Hard,0.5529723,1
-2026-02-16,Miomir Kecmanovic,Learner Tien,Hard,0.32106405,0
-2026-02-16,Zizou Bergs,Jiri Lehecka,Hard,0.3505427,0
-2026-02-16,Zizou Bergs,Giovanni Mpetshi Perricard,Hard,0.46407455,1
-2026-02-16,Adam Walton,Gabriel Diallo,Hard,0.33243698,1
-2026-02-16,Valentin Vacherot,Alex Michelsen,Hard,0.5396868,0
-2026-02-16,Patrick Kypson,Terence Atmane,Hard,0.45852026,0
-2026-02-16,Alexei Popyrin,Jannik Sinner,Hard,0.083843835,0
-2026-02-16,Sebastian Korda,Flavio Cobolli,Hard,0.6084699,1
-2026-02-16,Sebastian Korda,Alex Michelsen,Hard,0.5390148,1
-2026-02-16,Jenson Brooksby,Jiri Lehecka,Hard,0.38148475,0
-2026-02-16,Jannik Sinner,Tomas Machac,Hard,0.9097312,1
-2026-02-16,Jannik Sinner,Jakub Mensik,Hard,0.9210067,0
-2026-02-16,Aleksandar Kovacevic,Zachary Svajda,Hard,0.57720864,0
-2026-02-16,Brandon Nakashima,Coleman Wong,Hard,0.75829184,0
-2026-02-16,Flavio Cobolli,Terence Atmane,Hard,0.62770134,1
-2026-02-16,Flavio Cobolli,Coleman Wong,Hard,0.6515703,1
-2026-02-16,Carlos Alcaraz,Valentin Royer,Hard,0.91902566,1
-2026-02-16,Carlos Alcaraz,Arthur Fils,Hard,0.9136635,1
-2026-02-16,Jiri Lehecka,Arthur Fils,Hard,0.5565711,0
-2026-02-16,Arthur Fils,Jakub Mensik,Hard,0.47889727,1
-2026-02-16,Ethan Quinn,Rafael Jodar,Hard,0.54520035,0
-2026-02-23,Dusan Lajovic,Yannick Hanfmann,Clay,0.38759223,0
-2026-02-23,Yannick Hanfmann,Camilo Ugo Carabelli,Clay,0.573987,1
-2026-02-23,Yannick Hanfmann,Francisco Cerundolo,Clay,0.33730575,1
-2026-02-23,Yannick Hanfmann,Vilius Gaubas,Clay,0.5786244,1
-2026-02-23,Yannick Hanfmann,Luciano Darderi,Clay,0.42914066,0
-2026-02-23,Cristian Garin,Sebastian Baez,Clay,0.44093674,0
-2026-02-23,Cristian Garin,Juan Manuel Cerundolo,Clay,0.55233866,1
-2026-02-23,Nicolas Jarry,Dino Prizmic,Clay,0.6421318,0
-2026-02-23,Pedro Martinez,Francisco Comesana,Clay,0.39865562,0
-2026-02-23,Alejandro Tabilo,Tomas Barrios Vera,Clay,0.75073177,1
-2026-02-23,Alejandro Tabilo,Thiago Agustin Tirante,Clay,0.64147186,1
-2026-02-23,Alejandro Tabilo,Sebastian Baez,Clay,0.48958984,0
-2026-02-23,Andrea Pellegrino,Francisco Comesana,Clay,0.38275304,1
-2026-02-23,Andrea Pellegrino,Luciano Darderi,Clay,0.22345272,0
-2026-02-23,Andrea Pellegrino,Alex Barrena,Clay,0.4661238,1
-2026-02-23,Matteo Berrettini,Emilio Nava,Clay,0.77688074,0
-2026-02-23,Thiago Agustin Tirante,Ignacio Buse,Clay,0.513614,1
-2026-02-23,Francisco Cerundolo,Emilio Nava,Clay,0.8008864,1
-2026-02-23,Francisco Cerundolo,Elmer Moller,Clay,0.87682694,1
-2026-02-23,Sebastian Baez,Luciano Darderi,Clay,0.4638075,0
-2026-02-23,Matias Soto,Vilius Gaubas,Clay,0.14233147,0
-2026-02-23,Emilio Nava,Adolfo Daniel Vallejo,Clay,0.722755,1
-2026-02-23,Mariano Navone,Luciano Darderi,Clay,0.3328038,0
-2026-02-23,Roman Andres Burruchaga,Elmer Moller,Clay,0.6535778,0
-2026-02-23,Vilius Gaubas,Dino Prizmic,Clay,0.5368548,1
-2026-02-23,Alexander Zverev,Corentin Moutet,Hard,0.81845325,1
-2026-02-23,Alexander Zverev,Miomir Kecmanovic,Hard,0.845273,0
-2026-02-23,Stan Wawrinka,Daniil Medvedev,Hard,0.15053146,0
-2026-02-23,Stan Wawrinka,Benjamin Hassan,Hard,0.6384105,1
-2026-02-23,Gael Monfils,Damir Dzumhur,Hard,0.70290446,1
-2026-02-23,Gael Monfils,Valentin Vacherot,Hard,0.43834552,0
-2026-02-23,Adrian Mannarino,Sho Shimabukuro,Hard,0.6029587,0
-2026-02-23,Jan Lennard Struff,Alexander Bublik,Hard,0.25184402,0
-2026-02-23,Grigor Dimitrov,Terence Atmane,Hard,0.78262407,0
-2026-02-23,Pablo Carreno Busta,Denis Shapovalov,Hard,0.3584021,1
-2026-02-23,Pablo Carreno Busta,Jiri Lehecka,Hard,0.2921528,0
-2026-02-23,James Duckworth,Dalibor Svrcina,Hard,0.4978055,0
-2026-02-23,Daniil Medvedev,Felix Auger Aliassime,Hard,0.3928862,1
-2026-02-23,Daniil Medvedev,Jenson Brooksby,Hard,0.7221962,1
-2026-02-23,Daniil Medvedev,Juncheng Shang,Hard,0.80426574,1
-2026-02-23,Zhizhen Zhang,Felix Auger Aliassime,Hard,0.11006452,0
-2026-02-23,Elias Ymer,Brandon Nakashima,Hard,0.23897251,0
-2026-02-23,Quentin Halys,Jack Draper,Hard,0.16179249,0
-2026-02-23,Karen Khachanov,Jenson Brooksby,Hard,0.59641993,0
-2026-02-23,Karen Khachanov,Alexander Shevchenko,Hard,0.7280979,1
-2026-02-23,Kamil Majchrzak,Alexei Popyrin,Hard,0.46674812,0
-2026-02-23,Cameron Norrie,Rafael Jodar,Hard,0.7324054,0
-2026-02-23,Moez Echargui,Giovanni Mpetshi Perricard,Hard,0.37803245,0
-2026-02-23,Alexander Bublik,Tallon Griekspoor,Hard,0.698438,0
-2026-02-23,Andrey Rublev,Arthur Rinderknech,Hard,0.57232386,1
-2026-02-23,Andrey Rublev,Tallon Griekspoor,Hard,0.59584075,0
-2026-02-23,Andrey Rublev,Ugo Humbert,Hard,0.5197323,1
-2026-02-23,Andrey Rublev,Valentin Royer,Hard,0.7324903,1
-2026-02-23,Frances Tiafoe,Nuno Borges,Hard,0.49552044,1
-2026-02-23,Frances Tiafoe,Aleksandar Kovacevic,Hard,0.6476323,1
-2026-02-23,Frances Tiafoe,Brandon Nakashima,Hard,0.49987558,1
-2026-02-23,Frances Tiafoe,Flavio Cobolli,Hard,0.5262586,0
-2026-02-23,Frances Tiafoe,Mattia Bellucci,Hard,0.73250884,1
-2026-02-23,Arthur Rinderknech,Fabian Marozsan,Hard,0.5041953,1
-2026-02-23,Arthur Rinderknech,Jack Draper,Hard,0.23963852,1
-2026-02-23,Stefanos Tsitsipas,Ugo Humbert,Hard,0.4414475,0
-2026-02-23,Daniel Altmaier,Alejandro Davidovich Fokina,Hard,0.213144,0
-2026-02-23,Hubert Hurkacz,Jakub Mensik,Hard,0.46761906,0
-2026-02-23,Casper Ruud,Yibing Wu,Hard,0.768417,0
-2026-02-23,Tallon Griekspoor,Otto Virtanen,Hard,0.6920037,1
-2026-02-23,Tallon Griekspoor,Jakub Mensik,Hard,0.33744982,1
-2026-02-23,Felix Auger Aliassime,Jiri Lehecka,Hard,0.71673536,1
-2026-02-23,Felix Auger Aliassime,Giovanni Mpetshi Perricard,Hard,0.7972259,1
-2026-02-23,Yibing Wu,Sho Shimabukuro,Hard,0.526737,1
-2026-02-23,Yibing Wu,Flavio Cobolli,Hard,0.43614304,0
-2026-02-23,Miomir Kecmanovic,Flavio Cobolli,Hard,0.47285435,0
-2026-02-23,Miomir Kecmanovic,Tristan Schoolkate,Hard,0.60473627,1
-2026-02-23,Miomir Kecmanovic,Terence Atmane,Hard,0.6052084,1
-2026-02-23,Alejandro Davidovich Fokina,Mattia Bellucci,Hard,0.8201699,0
-2026-02-23,Zizou Bergs,Jenson Brooksby,Hard,0.47763085,0
-2026-02-23,Alex De Minaur,Patrick Kypson,Hard,0.85036516,0
-2026-02-23,Adam Walton,Aleksandar Kovacevic,Hard,0.4710487,0
-2026-02-23,Valentin Vacherot,Brandon Nakashima,Hard,0.50049406,0
-2026-02-23,Valentin Vacherot,Coleman Wong,Hard,0.7132252,1
-2026-02-23,Patrick Kypson,Brandon Nakashima,Hard,0.26987928,0
-2026-02-23,Alexei Popyrin,Jakub Mensik,Hard,0.2831201,0
-2026-02-23,Dalibor Svrcina,Flavio Cobolli,Hard,0.3585762,0
-2026-02-23,Flavio Cobolli,Rodrigo Pacheco Mendez,Hard,0.77562404,1
-2026-02-23,Rinky Hijikata,Mattia Bellucci,Hard,0.46940017,0
-2026-02-23,Jiri Lehecka,Luca Nardi,Hard,0.78700703,1
-2026-02-23,Terence Atmane,Rafael Jodar,Hard,0.5405652,1
-2026-03-04,Alexander Zverev,Frances Tiafoe,Hard,0.79572564,1
-2026-03-04,Alexander Zverev,Matteo Berrettini,Hard,0.7496122,1
-2026-03-04,Alexander Zverev,Jannik Sinner,Hard,0.14185081,0
-2026-03-04,Alexander Zverev,Brandon Nakashima,Hard,0.7758063,1
-2026-03-04,Alexander Zverev,Arthur Fils,Hard,0.7065045,1
-2026-03-04,Martin Damm,Camilo Ugo Carabelli,Hard,0.5956745,0
-2026-03-04,Gael Monfils,Felix Auger Aliassime,Hard,0.20614436,0
-2026-03-04,Gael Monfils,Alexis Galarneau,Hard,0.6794521,1
-2026-03-04,Novak Djokovic,Kamil Majchrzak,Hard,0.8767585,1
-2026-03-04,Novak Djokovic,Aleksandar Kovacevic,Hard,0.8625339,1
-2026-03-04,Novak Djokovic,Jack Draper,Hard,0.6887315,0
-2026-03-04,Roberto Bautista Agut,Fabian Marozsan,Hard,0.39091113,1
-2026-03-04,Roberto Bautista Agut,Jack Draper,Hard,0.22115113,0
-2026-03-04,Adrian Mannarino,Matteo Berrettini,Hard,0.3659846,0
-2026-03-04,Marin Cilic,Zachary Svajda,Hard,0.69700336,0
-2026-03-04,Jan Lennard Struff,Zizou Bergs,Hard,0.45422572,0
-2026-03-04,Grigor Dimitrov,Carlos Alcaraz,Hard,0.101099975,0
-2026-03-04,Grigor Dimitrov,Terence Atmane,Hard,0.7522158,1
-2026-03-04,James Duckworth,Dalibor Svrcina,Hard,0.47541347,0
-2026-03-04,Marton Fucsovics,Christopher Oconnell,Hard,0.5738865,1
-2026-03-04,Marton Fucsovics,Lorenzo Musetti,Hard,0.26226893,1
-2026-03-04,Marton Fucsovics,Arthur Fils,Hard,0.3197784,0
-2026-03-04,Damir Dzumhur,Jacob Fearnley,Hard,0.42608014,0
-2026-03-04,Marcos Giron,Mariano Navone,Hard,0.67007375,1
-2026-03-04,Marcos Giron,Jakub Mensik,Hard,0.29185832,0
-2026-03-04,Daniil Medvedev,Alejandro Tabilo,Hard,0.73791456,1
-2026-03-04,Daniil Medvedev,Sebastian Baez,Hard,0.7979758,1
-2026-03-04,Daniil Medvedev,Jannik Sinner,Hard,0.11995278,0
-2026-03-04,Daniil Medvedev,Jack Draper,Hard,0.42845073,1
-2026-03-04,Daniil Medvedev,Carlos Alcaraz,Hard,0.14403263,1
-2026-03-04,Daniil Medvedev,Alex Michelsen,Hard,0.7205791,1
-2026-03-04,Mackenzie Mcdonald,Cameron Norrie,Hard,0.32536826,0
-2026-03-04,Mackenzie Mcdonald,Matteo Arnaldi,Hard,0.4576798,1
-2026-03-04,Quentin Halys,Adam Walton,Hard,0.47661993,0
-2026-03-04,Karen Khachanov,Joao Fonseca,Hard,0.5443894,0
-2026-03-04,Kamil Majchrzak,Giovanni Mpetshi Perricard,Hard,0.45183855,1
-2026-03-04,Cameron Norrie,Alex De Minaur,Hard,0.23991881,1
-2026-03-04,Cameron Norrie,Carlos Alcaraz,Hard,0.10212256,0
-2026-03-04,Cameron Norrie,Rinky Hijikata,Hard,0.69892436,1
-2026-03-04,Botic Van De Zandschulp,Juan Manuel Cerundolo,Hard,0.60982555,0
-2026-03-04,Alexander Bublik,Vit Kopriva,Hard,0.8047474,1
-2026-03-04,Alexander Bublik,Rinky Hijikata,Hard,0.8267819,0
-2026-03-04,Reilly Opelka,Ben Shelton,Hard,0.25392005,0
-2026-03-04,Reilly Opelka,Ethan Quinn,Hard,0.69832516,1
-2026-03-04,Andrey Rublev,Gabriel Diallo,Hard,0.63863903,0
-2026-03-04,Benjamin Bonzi,Francisco Cerundolo,Hard,0.33301786,0
-2026-03-04,Benjamin Bonzi,Valentin Royer,Hard,0.51004696,1
-2026-03-04,Taylor Fritz,Jacob Fearnley,Hard,0.8431549,1
-2026-03-04,Taylor Fritz,Alex Michelsen,Hard,0.71928537,0
-2026-03-04,Tommy Paul,Zizou Bergs,Hard,0.73112464,1
-2026-03-04,Tommy Paul,Joao Fonseca,Hard,0.5792721,0
-2026-03-04,Frances Tiafoe,Jenson Brooksby,Hard,0.5020574,1
-2026-03-04,Frances Tiafoe,Flavio Cobolli,Hard,0.56690365,1
-2026-03-04,Alejandro Tabilo,Rafael Jodar,Hard,0.6365859,1
-2026-03-04,Arthur Rinderknech,Carlos Alcaraz,Hard,0.08513803,0
-2026-03-04,Stefanos Tsitsipas,Denis Shapovalov,Hard,0.52400744,0
-2026-03-04,Hubert Hurkacz,Aleksandar Kovacevic,Hard,0.65581006,0
-2026-03-04,Nuno Borges,Valentin Vacherot,Hard,0.43451232,0
-2026-03-04,Nuno Borges,Emilio Nava,Hard,0.62334484,1
-2026-03-04,Denis Shapovalov,Tomas Martin Etcheverry,Hard,0.54378223,1
-2026-03-04,Denis Shapovalov,Jannik Sinner,Hard,0.09059322,0
-2026-03-04,Casper Ruud,Valentin Vacherot,Hard,0.65233856,1
-2026-03-04,Casper Ruud,Alexander Shevchenko,Hard,0.80876404,1
-2026-03-04,Casper Ruud,Carlos Alcaraz,Hard,0.11247133,0
-2026-03-04,Corentin Moutet,Aleksandar Kovacevic,Hard,0.610061,0
-2026-03-04,Felix Auger Aliassime,Gabriel Diallo,Hard,0.78702873,1
-2026-03-04,Felix Auger Aliassime,Arthur Fils,Hard,0.649984,0
-2026-03-04,Ugo Humbert,Alex Michelsen,Hard,0.5804895,0
-2026-03-04,Camilo Ugo Carabelli,Brandon Nakashima,Hard,0.271713,0
-2026-03-04,Miomir Kecmanovic,Flavio Cobolli,Hard,0.45493704,0
-2026-03-04,Alejandro Davidovich Fokina,Zachary Svajda,Hard,0.802295,1
-2026-03-04,Alejandro Davidovich Fokina,Jakub Mensik,Hard,0.47740716,1
-2026-03-04,Alejandro Davidovich Fokina,Learner Tien,Hard,0.50637704,0
-2026-03-04,Vit Kopriva,Michael Zheng,Hard,0.4762595,1
-2026-03-04,Alex De Minaur,Sebastian Korda,Hard,0.7123105,1
-2026-03-04,Adam Walton,Learner Tien,Hard,0.2550122,0
-2026-03-04,Alexei Popyrin,Jenson Brooksby,Hard,0.47781447,0
-2026-03-04,Sebastian Korda,Francisco Comesana,Hard,0.68473274,1
-2026-03-04,Sho Shimabukuro,Alexander Shevchenko,Hard,0.4770854,0
-2026-03-04,Francisco Cerundolo,Jack Draper,Hard,0.28150788,0
-2026-03-04,Sebastian Baez,Chun Hsin Tseng,Hard,0.801397,1
-2026-03-04,Sebastian Baez,Jiri Lehecka,Hard,0.3131183,1
-2026-03-04,Jannik Sinner,Dalibor Svrcina,Hard,0.9469892,1
-2026-03-04,Jannik Sinner,Learner Tien,Hard,0.92292833,1
-2026-03-04,Jannik Sinner,Joao Fonseca,Hard,0.9001,1
-2026-03-04,Rinky Hijikata,Francesco Maestrelli,Hard,0.5111204,1
-2026-03-04,Rinky Hijikata,Luciano Darderi,Hard,0.40249327,1
-2026-03-04,Mattia Bellucci,Gabriel Diallo,Hard,0.42191964,0
-2026-03-04,Tristan Schoolkate,Dino Prizmic,Hard,0.5294638,0
-2026-03-04,Raphael Collignon,Joao Fonseca,Hard,0.37213436,0
-2026-03-04,Daniel Merida Aguilar,Alex Michelsen,Hard,0.1171971,0
-2026-03-04,Ben Shelton,Learner Tien,Hard,0.6582064,0
-2026-03-18,Alexander Zverev,Martin Damm,Hard,0.8139568,1
-2026-03-18,Alexander Zverev,Marin Cilic,Hard,0.8022764,1
-2026-03-18,Alexander Zverev,Quentin Halys,Hard,0.86938643,1
-2026-03-18,Alexander Zverev,Francisco Cerundolo,Hard,0.7543811,1
-2026-03-18,Alexander Zverev,Jannik Sinner,Hard,0.14885977,0
-2026-03-18,Roberto Bautista Agut,James Duckworth,Hard,0.54890895,1
-2026-03-18,Roberto Bautista Agut,Karen Khachanov,Hard,0.3182441,0
-2026-03-18,Adrian Mannarino,Zhizhen Zhang,Hard,0.658627,1
-2026-03-18,Adrian Mannarino,Tommy Paul,Hard,0.28036758,0
-2026-03-18,Marin Cilic,Alexei Popyrin,Hard,0.47428176,1
-2026-03-18,Marin Cilic,Brandon Nakashima,Hard,0.44075993,1
-2026-03-18,Jan Lennard Struff,Darwin Blanch,Hard,0.6527747,0
-2026-03-18,Grigor Dimitrov,Raphael Collignon,Hard,0.7044541,0
-2026-03-18,Yannick Hanfmann,Rafael Jodar,Hard,0.5926306,0
-2026-03-18,Marton Fucsovics,Christopher Oconnell,Hard,0.6351472,1
-2026-03-18,Marton Fucsovics,Felix Auger Aliassime,Hard,0.19651067,0
-2026-03-18,Nikoloz Basilashvili,Mariano Navone,Hard,0.45603338,0
-2026-03-18,Damir Dzumhur,Jannik Sinner,Hard,0.059137326,0
-2026-03-18,Damir Dzumhur,Ignacio Buse,Hard,0.3702074,1
-2026-03-18,Marcos Giron,Martin Landaluce,Hard,0.6481255,0
-2026-03-18,Daniil Medvedev,Francisco Cerundolo,Hard,0.69580656,0
-2026-03-18,Daniil Medvedev,Rei Sakamoto,Hard,0.8818221,1
-2026-03-18,Quentin Halys,Kamil Majchrzak,Hard,0.36318275,1
-2026-03-18,Quentin Halys,Alejandro Davidovich Fokina,Hard,0.24363479,1
-2026-03-18,Quentin Halys,Liam Draxl,Hard,0.6002334,1
-2026-03-18,Karen Khachanov,Martin Landaluce,Hard,0.7930987,0
-2026-03-18,Kamil Majchrzak,Miomir Kecmanovic,Hard,0.5282449,1
-2026-03-18,Kamil Majchrzak,Learner Tien,Hard,0.32932377,1
-2026-03-18,Cameron Norrie,Alex Michelsen,Hard,0.5248099,0
-2026-03-18,Botic Van De Zandschulp,Taylor Fritz,Hard,0.22142923,0
-2026-03-18,Botic Van De Zandschulp,Denis Shapovalov,Hard,0.4086326,1
-2026-03-18,Alexander Bublik,Matteo Berrettini,Hard,0.6576742,0
-2026-03-18,Alexandre Muller,Matteo Berrettini,Hard,0.38952813,0
-2026-03-18,Reilly Opelka,Taylor Fritz,Hard,0.2768204,0
-2026-03-18,Reilly Opelka,Nuno Borges,Hard,0.5092229,1
-2026-03-18,Reilly Opelka,Jack Draper,Hard,0.2737951,1
-2026-03-18,Andrey Rublev,Alejandro Tabilo,Hard,0.592161,0
-2026-03-18,Taylor Fritz,Jiri Lehecka,Hard,0.6452509,0
-2026-03-18,Tommy Paul,Tomas Martin Etcheverry,Hard,0.6367209,1
-2026-03-18,Tommy Paul,Raphael Collignon,Hard,0.72329456,1
-2026-03-18,Tommy Paul,Arthur Fils,Hard,0.50813955,0
-2026-03-18,Frances Tiafoe,Jannik Sinner,Hard,0.08849222,0
-2026-03-18,Frances Tiafoe,Arthur Cazaux,Hard,0.6061395,1
-2026-03-18,Frances Tiafoe,Terence Atmane,Hard,0.6911884,1
-2026-03-18,Frances Tiafoe,Jakub Mensik,Hard,0.38678518,1
-2026-03-18,Alejandro Tabilo,Francisco Comesana,Hard,0.6098839,1
-2026-03-18,Alejandro Tabilo,Alex Michelsen,Hard,0.46108642,0
-2026-03-18,Arthur Rinderknech,Terence Atmane,Hard,0.6868422,0
-2026-03-18,Matteo Berrettini,Valentin Vacherot,Hard,0.48833814,0
-2026-03-18,Stefanos Tsitsipas,Alex De Minaur,Hard,0.30644882,1
-2026-03-18,Stefanos Tsitsipas,Arthur Fery,Hard,0.8205662,1
-2026-03-18,Stefanos Tsitsipas,Arthur Fils,Hard,0.4262002,0
-2026-03-18,Aleksandar Vukic,Rafael Jodar,Hard,0.5053742,0
-2026-03-18,Daniel Altmaier,Terence Atmane,Hard,0.49205506,0
-2026-03-18,Hubert Hurkacz,Ethan Quinn,Hard,0.71783346,0
-2026-03-18,Casper Ruud,Ethan Quinn,Hard,0.79675984,0
-2026-03-18,Tomas Barrios Vera,Arthur Cazaux,Hard,0.30223283,0
-2026-03-18,Tomas Martin Etcheverry,Zizou Bergs,Hard,0.53139096,1
-2026-03-18,Tomas Martin Etcheverry,Rafael Jodar,Hard,0.669425,1
-2026-03-18,Corentin Moutet,Jannik Sinner,Hard,0.06759876,0
-2026-03-18,Corentin Moutet,Tomas Machac,Hard,0.3937661,1
-2026-03-18,Felix Auger Aliassime,Terence Atmane,Hard,0.85258484,0
-2026-03-18,Ugo Humbert,Francisco Cerundolo,Hard,0.50068027,0
-2026-03-18,Ugo Humbert,Alexander Shevchenko,Hard,0.7538154,1
-2026-03-18,Ugo Humbert,Gabriel Diallo,Hard,0.6051066,1
-2026-03-18,Yibing Wu,Gabriel Diallo,Hard,0.443025,0
-2026-03-18,Camilo Ugo Carabelli,Sebastian Korda,Hard,0.27219513,0
-2026-03-18,Camilo Ugo Carabelli,Giovanni Mpetshi Perricard,Hard,0.41728002,1
-2026-03-18,Zizou Bergs,Jenson Brooksby,Hard,0.46774918,1
-2026-03-18,Adam Walton,Sebastian Baez,Hard,0.3798177,1
-2026-03-18,Adam Walton,Jakub Mensik,Hard,0.21075714,0
-2026-03-18,Valentin Vacherot,Mariano Navone,Hard,0.78319514,1
-2026-03-18,Valentin Vacherot,Arthur Fils,Hard,0.43312883,0
-2026-03-18,Sebastian Korda,Carlos Alcaraz,Hard,0.09140804,1
-2026-03-18,Sebastian Korda,Martin Landaluce,Hard,0.75870264,0
-2026-03-18,Thiago Agustin Tirante,Francisco Cerundolo,Hard,0.2808329,0
-2026-03-18,Thiago Agustin Tirante,Valentin Royer,Hard,0.45470136,1
-2026-03-18,Jannik Sinner,Jiri Lehecka,Hard,0.9130547,1
-2026-03-18,Jannik Sinner,Alex Michelsen,Hard,0.921867,1
-2026-03-18,Aleksandar Kovacevic,Rei Sakamoto,Hard,0.6471816,0
-2026-03-18,Fabian Marozsan,Joao Fonseca,Hard,0.4618711,0
-2026-03-18,Emilio Nava,Tomas Machac,Hard,0.24317935,0
-2026-03-18,Alexander Shevchenko,Matteo Arnaldi,Hard,0.48388332,1
-2026-03-18,Alexander Shevchenko,Ben Shelton,Hard,0.1814614,1
-2026-03-18,Flavio Cobolli,Raphael Collignon,Hard,0.55573946,0
-2026-03-18,Carlos Alcaraz,Joao Fonseca,Hard,0.9136568,1
-2026-03-18,Jiri Lehecka,Arthur Fils,Hard,0.47069797,1
-2026-03-18,Jiri Lehecka,Ethan Quinn,Hard,0.7540857,1
-2026-03-18,Jiri Lehecka,Martin Landaluce,Hard,0.76413816,1
-2026-03-18,Jiri Lehecka,Moise Kouame,Hard,0.74626637,1
-2026-03-18,Mattia Bellucci,Alex Michelsen,Hard,0.30385727,0
-2026-03-18,Zachary Svajda,Moise Kouame,Hard,0.5826173,0
-2026-03-18,Luciano Darderi,Martin Landaluce,Hard,0.6893139,0
-2026-03-18,Arthur Fils,Darwin Blanch,Hard,0.8436989,1
-2026-03-30,Martin Damm,Brandon Nakashima,Clay,0.36419052,0
-2026-03-30,Roberto Bautista Agut,Titouan Droguet,Clay,0.5861499,0
-2026-03-30,Adrian Mannarino,Daniel Merida Aguilar,Clay,0.5029295,0
-2026-03-30,Marco Trungelliti,Kamil Majchrzak,Clay,0.41706932,1
-2026-03-30,Marco Trungelliti,Corentin Moutet,Clay,0.2925457,1
-2026-03-30,Marco Trungelliti,Luciano Darderi,Clay,0.27263445,1
-2026-03-30,Marco Trungelliti,Henrique Rocha,Clay,0.51914585,1
-2026-03-30,Marco Trungelliti,Rafael Jodar,Clay,0.4876728,0
-2026-03-30,Dusan Lajovic,Rafael Jodar,Clay,0.45751923,0
-2026-03-30,Yannick Hanfmann,Jesper De Jong,Clay,0.52380246,1
-2026-03-30,Yannick Hanfmann,Karim Bennani,Clay,0.8927644,1
-2026-03-30,Nikoloz Basilashvili,Dino Prizmic,Clay,0.49421164,0
-2026-03-30,Damir Dzumhur,Botic Van De Zandschulp,Clay,0.429141,0
-2026-03-30,Damir Dzumhur,Nuno Borges,Clay,0.35667634,1
-2026-03-30,Damir Dzumhur,Filip Cristian Jianu,Clay,0.5501914,1
-2026-03-30,Alex Bolt,Tomas Martin Etcheverry,Clay,0.3029831,0
-2026-03-30,Alex Bolt,Yibing Wu,Clay,0.4559378,1
-2026-03-30,Christopher Oconnell,Mariano Navone,Clay,0.41319516,0
-2026-03-30,Zhizhen Zhang,Jack Pinnington Jones,Clay,0.40734062,1
-2026-03-30,Zhizhen Zhang,Ben Shelton,Clay,0.20386493,0
-2026-03-30,Mackenzie Mcdonald,Thiago Agustin Tirante,Clay,0.49150774,0
-2026-03-30,Mackenzie Mcdonald,Jenson Brooksby,Clay,0.3899957,1
-2026-03-30,Quentin Halys,Karim Bennani,Clay,0.6849768,0
-2026-03-30,Kamil Majchrzak,Juan Manuel Cerundolo,Clay,0.5385089,1
-2026-03-30,Botic Van De Zandschulp,Alexander Shevchenko,Clay,0.5420972,1
-2026-03-30,Botic Van De Zandschulp,Francesco Maestrelli,Clay,0.6156755,1
-2026-03-30,Botic Van De Zandschulp,Mariano Navone,Clay,0.48408085,0
-2026-03-30,Jan Choinski,Stefanos Sakellaridis,Clay,0.5148913,0
-2026-03-30,Pedro Martinez,Daniel Altmaier,Clay,0.49666122,0
-2026-03-30,Alexandre Muller,Vit Kopriva,Clay,0.58391374,1
-2026-03-30,Alexandre Muller,Federico Cina,Clay,0.63698626,1
-2026-03-30,Tommy Paul,Frances Tiafoe,Clay,0.6130657,1
-2026-03-30,Tommy Paul,Tomas Martin Etcheverry,Clay,0.62656987,1
-2026-03-30,Tommy Paul,Roman Andres Burruchaga,Clay,0.73745394,1
-2026-03-30,Tommy Paul,Adolfo Daniel Vallejo,Clay,0.67497015,1
-2026-03-30,Frances Tiafoe,Alexei Popyrin,Clay,0.6212396,1
-2026-03-30,Frances Tiafoe,Rinky Hijikata,Clay,0.7122611,1
-2026-03-30,Matteo Berrettini,Ignacio Buse,Clay,0.75734097,0
-2026-03-30,Aleksandar Vukic,Taha Baadi,Clay,0.65039295,0
-2026-03-30,Daniel Altmaier,Fabian Marozsan,Clay,0.36952,0
-2026-03-30,Daniel Altmaier,Dino Prizmic,Clay,0.54865557,1
-2026-03-30,Tallon Griekspoor,Luca Van Assche,Clay,0.74762696,0
-2026-03-30,Alex Molcan,Matteo Arnaldi,Clay,0.51103556,1
-2026-03-30,Alex Molcan,Mariano Navone,Clay,0.48727745,0
-2026-03-30,Alex Molcan,Gabriel Diallo,Clay,0.39308646,1
-2026-03-30,Tomas Martin Etcheverry,Federico Agustin Gomez,Clay,0.7199386,1
-2026-03-30,Corentin Moutet,Taha Baadi,Clay,0.74853045,1
-2026-03-30,Camilo Ugo Carabelli,Timofey Skatov,Clay,0.6367528,1
-2026-03-30,Camilo Ugo Carabelli,Luca Van Assche,Clay,0.57652575,1
-2026-03-30,Camilo Ugo Carabelli,Ignacio Buse,Clay,0.51496506,1
-2026-03-30,Camilo Ugo Carabelli,Rafael Jodar,Clay,0.5412913,0
-2026-03-30,Vit Kopriva,Hamad Medjedovic,Clay,0.47921348,1
-2026-03-30,Hugo Gaston,Luca Van Assche,Clay,0.45010033,0
-2026-03-30,Adam Walton,Roman Andres Burruchaga,Clay,0.52562636,0
-2026-03-30,Patrick Kypson,Alexei Popyrin,Clay,0.444236,0
-2026-03-30,Alexei Popyrin,Alex Michelsen,Clay,0.42354771,1
-2026-03-30,Thiago Agustin Tirante,Roman Andres Burruchaga,Clay,0.5591762,0
-2026-03-30,Thiago Agustin Tirante,Ben Shelton,Clay,0.23212963,1
-2026-03-30,Thiago Agustin Tirante,Colton Smith,Clay,0.58613276,1
-2026-03-30,Sebastian Baez,Titouan Droguet,Clay,0.5988571,0
-2026-03-30,Sebastian Baez,Vilius Gaubas,Clay,0.6077151,1
-2026-03-30,Otto Virtanen,Daniel Merida Aguilar,Clay,0.49383655,0
-2026-03-30,Aleksandar Kovacevic,Rinky Hijikata,Clay,0.503903,0
-2026-03-30,Gabi Adrian Boitan,Elmer Moller,Clay,0.2527487,0
-2026-03-30,Fabian Marozsan,Stefanos Sakellaridis,Clay,0.7740644,1
-2026-03-30,Fabian Marozsan,Daniel Merida Aguilar,Clay,0.73971653,0
-2026-03-30,Brandon Nakashima,Roman Andres Burruchaga,Clay,0.6837332,0
-2026-03-30,Alexander Shevchenko,Radu David Turcanu,Clay,0.8439097,1
-2026-03-30,Tomas Machac,Rafael Jodar,Clay,0.6931971,0
-2026-03-30,Liam Draxl,Nishesh Basavareddy,Clay,0.42231378,0
-2026-03-30,Mattia Bellucci,Luciano Darderi,Clay,0.33717164,0
-2026-03-30,Mattia Bellucci,Reda Bennani,Clay,0.85009867,1
-2026-03-30,Zachary Svajda,Adolfo Daniel Vallejo,Clay,0.49461353,0
-2026-03-30,Mariano Navone,Elmer Moller,Clay,0.63162637,1
-2026-03-30,Mariano Navone,Daniel Merida Aguilar,Clay,0.61062706,1
-2026-03-30,Roman Andres Burruchaga,Learner Tien,Clay,0.36132196,1
-2026-03-30,Coleman Wong,Alex Michelsen,Clay,0.41665995,0
-2026-03-30,Nishesh Basavareddy,Learner Tien,Clay,0.2631942,0
-2026-04-05,Alexander Zverev,Cristian Garin,Clay,0.85146224,1
-2026-04-05,Alexander Zverev,Zizou Bergs,Clay,0.82506627,1
-2026-04-05,Alexander Zverev,Jannik Sinner,Clay,0.20837462,0
-2026-04-05,Alexander Zverev,Joao Fonseca,Clay,0.77527744,1
-2026-04-05,Stan Wawrinka,Sebastian Baez,Clay,0.37090576,0
-2026-04-05,Gael Monfils,Alexander Bublik,Clay,0.26175022,0
-2026-04-05,Gael Monfils,Tallon Griekspoor,Clay,0.34738585,1
-2026-04-05,Adrian Mannarino,Zizou Bergs,Clay,0.38096476,0
-2026-04-05,Marin Cilic,Felix Auger Aliassime,Clay,0.25988892,0
-2026-04-05,Marin Cilic,Alexander Shevchenko,Clay,0.60333675,1
-2026-04-05,Grigor Dimitrov,Tomas Martin Etcheverry,Clay,0.58538616,0
-2026-04-05,Marton Fucsovics,Alejandro Tabilo,Clay,0.5206509,0
-2026-04-05,Damir Dzumhur,Fabian Marozsan,Clay,0.35227543,0
-2026-04-05,Daniil Medvedev,Matteo Berrettini,Clay,0.5572321,0
-2026-04-05,Cristian Garin,Matteo Arnaldi,Clay,0.52516073,1
-2026-04-05,Karen Khachanov,Arthur Rinderknech,Clay,0.62219554,0
-2026-04-05,Cameron Norrie,Miomir Kecmanovic,Clay,0.5642104,1
-2026-04-05,Cameron Norrie,Alex De Minaur,Clay,0.27650124,0
-2026-04-05,Alexander Bublik,Carlos Alcaraz,Clay,0.100837715,0
-2026-04-05,Alexander Bublik,Jiri Lehecka,Clay,0.5322476,1
-2026-04-05,Alexandre Muller,Corentin Moutet,Clay,0.4643762,0
-2026-04-05,Andrey Rublev,Nuno Borges,Clay,0.64926434,1
-2026-04-05,Andrey Rublev,Zizou Bergs,Clay,0.66075647,0
-2026-04-05,Alejandro Tabilo,Jiri Lehecka,Clay,0.3879437,0
-2026-04-05,Arthur Rinderknech,Joao Fonseca,Clay,0.41901037,0
-2026-04-05,Matteo Berrettini,Joao Fonseca,Clay,0.56062424,0
-2026-04-05,Stefanos Tsitsipas,Francisco Cerundolo,Clay,0.5091678,0
-2026-04-05,Daniel Altmaier,Tomas Machac,Clay,0.30454516,0
-2026-04-05,Hubert Hurkacz,Valentin Vacherot,Clay,0.50636476,0
-2026-04-05,Hubert Hurkacz,Fabian Marozsan,Clay,0.5563753,1
-2026-04-05,Hubert Hurkacz,Luciano Darderi,Clay,0.48598132,1
-2026-04-05,Denis Shapovalov,Alexander Blockx,Clay,0.6575887,0
-2026-04-05,Casper Ruud,Corentin Moutet,Clay,0.71167445,1
-2026-04-05,Casper Ruud,Alexei Popyrin,Clay,0.7427475,1
-2026-04-05,Tomas Martin Etcheverry,Carlos Alcaraz,Clay,0.088352464,0
-2026-04-05,Tomas Martin Etcheverry,Terence Atmane,Clay,0.5884014,1
-2026-04-05,Felix Auger Aliassime,Jannik Sinner,Clay,0.13643734,0
-2026-04-05,Ugo Humbert,Jannik Sinner,Clay,0.1195645,0
-2026-04-05,Ugo Humbert,Moise Kouame,Clay,0.7640127,1
-2026-04-05,Alex De Minaur,Valentin Vacherot,Clay,0.6808118,0
-2026-04-05,Alex De Minaur,Alexander Blockx,Clay,0.7577871,1
-2026-04-05,Valentin Vacherot,Lorenzo Musetti,Clay,0.29020017,1
-2026-04-05,Valentin Vacherot,Juan Manuel Cerundolo,Clay,0.6736715,1
-2026-04-05,Valentin Vacherot,Carlos Alcaraz,Clay,0.111328736,0
-2026-04-05,Francisco Cerundolo,Tomas Machac,Clay,0.56107086,0
-2026-04-05,Sebastian Baez,Carlos Alcaraz,Clay,0.102844745,0
-2026-04-05,Jannik Sinner,Tomas Machac,Clay,0.9004292,1
-2026-04-05,Jannik Sinner,Carlos Alcaraz,Clay,0.45652056,1
-2026-04-05,Emilio Nava,Jiri Lehecka,Clay,0.27036428,0
-2026-04-05,Francisco Comesana,Flavio Cobolli,Clay,0.38188368,0
-2026-04-05,Flavio Cobolli,Alexander Blockx,Clay,0.5987016,0
-2026-04-05,Gabriel Diallo,Joao Fonseca,Clay,0.4415724,0
-2026-04-05,Terence Atmane,Ethan Quinn,Clay,0.51081306,1
-2026-04-13,Alexander Zverev,Miomir Kecmanovic,Clay,0.8377962,1
-2026-04-13,Alexander Zverev,Francisco Cerundolo,Clay,0.73883325,1
-2026-04-13,Alexander Zverev,Flavio Cobolli,Clay,0.829943,0
-2026-04-13,Alexander Zverev,Gabriel Diallo,Clay,0.84190226,1
-2026-04-13,Stan Wawrinka,Cameron Norrie,Clay,0.2915832,0
-2026-04-13,Adrian Mannarino,Nuno Borges,Clay,0.36761874,0
-2026-04-13,Marin Cilic,Daniel Altmaier,Clay,0.5500048,0
-2026-04-13,Marco Trungelliti,Hamad Medjedovic,Clay,0.45406994,0
-2026-04-13,Yannick Hanfmann,Alexander Blockx,Clay,0.54953545,0
-2026-04-13,Zhizhen Zhang,Luciano Darderi,Clay,0.28270823,0
-2026-04-13,Karen Khachanov,Camilo Ugo Carabelli,Clay,0.7335246,0
-2026-04-13,Sumit Nagal,Francisco Cerundolo,Clay,0.1727542,0
-2026-04-13,Cameron Norrie,Ethan Quinn,Clay,0.62549794,1
-2026-04-13,Cameron Norrie,Rafael Jodar,Clay,0.65234554,0
-2026-04-13,Botic Van De Zandschulp,Marc Andrea Huesler,Clay,0.645838,1
-2026-04-13,Botic Van De Zandschulp,Francisco Cerundolo,Clay,0.31693244,0
-2026-04-13,Alexander Bublik,Alex Molcan,Clay,0.7307981,0
-2026-04-13,Pedro Martinez,Lorenzo Sonego,Clay,0.34457427,0
-2026-04-13,Sebastian Ofner,Alex De Minaur,Clay,0.24101855,0
-2026-04-13,Reilly Opelka,Ethan Quinn,Clay,0.64446175,0
-2026-04-13,Andrey Rublev,Lorenzo Sonego,Clay,0.605079,1
-2026-04-13,Andrey Rublev,Tomas Machac,Clay,0.5364324,1
-2026-04-13,Andrey Rublev,Mariano Navone,Clay,0.7047814,1
-2026-04-13,Andrey Rublev,Hamad Medjedovic,Clay,0.6395159,1
-2026-04-13,Andrey Rublev,Arthur Fils,Clay,0.45030764,0
-2026-04-13,Alejandro Tabilo,Joao Fonseca,Clay,0.43145984,0
-2026-04-13,Arthur Rinderknech,Alex Michelsen,Clay,0.5354175,1
-2026-04-13,Arthur Rinderknech,Joao Fonseca,Clay,0.41758838,0
-2026-04-13,Stefanos Tsitsipas,Fabian Marozsan,Clay,0.59790933,0
-2026-04-13,Vitaliy Sachko,Gabriel Diallo,Clay,0.435669,0
-2026-04-13,Daniel Altmaier,Alex Molcan,Clay,0.488976,0
-2026-04-13,Nuno Borges,Tomas Martin Etcheverry,Clay,0.42638522,1
-2026-04-13,Nuno Borges,Hamad Medjedovic,Clay,0.5618797,0
-2026-04-13,Denis Shapovalov,Tallon Griekspoor,Clay,0.48259893,1
-2026-04-13,Denis Shapovalov,Alex Molcan,Clay,0.6068884,0
-2026-04-13,Denis Shapovalov,Fabian Marozsan,Clay,0.5317462,1
-2026-04-13,Alex Molcan,Ben Shelton,Clay,0.24218485,0
-2026-04-13,Jaume Munar,Rafael Jodar,Clay,0.6012822,0
-2026-04-13,Corentin Moutet,Lorenzo Musetti,Clay,0.22105366,0
-2026-04-13,Corentin Moutet,Ignacio Buse,Clay,0.57629794,1
-2026-04-13,Camilo Ugo Carabelli,Rafael Jodar,Clay,0.50382495,0
-2026-04-13,Vit Kopriva,Flavio Cobolli,Clay,0.41310018,0
-2026-04-13,Vit Kopriva,Luciano Darderi,Clay,0.36263934,1
-2026-04-13,Vit Kopriva,Justin Engel,Clay,0.49086282,1
-2026-04-13,Zizou Bergs,Flavio Cobolli,Clay,0.44325814,0
-2026-04-13,Zizou Bergs,Marko Topo,Clay,0.76630163,1
-2026-04-13,Alex De Minaur,Hamad Medjedovic,Clay,0.74111825,0
-2026-04-13,Sebastian Baez,Tomas Machac,Clay,0.4439256,0
-2026-04-13,Otto Virtanen,Carlos Alcaraz,Clay,0.066821545,0
-2026-04-13,Brandon Nakashima,Juan Manuel Cerundolo,Clay,0.6293825,1
-2026-04-13,Brandon Nakashima,Arthur Fils,Clay,0.43145016,0
-2026-04-13,Emilio Nava,Ben Shelton,Clay,0.1880328,0
-2026-04-13,Lorenzo Musetti,Arthur Fils,Clay,0.597529,0
-2026-04-13,Lorenzo Musetti,Martin Landaluce,Clay,0.8083385,1
-2026-04-13,Flavio Cobolli,Ben Shelton,Clay,0.31099534,0
-2026-04-13,Flavio Cobolli,Diego Dedura Palomero,Clay,0.8039951,1
-2026-04-13,Terence Atmane,Arthur Fils,Clay,0.23760884,0
-2026-04-13,Arthur Fils,Rafael Jodar,Clay,0.7411309,1
-2026-04-13,Ben Shelton,Alexander Blockx,Clay,0.77607256,1
-2026-04-13,Ben Shelton,Joao Fonseca,Clay,0.60543585,1
-2026-04-22,Alexander Zverev,Jannik Sinner,Clay,0.20204684,0
-2026-04-22,Alexander Zverev,Flavio Cobolli,Clay,0.76947606,1
-2026-04-22,Alexander Zverev,Mariano Navone,Clay,0.8253219,1
-2026-04-22,Alexander Zverev,Terence Atmane,Clay,0.82550347,1
-2026-04-22,Alexander Zverev,Jakub Mensik,Clay,0.7456181,1
-2026-04-22,Alexander Zverev,Alexander Blockx,Clay,0.8189703,1
-2026-04-22,Martin Damm,Alexei Popyrin,Clay,0.43124798,1
-2026-04-22,Martin Damm,Jakub Mensik,Clay,0.29351526,0
-2026-04-22,Gael Monfils,Camilo Ugo Carabelli,Clay,0.48622373,0
-2026-04-22,Roberto Bautista Agut,Thiago Agustin Tirante,Clay,0.5422958,0
-2026-04-22,Adrian Mannarino,Ignacio Buse,Clay,0.4439114,0
-2026-04-22,Marin Cilic,Zizou Bergs,Clay,0.5375166,1
-2026-04-22,Marco Trungelliti,Daniel Merida Aguilar,Clay,0.5582291,0
-2026-04-22,Jan Lennard Struff,Alexandre Muller,Clay,0.531183,1
-2026-04-22,Jan Lennard Struff,Alex Michelsen,Clay,0.52051353,0
-2026-04-22,Dusan Lajovic,Arthur Rinderknech,Clay,0.3459357,0
-2026-04-22,Dusan Lajovic,Lorenzo Sonego,Clay,0.39886296,1
-2026-04-22,Grigor Dimitrov,Adolfo Daniel Vallejo,Clay,0.6949967,0
-2026-04-22,Pablo Carreno Busta,Marton Fucsovics,Clay,0.48327482,1
-2026-04-22,Pablo Carreno Busta,Alejandro Davidovich Fokina,Clay,0.36325267,0
-2026-04-22,Yannick Hanfmann,Marcos Giron,Clay,0.540148,1
-2026-04-22,Yannick Hanfmann,Francisco Cerundolo,Clay,0.35571072,0
-2026-04-22,Nikoloz Basilashvili,Sebastian Ofner,Clay,0.46813914,0
-2026-04-22,Damir Dzumhur,Tallon Griekspoor,Clay,0.35996592,0
-2026-04-22,Damir Dzumhur,Mattia Bellucci,Clay,0.5303387,1
-2026-04-22,Daniil Medvedev,Nicolai Budkov Kjaer,Clay,0.83139324,1
-2026-04-22,Daniil Medvedev,Fabian Marozsan,Clay,0.71456265,1
-2026-04-22,Daniil Medvedev,Flavio Cobolli,Clay,0.6533195,0
-2026-04-22,Cristian Garin,Alexander Blockx,Clay,0.50974005,0
-2026-04-22,Zhizhen Zhang,Vit Kopriva,Clay,0.4235998,0
-2026-04-22,Karen Khachanov,Adam Walton,Clay,0.74811304,1
-2026-04-22,Karen Khachanov,Jakub Mensik,Clay,0.50467634,0
-2026-04-22,Cameron Norrie,Thiago Agustin Tirante,Clay,0.6283114,1
-2026-04-22,Cameron Norrie,Jannik Sinner,Clay,0.09513771,0
-2026-04-22,Cameron Norrie,Tomas Machac,Clay,0.5234475,1
-2026-04-22,Alexander Bublik,Stefanos Tsitsipas,Clay,0.57399094,0
-2026-04-22,Sebastian Ofner,Tomas Martin Etcheverry,Clay,0.30625504,0
-2026-04-22,Andrey Rublev,Vit Kopriva,Clay,0.69733703,0
-2026-04-22,Benjamin Bonzi,Jannik Sinner,Clay,0.07947273,0
-2026-04-22,Benjamin Bonzi,Titouan Droguet,Clay,0.5389916,1
-2026-04-22,Tommy Paul,Thiago Agustin Tirante,Clay,0.708476,0
-2026-04-22,Alejandro Tabilo,Jiri Lehecka,Clay,0.35936886,0
-2026-04-22,Alejandro Tabilo,Valentin Royer,Clay,0.5558587,1
-2026-04-22,Matteo Berrettini,Dino Prizmic,Clay,0.73743737,0
-2026-04-22,Stefanos Tsitsipas,Casper Ruud,Clay,0.42389593,0
-2026-04-22,Stefanos Tsitsipas,Patrick Kypson,Clay,0.7393409,1
-2026-04-22,Stefanos Tsitsipas,Daniel Merida Aguilar,Clay,0.770691,1
-2026-04-22,Daniel Altmaier,Juan Manuel Cerundolo,Clay,0.5201494,0
-2026-04-22,Hubert Hurkacz,Lorenzo Musetti,Clay,0.3511329,0
-2026-04-22,Hubert Hurkacz,Jaime Faria,Clay,0.70108616,1
-2026-04-22,Nuno Borges,Mariano Navone,Clay,0.50371426,0
-2026-04-22,Denis Shapovalov,Nicolai Budkov Kjaer,Clay,0.7184246,0
-2026-04-22,Casper Ruud,Jaume Munar,Clay,0.6828228,1
-2026-04-22,Casper Ruud,Alejandro Davidovich Fokina,Clay,0.6044346,1
-2026-04-22,Casper Ruud,Alexander Blockx,Clay,0.7614766,0
-2026-04-22,Tallon Griekspoor,Lorenzo Musetti,Clay,0.2396973,0
-2026-04-22,Jaume Munar,Alexander Shevchenko,Clay,0.65084606,1
-2026-04-22,Tomas Martin Etcheverry,Arthur Fils,Clay,0.36593434,0
-2026-04-22,Tomas Martin Etcheverry,Dino Prizmic,Clay,0.6772426,1
-2026-04-22,Corentin Moutet,Daniel Merida Aguilar,Clay,0.6532034,0
-2026-04-22,Felix Auger Aliassime,Vilius Gaubas,Clay,0.79791886,1
-2026-04-22,Felix Auger Aliassime,Alexander Blockx,Clay,0.76363117,0
-2026-04-22,Ugo Humbert,Terence Atmane,Clay,0.48512715,0
-2026-04-22,Camilo Ugo Carabelli,Flavio Cobolli,Clay,0.30391222,0
-2026-04-22,Miomir Kecmanovic,Terence Atmane,Clay,0.5626029,0
-2026-04-22,Vit Kopriva,Rafael Jodar,Clay,0.4837231,0
-2026-04-22,Alex De Minaur,Rafael Jodar,Clay,0.7041279,0
-2026-04-22,Adam Walton,Martin Landaluce,Clay,0.48978218,1
-2026-04-22,Valentin Vacherot,Emilio Nava,Clay,0.664791,0
-2026-04-22,Francisco Cerundolo,Luciano Darderi,Clay,0.6047888,1
-2026-04-22,Francisco Cerundolo,Alexander Blockx,Clay,0.66789395,0
-2026-04-22,Sebastian Baez,Vilius Gaubas,Clay,0.61106753,0
-2026-04-22,Jenson Brooksby,Emilio Nava,Clay,0.5771837,0
-2026-04-22,Jannik Sinner,Elmer Moller,Clay,0.9402764,1
-2026-04-22,Jannik Sinner,Arthur Fils,Clay,0.8802412,1
-2026-04-22,Jannik Sinner,Rafael Jodar,Clay,0.9012347,1
-2026-04-22,Fabian Marozsan,Ethan Quinn,Clay,0.58282524,1
-2026-04-22,Brandon Nakashima,Alexander Blockx,Clay,0.56928617,0
-2026-04-22,Emilio Nava,Arthur Fils,Clay,0.24351521,0
-2026-04-22,Jesper De Jong,Rafael Jodar,Clay,0.47665882,0
-2026-04-22,Lorenzo Musetti,Jiri Lehecka,Clay,0.6531912,0
-2026-04-22,Juan Manuel Cerundolo,Luciano Darderi,Clay,0.37249616,0
-2026-04-22,Francisco Comesana,Tomas Machac,Clay,0.33189857,0
-2026-04-22,Flavio Cobolli,Adolfo Daniel Vallejo,Clay,0.72564036,1
-2026-04-22,Jiri Lehecka,Arthur Fils,Clay,0.45847654,0
-2026-04-22,Jiri Lehecka,Alex Michelsen,Clay,0.6671684,1
-2026-04-22,Adolfo Daniel Vallejo,Learner Tien,Clay,0.35902852,1
-2026-04-22,Elmer Moller,Federico Cina,Clay,0.4484675,1
-2026-04-22,Ignacio Buse,Arthur Fils,Clay,0.22214238,0
-2026-04-22,Dino Prizmic,Ben Shelton,Clay,0.21427488,1
-2026-04-22,Joao Fonseca,Rafael Jodar,Clay,0.6507849,0
+2026-01-04,Grigor Dimitrov,Pablo Carreno Busta,Hard,0.5818345,1
+2026-01-04,Grigor Dimitrov,Raphael Collignon,Hard,0.69023037,0
+2026-01-04,James Duckworth,Alex Michelsen,Hard,0.45760044,0
+2026-01-04,Marton Fucsovics,Daniil Medvedev,Hard,0.2134996,0
+2026-01-04,Nick Kyrgios,Aleksandar Kovacevic,Hard,0.6200927,0
+2026-01-04,Daniil Medvedev,Kamil Majchrzak,Hard,0.7536611,1
+2026-01-04,Daniil Medvedev,Frances Tiafoe,Hard,0.7387802,1
+2026-01-04,Daniil Medvedev,Brandon Nakashima,Hard,0.73650277,1
+2026-01-04,Daniil Medvedev,Alex Michelsen,Hard,0.77409685,1
+2026-01-04,Quentin Halys,Alexei Popyrin,Hard,0.32230535,1
+2026-01-04,Quentin Halys,Brandon Nakashima,Hard,0.32999328,0
+2026-01-04,Kamil Majchrzak,Reilly Opelka,Hard,0.4208678,1
+2026-01-04,Kamil Majchrzak,Daniel Altmaier,Hard,0.49889266,1
+2026-01-04,Cameron Norrie,Ugo Humbert,Hard,0.4673248,1
+2026-01-04,Cameron Norrie,Aleksandar Kovacevic,Hard,0.813162,0
+2026-01-04,Reilly Opelka,Dane Sweeny,Hard,0.7658079,1
+2026-01-04,Tommy Paul,Giovanni Mpetshi Perricard,Hard,0.68768364,0
+2026-01-04,Frances Tiafoe,Aleksandar Vukic,Hard,0.69835055,1
+2026-01-04,Denis Shapovalov,Raphael Collignon,Hard,0.6661642,0
+2026-01-04,Camilo Ugo Carabelli,Learner Tien,Hard,0.23790161,0
+2026-01-04,Alejandro Davidovich Fokina,Brandon Nakashima,Hard,0.64286745,0
+2026-01-04,Adam Walton,Rinky Hijikata,Hard,0.52282125,0
+2026-01-04,Valentin Vacherot,Sebastian Korda,Hard,0.50630265,0
+2026-01-04,Sebastian Korda,Alex Michelsen,Hard,0.64589334,0
+2026-01-04,Aleksandar Kovacevic,Brandon Nakashima,Hard,0.33471543,0
+2026-01-04,Aleksandar Kovacevic,Giovanni Mpetshi Perricard,Hard,0.31217122,1
+2026-01-04,Brandon Nakashima,Raphael Collignon,Hard,0.6307668,1
+2026-01-04,Tomas Machac,Jiri Lehecka,Hard,0.4189502,0
+2026-01-04,Rinky Hijikata,Giovanni Mpetshi Perricard,Hard,0.28779668,0
+2026-01-04,Alex Michelsen,Learner Tien,Hard,0.33251217,1
+2026-01-05,Alexander Zverev,Hubert Hurkacz,Hard,0.67189986,0
+2026-01-05,Alexander Zverev,Tallon Griekspoor,Hard,0.82645947,1
+2026-01-05,Stan Wawrinka,Arthur Rinderknech,Hard,0.31454197,1
+2026-01-05,Stan Wawrinka,Hubert Hurkacz,Hard,0.2104882,0
+2026-01-05,Stan Wawrinka,Zizou Bergs,Hard,0.42511597,0
+2026-01-05,Stan Wawrinka,Sebastian Baez,Hard,0.4916709,0
+2026-01-05,Stan Wawrinka,Flavio Cobolli,Hard,0.30887166,0
+2026-01-05,Adrian Mannarino,Marin Cilic,Hard,0.4640847,0
+2026-01-05,Marin Cilic,Nuno Borges,Hard,0.5328988,0
+2026-01-05,Jan Lennard Struff,Botic Van De Zandschulp,Hard,0.50698084,0
+2026-01-05,Damir Dzumhur,Nuno Borges,Hard,0.35428625,0
+2026-01-05,Marcos Giron,Laslo Djere,Hard,0.51555645,1
+2026-01-05,Marcos Giron,Alexander Bublik,Hard,0.3063627,0
+2026-01-05,Marcos Giron,Alexandre Muller,Hard,0.51188713,1
+2026-01-05,Zhizhen Zhang,Felix Auger Aliassime,Hard,0.1410946,0
+2026-01-05,Zhizhen Zhang,Zizou Bergs,Hard,0.34605148,1
+2026-01-05,Karen Khachanov,Michael Mmoh,Hard,0.73537785,0
+2026-01-05,Michael Mmoh,Alejandro Tabilo,Hard,0.33867887,1
+2026-01-05,Botic Van De Zandschulp,Alexander Bublik,Hard,0.27528667,0
+2026-01-05,Alexander Bublik,Lorenzo Musetti,Hard,0.42236146,1
+2026-01-05,Alexander Bublik,Juncheng Shang,Hard,0.7691253,1
+2026-01-05,Alexandre Muller,Miomir Kecmanovic,Hard,0.5231223,1
+2026-01-05,Andrey Rublev,Nuno Borges,Hard,0.6584305,1
+2026-01-05,Andrey Rublev,Yibing Wu,Hard,0.70455456,1
+2026-01-05,Andrey Rublev,Lorenzo Musetti,Hard,0.3209035,0
+2026-01-05,Billy Harris,Stefanos Tsitsipas,Hard,0.26678246,0
+2026-01-05,Billy Harris,Shintaro Mochizuki,Hard,0.5568672,1
+2026-01-05,Taylor Fritz,Stefanos Tsitsipas,Hard,0.7401351,0
+2026-01-05,Taylor Fritz,Hubert Hurkacz,Hard,0.682853,0
+2026-01-05,Taylor Fritz,Jaume Munar,Hard,0.79258615,1
+2026-01-05,Taylor Fritz,Sebastian Baez,Hard,0.7928353,0
+2026-01-05,Arthur Rinderknech,Flavio Cobolli,Hard,0.4848323,1
+2026-01-05,Stefanos Tsitsipas,Shintaro Mochizuki,Hard,0.83855003,1
+2026-01-05,Hubert Hurkacz,Tallon Griekspoor,Hard,0.54929346,1
+2026-01-05,Hubert Hurkacz,Alex De Minaur,Hard,0.34275135,0
+2026-01-05,Lorenzo Sonego,Juncheng Shang,Hard,0.62098473,0
+2026-01-05,Lorenzo Sonego,Rei Sakamoto,Hard,0.74431664,1
+2026-01-05,Casper Ruud,Alex De Minaur,Hard,0.36685032,1
+2026-01-05,Casper Ruud,Jakub Mensik,Hard,0.6700449,0
+2026-01-05,Jaume Munar,Sebastian Baez,Hard,0.67793566,0
+2026-01-05,Tomas Martin Etcheverry,Lorenzo Musetti,Hard,0.22951943,0
+2026-01-05,Tomas Martin Etcheverry,Valentin Royer,Hard,0.45391187,1
+2026-01-05,Felix Auger Aliassime,Zizou Bergs,Hard,0.8643233,0
+2026-01-05,Yibing Wu,Fabian Marozsan,Hard,0.36320215,1
+2026-01-05,Zizou Bergs,Jakub Mensik,Hard,0.27899712,1
+2026-01-05,Alex De Minaur,Jakub Mensik,Hard,0.74158365,1
+2026-01-05,Jesper De Jong,Gabriel Diallo,Hard,0.40980437,0
+2026-01-05,Lorenzo Musetti,Coleman Wong,Hard,0.8154659,1
+2026-01-05,Francisco Comesana,Juncheng Shang,Hard,0.51454747,0
+2026-01-05,Mariano Navone,Coleman Wong,Hard,0.52403224,0
+2026-01-05,Gabriel Diallo,Coleman Wong,Hard,0.7142909,0
+2026-01-12,Gael Monfils,Fabian Marozsan,Hard,0.55065227,0
+2026-01-12,Roberto Bautista Agut,Giovanni Mpetshi Perricard,Hard,0.37766114,0
+2026-01-12,Adrian Mannarino,Eliot Spizzirri,Hard,0.5709648,0
+2026-01-12,James Duckworth,Tomas Machac,Hard,0.30853194,0
+2026-01-12,Marton Fucsovics,Alexander Shevchenko,Hard,0.61366296,0
+2026-01-12,Marton Fucsovics,Ethan Quinn,Hard,0.6501785,1
+2026-01-12,Damir Dzumhur,Alexander Shevchenko,Hard,0.45498922,0
+2026-01-12,Marcos Giron,Alexandre Muller,Hard,0.51679385,1
+2026-01-12,Marcos Giron,Sebastian Baez,Hard,0.5351516,0
+2026-01-12,Marcos Giron,Luciano Darderi,Hard,0.5373367,1
+2026-01-12,Marcos Giron,Alex Michelsen,Hard,0.49843186,1
+2026-01-12,Thanasi Kokkinakis,Sebastian Korda,Hard,0.3069918,1
+2026-01-12,Quentin Halys,Tomas Machac,Hard,0.23896886,0
+2026-01-12,Quentin Halys,Jacob Fearnley,Hard,0.433383,1
+2026-01-12,Cameron Norrie,Hugo Gaston,Hard,0.785009,1
+2026-01-12,Cameron Norrie,Giovanni Mpetshi Perricard,Hard,0.6072032,0
+2026-01-12,Reilly Opelka,Tommy Paul,Hard,0.39535227,0
+2026-01-12,Reilly Opelka,Alexei Popyrin,Hard,0.5345617,1
+2026-01-12,Tommy Paul,Aleksandar Vukic,Hard,0.7923778,1
+2026-01-12,Tommy Paul,Tomas Machac,Hard,0.5811606,0
+2026-01-12,Alejandro Tabilo,Camilo Ugo Carabelli,Hard,0.5915417,1
+2026-01-12,Alejandro Tabilo,Luciano Darderi,Hard,0.55749875,0
+2026-01-12,Stefanos Tsitsipas,Aleksandar Vukic,Hard,0.74201345,0
+2026-01-12,Aleksandar Vukic,Andrea Vavassori,Hard,0.6074131,1
+2026-01-12,Daniel Altmaier,Jaume Munar,Hard,0.4061944,0
+2026-01-12,Andrea Vavassori,Gabriel Diallo,Hard,0.24511127,1
+2026-01-12,Nuno Borges,Tomas Martin Etcheverry,Hard,0.5273474,1
+2026-01-12,Nuno Borges,Eliot Spizzirri,Hard,0.59541047,0
+2026-01-12,Casper Ruud,Fabian Marozsan,Hard,0.71872175,0
+2026-01-12,Tallon Griekspoor,Ugo Humbert,Hard,0.47285157,0
+2026-01-12,Jaume Munar,Francisco Cerundolo,Hard,0.4945947,1
+2026-01-12,Jaume Munar,Tomas Machac,Hard,0.4377687,0
+2026-01-12,Ugo Humbert,Alejandro Davidovich Fokina,Hard,0.44951135,1
+2026-01-12,Ugo Humbert,Alexander Shevchenko,Hard,0.7433793,1
+2026-01-12,Ugo Humbert,Tomas Machac,Hard,0.48456627,0
+2026-01-12,Ugo Humbert,Terence Atmane,Hard,0.73733896,1
+2026-01-12,Miomir Kecmanovic,Valentin Vacherot,Hard,0.3949336,0
+2026-01-12,Alejandro Davidovich Fokina,Valentin Vacherot,Hard,0.6263711,1
+2026-01-12,Alejandro Davidovich Fokina,Rinky Hijikata,Hard,0.8191477,1
+2026-01-12,Sebastian Baez,Jenson Brooksby,Hard,0.33261293,1
+2026-01-12,Sebastian Baez,Emilio Nava,Hard,0.5646618,1
+2026-01-12,Sebastian Baez,Ben Shelton,Hard,0.19350621,1
+2026-01-12,Sebastian Baez,Jakub Mensik,Hard,0.37547398,0
+2026-01-12,Jenson Brooksby,James Watt,Hard,0.9227108,1
+2026-01-12,Aleksandar Kovacevic,Hamad Medjedovic,Hard,0.37741765,0
+2026-01-12,Fabian Marozsan,Eliot Spizzirri,Hard,0.6005531,1
+2026-01-12,Fabian Marozsan,Jakub Mensik,Hard,0.39467806,0
+2026-01-12,Francisco Comesana,Valentin Royer,Hard,0.43786934,1
+2026-01-12,Francisco Comesana,Ben Shelton,Hard,0.17944308,0
+2026-01-12,Rinky Hijikata,Tristan Schoolkate,Hard,0.46762985,1
+2026-01-12,Mariano Navone,Alex Michelsen,Hard,0.45481402,0
+2026-01-12,Giovanni Mpetshi Perricard,Jakub Mensik,Hard,0.32521144,0
+2026-01-12,Hamad Medjedovic,Jakub Mensik,Hard,0.36868867,0
+2026-01-19,Alexander Zverev,Cameron Norrie,Hard,0.7970459,1
+2026-01-19,Alexander Zverev,Alexandre Muller,Hard,0.88352454,1
+2026-01-19,Alexander Zverev,Francisco Cerundolo,Hard,0.84150213,1
+2026-01-19,Alexander Zverev,Carlos Alcaraz,Hard,0.14875098,0
+2026-01-19,Alexander Zverev,Gabriel Diallo,Hard,0.83250594,1
+2026-01-19,Alexander Zverev,Learner Tien,Hard,0.772684,1
+2026-01-19,Martin Damm,Valentin Vacherot,Hard,0.29600623,0
+2026-01-19,Stan Wawrinka,Laslo Djere,Hard,0.45479533,1
+2026-01-19,Stan Wawrinka,Taylor Fritz,Hard,0.1743578,0
+2026-01-19,Stan Wawrinka,Arthur Gea,Hard,0.55908376,1
+2026-01-19,Gael Monfils,Dane Sweeny,Hard,0.73498094,0
+2026-01-19,Novak Djokovic,Botic Van De Zandschulp,Hard,0.8726751,1
+2026-01-19,Novak Djokovic,Pedro Martinez,Hard,0.902283,1
+2026-01-19,Novak Djokovic,Jannik Sinner,Hard,0.11547286,1
+2026-01-19,Novak Djokovic,Carlos Alcaraz,Hard,0.23579672,0
+2026-01-19,Novak Djokovic,Francesco Maestrelli,Hard,0.8783431,1
+2026-01-19,Roberto Bautista Agut,Juncheng Shang,Hard,0.5704476,0
+2026-01-19,Adrian Mannarino,Rinky Hijikata,Hard,0.5805826,0
+2026-01-19,Marin Cilic,Daniel Altmaier,Hard,0.52174044,1
+2026-01-19,Marin Cilic,Denis Shapovalov,Hard,0.4264784,1
+2026-01-19,Marin Cilic,Casper Ruud,Hard,0.2856306,0
+2026-01-19,Jan Lennard Struff,Vit Kopriva,Hard,0.6475928,0
+2026-01-19,Grigor Dimitrov,Tomas Machac,Hard,0.5350275,0
+2026-01-19,Pablo Carreno Busta,Jakub Mensik,Hard,0.34241205,0
+2026-01-19,Yannick Hanfmann,Carlos Alcaraz,Hard,0.06791471,0
+2026-01-19,Yannick Hanfmann,Zachary Svajda,Hard,0.70458406,1
+2026-01-19,James Duckworth,Jannik Sinner,Hard,0.075948454,0
+2026-01-19,James Duckworth,Dino Prizmic,Hard,0.55458283,1
+2026-01-19,Marton Fucsovics,Alexander Bublik,Hard,0.2361738,0
+2026-01-19,Marton Fucsovics,Camilo Ugo Carabelli,Hard,0.61856157,1
+2026-01-19,Damir Dzumhur,Francisco Cerundolo,Hard,0.21572706,0
+2026-01-19,Damir Dzumhur,Liam Draxl,Hard,0.4452207,1
+2026-01-19,Jason Kubler,Frances Tiafoe,Hard,0.27228594,0
+2026-01-19,Marcos Giron,Learner Tien,Hard,0.31715077,0
+2026-01-19,Christopher Oconnell,Nishesh Basavareddy,Hard,0.5491343,0
+2026-01-19,Daniil Medvedev,Quentin Halys,Hard,0.8801449,1
+2026-01-19,Daniil Medvedev,Fabian Marozsan,Hard,0.72497004,1
+2026-01-19,Daniil Medvedev,Jesper De Jong,Hard,0.8023504,1
+2026-01-19,Daniil Medvedev,Learner Tien,Hard,0.6532531,0
+2026-01-19,Cristian Garin,Luciano Darderi,Hard,0.49705556,0
+2026-01-19,Zhizhen Zhang,Francisco Cerundolo,Hard,0.25494593,0
+2026-01-19,Elias Ymer,Alexander Shevchenko,Hard,0.5108794,0
+2026-01-19,Jordan Thompson,Nuno Borges,Hard,0.53717303,0
+2026-01-19,Jordan Thompson,Juan Manuel Cerundolo,Hard,0.61053634,1
+2026-01-19,Mackenzie Mcdonald,Alex De Minaur,Hard,0.15755257,0
+2026-01-19,Quentin Halys,Alejandro Tabilo,Hard,0.31607822,1
+2026-01-19,Karen Khachanov,Luciano Darderi,Hard,0.7433533,0
+2026-01-19,Karen Khachanov,Nishesh Basavareddy,Hard,0.82221246,1
+2026-01-19,Karen Khachanov,Alex Michelsen,Hard,0.68794304,1
+2026-01-19,Kamil Majchrzak,Fabian Marozsan,Hard,0.48427758,0
+2026-01-19,Kamil Majchrzak,Jacob Fearnley,Hard,0.6598948,1
+2026-01-19,Cameron Norrie,Benjamin Bonzi,Hard,0.6760657,1
+2026-01-19,Cameron Norrie,Emilio Nava,Hard,0.7568028,1
+2026-01-19,Botic Van De Zandschulp,Brandon Nakashima,Hard,0.42951903,1
+2026-01-19,Botic Van De Zandschulp,Juncheng Shang,Hard,0.59274244,1
+2026-01-19,Alexander Bublik,Tomas Martin Etcheverry,Hard,0.73160285,1
+2026-01-19,Alexander Bublik,Alex De Minaur,Hard,0.38114184,0
+2026-01-19,Alexander Bublik,Jenson Brooksby,Hard,0.7213107,1
+2026-01-19,Alexandre Muller,Alexei Popyrin,Hard,0.41880062,1
+2026-01-19,Reilly Opelka,Nicolai Budkov Kjaer,Hard,0.73007506,1
+2026-01-19,Reilly Opelka,Alejandro Davidovich Fokina,Hard,0.35173413,0
+2026-01-19,Andrey Rublev,Francisco Cerundolo,Hard,0.5781508,0
+2026-01-19,Andrey Rublev,Matteo Arnaldi,Hard,0.65678626,1
+2026-01-19,Andrey Rublev,Jaime Faria,Hard,0.83841676,1
+2026-01-19,Taylor Fritz,Vit Kopriva,Hard,0.8822492,1
+2026-01-19,Taylor Fritz,Lorenzo Musetti,Hard,0.5481304,0
+2026-01-19,Taylor Fritz,Valentin Royer,Hard,0.78965473,1
+2026-01-19,Tommy Paul,Thiago Agustin Tirante,Hard,0.7963165,1
+2026-01-19,Tommy Paul,Aleksandar Kovacevic,Hard,0.79216146,1
+2026-01-19,Tommy Paul,Carlos Alcaraz,Hard,0.092975,0
+2026-01-19,Frances Tiafoe,Alex De Minaur,Hard,0.22255975,0
+2026-01-19,Frances Tiafoe,Francisco Comesana,Hard,0.6800548,1
+2026-01-19,Arthur Rinderknech,Fabian Marozsan,Hard,0.4999074,0
+2026-01-19,Carlos Taberner,Lorenzo Sonego,Hard,0.30945346,0
+2026-01-19,Stefanos Tsitsipas,Tomas Machac,Hard,0.4537297,0
+2026-01-19,Stefanos Tsitsipas,Shintaro Mochizuki,Hard,0.8676859,1
+2026-01-19,Aleksandar Vukic,Thiago Agustin Tirante,Hard,0.5461117,0
+2026-01-19,Hubert Hurkacz,Zizou Bergs,Hard,0.64753807,1
+2026-01-19,Hubert Hurkacz,Ethan Quinn,Hard,0.73804957,0
+2026-01-19,Lorenzo Sonego,Lorenzo Musetti,Hard,0.25886744,0
+2026-01-19,Nuno Borges,Learner Tien,Hard,0.36940044,0
+2026-01-19,Denis Shapovalov,Bu Yunchaokete,Hard,0.70156556,1
+2026-01-19,Casper Ruud,Jaume Munar,Hard,0.697223,1
+2026-01-19,Casper Ruud,Mattia Bellucci,Hard,0.8033334,1
+2026-01-19,Casper Ruud,Ben Shelton,Hard,0.4127153,0
+2026-01-19,Tallon Griekspoor,Ethan Quinn,Hard,0.7076452,0
+2026-01-19,Jaume Munar,Dalibor Svrcina,Hard,0.73870546,1
+2026-01-19,Tomas Martin Etcheverry,Miomir Kecmanovic,Hard,0.5739047,1
+2026-01-19,Tomas Martin Etcheverry,Arthur Fery,Hard,0.72555006,1
+2026-01-19,Corentin Moutet,Carlos Alcaraz,Hard,0.07944035,0
+2026-01-19,Corentin Moutet,Tristan Schoolkate,Hard,0.72182554,1
+2026-01-19,Ugo Humbert,Ben Shelton,Hard,0.3498612,0
+2026-01-19,Yibing Wu,Eliot Spizzirri,Hard,0.4506074,0
+2026-01-19,Yibing Wu,Luca Nardi,Hard,0.67253757,1
+2026-01-19,Alejandro Davidovich Fokina,Filip Misolic,Hard,0.7978761,1
+2026-01-19,Alex De Minaur,Carlos Alcaraz,Hard,0.106489435,0
+2026-01-19,Alex De Minaur,Hamad Medjedovic,Hard,0.79217356,1
+2026-01-19,Adam Walton,Carlos Alcaraz,Hard,0.050541196,0
+2026-01-19,Valentin Vacherot,Rinky Hijikata,Hard,0.72849095,1
+2026-01-19,Valentin Vacherot,Ben Shelton,Hard,0.28929102,0
+2026-01-19,Patrick Kypson,Francisco Comesana,Hard,0.45447508,0
+2026-01-19,Sebastian Korda,Michael Zheng,Hard,0.92327195,0
+2026-01-19,Sebastian Baez,Giovanni Mpetshi Perricard,Hard,0.46671748,1
+2026-01-19,Sebastian Baez,Luciano Darderi,Hard,0.5747678,0
+2026-01-19,Jannik Sinner,Eliot Spizzirri,Hard,0.9531583,1
+2026-01-19,Jannik Sinner,Luciano Darderi,Hard,0.95228064,1
+2026-01-19,Jannik Sinner,Ben Shelton,Hard,0.92699414,1
+2026-01-19,Emilio Nava,Kyrian Jacquet,Hard,0.52250934,1
+2026-01-19,Lorenzo Musetti,Tomas Machac,Hard,0.6653151,1
+2026-01-19,Alexander Shevchenko,Learner Tien,Hard,0.21822698,0
+2026-01-19,Flavio Cobolli,Arthur Fery,Hard,0.7758174,0
+2026-01-19,Dane Sweeny,Ben Shelton,Hard,0.13232955,0
+2026-01-19,Jiri Lehecka,Arthur Gea,Hard,0.8830595,0
+2026-01-19,Eliot Spizzirri,Joao Fonseca,Hard,0.3294677,1
+2026-01-19,Francesco Maestrelli,Terence Atmane,Hard,0.44810557,1
+2026-01-19,Mariano Navone,Hamad Medjedovic,Hard,0.4169614,0
+2026-01-19,Jakub Mensik,Ethan Quinn,Hard,0.81142575,1
+2026-01-19,Jakub Mensik,Rafael Jodar,Hard,0.74080557,1
+2026-01-19,Jaime Faria,Alexander Blockx,Hard,0.42071426,1
+2026-01-19,Rei Sakamoto,Rafael Jodar,Hard,0.4255289,0
+2026-02-02,Martin Damm,Roberto Bautista Agut,Hard,0.5204168,1
+2026-02-02,Martin Damm,Adrian Mannarino,Hard,0.4924641,0
+2026-02-02,Martin Damm,Hubert Hurkacz,Hard,0.32875672,1
+2026-02-02,Martin Damm,Luca Nardi,Hard,0.56276107,1
+2026-02-02,Stan Wawrinka,Felix Auger Aliassime,Hard,0.15395917,0
+2026-02-02,Stan Wawrinka,Hamad Medjedovic,Hard,0.3840382,1
+2026-02-02,Roberto Bautista Agut,Christopher Oconnell,Hard,0.59529847,1
+2026-02-02,Adrian Mannarino,Pedro Martinez,Hard,0.6307253,1
+2026-02-02,Adrian Mannarino,Felix Auger Aliassime,Hard,0.14960392,0
+2026-02-02,Adrian Mannarino,Ugo Humbert,Hard,0.3038321,1
+2026-02-02,Adrian Mannarino,Arthur Gea,Hard,0.65754634,1
+2026-02-02,Pablo Carreno Busta,Tallon Griekspoor,Hard,0.44660622,0
+2026-02-02,Pablo Carreno Busta,Miomir Kecmanovic,Hard,0.5516718,1
+2026-02-02,Nikoloz Basilashvili,Luca Nardi,Hard,0.4909381,0
+2026-02-02,Botic Van De Zandschulp,Ugo Humbert,Hard,0.30347994,0
+2026-02-02,Jan Choinski,Titouan Droguet,Hard,0.58071107,0
+2026-02-02,Andrea Vavassori,Ugo Blanchet,Hard,0.4613677,0
+2026-02-02,Tallon Griekspoor,Titouan Droguet,Hard,0.7215267,0
+2026-02-02,Felix Auger Aliassime,Titouan Droguet,Hard,0.8207984,1
+2026-02-02,Felix Auger Aliassime,Arthur Fils,Hard,0.68285215,1
+2026-02-02,Ugo Blanchet,Arthur Fils,Hard,0.22544475,0
+2026-02-02,Aleksandar Kovacevic,Titouan Droguet,Hard,0.5604426,0
+2026-02-02,Aleksandar Kovacevic,Moise Kouame,Hard,0.83815205,1
+2026-02-02,Flavio Cobolli,Luca Nardi,Hard,0.7442872,0
+2026-02-02,Valentin Royer,Arthur Fils,Hard,0.32950115,0
+2026-02-09,Federico Coria,Matteo Berrettini,Clay,0.13557364,0
+2026-02-09,Damir Dzumhur,Hugo Dellien,Clay,0.56055886,0
+2026-02-09,Hugo Dellien,Francisco Cerundolo,Clay,0.21567366,0
+2026-02-09,Laslo Djere,Roman Andres Burruchaga,Clay,0.6452167,0
+2026-02-09,Pedro Martinez,Juan Manuel Cerundolo,Clay,0.5511898,1
+2026-02-09,Pedro Martinez,Luciano Darderi,Clay,0.31841725,0
+2026-02-09,Pedro Martinez,Lautaro Midon,Clay,0.7686864,1
+2026-02-09,Alejandro Tabilo,Tomas Martin Etcheverry,Clay,0.47815958,0
+2026-02-09,Alejandro Tabilo,Facundo Diaz Acosta,Clay,0.59959906,1
+2026-02-09,Alejandro Tabilo,Joao Fonseca,Clay,0.41068485,1
+2026-02-09,Andrea Pellegrino,Tomas Martin Etcheverry,Clay,0.34609914,0
+2026-02-09,Matteo Berrettini,Vit Kopriva,Clay,0.8119483,0
+2026-02-09,Daniel Altmaier,Juan Manuel Cerundolo,Clay,0.54872006,0
+2026-02-09,Tomas Barrios Vera,Luciano Darderi,Clay,0.18280613,0
+2026-02-09,Tomas Martin Etcheverry,Francisco Cerundolo,Clay,0.34964624,0
+2026-02-09,Tomas Martin Etcheverry,Roman Andres Burruchaga,Clay,0.6118933,1
+2026-02-09,Camilo Ugo Carabelli,Sebastian Baez,Clay,0.31643558,0
+2026-02-09,Camilo Ugo Carabelli,Francisco Comesana,Clay,0.42510512,1
+2026-02-09,Camilo Ugo Carabelli,Mariano Navone,Clay,0.43460858,1
+2026-02-09,Vit Kopriva,Francisco Cerundolo,Clay,0.21050797,0
+2026-02-09,Vit Kopriva,Alex Barrena,Clay,0.7222453,1
+2026-02-09,Francisco Cerundolo,Luciano Darderi,Clay,0.61025554,1
+2026-02-09,Sebastian Baez,Luciano Darderi,Clay,0.49241716,0
+2026-02-09,Sebastian Baez,Ignacio Buse,Clay,0.6621005,1
+2026-02-09,Emilio Nava,Mariano Navone,Clay,0.49912,0
+2026-02-09,Francesco Passaro,Ignacio Buse,Clay,0.492535,0
+2026-02-09,Stan Wawrinka,Alex De Minaur,Hard,0.17959216,0
+2026-02-09,Stan Wawrinka,Thijs Boogaard,Hard,0.8407283,1
+2026-02-09,Roberto Bautista Agut,Cameron Norrie,Hard,0.3446575,0
+2026-02-09,Adrian Mannarino,Adam Walton,Hard,0.5667064,1
+2026-02-09,Adrian Mannarino,Ben Shelton,Hard,0.21372814,0
+2026-02-09,Marin Cilic,Taylor Fritz,Hard,0.29455936,0
+2026-02-09,Marin Cilic,Jack Pinnington Jones,Hard,0.702967,1
+2026-02-09,Marin Cilic,Ethan Quinn,Hard,0.6379746,1
+2026-02-09,Marin Cilic,Learner Tien,Hard,0.42736724,1
+2026-02-09,Jan Lennard Struff,Alexander Bublik,Hard,0.3356432,0
+2026-02-09,Jan Lennard Struff,Hugo Grenier,Hard,0.6409588,1
+2026-02-09,Grigor Dimitrov,Alex Michelsen,Hard,0.6895845,0
+2026-02-09,James Duckworth,Eliot Spizzirri,Hard,0.47846538,0
+2026-02-09,Marton Fucsovics,Guy Den Ouden,Hard,0.7005888,0
+2026-02-09,Marcos Giron,Taylor Fritz,Hard,0.22742383,0
+2026-02-09,Christopher Oconnell,Cameron Norrie,Hard,0.24773464,1
+2026-02-09,Christopher Oconnell,Ugo Humbert,Hard,0.18836093,0
+2026-02-09,Christopher Oconnell,Valentin Royer,Hard,0.38421762,1
+2026-02-09,Daniil Medvedev,Ugo Humbert,Hard,0.5857679,0
+2026-02-09,Quentin Halys,Tallon Griekspoor,Hard,0.33208302,0
+2026-02-09,Quentin Halys,Mees Rottgering,Hard,0.75655884,1
+2026-02-09,Karen Khachanov,Jaume Munar,Hard,0.60494685,0
+2026-02-09,Karen Khachanov,Jesper De Jong,Hard,0.7224796,1
+2026-02-09,Botic Van De Zandschulp,Stefanos Tsitsipas,Hard,0.38963428,1
+2026-02-09,Botic Van De Zandschulp,Alex De Minaur,Hard,0.20017293,0
+2026-02-09,Botic Van De Zandschulp,Luka Pavlovic,Hard,0.8727475,1
+2026-02-09,Alexander Bublik,Hubert Hurkacz,Hard,0.6086006,1
+2026-02-09,Alexander Bublik,Jaume Munar,Hard,0.7201606,1
+2026-02-09,Alexander Bublik,Felix Auger Aliassime,Hard,0.33035508,0
+2026-02-09,Taylor Fritz,Sebastian Korda,Hard,0.678753,1
+2026-02-09,Taylor Fritz,Brandon Nakashima,Hard,0.73792875,1
+2026-02-09,Taylor Fritz,Ben Shelton,Hard,0.48400143,0
+2026-02-09,Tommy Paul,Miomir Kecmanovic,Hard,0.7611872,0
+2026-02-09,Tommy Paul,Jenson Brooksby,Hard,0.6421034,1
+2026-02-09,Frances Tiafoe,Sebastian Korda,Hard,0.49031156,0
+2026-02-09,Frances Tiafoe,Terence Atmane,Hard,0.67332447,1
+2026-02-09,Arthur Rinderknech,Stefanos Tsitsipas,Hard,0.49984187,0
+2026-02-09,Denis Shapovalov,Alejandro Davidovich Fokina,Hard,0.3974792,1
+2026-02-09,Denis Shapovalov,Aleksandar Kovacevic,Hard,0.6818815,1
+2026-02-09,Denis Shapovalov,Ben Shelton,Hard,0.26802385,0
+2026-02-09,Denis Shapovalov,Rafael Jodar,Hard,0.68216306,1
+2026-02-09,Tallon Griekspoor,Felix Auger Aliassime,Hard,0.20037557,0
+2026-02-09,Tallon Griekspoor,Giovanni Mpetshi Perricard,Hard,0.5389896,1
+2026-02-09,Jaume Munar,Nicolai Budkov Kjaer,Hard,0.744358,1
+2026-02-09,Felix Auger Aliassime,Alex De Minaur,Hard,0.55801207,0
+2026-02-09,Felix Auger Aliassime,Alexei Popyrin,Hard,0.8195392,1
+2026-02-09,Felix Auger Aliassime,Hamad Medjedovic,Hard,0.78528726,1
+2026-02-09,Ugo Humbert,Alex De Minaur,Hard,0.33309186,0
+2026-02-09,Ugo Humbert,Guy Den Ouden,Hard,0.91551715,1
+2026-02-09,Miomir Kecmanovic,Sho Shimabukuro,Hard,0.6111742,1
+2026-02-09,Miomir Kecmanovic,Ben Shelton,Hard,0.19740534,0
+2026-02-09,Alejandro Davidovich Fokina,Zachary Svajda,Hard,0.80354816,1
+2026-02-09,Alejandro Davidovich Fokina,Alex Michelsen,Hard,0.6583102,1
+2026-02-09,Zizou Bergs,Hamad Medjedovic,Hard,0.5039886,0
+2026-02-09,Alex De Minaur,Arthur Fils,Hard,0.66087055,1
+2026-02-09,Patrick Kypson,Aleksandar Kovacevic,Hard,0.48841104,0
+2026-02-09,Sebastian Korda,Michael Zheng,Hard,0.72280455,1
+2026-02-09,Brandon Nakashima,Mattia Bellucci,Hard,0.653073,1
+2026-02-09,Flavio Cobolli,Jack Pinnington Jones,Hard,0.72310686,0
+2026-02-09,Eliot Spizzirri,Jack Pinnington Jones,Hard,0.6684228,0
+2026-02-09,Gabriel Diallo,Ben Shelton,Hard,0.253902,0
+2026-02-09,Ethan Quinn,Trevor Svajda,Hard,0.6432637,1
+2026-02-16,Dusan Lajovic,Matteo Berrettini,Clay,0.18193017,0
+2026-02-16,Dusan Lajovic,Daniel Altmaier,Clay,0.5016801,1
+2026-02-16,Yannick Hanfmann,Joao Lucas Reis Da Silva,Clay,0.83091724,1
+2026-02-16,Yannick Hanfmann,Juan Manuel Cerundolo,Clay,0.567891,0
+2026-02-16,Damir Dzumhur,Pedro Martinez,Clay,0.49049866,1
+2026-02-16,Damir Dzumhur,Jaime Faria,Clay,0.50950825,0
+2026-02-16,Thiago Monteiro,Joao Fonseca,Clay,0.25487527,0
+2026-02-16,Cristian Garin,Thiago Agustin Tirante,Clay,0.58334976,0
+2026-02-16,Alejandro Tabilo,Tomas Martin Etcheverry,Clay,0.47311637,0
+2026-02-16,Alejandro Tabilo,Thiago Agustin Tirante,Clay,0.60913634,1
+2026-02-16,Alejandro Tabilo,Emilio Nava,Clay,0.6066082,1
+2026-02-16,Alejandro Tabilo,Francesco Passaro,Clay,0.6359596,1
+2026-02-16,Alejandro Tabilo,Ignacio Buse,Clay,0.59094554,1
+2026-02-16,Matteo Berrettini,Tomas Barrios Vera,Clay,0.83510464,1
+2026-02-16,Matteo Berrettini,Ignacio Buse,Clay,0.7657435,0
+2026-02-16,Igor Ribeiro Marcondes,Ignacio Buse,Clay,0.1768046,0
+2026-02-16,Tomas Martin Etcheverry,Vit Kopriva,Clay,0.6021001,1
+2026-02-16,Tomas Martin Etcheverry,Francisco Comesana,Clay,0.5013149,1
+2026-02-16,Tomas Martin Etcheverry,Vilius Gaubas,Clay,0.6235523,1
+2026-02-16,Tomas Martin Etcheverry,Jaime Faria,Clay,0.6365479,1
+2026-02-16,Camilo Ugo Carabelli,Roman Andres Burruchaga,Clay,0.48693237,0
+2026-02-16,Vit Kopriva,Juan Manuel Cerundolo,Clay,0.4780129,1
+2026-02-16,Vit Kopriva,Gustavo Heide,Clay,0.5038381,1
+2026-02-16,Vit Kopriva,Roman Andres Burruchaga,Clay,0.4236351,1
+2026-02-16,Francisco Cerundolo,Mariano Navone,Clay,0.7072106,1
+2026-02-16,Sebastian Baez,Jaime Faria,Clay,0.70741934,0
+2026-02-16,Juan Manuel Cerundolo,Luciano Darderi,Clay,0.3335365,1
+2026-02-16,Francesco Passaro,Dino Prizmic,Clay,0.46664664,1
+2026-02-16,Vilius Gaubas,Luis Guto Miguel,Clay,0.83022565,1
+2026-02-16,Ignacio Buse,Joao Fonseca,Clay,0.26672226,1
+2026-02-16,Marin Cilic,Brandon Nakashima,Hard,0.42006475,0
+2026-02-16,Pierre Hugues Herbert,Valentin Royer,Hard,0.4302858,0
+2026-02-16,Pablo Carreno Busta,Quentin Halys,Hard,0.595201,0
+2026-02-16,Marton Fucsovics,Karen Khachanov,Hard,0.28001377,0
+2026-02-16,Marton Fucsovics,Hady Habib,Hard,0.68567425,1
+2026-02-16,Roberto Carballes Baena,Zhizhen Zhang,Hard,0.5391071,0
+2026-02-16,Marcos Giron,Casper Ruud,Hard,0.24383537,0
+2026-02-16,Marcos Giron,Sho Shimabukuro,Hard,0.61198914,1
+2026-02-16,Daniil Medvedev,Stefanos Tsitsipas,Hard,0.68927616,0
+2026-02-16,Daniil Medvedev,Juncheng Shang,Hard,0.7940156,1
+2026-02-16,Zhizhen Zhang,Jakub Mensik,Hard,0.1798824,0
+2026-02-16,Mackenzie Mcdonald,Sebastian Korda,Hard,0.28068957,0
+2026-02-16,Quentin Halys,Arthur Fils,Hard,0.2421837,0
+2026-02-16,Karen Khachanov,Carlos Alcaraz,Hard,0.12699476,0
+2026-02-16,Karen Khachanov,Shintaro Mochizuki,Hard,0.85639656,1
+2026-02-16,Kamil Majchrzak,Arthur Fils,Hard,0.38685283,0
+2026-02-16,Moez Echargui,Stefanos Tsitsipas,Hard,0.2554791,0
+2026-02-16,Mubarak Shannan Zayid,Alexei Popyrin,Hard,0.11669534,0
+2026-02-16,Jan Choinski,Jakub Mensik,Hard,0.17395633,0
+2026-02-16,Andrey Rublev,Stefanos Tsitsipas,Hard,0.5834404,1
+2026-02-16,Andrey Rublev,Fabian Marozsan,Hard,0.60518914,1
+2026-02-16,Andrey Rublev,Jesper De Jong,Hard,0.7057738,1
+2026-02-16,Andrey Rublev,Carlos Alcaraz,Hard,0.1312243,0
+2026-02-16,Taylor Fritz,Tommy Paul,Hard,0.65503544,0
+2026-02-16,Taylor Fritz,Rafael Jodar,Hard,0.8363586,1
+2026-02-16,Tommy Paul,Corentin Moutet,Hard,0.6283278,1
+2026-02-16,Tommy Paul,Adam Walton,Hard,0.803577,1
+2026-02-16,Tommy Paul,Sebastian Korda,Hard,0.60220236,0
+2026-02-16,Tommy Paul,Learner Tien,Hard,0.5681961,1
+2026-02-16,Frances Tiafoe,Rinky Hijikata,Hard,0.69939536,1
+2026-02-16,Frances Tiafoe,Zachary Svajda,Hard,0.7617201,1
+2026-02-16,Frances Tiafoe,Learner Tien,Hard,0.45672214,0
+2026-02-16,Arthur Rinderknech,Carlos Alcaraz,Hard,0.06541212,0
+2026-02-16,Nuno Borges,Coleman Wong,Hard,0.66849416,0
+2026-02-16,Casper Ruud,Sebastian Korda,Hard,0.6252604,0
+2026-02-16,Ugo Humbert,Fabian Marozsan,Hard,0.5696229,0
+2026-02-16,Miomir Kecmanovic,Mattia Bellucci,Hard,0.52990144,1
+2026-02-16,Miomir Kecmanovic,Learner Tien,Hard,0.36287734,0
+2026-02-16,Zizou Bergs,Jiri Lehecka,Hard,0.32765725,0
+2026-02-16,Zizou Bergs,Giovanni Mpetshi Perricard,Hard,0.46334052,1
+2026-02-16,Adam Walton,Gabriel Diallo,Hard,0.3023129,1
+2026-02-16,Valentin Vacherot,Alex Michelsen,Hard,0.5343405,0
+2026-02-16,Patrick Kypson,Terence Atmane,Hard,0.4350647,0
+2026-02-16,Alexei Popyrin,Jannik Sinner,Hard,0.09709734,0
+2026-02-16,Sebastian Korda,Flavio Cobolli,Hard,0.59283096,1
+2026-02-16,Sebastian Korda,Alex Michelsen,Hard,0.5708358,1
+2026-02-16,Jenson Brooksby,Jiri Lehecka,Hard,0.37547728,0
+2026-02-16,Jannik Sinner,Tomas Machac,Hard,0.92808175,1
+2026-02-16,Jannik Sinner,Jakub Mensik,Hard,0.9226938,0
+2026-02-16,Aleksandar Kovacevic,Zachary Svajda,Hard,0.56293416,0
+2026-02-16,Brandon Nakashima,Coleman Wong,Hard,0.7609286,0
+2026-02-16,Flavio Cobolli,Terence Atmane,Hard,0.5996439,1
+2026-02-16,Flavio Cobolli,Coleman Wong,Hard,0.6484826,1
+2026-02-16,Carlos Alcaraz,Valentin Royer,Hard,0.9115123,1
+2026-02-16,Carlos Alcaraz,Arthur Fils,Hard,0.92612076,1
+2026-02-16,Jiri Lehecka,Arthur Fils,Hard,0.57794124,0
+2026-02-16,Arthur Fils,Jakub Mensik,Hard,0.47478008,1
+2026-02-16,Ethan Quinn,Rafael Jodar,Hard,0.53051573,0
+2026-02-23,Dusan Lajovic,Yannick Hanfmann,Clay,0.4141185,0
+2026-02-23,Yannick Hanfmann,Camilo Ugo Carabelli,Clay,0.5876872,1
+2026-02-23,Yannick Hanfmann,Francisco Cerundolo,Clay,0.34350708,1
+2026-02-23,Yannick Hanfmann,Vilius Gaubas,Clay,0.5590616,1
+2026-02-23,Yannick Hanfmann,Luciano Darderi,Clay,0.43424916,0
+2026-02-23,Cristian Garin,Sebastian Baez,Clay,0.45878366,0
+2026-02-23,Cristian Garin,Juan Manuel Cerundolo,Clay,0.5763122,1
+2026-02-23,Nicolas Jarry,Dino Prizmic,Clay,0.6239629,0
+2026-02-23,Pedro Martinez,Francisco Comesana,Clay,0.40685096,0
+2026-02-23,Alejandro Tabilo,Tomas Barrios Vera,Clay,0.76737106,1
+2026-02-23,Alejandro Tabilo,Thiago Agustin Tirante,Clay,0.6181254,1
+2026-02-23,Alejandro Tabilo,Sebastian Baez,Clay,0.47603798,0
+2026-02-23,Andrea Pellegrino,Francisco Comesana,Clay,0.3598538,1
+2026-02-23,Andrea Pellegrino,Luciano Darderi,Clay,0.23778528,0
+2026-02-23,Andrea Pellegrino,Alex Barrena,Clay,0.5261781,1
+2026-02-23,Matteo Berrettini,Emilio Nava,Clay,0.7837739,0
+2026-02-23,Thiago Agustin Tirante,Ignacio Buse,Clay,0.5476074,1
+2026-02-23,Francisco Cerundolo,Emilio Nava,Clay,0.7924936,1
+2026-02-23,Francisco Cerundolo,Elmer Moller,Clay,0.87551683,1
+2026-02-23,Sebastian Baez,Luciano Darderi,Clay,0.4520408,0
+2026-02-23,Matias Soto,Vilius Gaubas,Clay,0.16668326,0
+2026-02-23,Emilio Nava,Adolfo Daniel Vallejo,Clay,0.70714426,1
+2026-02-23,Mariano Navone,Luciano Darderi,Clay,0.35803872,0
+2026-02-23,Roman Andres Burruchaga,Elmer Moller,Clay,0.6396373,0
+2026-02-23,Vilius Gaubas,Dino Prizmic,Clay,0.49327064,1
+2026-02-23,Alexander Zverev,Corentin Moutet,Hard,0.8242229,1
+2026-02-23,Alexander Zverev,Miomir Kecmanovic,Hard,0.8531233,0
+2026-02-23,Stan Wawrinka,Daniil Medvedev,Hard,0.14308217,0
+2026-02-23,Stan Wawrinka,Benjamin Hassan,Hard,0.6383815,1
+2026-02-23,Gael Monfils,Damir Dzumhur,Hard,0.70362234,1
+2026-02-23,Gael Monfils,Valentin Vacherot,Hard,0.43542922,0
+2026-02-23,Adrian Mannarino,Sho Shimabukuro,Hard,0.5374287,0
+2026-02-23,Jan Lennard Struff,Alexander Bublik,Hard,0.29213324,0
+2026-02-23,Grigor Dimitrov,Terence Atmane,Hard,0.7597742,0
+2026-02-23,Pablo Carreno Busta,Denis Shapovalov,Hard,0.38529134,1
+2026-02-23,Pablo Carreno Busta,Jiri Lehecka,Hard,0.32333246,0
+2026-02-23,James Duckworth,Dalibor Svrcina,Hard,0.5255419,0
+2026-02-23,Daniil Medvedev,Felix Auger Aliassime,Hard,0.42782488,1
+2026-02-23,Daniil Medvedev,Jenson Brooksby,Hard,0.7348926,1
+2026-02-23,Daniil Medvedev,Juncheng Shang,Hard,0.8017617,1
+2026-02-23,Zhizhen Zhang,Felix Auger Aliassime,Hard,0.14425586,0
+2026-02-23,Elias Ymer,Brandon Nakashima,Hard,0.2209659,0
+2026-02-23,Quentin Halys,Jack Draper,Hard,0.1350438,0
+2026-02-23,Karen Khachanov,Jenson Brooksby,Hard,0.5569424,0
+2026-02-23,Karen Khachanov,Alexander Shevchenko,Hard,0.7574272,1
+2026-02-23,Kamil Majchrzak,Alexei Popyrin,Hard,0.4619936,0
+2026-02-23,Cameron Norrie,Rafael Jodar,Hard,0.7356967,0
+2026-02-23,Moez Echargui,Giovanni Mpetshi Perricard,Hard,0.34740156,0
+2026-02-23,Alexander Bublik,Tallon Griekspoor,Hard,0.66457295,0
+2026-02-23,Andrey Rublev,Arthur Rinderknech,Hard,0.5920038,1
+2026-02-23,Andrey Rublev,Tallon Griekspoor,Hard,0.637209,0
+2026-02-23,Andrey Rublev,Ugo Humbert,Hard,0.53829837,1
+2026-02-23,Andrey Rublev,Valentin Royer,Hard,0.73216385,1
+2026-02-23,Frances Tiafoe,Nuno Borges,Hard,0.5449331,1
+2026-02-23,Frances Tiafoe,Aleksandar Kovacevic,Hard,0.6960793,1
+2026-02-23,Frances Tiafoe,Brandon Nakashima,Hard,0.49479347,1
+2026-02-23,Frances Tiafoe,Flavio Cobolli,Hard,0.5364512,0
+2026-02-23,Frances Tiafoe,Mattia Bellucci,Hard,0.7273696,1
+2026-02-23,Arthur Rinderknech,Fabian Marozsan,Hard,0.5193572,1
+2026-02-23,Arthur Rinderknech,Jack Draper,Hard,0.22573578,1
+2026-02-23,Stefanos Tsitsipas,Ugo Humbert,Hard,0.45538545,0
+2026-02-23,Daniel Altmaier,Alejandro Davidovich Fokina,Hard,0.22115059,0
+2026-02-23,Hubert Hurkacz,Jakub Mensik,Hard,0.4842371,0
+2026-02-23,Casper Ruud,Yibing Wu,Hard,0.76780844,0
+2026-02-23,Tallon Griekspoor,Otto Virtanen,Hard,0.7105183,1
+2026-02-23,Tallon Griekspoor,Jakub Mensik,Hard,0.3598402,1
+2026-02-23,Felix Auger Aliassime,Jiri Lehecka,Hard,0.7010509,1
+2026-02-23,Felix Auger Aliassime,Giovanni Mpetshi Perricard,Hard,0.7345222,1
+2026-02-23,Yibing Wu,Sho Shimabukuro,Hard,0.45745367,1
+2026-02-23,Yibing Wu,Flavio Cobolli,Hard,0.42550695,0
+2026-02-23,Miomir Kecmanovic,Flavio Cobolli,Hard,0.48822314,0
+2026-02-23,Miomir Kecmanovic,Tristan Schoolkate,Hard,0.61907506,1
+2026-02-23,Miomir Kecmanovic,Terence Atmane,Hard,0.5986953,1
+2026-02-23,Alejandro Davidovich Fokina,Mattia Bellucci,Hard,0.79893225,0
+2026-02-23,Zizou Bergs,Jenson Brooksby,Hard,0.43603832,0
+2026-02-23,Alex De Minaur,Patrick Kypson,Hard,0.8824644,0
+2026-02-23,Adam Walton,Aleksandar Kovacevic,Hard,0.44140002,0
+2026-02-23,Valentin Vacherot,Brandon Nakashima,Hard,0.50885165,0
+2026-02-23,Valentin Vacherot,Coleman Wong,Hard,0.7132091,1
+2026-02-23,Patrick Kypson,Brandon Nakashima,Hard,0.28040144,0
+2026-02-23,Alexei Popyrin,Jakub Mensik,Hard,0.3200216,0
+2026-02-23,Dalibor Svrcina,Flavio Cobolli,Hard,0.32894138,0
+2026-02-23,Flavio Cobolli,Rodrigo Pacheco Mendez,Hard,0.78875214,1
+2026-02-23,Rinky Hijikata,Mattia Bellucci,Hard,0.45467776,0
+2026-02-23,Jiri Lehecka,Luca Nardi,Hard,0.78849304,1
+2026-02-23,Terence Atmane,Rafael Jodar,Hard,0.5729508,1
+2026-03-04,Alexander Zverev,Frances Tiafoe,Hard,0.8028865,1
+2026-03-04,Alexander Zverev,Matteo Berrettini,Hard,0.7521526,1
+2026-03-04,Alexander Zverev,Jannik Sinner,Hard,0.1472897,0
+2026-03-04,Alexander Zverev,Brandon Nakashima,Hard,0.79000735,1
+2026-03-04,Alexander Zverev,Arthur Fils,Hard,0.7039064,1
+2026-03-04,Martin Damm,Camilo Ugo Carabelli,Hard,0.57809263,0
+2026-03-04,Gael Monfils,Felix Auger Aliassime,Hard,0.24242295,0
+2026-03-04,Gael Monfils,Alexis Galarneau,Hard,0.69072187,1
+2026-03-04,Novak Djokovic,Kamil Majchrzak,Hard,0.8407695,1
+2026-03-04,Novak Djokovic,Aleksandar Kovacevic,Hard,0.8149017,1
+2026-03-04,Novak Djokovic,Jack Draper,Hard,0.6628679,0
+2026-03-04,Roberto Bautista Agut,Fabian Marozsan,Hard,0.36937264,1
+2026-03-04,Roberto Bautista Agut,Jack Draper,Hard,0.19137698,0
+2026-03-04,Adrian Mannarino,Matteo Berrettini,Hard,0.3514768,0
+2026-03-04,Marin Cilic,Zachary Svajda,Hard,0.69646406,0
+2026-03-04,Jan Lennard Struff,Zizou Bergs,Hard,0.50948066,0
+2026-03-04,Grigor Dimitrov,Carlos Alcaraz,Hard,0.086847864,0
+2026-03-04,Grigor Dimitrov,Terence Atmane,Hard,0.74172276,1
+2026-03-04,James Duckworth,Dalibor Svrcina,Hard,0.5018033,0
+2026-03-04,Marton Fucsovics,Christopher Oconnell,Hard,0.5892558,1
+2026-03-04,Marton Fucsovics,Lorenzo Musetti,Hard,0.290654,1
+2026-03-04,Marton Fucsovics,Arthur Fils,Hard,0.33837962,0
+2026-03-04,Damir Dzumhur,Jacob Fearnley,Hard,0.45016408,0
+2026-03-04,Marcos Giron,Mariano Navone,Hard,0.6945282,1
+2026-03-04,Marcos Giron,Jakub Mensik,Hard,0.31912643,0
+2026-03-04,Daniil Medvedev,Alejandro Tabilo,Hard,0.74530023,1
+2026-03-04,Daniil Medvedev,Sebastian Baez,Hard,0.7831129,1
+2026-03-04,Daniil Medvedev,Jannik Sinner,Hard,0.10749996,0
+2026-03-04,Daniil Medvedev,Jack Draper,Hard,0.4057061,1
+2026-03-04,Daniil Medvedev,Carlos Alcaraz,Hard,0.14792652,1
+2026-03-04,Daniil Medvedev,Alex Michelsen,Hard,0.7255538,1
+2026-03-04,Mackenzie Mcdonald,Cameron Norrie,Hard,0.30935004,0
+2026-03-04,Mackenzie Mcdonald,Matteo Arnaldi,Hard,0.42974246,1
+2026-03-04,Quentin Halys,Adam Walton,Hard,0.48397082,0
+2026-03-04,Karen Khachanov,Joao Fonseca,Hard,0.5398736,0
+2026-03-04,Kamil Majchrzak,Giovanni Mpetshi Perricard,Hard,0.46367282,1
+2026-03-04,Cameron Norrie,Alex De Minaur,Hard,0.23002316,1
+2026-03-04,Cameron Norrie,Carlos Alcaraz,Hard,0.0917342,0
+2026-03-04,Cameron Norrie,Rinky Hijikata,Hard,0.70980084,1
+2026-03-04,Botic Van De Zandschulp,Juan Manuel Cerundolo,Hard,0.6179428,0
+2026-03-04,Alexander Bublik,Vit Kopriva,Hard,0.82820666,1
+2026-03-04,Alexander Bublik,Rinky Hijikata,Hard,0.8057481,0
+2026-03-04,Reilly Opelka,Ben Shelton,Hard,0.30826983,0
+2026-03-04,Reilly Opelka,Ethan Quinn,Hard,0.7291447,1
+2026-03-04,Andrey Rublev,Gabriel Diallo,Hard,0.641414,0
+2026-03-04,Benjamin Bonzi,Francisco Cerundolo,Hard,0.33251333,0
+2026-03-04,Benjamin Bonzi,Valentin Royer,Hard,0.4709009,1
+2026-03-04,Taylor Fritz,Jacob Fearnley,Hard,0.84714186,1
+2026-03-04,Taylor Fritz,Alex Michelsen,Hard,0.7403596,0
+2026-03-04,Tommy Paul,Zizou Bergs,Hard,0.725366,1
+2026-03-04,Tommy Paul,Joao Fonseca,Hard,0.56344604,0
+2026-03-04,Frances Tiafoe,Jenson Brooksby,Hard,0.48679888,1
+2026-03-04,Frances Tiafoe,Flavio Cobolli,Hard,0.5599558,1
+2026-03-04,Alejandro Tabilo,Rafael Jodar,Hard,0.61013854,1
+2026-03-04,Arthur Rinderknech,Carlos Alcaraz,Hard,0.07121233,0
+2026-03-04,Stefanos Tsitsipas,Denis Shapovalov,Hard,0.515291,0
+2026-03-04,Hubert Hurkacz,Aleksandar Kovacevic,Hard,0.6577398,0
+2026-03-04,Nuno Borges,Valentin Vacherot,Hard,0.42600182,0
+2026-03-04,Nuno Borges,Emilio Nava,Hard,0.6066898,1
+2026-03-04,Denis Shapovalov,Tomas Martin Etcheverry,Hard,0.6142044,1
+2026-03-04,Denis Shapovalov,Jannik Sinner,Hard,0.090646625,0
+2026-03-04,Casper Ruud,Valentin Vacherot,Hard,0.651875,1
+2026-03-04,Casper Ruud,Alexander Shevchenko,Hard,0.82351154,1
+2026-03-04,Casper Ruud,Carlos Alcaraz,Hard,0.098926775,0
+2026-03-04,Corentin Moutet,Aleksandar Kovacevic,Hard,0.61925554,0
+2026-03-04,Felix Auger Aliassime,Gabriel Diallo,Hard,0.7346497,1
+2026-03-04,Felix Auger Aliassime,Arthur Fils,Hard,0.68066293,0
+2026-03-04,Ugo Humbert,Alex Michelsen,Hard,0.61914283,0
+2026-03-04,Camilo Ugo Carabelli,Brandon Nakashima,Hard,0.26192576,0
+2026-03-04,Miomir Kecmanovic,Flavio Cobolli,Hard,0.4862351,0
+2026-03-04,Alejandro Davidovich Fokina,Zachary Svajda,Hard,0.79554355,1
+2026-03-04,Alejandro Davidovich Fokina,Jakub Mensik,Hard,0.48127848,1
+2026-03-04,Alejandro Davidovich Fokina,Learner Tien,Hard,0.5408254,0
+2026-03-04,Vit Kopriva,Michael Zheng,Hard,0.44570506,1
+2026-03-04,Alex De Minaur,Sebastian Korda,Hard,0.71470606,1
+2026-03-04,Adam Walton,Learner Tien,Hard,0.2667214,0
+2026-03-04,Alexei Popyrin,Jenson Brooksby,Hard,0.46257392,0
+2026-03-04,Sebastian Korda,Francisco Comesana,Hard,0.70322335,1
+2026-03-04,Sho Shimabukuro,Alexander Shevchenko,Hard,0.5015496,0
+2026-03-04,Francisco Cerundolo,Jack Draper,Hard,0.25183317,0
+2026-03-04,Sebastian Baez,Chun Hsin Tseng,Hard,0.7559571,1
+2026-03-04,Sebastian Baez,Jiri Lehecka,Hard,0.30135384,1
+2026-03-04,Jannik Sinner,Dalibor Svrcina,Hard,0.9495555,1
+2026-03-04,Jannik Sinner,Learner Tien,Hard,0.9358964,1
+2026-03-04,Jannik Sinner,Joao Fonseca,Hard,0.9130737,1
+2026-03-04,Rinky Hijikata,Francesco Maestrelli,Hard,0.5304811,1
+2026-03-04,Rinky Hijikata,Luciano Darderi,Hard,0.40643892,1
+2026-03-04,Mattia Bellucci,Gabriel Diallo,Hard,0.44073138,0
+2026-03-04,Tristan Schoolkate,Dino Prizmic,Hard,0.5261015,0
+2026-03-04,Raphael Collignon,Joao Fonseca,Hard,0.34847623,0
+2026-03-04,Daniel Merida Aguilar,Alex Michelsen,Hard,0.103385165,0
+2026-03-04,Ben Shelton,Learner Tien,Hard,0.68730533,0
+2026-03-18,Alexander Zverev,Martin Damm,Hard,0.7962568,1
+2026-03-18,Alexander Zverev,Marin Cilic,Hard,0.8178189,1
+2026-03-18,Alexander Zverev,Quentin Halys,Hard,0.8625918,1
+2026-03-18,Alexander Zverev,Francisco Cerundolo,Hard,0.7967718,1
+2026-03-18,Alexander Zverev,Jannik Sinner,Hard,0.15262248,0
+2026-03-18,Roberto Bautista Agut,James Duckworth,Hard,0.50509346,1
+2026-03-18,Roberto Bautista Agut,Karen Khachanov,Hard,0.29604548,0
+2026-03-18,Adrian Mannarino,Zhizhen Zhang,Hard,0.65270555,1
+2026-03-18,Adrian Mannarino,Tommy Paul,Hard,0.2737881,0
+2026-03-18,Marin Cilic,Alexei Popyrin,Hard,0.49264267,1
+2026-03-18,Marin Cilic,Brandon Nakashima,Hard,0.42904973,1
+2026-03-18,Jan Lennard Struff,Darwin Blanch,Hard,0.6636389,0
+2026-03-18,Grigor Dimitrov,Raphael Collignon,Hard,0.67202973,0
+2026-03-18,Yannick Hanfmann,Rafael Jodar,Hard,0.558735,0
+2026-03-18,Marton Fucsovics,Christopher Oconnell,Hard,0.63871044,1
+2026-03-18,Marton Fucsovics,Felix Auger Aliassime,Hard,0.22867496,0
+2026-03-18,Nikoloz Basilashvili,Mariano Navone,Hard,0.44862944,0
+2026-03-18,Damir Dzumhur,Jannik Sinner,Hard,0.05570156,0
+2026-03-18,Damir Dzumhur,Ignacio Buse,Hard,0.3690546,1
+2026-03-18,Marcos Giron,Martin Landaluce,Hard,0.6623305,0
+2026-03-18,Daniil Medvedev,Francisco Cerundolo,Hard,0.73117805,0
+2026-03-18,Daniil Medvedev,Rei Sakamoto,Hard,0.88180035,1
+2026-03-18,Quentin Halys,Kamil Majchrzak,Hard,0.3611356,1
+2026-03-18,Quentin Halys,Alejandro Davidovich Fokina,Hard,0.24144359,1
+2026-03-18,Quentin Halys,Liam Draxl,Hard,0.6169051,1
+2026-03-18,Karen Khachanov,Martin Landaluce,Hard,0.81415784,0
+2026-03-18,Kamil Majchrzak,Miomir Kecmanovic,Hard,0.48332244,1
+2026-03-18,Kamil Majchrzak,Learner Tien,Hard,0.40081802,1
+2026-03-18,Cameron Norrie,Alex Michelsen,Hard,0.5380797,0
+2026-03-18,Botic Van De Zandschulp,Taylor Fritz,Hard,0.24038021,0
+2026-03-18,Botic Van De Zandschulp,Denis Shapovalov,Hard,0.43902522,1
+2026-03-18,Alexander Bublik,Matteo Berrettini,Hard,0.6381711,0
+2026-03-18,Alexandre Muller,Matteo Berrettini,Hard,0.34008718,0
+2026-03-18,Reilly Opelka,Taylor Fritz,Hard,0.3283382,0
+2026-03-18,Reilly Opelka,Nuno Borges,Hard,0.52455235,1
+2026-03-18,Reilly Opelka,Jack Draper,Hard,0.25674066,1
+2026-03-18,Andrey Rublev,Alejandro Tabilo,Hard,0.63198453,0
+2026-03-18,Taylor Fritz,Jiri Lehecka,Hard,0.6349115,0
+2026-03-18,Tommy Paul,Tomas Martin Etcheverry,Hard,0.6592374,1
+2026-03-18,Tommy Paul,Raphael Collignon,Hard,0.7213187,1
+2026-03-18,Tommy Paul,Arthur Fils,Hard,0.52870286,0
+2026-03-18,Frances Tiafoe,Jannik Sinner,Hard,0.06698191,0
+2026-03-18,Frances Tiafoe,Arthur Cazaux,Hard,0.6210348,1
+2026-03-18,Frances Tiafoe,Terence Atmane,Hard,0.6774277,1
+2026-03-18,Frances Tiafoe,Jakub Mensik,Hard,0.36351758,1
+2026-03-18,Alejandro Tabilo,Francisco Comesana,Hard,0.5916437,1
+2026-03-18,Alejandro Tabilo,Alex Michelsen,Hard,0.46722248,0
+2026-03-18,Arthur Rinderknech,Terence Atmane,Hard,0.67626756,0
+2026-03-18,Matteo Berrettini,Valentin Vacherot,Hard,0.49527714,0
+2026-03-18,Stefanos Tsitsipas,Alex De Minaur,Hard,0.29699054,1
+2026-03-18,Stefanos Tsitsipas,Arthur Fery,Hard,0.81362617,1
+2026-03-18,Stefanos Tsitsipas,Arthur Fils,Hard,0.47976124,0
+2026-03-18,Aleksandar Vukic,Rafael Jodar,Hard,0.5019922,0
+2026-03-18,Daniel Altmaier,Terence Atmane,Hard,0.46949446,0
+2026-03-18,Hubert Hurkacz,Ethan Quinn,Hard,0.7352264,0
+2026-03-18,Casper Ruud,Ethan Quinn,Hard,0.830925,0
+2026-03-18,Tomas Barrios Vera,Arthur Cazaux,Hard,0.3053369,0
+2026-03-18,Tomas Martin Etcheverry,Zizou Bergs,Hard,0.50895536,1
+2026-03-18,Tomas Martin Etcheverry,Rafael Jodar,Hard,0.6176715,1
+2026-03-18,Corentin Moutet,Jannik Sinner,Hard,0.06751083,0
+2026-03-18,Corentin Moutet,Tomas Machac,Hard,0.39956605,1
+2026-03-18,Felix Auger Aliassime,Terence Atmane,Hard,0.82118505,0
+2026-03-18,Ugo Humbert,Francisco Cerundolo,Hard,0.5297514,0
+2026-03-18,Ugo Humbert,Alexander Shevchenko,Hard,0.7803878,1
+2026-03-18,Ugo Humbert,Gabriel Diallo,Hard,0.6131064,1
+2026-03-18,Yibing Wu,Gabriel Diallo,Hard,0.41668612,0
+2026-03-18,Camilo Ugo Carabelli,Sebastian Korda,Hard,0.23375466,0
+2026-03-18,Camilo Ugo Carabelli,Giovanni Mpetshi Perricard,Hard,0.35648093,1
+2026-03-18,Zizou Bergs,Jenson Brooksby,Hard,0.4198583,1
+2026-03-18,Adam Walton,Sebastian Baez,Hard,0.3667128,1
+2026-03-18,Adam Walton,Jakub Mensik,Hard,0.18240269,0
+2026-03-18,Valentin Vacherot,Mariano Navone,Hard,0.7612714,1
+2026-03-18,Valentin Vacherot,Arthur Fils,Hard,0.4529241,0
+2026-03-18,Sebastian Korda,Carlos Alcaraz,Hard,0.113289416,1
+2026-03-18,Sebastian Korda,Martin Landaluce,Hard,0.76811165,0
+2026-03-18,Thiago Agustin Tirante,Francisco Cerundolo,Hard,0.3030705,0
+2026-03-18,Thiago Agustin Tirante,Valentin Royer,Hard,0.4412401,1
+2026-03-18,Jannik Sinner,Jiri Lehecka,Hard,0.93012255,1
+2026-03-18,Jannik Sinner,Alex Michelsen,Hard,0.9397297,1
+2026-03-18,Aleksandar Kovacevic,Rei Sakamoto,Hard,0.6282617,0
+2026-03-18,Fabian Marozsan,Joao Fonseca,Hard,0.42744726,0
+2026-03-18,Emilio Nava,Tomas Machac,Hard,0.20651288,0
+2026-03-18,Alexander Shevchenko,Matteo Arnaldi,Hard,0.4300387,1
+2026-03-18,Alexander Shevchenko,Ben Shelton,Hard,0.16942337,1
+2026-03-18,Flavio Cobolli,Raphael Collignon,Hard,0.512225,0
+2026-03-18,Carlos Alcaraz,Joao Fonseca,Hard,0.89536965,1
+2026-03-18,Jiri Lehecka,Arthur Fils,Hard,0.5156521,1
+2026-03-18,Jiri Lehecka,Ethan Quinn,Hard,0.74410117,1
+2026-03-18,Jiri Lehecka,Martin Landaluce,Hard,0.76558685,1
+2026-03-18,Jiri Lehecka,Moise Kouame,Hard,0.7513663,1
+2026-03-18,Mattia Bellucci,Alex Michelsen,Hard,0.35291275,0
+2026-03-18,Zachary Svajda,Moise Kouame,Hard,0.58634466,0
+2026-03-18,Luciano Darderi,Martin Landaluce,Hard,0.67061853,0
+2026-03-18,Arthur Fils,Darwin Blanch,Hard,0.8326751,1
+2026-03-30,Martin Damm,Brandon Nakashima,Clay,0.33152482,0
+2026-03-30,Roberto Bautista Agut,Titouan Droguet,Clay,0.5582164,0
+2026-03-30,Adrian Mannarino,Daniel Merida Aguilar,Clay,0.5257782,0
+2026-03-30,Marco Trungelliti,Kamil Majchrzak,Clay,0.40569574,1
+2026-03-30,Marco Trungelliti,Corentin Moutet,Clay,0.28380987,1
+2026-03-30,Marco Trungelliti,Luciano Darderi,Clay,0.25737417,1
+2026-03-30,Marco Trungelliti,Henrique Rocha,Clay,0.53931856,1
+2026-03-30,Marco Trungelliti,Rafael Jodar,Clay,0.49599817,0
+2026-03-30,Dusan Lajovic,Rafael Jodar,Clay,0.49268577,0
+2026-03-30,Yannick Hanfmann,Jesper De Jong,Clay,0.5156093,1
+2026-03-30,Yannick Hanfmann,Karim Bennani,Clay,0.9047152,1
+2026-03-30,Nikoloz Basilashvili,Dino Prizmic,Clay,0.50066525,0
+2026-03-30,Damir Dzumhur,Botic Van De Zandschulp,Clay,0.44169018,0
+2026-03-30,Damir Dzumhur,Nuno Borges,Clay,0.3317957,1
+2026-03-30,Damir Dzumhur,Filip Cristian Jianu,Clay,0.5734186,1
+2026-03-30,Alex Bolt,Tomas Martin Etcheverry,Clay,0.32986453,0
+2026-03-30,Alex Bolt,Yibing Wu,Clay,0.46632746,1
+2026-03-30,Christopher Oconnell,Mariano Navone,Clay,0.43794423,0
+2026-03-30,Zhizhen Zhang,Jack Pinnington Jones,Clay,0.44347978,1
+2026-03-30,Zhizhen Zhang,Ben Shelton,Clay,0.18142404,0
+2026-03-30,Mackenzie Mcdonald,Thiago Agustin Tirante,Clay,0.49649954,0
+2026-03-30,Mackenzie Mcdonald,Jenson Brooksby,Clay,0.35511765,1
+2026-03-30,Quentin Halys,Karim Bennani,Clay,0.6988382,0
+2026-03-30,Kamil Majchrzak,Juan Manuel Cerundolo,Clay,0.55183613,1
+2026-03-30,Botic Van De Zandschulp,Alexander Shevchenko,Clay,0.6008043,1
+2026-03-30,Botic Van De Zandschulp,Francesco Maestrelli,Clay,0.62041336,1
+2026-03-30,Botic Van De Zandschulp,Mariano Navone,Clay,0.5090663,0
+2026-03-30,Jan Choinski,Stefanos Sakellaridis,Clay,0.59419376,0
+2026-03-30,Pedro Martinez,Daniel Altmaier,Clay,0.49317366,0
+2026-03-30,Alexandre Muller,Vit Kopriva,Clay,0.58555144,1
+2026-03-30,Alexandre Muller,Federico Cina,Clay,0.6366282,1
+2026-03-30,Tommy Paul,Frances Tiafoe,Clay,0.60461605,1
+2026-03-30,Tommy Paul,Tomas Martin Etcheverry,Clay,0.64983296,1
+2026-03-30,Tommy Paul,Roman Andres Burruchaga,Clay,0.7085038,1
+2026-03-30,Tommy Paul,Adolfo Daniel Vallejo,Clay,0.7019532,1
+2026-03-30,Frances Tiafoe,Alexei Popyrin,Clay,0.5896108,1
+2026-03-30,Frances Tiafoe,Rinky Hijikata,Clay,0.7414747,1
+2026-03-30,Matteo Berrettini,Ignacio Buse,Clay,0.74555534,0
+2026-03-30,Aleksandar Vukic,Taha Baadi,Clay,0.69455624,0
+2026-03-30,Daniel Altmaier,Fabian Marozsan,Clay,0.39114028,0
+2026-03-30,Daniel Altmaier,Dino Prizmic,Clay,0.56817204,1
+2026-03-30,Tallon Griekspoor,Luca Van Assche,Clay,0.7352495,0
+2026-03-30,Alex Molcan,Matteo Arnaldi,Clay,0.45861727,1
+2026-03-30,Alex Molcan,Mariano Navone,Clay,0.45815945,0
+2026-03-30,Alex Molcan,Gabriel Diallo,Clay,0.4088869,1
+2026-03-30,Tomas Martin Etcheverry,Federico Agustin Gomez,Clay,0.73663265,1
+2026-03-30,Corentin Moutet,Taha Baadi,Clay,0.7619435,1
+2026-03-30,Camilo Ugo Carabelli,Timofey Skatov,Clay,0.6011591,1
+2026-03-30,Camilo Ugo Carabelli,Luca Van Assche,Clay,0.5437774,1
+2026-03-30,Camilo Ugo Carabelli,Ignacio Buse,Clay,0.5072876,1
+2026-03-30,Camilo Ugo Carabelli,Rafael Jodar,Clay,0.54403126,0
+2026-03-30,Vit Kopriva,Hamad Medjedovic,Clay,0.48766094,1
+2026-03-30,Hugo Gaston,Luca Van Assche,Clay,0.46905982,0
+2026-03-30,Adam Walton,Roman Andres Burruchaga,Clay,0.50653166,0
+2026-03-30,Patrick Kypson,Alexei Popyrin,Clay,0.4152885,0
+2026-03-30,Alexei Popyrin,Alex Michelsen,Clay,0.4941136,1
+2026-03-30,Thiago Agustin Tirante,Roman Andres Burruchaga,Clay,0.5397383,0
+2026-03-30,Thiago Agustin Tirante,Ben Shelton,Clay,0.2350301,1
+2026-03-30,Thiago Agustin Tirante,Colton Smith,Clay,0.578225,1
+2026-03-30,Sebastian Baez,Titouan Droguet,Clay,0.5791903,0
+2026-03-30,Sebastian Baez,Vilius Gaubas,Clay,0.6290582,1
+2026-03-30,Otto Virtanen,Daniel Merida Aguilar,Clay,0.50960886,0
+2026-03-30,Aleksandar Kovacevic,Rinky Hijikata,Clay,0.5581993,0
+2026-03-30,Gabi Adrian Boitan,Elmer Moller,Clay,0.27907228,0
+2026-03-30,Fabian Marozsan,Stefanos Sakellaridis,Clay,0.7437586,1
+2026-03-30,Fabian Marozsan,Daniel Merida Aguilar,Clay,0.7208301,0
+2026-03-30,Brandon Nakashima,Roman Andres Burruchaga,Clay,0.68931407,0
+2026-03-30,Alexander Shevchenko,Radu David Turcanu,Clay,0.8353994,1
+2026-03-30,Tomas Machac,Rafael Jodar,Clay,0.70387644,0
+2026-03-30,Liam Draxl,Nishesh Basavareddy,Clay,0.44104522,0
+2026-03-30,Mattia Bellucci,Luciano Darderi,Clay,0.3175249,0
+2026-03-30,Mattia Bellucci,Reda Bennani,Clay,0.8687244,1
+2026-03-30,Zachary Svajda,Adolfo Daniel Vallejo,Clay,0.48629516,0
+2026-03-30,Mariano Navone,Elmer Moller,Clay,0.6728564,1
+2026-03-30,Mariano Navone,Daniel Merida Aguilar,Clay,0.5985154,1
+2026-03-30,Roman Andres Burruchaga,Learner Tien,Clay,0.39912373,1
+2026-03-30,Coleman Wong,Alex Michelsen,Clay,0.45408922,0
+2026-03-30,Nishesh Basavareddy,Learner Tien,Clay,0.24668261,0
+2026-04-05,Alexander Zverev,Cristian Garin,Clay,0.8669738,1
+2026-04-05,Alexander Zverev,Zizou Bergs,Clay,0.8157303,1
+2026-04-05,Alexander Zverev,Jannik Sinner,Clay,0.22888225,0
+2026-04-05,Alexander Zverev,Joao Fonseca,Clay,0.7732889,1
+2026-04-05,Stan Wawrinka,Sebastian Baez,Clay,0.3932749,0
+2026-04-05,Gael Monfils,Alexander Bublik,Clay,0.2688111,0
+2026-04-05,Gael Monfils,Tallon Griekspoor,Clay,0.33525154,1
+2026-04-05,Adrian Mannarino,Zizou Bergs,Clay,0.42483687,0
+2026-04-05,Marin Cilic,Felix Auger Aliassime,Clay,0.28123006,0
+2026-04-05,Marin Cilic,Alexander Shevchenko,Clay,0.62956524,1
+2026-04-05,Grigor Dimitrov,Tomas Martin Etcheverry,Clay,0.58991224,0
+2026-04-05,Marton Fucsovics,Alejandro Tabilo,Clay,0.5196317,0
+2026-04-05,Damir Dzumhur,Fabian Marozsan,Clay,0.31533748,0
+2026-04-05,Daniil Medvedev,Matteo Berrettini,Clay,0.60505444,0
+2026-04-05,Cristian Garin,Matteo Arnaldi,Clay,0.49010542,1
+2026-04-05,Karen Khachanov,Arthur Rinderknech,Clay,0.6070168,0
+2026-04-05,Cameron Norrie,Miomir Kecmanovic,Clay,0.57513404,1
+2026-04-05,Cameron Norrie,Alex De Minaur,Clay,0.2672063,0
+2026-04-05,Alexander Bublik,Carlos Alcaraz,Clay,0.098753534,0
+2026-04-05,Alexander Bublik,Jiri Lehecka,Clay,0.54846084,1
+2026-04-05,Alexandre Muller,Corentin Moutet,Clay,0.4348318,0
+2026-04-05,Andrey Rublev,Nuno Borges,Clay,0.64926,1
+2026-04-05,Andrey Rublev,Zizou Bergs,Clay,0.69496953,0
+2026-04-05,Alejandro Tabilo,Jiri Lehecka,Clay,0.37947118,0
+2026-04-05,Arthur Rinderknech,Joao Fonseca,Clay,0.4375026,0
+2026-04-05,Matteo Berrettini,Joao Fonseca,Clay,0.5467916,0
+2026-04-05,Stefanos Tsitsipas,Francisco Cerundolo,Clay,0.5039649,0
+2026-04-05,Daniel Altmaier,Tomas Machac,Clay,0.29943264,0
+2026-04-05,Hubert Hurkacz,Valentin Vacherot,Clay,0.5112122,0
+2026-04-05,Hubert Hurkacz,Fabian Marozsan,Clay,0.5353194,1
+2026-04-05,Hubert Hurkacz,Luciano Darderi,Clay,0.4858985,1
+2026-04-05,Denis Shapovalov,Alexander Blockx,Clay,0.6337372,0
+2026-04-05,Casper Ruud,Corentin Moutet,Clay,0.713703,1
+2026-04-05,Casper Ruud,Alexei Popyrin,Clay,0.74646485,1
+2026-04-05,Tomas Martin Etcheverry,Carlos Alcaraz,Clay,0.08205504,0
+2026-04-05,Tomas Martin Etcheverry,Terence Atmane,Clay,0.5936809,1
+2026-04-05,Felix Auger Aliassime,Jannik Sinner,Clay,0.11170405,0
+2026-04-05,Ugo Humbert,Jannik Sinner,Clay,0.09643071,0
+2026-04-05,Ugo Humbert,Moise Kouame,Clay,0.766983,1
+2026-04-05,Alex De Minaur,Valentin Vacherot,Clay,0.71302766,0
+2026-04-05,Alex De Minaur,Alexander Blockx,Clay,0.8016321,1
+2026-04-05,Valentin Vacherot,Lorenzo Musetti,Clay,0.26661143,1
+2026-04-05,Valentin Vacherot,Juan Manuel Cerundolo,Clay,0.68208677,1
+2026-04-05,Valentin Vacherot,Carlos Alcaraz,Clay,0.09590837,0
+2026-04-05,Francisco Cerundolo,Tomas Machac,Clay,0.558493,0
+2026-04-05,Sebastian Baez,Carlos Alcaraz,Clay,0.07930665,0
+2026-04-05,Jannik Sinner,Tomas Machac,Clay,0.90395546,1
+2026-04-05,Jannik Sinner,Carlos Alcaraz,Clay,0.47741118,1
+2026-04-05,Emilio Nava,Jiri Lehecka,Clay,0.2856199,0
+2026-04-05,Francisco Comesana,Flavio Cobolli,Clay,0.40715033,0
+2026-04-05,Flavio Cobolli,Alexander Blockx,Clay,0.63185024,0
+2026-04-05,Gabriel Diallo,Joao Fonseca,Clay,0.46537697,0
+2026-04-05,Terence Atmane,Ethan Quinn,Clay,0.5010809,1
+2026-04-13,Alexander Zverev,Miomir Kecmanovic,Clay,0.8332922,1
+2026-04-13,Alexander Zverev,Francisco Cerundolo,Clay,0.75551814,1
+2026-04-13,Alexander Zverev,Flavio Cobolli,Clay,0.8241515,0
+2026-04-13,Alexander Zverev,Gabriel Diallo,Clay,0.7972328,1
+2026-04-13,Stan Wawrinka,Cameron Norrie,Clay,0.27604243,0
+2026-04-13,Adrian Mannarino,Nuno Borges,Clay,0.3642859,0
+2026-04-13,Marin Cilic,Daniel Altmaier,Clay,0.5516453,0
+2026-04-13,Marco Trungelliti,Hamad Medjedovic,Clay,0.42499024,0
+2026-04-13,Yannick Hanfmann,Alexander Blockx,Clay,0.57312626,0
+2026-04-13,Zhizhen Zhang,Luciano Darderi,Clay,0.2951201,0
+2026-04-13,Karen Khachanov,Camilo Ugo Carabelli,Clay,0.73137766,0
+2026-04-13,Sumit Nagal,Francisco Cerundolo,Clay,0.17147923,0
+2026-04-13,Cameron Norrie,Ethan Quinn,Clay,0.66320825,1
+2026-04-13,Cameron Norrie,Rafael Jodar,Clay,0.6569053,0
+2026-04-13,Botic Van De Zandschulp,Marc Andrea Huesler,Clay,0.670943,1
+2026-04-13,Botic Van De Zandschulp,Francisco Cerundolo,Clay,0.31740192,0
+2026-04-13,Alexander Bublik,Alex Molcan,Clay,0.74131763,0
+2026-04-13,Pedro Martinez,Lorenzo Sonego,Clay,0.37900183,0
+2026-04-13,Sebastian Ofner,Alex De Minaur,Clay,0.20850213,0
+2026-04-13,Reilly Opelka,Ethan Quinn,Clay,0.65587807,0
+2026-04-13,Andrey Rublev,Lorenzo Sonego,Clay,0.6655166,1
+2026-04-13,Andrey Rublev,Tomas Machac,Clay,0.5394108,1
+2026-04-13,Andrey Rublev,Mariano Navone,Clay,0.7112064,1
+2026-04-13,Andrey Rublev,Hamad Medjedovic,Clay,0.66422206,1
+2026-04-13,Andrey Rublev,Arthur Fils,Clay,0.5044021,0
+2026-04-13,Alejandro Tabilo,Joao Fonseca,Clay,0.417994,0
+2026-04-13,Arthur Rinderknech,Alex Michelsen,Clay,0.5536346,1
+2026-04-13,Arthur Rinderknech,Joao Fonseca,Clay,0.45395577,0
+2026-04-13,Stefanos Tsitsipas,Fabian Marozsan,Clay,0.62014353,0
+2026-04-13,Vitaliy Sachko,Gabriel Diallo,Clay,0.3928693,0
+2026-04-13,Daniel Altmaier,Alex Molcan,Clay,0.5088653,0
+2026-04-13,Nuno Borges,Tomas Martin Etcheverry,Clay,0.4692752,1
+2026-04-13,Nuno Borges,Hamad Medjedovic,Clay,0.5645908,0
+2026-04-13,Denis Shapovalov,Tallon Griekspoor,Clay,0.47299153,1
+2026-04-13,Denis Shapovalov,Alex Molcan,Clay,0.6221722,0
+2026-04-13,Denis Shapovalov,Fabian Marozsan,Clay,0.5068127,1
+2026-04-13,Alex Molcan,Ben Shelton,Clay,0.22287475,0
+2026-04-13,Jaume Munar,Rafael Jodar,Clay,0.6215563,0
+2026-04-13,Corentin Moutet,Lorenzo Musetti,Clay,0.26640326,0
+2026-04-13,Corentin Moutet,Ignacio Buse,Clay,0.6033598,1
+2026-04-13,Camilo Ugo Carabelli,Rafael Jodar,Clay,0.4717565,0
+2026-04-13,Vit Kopriva,Flavio Cobolli,Clay,0.3879836,0
+2026-04-13,Vit Kopriva,Luciano Darderi,Clay,0.34898144,1
+2026-04-13,Vit Kopriva,Justin Engel,Clay,0.54533774,1
+2026-04-13,Zizou Bergs,Flavio Cobolli,Clay,0.4203261,0
+2026-04-13,Zizou Bergs,Marko Topo,Clay,0.7189054,1
+2026-04-13,Alex De Minaur,Hamad Medjedovic,Clay,0.757532,0
+2026-04-13,Sebastian Baez,Tomas Machac,Clay,0.4140392,0
+2026-04-13,Otto Virtanen,Carlos Alcaraz,Clay,0.07764379,0
+2026-04-13,Brandon Nakashima,Juan Manuel Cerundolo,Clay,0.66414285,1
+2026-04-13,Brandon Nakashima,Arthur Fils,Clay,0.45902318,0
+2026-04-13,Emilio Nava,Ben Shelton,Clay,0.18634944,0
+2026-04-13,Lorenzo Musetti,Arthur Fils,Clay,0.63221574,0
+2026-04-13,Lorenzo Musetti,Martin Landaluce,Clay,0.8329473,1
+2026-04-13,Flavio Cobolli,Ben Shelton,Clay,0.29947215,0
+2026-04-13,Flavio Cobolli,Diego Dedura Palomero,Clay,0.8312325,1
+2026-04-13,Terence Atmane,Arthur Fils,Clay,0.25152737,0
+2026-04-13,Arthur Fils,Rafael Jodar,Clay,0.74532545,1
+2026-04-13,Ben Shelton,Alexander Blockx,Clay,0.77739316,1
+2026-04-13,Ben Shelton,Joao Fonseca,Clay,0.6269335,1
+2026-04-22,Alexander Zverev,Jannik Sinner,Clay,0.210929,0
+2026-04-22,Alexander Zverev,Flavio Cobolli,Clay,0.7877544,1
+2026-04-22,Alexander Zverev,Mariano Navone,Clay,0.79897696,1
+2026-04-22,Alexander Zverev,Terence Atmane,Clay,0.78385955,1
+2026-04-22,Alexander Zverev,Jakub Mensik,Clay,0.72639954,1
+2026-04-22,Alexander Zverev,Alexander Blockx,Clay,0.8002464,1
+2026-04-22,Martin Damm,Alexei Popyrin,Clay,0.43045905,1
+2026-04-22,Martin Damm,Jakub Mensik,Clay,0.28208166,0
+2026-04-22,Gael Monfils,Camilo Ugo Carabelli,Clay,0.529459,0
+2026-04-22,Roberto Bautista Agut,Thiago Agustin Tirante,Clay,0.54657185,0
+2026-04-22,Adrian Mannarino,Ignacio Buse,Clay,0.4543016,0
+2026-04-22,Marin Cilic,Zizou Bergs,Clay,0.54510474,1
+2026-04-22,Marco Trungelliti,Daniel Merida Aguilar,Clay,0.5533817,0
+2026-04-22,Jan Lennard Struff,Alexandre Muller,Clay,0.56296736,1
+2026-04-22,Jan Lennard Struff,Alex Michelsen,Clay,0.5685506,0
+2026-04-22,Dusan Lajovic,Arthur Rinderknech,Clay,0.36544257,0
+2026-04-22,Dusan Lajovic,Lorenzo Sonego,Clay,0.4117442,1
+2026-04-22,Grigor Dimitrov,Adolfo Daniel Vallejo,Clay,0.70865214,0
+2026-04-22,Pablo Carreno Busta,Marton Fucsovics,Clay,0.48222685,1
+2026-04-22,Pablo Carreno Busta,Alejandro Davidovich Fokina,Clay,0.37584585,0
+2026-04-22,Yannick Hanfmann,Marcos Giron,Clay,0.45965892,1
+2026-04-22,Yannick Hanfmann,Francisco Cerundolo,Clay,0.34843364,0
+2026-04-22,Nikoloz Basilashvili,Sebastian Ofner,Clay,0.4713196,0
+2026-04-22,Damir Dzumhur,Tallon Griekspoor,Clay,0.30444452,0
+2026-04-22,Damir Dzumhur,Mattia Bellucci,Clay,0.51184434,1
+2026-04-22,Daniil Medvedev,Nicolai Budkov Kjaer,Clay,0.82766724,1
+2026-04-22,Daniil Medvedev,Fabian Marozsan,Clay,0.70440793,1
+2026-04-22,Daniil Medvedev,Flavio Cobolli,Clay,0.6781494,0
+2026-04-22,Cristian Garin,Alexander Blockx,Clay,0.56236005,0
+2026-04-22,Zhizhen Zhang,Vit Kopriva,Clay,0.47475442,0
+2026-04-22,Karen Khachanov,Adam Walton,Clay,0.7559837,1
+2026-04-22,Karen Khachanov,Jakub Mensik,Clay,0.48538303,0
+2026-04-22,Cameron Norrie,Thiago Agustin Tirante,Clay,0.62356454,1
+2026-04-22,Cameron Norrie,Jannik Sinner,Clay,0.08509751,0
+2026-04-22,Cameron Norrie,Tomas Machac,Clay,0.5260459,1
+2026-04-22,Alexander Bublik,Stefanos Tsitsipas,Clay,0.5389277,0
+2026-04-22,Sebastian Ofner,Tomas Martin Etcheverry,Clay,0.36250758,0
+2026-04-22,Andrey Rublev,Vit Kopriva,Clay,0.7215569,0
+2026-04-22,Benjamin Bonzi,Jannik Sinner,Clay,0.07405082,0
+2026-04-22,Benjamin Bonzi,Titouan Droguet,Clay,0.5443411,1
+2026-04-22,Tommy Paul,Thiago Agustin Tirante,Clay,0.6966483,0
+2026-04-22,Alejandro Tabilo,Jiri Lehecka,Clay,0.3862664,0
+2026-04-22,Alejandro Tabilo,Valentin Royer,Clay,0.5148963,1
+2026-04-22,Matteo Berrettini,Dino Prizmic,Clay,0.72829866,0
+2026-04-22,Stefanos Tsitsipas,Casper Ruud,Clay,0.4001577,0
+2026-04-22,Stefanos Tsitsipas,Patrick Kypson,Clay,0.75483257,1
+2026-04-22,Stefanos Tsitsipas,Daniel Merida Aguilar,Clay,0.79713863,1
+2026-04-22,Daniel Altmaier,Juan Manuel Cerundolo,Clay,0.54004246,0
+2026-04-22,Hubert Hurkacz,Lorenzo Musetti,Clay,0.39267957,0
+2026-04-22,Hubert Hurkacz,Jaime Faria,Clay,0.6935343,1
+2026-04-22,Nuno Borges,Mariano Navone,Clay,0.5248621,0
+2026-04-22,Denis Shapovalov,Nicolai Budkov Kjaer,Clay,0.652616,0
+2026-04-22,Casper Ruud,Jaume Munar,Clay,0.7067436,1
+2026-04-22,Casper Ruud,Alejandro Davidovich Fokina,Clay,0.60379934,1
+2026-04-22,Casper Ruud,Alexander Blockx,Clay,0.78139246,0
+2026-04-22,Tallon Griekspoor,Lorenzo Musetti,Clay,0.29860133,0
+2026-04-22,Jaume Munar,Alexander Shevchenko,Clay,0.6342875,1
+2026-04-22,Tomas Martin Etcheverry,Arthur Fils,Clay,0.36956453,0
+2026-04-22,Tomas Martin Etcheverry,Dino Prizmic,Clay,0.64779955,1
+2026-04-22,Corentin Moutet,Daniel Merida Aguilar,Clay,0.6890898,0
+2026-04-22,Felix Auger Aliassime,Vilius Gaubas,Clay,0.77124,1
+2026-04-22,Felix Auger Aliassime,Alexander Blockx,Clay,0.76945657,0
+2026-04-22,Ugo Humbert,Terence Atmane,Clay,0.52167886,0
+2026-04-22,Camilo Ugo Carabelli,Flavio Cobolli,Clay,0.30534965,0
+2026-04-22,Miomir Kecmanovic,Terence Atmane,Clay,0.5588791,0
+2026-04-22,Vit Kopriva,Rafael Jodar,Clay,0.46724632,0
+2026-04-22,Alex De Minaur,Rafael Jodar,Clay,0.7298393,0
+2026-04-22,Adam Walton,Martin Landaluce,Clay,0.5270501,1
+2026-04-22,Valentin Vacherot,Emilio Nava,Clay,0.6138195,0
+2026-04-22,Francisco Cerundolo,Luciano Darderi,Clay,0.59537053,1
+2026-04-22,Francisco Cerundolo,Alexander Blockx,Clay,0.68502927,0
+2026-04-22,Sebastian Baez,Vilius Gaubas,Clay,0.5883702,0
+2026-04-22,Jenson Brooksby,Emilio Nava,Clay,0.5918989,0
+2026-04-22,Jannik Sinner,Elmer Moller,Clay,0.94230145,1
+2026-04-22,Jannik Sinner,Arthur Fils,Clay,0.88285154,1
+2026-04-22,Jannik Sinner,Rafael Jodar,Clay,0.92532617,1
+2026-04-22,Fabian Marozsan,Ethan Quinn,Clay,0.59687346,1
+2026-04-22,Brandon Nakashima,Alexander Blockx,Clay,0.6342756,0
+2026-04-22,Emilio Nava,Arthur Fils,Clay,0.27252087,0
+2026-04-22,Jesper De Jong,Rafael Jodar,Clay,0.50826544,0
+2026-04-22,Lorenzo Musetti,Jiri Lehecka,Clay,0.6538496,0
+2026-04-22,Juan Manuel Cerundolo,Luciano Darderi,Clay,0.3549627,0
+2026-04-22,Francisco Comesana,Tomas Machac,Clay,0.35118368,0
+2026-04-22,Flavio Cobolli,Adolfo Daniel Vallejo,Clay,0.67011577,1
+2026-04-22,Jiri Lehecka,Arthur Fils,Clay,0.4779047,0
+2026-04-22,Jiri Lehecka,Alex Michelsen,Clay,0.67882514,1
+2026-04-22,Adolfo Daniel Vallejo,Learner Tien,Clay,0.36212957,1
+2026-04-22,Elmer Moller,Federico Cina,Clay,0.45780253,1
+2026-04-22,Ignacio Buse,Arthur Fils,Clay,0.24131635,0
+2026-04-22,Dino Prizmic,Ben Shelton,Clay,0.21454172,1
+2026-04-22,Joao Fonseca,Rafael Jodar,Clay,0.66460073,0

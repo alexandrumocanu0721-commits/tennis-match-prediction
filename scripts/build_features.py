@@ -18,6 +18,7 @@ from tennis_pipeline import (
     compute_fatigue_stats,
     compute_winner_perspective_diffs,
     compute_serve_return_stats,
+    is_deciding_set_match,
     encode_tourney_level,
     fill_player_names_from_matches,
     initialize_h2h_records,
@@ -44,7 +45,7 @@ df = df[
     ~df["score"].str.contains(
         "RET|W/O|Walkover|DEF", case=False, na=False
     )
-    & ~df["tourney_level"].isin(["D", "O"])
+    & ~df["tourney_level"].str.strip().str.upper().isin(["D", "O"])
 ]
 print(f"Removed {original_len - len(df)} retirement/walkover/Davis Cup/Olympics rows")
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
@@ -86,8 +87,10 @@ for row in df.itertuples(index=False):
     diffs = compute_winner_perspective_diffs(
         winner,
         loser,
+        match_date,
         surface,
         players,
+        rankings_by_player,
         h2h_diffs=h2h_diffs,
         fatigue_stats=fatigue_stats,
     )
@@ -102,6 +105,7 @@ for row in df.itertuples(index=False):
     )
 
     serve_stats = compute_serve_return_stats(row)
+    deciding_set = is_deciding_set_match(row.score, row.tourney_level)
     append_recent_result_lists(
         players,
         winner,
@@ -109,6 +113,7 @@ for row in df.itertuples(index=False):
         surface,
         serve_stats,
         serve_data_valid=serve_stats["valid"],
+        is_deciding_set=deciding_set,
     )
     feature_rows.append(winner_row)
     feature_rows.append(loser_row)

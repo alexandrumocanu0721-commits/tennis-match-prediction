@@ -5,6 +5,7 @@ import pandas as pd
 
 from tennis_pipeline import (
     FEATURES,
+    MODEL_EVAL_CUTOFF_DATE,
     path_processed_backtest_predictions_csv,
     path_processed_features_csv,
     path_trained_model_pkl,
@@ -18,8 +19,8 @@ def main() -> None:
     df = pd.read_csv(path_processed_features_csv(root))
     df["date"] = pd.to_datetime(df["date"])
 
-    # Historical test window only: matches from 2026-01-01 onward.
-    test_df = df[df["date"] >= pd.Timestamp("2026-01-01")].copy()
+    # Historical test window only: matches from the model evaluation cutoff onward.
+    test_df = df[df["date"] >= pd.Timestamp(MODEL_EVAL_CUTOFF_DATE)].copy()
 
     # Keep one row per real match. features.csv stores each match twice, once per
     # player perspective, so collapse the mirrored pair into a stable canonical

@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any
 
@@ -28,10 +29,12 @@ FEATURES: list[str] = [
     "is_atp_open",
     "rank_diff",
     "points_diff",
+    "rank_momentum_diff",
     "recent_form_diff",
     "recent_surface_form_diff",
     "win_pct_diff",
     "matches_played_diff",
+    "deciding_set_win_rate_diff",
     "serve_rating_diff",
     "return_rating_diff",
     "bp_save_rate_diff",
@@ -47,6 +50,9 @@ TARGET = "result"
 
 # --- Elo update strength (standard scale) ---
 ELO_K = 32
+
+# --- Rank momentum lookback window (weeks) ---
+RANK_MOMENTUM_WEEKS = 12
 
 # --- Temporal split: single calendar boundary (ISO date, midnight) ---
 # Train / Optuna never see rows at or after this instant; evaluation uses this instant onward.
@@ -159,6 +165,49 @@ def get_player_ranking(
     return latest_entry["rank"], latest_entry["points"]
 
 
+def _get_player_rank_points_asof(
+    player_id: Any,
+    match_date: pd.Timestamp,
+    rankings_by_player: dict[Any, pd.DataFrame],
+) -> tuple[int, int] | None:
+    """Return the most recent rank/points on or before ``match_date``."""
+    history = rankings_by_player.get(player_id)
+    if history is None or history.empty:
+        return None
+
+    player_history = history[history["ranking_date"] <= match_date]
+    if player_history.empty:
+        return None
+
+    latest_entry = player_history.iloc[-1]
+    return int(latest_entry["rank"]), int(latest_entry["points"])
+
+
+def compute_rank_momentum(
+    player_id: Any,
+    match_date: pd.Timestamp,
+    rankings_by_player: dict[Any, pd.DataFrame],
+    weeks_back: int = RANK_MOMENTUM_WEEKS,
+) -> float:
+    """Percentage change in ranking points over the lookback window."""
+    current_snapshot = _get_player_rank_points_asof(
+        player_id, match_date, rankings_by_player
+    )
+    if current_snapshot is None:
+        return 0.0
+
+    past_date = match_date - pd.Timedelta(weeks=weeks_back)
+    past_snapshot = _get_player_rank_points_asof(
+        player_id, past_date, rankings_by_player
+    )
+    if past_snapshot is None:
+        return 0.0
+
+    current_points = current_snapshot[1]
+    past_points = past_snapshot[1]
+    return (current_points - past_points) / (past_points + 1)
+
+
 def resolve_rank_points_for_player(
     player_id: Any,
     match_date: pd.Timestamp,
@@ -242,6 +291,38 @@ def rolling_serve_stat(
     """Decay-weighted mean of the last ``window`` values; 0.5 if no history yet."""
     recent = history[-window:]
     return _exponential_decay_mean(recent, alpha)
+
+
+def count_completed_sets(score: str) -> int:
+    """Count completed sets in a score string, returning 0 on malformed input."""
+    try:
+        if score is None or pd.isna(score):
+            return 0
+        score_str = str(score).strip()
+        if not score_str:
+            return 0
+
+        set_pattern = re.compile(r"^\d+-\d+(?:\(\d+\))?$")
+        completed_sets = 0
+        for token in score_str.split():
+            if set_pattern.match(token):
+                completed_sets += 1
+        return completed_sets
+    except Exception:
+        return 0
+
+
+def is_deciding_set_match(score: str, tourney_level: str) -> bool:
+    """Return whether a match score implies a deciding set was played."""
+    try:
+        set_count = count_completed_sets(score)
+        if set_count == 3:
+            return str(tourney_level).strip().upper() != "G"
+        if set_count == 5:
+            return str(tourney_level).strip().upper() == "G"
+        return False
+    except Exception:
+        return False
 
 
 def surface_or_global_stat(
@@ -329,6 +410,7 @@ def initialize_player(
         "return_rating_history": [],
         "bp_save_rate_history": [],
         "bp_convert_rate_history": [],
+        "deciding_set_results": [],
         "surface_serve_rating_history": {
             "Hard": [],
             "Clay": [],
@@ -473,8 +555,10 @@ def fill_player_names_from_matches(df: pd.DataFrame) -> dict[Any, str]:
 def compute_winner_perspective_diffs(
     winner: Any,
     loser: Any,
+    match_date: pd.Timestamp,
     surface: str,
     players: dict,
+    rankings_by_player: dict[Any, pd.DataFrame],
     h2h_diffs: dict | None = None,
     fatigue_stats: dict | None = None,
 ) -> dict[str, float]:
@@ -499,6 +583,9 @@ def compute_winner_perspective_diffs(
     matches_played_diff = (
         players[winner]["matches_played"] - players[loser]["matches_played"]
     )
+    deciding_set_win_rate_diff = deciding_set_win_rate(
+        players[winner]["deciding_set_results"]
+    ) - deciding_set_win_rate(players[loser]["deciding_set_results"])
 
     elo_diff = players[winner]["elo"] - players[loser]["elo"]
     surface_elo_diff = (
@@ -507,6 +594,13 @@ def compute_winner_perspective_diffs(
     )
     rank_diff = players[loser]["rank"] - players[winner]["rank"]
     points_diff = players[winner]["points"] - players[loser]["points"]
+    winner_rank_momentum = compute_rank_momentum(
+        winner, match_date, rankings_by_player
+    )
+    loser_rank_momentum = compute_rank_momentum(
+        loser, match_date, rankings_by_player
+    )
+    rank_momentum_diff = winner_rank_momentum - loser_rank_momentum
     serve_rating_diff = rolling_serve_stat(
         players[winner]["serve_rating_history"]
     ) - rolling_serve_stat(players[loser]["serve_rating_history"])
@@ -560,10 +654,12 @@ def compute_winner_perspective_diffs(
         "surface_elo_diff": surface_elo_diff,
         "rank_diff": rank_diff,
         "points_diff": points_diff,
+        "rank_momentum_diff": rank_momentum_diff,
         "recent_form_diff": recent_form_diff,
         "recent_surface_form_diff": recent_surface_form_diff,
         "win_pct_diff": win_pct_diff,
         "matches_played_diff": matches_played_diff,
+        "deciding_set_win_rate_diff": deciding_set_win_rate_diff,
         "serve_rating_diff": serve_rating_diff,
         "return_rating_diff": return_rating_diff,
         "bp_save_rate_diff": bp_save_rate_diff,
@@ -601,10 +697,12 @@ def build_symmetric_training_rows(
         "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": diffs["rank_diff"],
         "points_diff": diffs["points_diff"],
+        "rank_momentum_diff": diffs["rank_momentum_diff"],
         "recent_form_diff": diffs["recent_form_diff"],
         "recent_surface_form_diff": diffs["recent_surface_form_diff"],
         "win_pct_diff": diffs["win_pct_diff"],
         "matches_played_diff": diffs["matches_played_diff"],
+        "deciding_set_win_rate_diff": diffs["deciding_set_win_rate_diff"],
         "serve_rating_diff": diffs["serve_rating_diff"],
         "return_rating_diff": diffs["return_rating_diff"],
         "bp_save_rate_diff": diffs["bp_save_rate_diff"],
@@ -631,10 +729,12 @@ def build_symmetric_training_rows(
         "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": (-1) * diffs["rank_diff"],
         "points_diff": (-1) * diffs["points_diff"],
+        "rank_momentum_diff": (-1) * diffs["rank_momentum_diff"],
         "recent_form_diff": -diffs["recent_form_diff"],
         "recent_surface_form_diff": -diffs["recent_surface_form_diff"],
         "win_pct_diff": -diffs["win_pct_diff"],
         "matches_played_diff": -diffs["matches_played_diff"],
+        "deciding_set_win_rate_diff": -diffs["deciding_set_win_rate_diff"],
         "serve_rating_diff": -diffs["serve_rating_diff"],
         "return_rating_diff": -diffs["return_rating_diff"],
         "bp_save_rate_diff": -diffs["bp_save_rate_diff"],
@@ -657,12 +757,16 @@ def append_recent_result_lists(
     surface: str,
     serve_stats: dict[str, dict[str, float]] | None = None,
     serve_data_valid: bool = True,
+    is_deciding_set: bool = False,
 ) -> None:
     """Push this match’s 1/0 outcomes onto overall and surface-specific form deques (lists)."""
     players[winner]["recent_results"].append(1)
     players[loser]["recent_results"].append(0)
     players[winner]["surface_recent_results"][surface].append(1)
     players[loser]["surface_recent_results"][surface].append(0)
+    if is_deciding_set:
+        players[winner]["deciding_set_results"].append(1)
+        players[loser]["deciding_set_results"].append(0)
     if serve_stats is None or not serve_data_valid:
         return
     players[winner]["serve_rating_history"].append(
@@ -794,6 +898,8 @@ def compute_h2h_win_rate(
     weighted_wins = 0.0
     weighted_total = 0.0
     for entry_date, entry_surface, winner_id in records:
+        if entry_date >= match_date:
+            continue
         if surface_filter is not None and entry_surface != surface_filter:
             continue
         years_ago = (match_date - entry_date).days / 365.25
@@ -839,8 +945,10 @@ def compute_h2h_diffs(
 def compute_player_a_perspective_features(
     player_a_id: Any,
     player_b_id: Any,
+    match_date: pd.Timestamp,
     surface: str,
     players: dict,
+    rankings_by_player: dict[Any, pd.DataFrame],
     tourney_level_encoded: dict[str, int],
     h2h_diffs: dict | None = None,
     fatigue_stats: dict | None = None,
@@ -857,6 +965,13 @@ def compute_player_a_perspective_features(
     points_diff = (
         players[player_a_id]["points"] - players[player_b_id]["points"]
     )
+    player_a_rank_momentum = compute_rank_momentum(
+        player_a_id, match_date, rankings_by_player
+    )
+    player_b_rank_momentum = compute_rank_momentum(
+        player_b_id, match_date, rankings_by_player
+    )
+    rank_momentum_diff = player_a_rank_momentum - player_b_rank_momentum
     recent_form_diff = recent_win_rate(
         players[player_a_id]["recent_results"]
     ) - recent_win_rate(players[player_b_id]["recent_results"])
@@ -875,6 +990,9 @@ def compute_player_a_perspective_features(
         players[player_a_id]["matches_played"]
         - players[player_b_id]["matches_played"]
     )
+    deciding_set_win_rate_diff = deciding_set_win_rate(
+        players[player_a_id]["deciding_set_results"]
+    ) - deciding_set_win_rate(players[player_b_id]["deciding_set_results"])
     serve_rating_diff = rolling_serve_stat(
         players[player_a_id]["serve_rating_history"]
     ) - rolling_serve_stat(players[player_b_id]["serve_rating_history"])
@@ -930,10 +1048,12 @@ def compute_player_a_perspective_features(
         "is_atp_open": tourney_level_encoded["is_atp_open"],
         "rank_diff": rank_diff,
         "points_diff": points_diff,
+        "rank_momentum_diff": rank_momentum_diff,
         "recent_form_diff": recent_form_diff,
         "recent_surface_form_diff": recent_surface_form_diff,
         "win_pct_diff": win_pct_diff,
         "matches_played_diff": matches_played_diff,
+        "deciding_set_win_rate_diff": deciding_set_win_rate_diff,
         "serve_rating_diff": serve_rating_diff,
         "return_rating_diff": return_rating_diff,
         "bp_save_rate_diff": bp_save_rate_diff,
@@ -945,6 +1065,15 @@ def compute_player_a_perspective_features(
         "h2h_win_rate_diff": h2h_win_rate_diff,
         "h2h_surface_win_rate_diff": h2h_surface_win_rate_diff,
     }
+
+
+def deciding_set_win_rate(
+    results: list, window: int = 20, min_matches: int = 3, alpha: float = 0.85
+) -> float:
+    """Decay-weighted deciding-set win rate with a small-sample fallback."""
+    if len(results) < min_matches:
+        return 0.5
+    return rolling_serve_stat(results[-window:], window, alpha)
 
 
 def temporal_train_test_split_for_modeling(

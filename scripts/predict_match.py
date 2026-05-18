@@ -25,6 +25,7 @@ from tennis_pipeline import (
     initialize_player,
     load_match_history_csvs,
     load_rankings_csv,
+    is_deciding_set_match,
     path_predict_output_csv,
     path_predict_today_csv,
     path_trained_model_pkl,
@@ -34,6 +35,7 @@ from tennis_pipeline import (
     reference_date_for_prediction_row,
     refresh_two_players_rankings,
     update_elo_and_match_counts,
+    update_fatigue_state,
     update_h2h_records,
 )
 
@@ -47,6 +49,7 @@ df = df[
     ~df["score"].str.contains(
         "RET|W/O|Walkover|DEF", case=False, na=False
     )
+    & ~df["tourney_level"].str.strip().str.upper().isin(["D", "O"])
 ]
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
 rankings_by_player = build_rankings_by_player(rankings_df)
@@ -79,6 +82,7 @@ for row in df.itertuples(index=False):
     )
 
     serve_stats = compute_serve_return_stats(row)
+    deciding_set = is_deciding_set_match(row.score, row.tourney_level)
     append_recent_result_lists(
         players,
         winner,
@@ -86,9 +90,11 @@ for row in df.itertuples(index=False):
         surface,
         serve_stats,
         serve_data_valid=serve_stats["valid"],
+        is_deciding_set=deciding_set,
     )
     update_elo_and_match_counts(players, winner, loser, surface, k=ELO_K)
     update_h2h_records(h2h_records, winner, loser, surface, match_date)
+    update_fatigue_state(players, winner, loser, match_date, row)
 
 # --- Resolve CSV names to internal ids (last id wins on duplicate spellings) ---
 name_to_id: dict[str, object] = {}
@@ -126,8 +132,10 @@ for row in predict_df.itertuples(index=False):
         compute_player_a_perspective_features(
             player_a_id,
             player_b_id,
+            ref_date,
             surface,
             players,
+            rankings_by_player,
             tourney_level_encoded,
             h2h_diffs=h2h_diffs,
         )

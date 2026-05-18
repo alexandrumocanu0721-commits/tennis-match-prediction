@@ -90,7 +90,10 @@ model = XGBClassifier(
 model.fit(X_train, y_train)
 
 val_probs = model.predict_proba(X_val)[:, 1]
-print("Validation Log Loss (pre-2026 tail):", log_loss(y_val, val_probs))
+print(
+    "Validation Log Loss (Optuna split — for reference only, model refit on full train):",
+    log_loss(y_val, val_probs),
+)
 
 pred_probs = model.predict_proba(X_test)[:, 1]
 preds = (pred_probs >= 0.5).astype(int)
