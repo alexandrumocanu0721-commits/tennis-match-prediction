@@ -119,10 +119,16 @@ def _build_backtest_like_predictions(
     return out
 
 
-def _compute_clv_mean(predictions_df: pd.DataFrame, odds_df: pd.DataFrame) -> tuple[float, int]:
+def _compute_clv_mean(
+    predictions_df: pd.DataFrame,
+    valid_odds_df: pd.DataFrame,
+    invalid_odds_df: pd.DataFrame,
+) -> tuple[float, int]:
     clv_values: list[float] = []
     for _, prediction_row in predictions_df.iterrows():
-        matched_row, _, _, _ = resolve_candidate(prediction_row, odds_df)
+        matched_row, _, _, _ = resolve_candidate(
+            prediction_row, valid_odds_df, invalid_odds_df
+        )
         if matched_row is None:
             continue
         market_prob_a, _, _, clv_bet365 = map_row_to_player_a_market(
@@ -148,7 +154,8 @@ def run_experiment(
     remove_features: list[str],
     train_df: pd.DataFrame,
     test_df: pd.DataFrame,
-    odds_df: pd.DataFrame,
+    valid_odds_df: pd.DataFrame,
+    invalid_odds_df: pd.DataFrame,
     n_trials: int,
 ) -> dict:
     feature_cols = _feature_set(remove_features)
@@ -196,7 +203,9 @@ def run_experiment(
     loss = float(log_loss(y_true, probs_a, labels=[0, 1]))
 
     pred_df = _build_backtest_like_predictions(test_df, probs_a)
-    clv_mean, clv_matched = _compute_clv_mean(pred_df, odds_df)
+    clv_mean, clv_matched = _compute_clv_mean(
+        pred_df, valid_odds_df, invalid_odds_df
+    )
 
     return {
         "experiment": name,
@@ -224,12 +233,15 @@ def main() -> None:
         raise ValueError("Train/test split empty for challenger ablation.")
 
     test_df = _deduplicate_test_rows(test_full_df)
-    odds_df = prepare_sofascore_odds(root / SOFASCORE_ODDS_RELATIVE_PATH)
+    valid_odds_df, invalid_odds_df, note = prepare_sofascore_odds(
+        root / SOFASCORE_ODDS_RELATIVE_PATH
+    )
 
     print(f"ablation trials per experiment: {n_trials}", flush=True)
     print(f"train rows: {len(train_df)}", flush=True)
     print(f"test rows (deduplicated): {len(test_df)}", flush=True)
-    print(f"odds rows: {len(odds_df)}", flush=True)
+    print(f"odds rows: {len(valid_odds_df)}", flush=True)
+    print(f"odds filter: {note}", flush=True)
 
     results: list[dict] = []
     for experiment_name, remove_features in EXPERIMENTS:
@@ -239,7 +251,8 @@ def main() -> None:
             remove_features=remove_features,
             train_df=train_df,
             test_df=test_df,
-            odds_df=odds_df,
+            valid_odds_df=valid_odds_df,
+            invalid_odds_df=invalid_odds_df,
             n_trials=n_trials,
         )
         results.append(result)

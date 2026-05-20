@@ -7,10 +7,11 @@ import numpy as np
 import pandas as pd
 
 
-INPUT_CSV = Path("data/processed/clv_results.csv")
-OUTPUT_SUMMARY = Path("data/processed/roi_summary_atp.csv")
-OUTPUT_BY_SURFACE = Path("data/processed/roi_by_surface_atp.csv")
-OUTPUT_BY_BUCKET = Path("data/processed/roi_by_bucket_atp.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+INPUT_CSV = PROJECT_ROOT / "data" / "processed" / "atp" / "clv_results.csv"
+OUTPUT_SUMMARY = PROJECT_ROOT / "data" / "processed" / "atp" / "roi_summary_atp.csv"
+OUTPUT_BY_SURFACE = PROJECT_ROOT / "data" / "processed" / "atp" / "roi_by_surface_atp.csv"
+OUTPUT_BY_BUCKET = PROJECT_ROOT / "data" / "processed" / "atp" / "roi_by_bucket_atp.csv"
 
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05]
 SURFACES = ["Hard", "Clay", "Grass"]

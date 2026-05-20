@@ -7,11 +7,12 @@ import numpy as np
 import pandas as pd
 
 
-INPUT_CSV = Path("data/processed_chal/clv_results_calibrated.csv")
-OUTPUT_SUMMARY = Path("data/processed_chal/roi_favorites_summary.csv")
-OUTPUT_BY_SURFACE = Path("data/processed_chal/roi_favorites_by_surface.csv")
-OUTPUT_BY_TIER = Path("data/processed_chal/roi_favorites_by_tier.csv")
-OUTPUT_BY_MONTH = Path("data/processed_chal/roi_favorites_by_month.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+INPUT_CSV = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results_calibrated.csv"
+OUTPUT_SUMMARY = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_favorites_summary.csv"
+OUTPUT_BY_SURFACE = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_favorites_by_surface.csv"
+OUTPUT_BY_TIER = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_favorites_by_tier.csv"
+OUTPUT_BY_MONTH = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_favorites_by_month.csv"
 
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05, 0.07, 0.10]
 SURFACES = ["Hard", "Clay", "Grass"]

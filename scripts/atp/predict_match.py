@@ -54,54 +54,59 @@ df = df[
 rankings_df = prepare_rankings_dataframe(load_rankings_csv(root))
 rankings_by_player = build_rankings_by_player(rankings_df)
 
-players: dict = {}
-player_names = fill_player_names_from_matches(df)
-h2h_records = initialize_h2h_records()
+def build_player_state(history_df: pd.DataFrame) -> tuple[dict, dict, dict]:
+    players: dict = {}
+    player_names = fill_player_names_from_matches(history_df)
+    h2h_records = initialize_h2h_records()
 
-for row in df.itertuples(index=False):
-    winner = row.winner_id
-    loser = row.loser_id
-    match_date = row.tourney_date
-    surface = row.surface
-    if pd.isna(surface):
-        continue
+    for row in history_df.itertuples(index=False):
+        winner = row.winner_id
+        loser = row.loser_id
+        match_date = row.tourney_date
+        surface = row.surface
+        if pd.isna(surface):
+            continue
 
-    initialize_player(
-        players, rankings_by_player, winner, player_names[winner], match_date
-    )
-    initialize_player(
-        players, rankings_by_player, loser, player_names[loser], match_date
-    )
+        initialize_player(
+            players, rankings_by_player, winner, player_names[winner], match_date
+        )
+        initialize_player(
+            players, rankings_by_player, loser, player_names[loser], match_date
+        )
 
-    refresh_two_players_rankings(
-        players,
-        rankings_by_player,
-        winner,
-        loser,
-        match_date,
-    )
+        refresh_two_players_rankings(
+            players,
+            rankings_by_player,
+            winner,
+            loser,
+            match_date,
+        )
 
-    serve_stats = compute_serve_return_stats(row)
-    deciding_set = is_deciding_set_match(row.score, row.tourney_level)
-    append_recent_result_lists(
-        players,
-        winner,
-        loser,
-        surface,
-        serve_stats,
-        serve_data_valid=serve_stats["valid"],
-        is_deciding_set=deciding_set,
-    )
-    update_elo_and_match_counts(players, winner, loser, surface, k=ELO_K)
-    update_h2h_records(h2h_records, winner, loser, surface, match_date)
-    update_fatigue_state(players, winner, loser, match_date, row)
+        serve_stats = compute_serve_return_stats(row)
+        deciding_set = is_deciding_set_match(row.score, row.tourney_level)
+        append_recent_result_lists(
+            players,
+            winner,
+            loser,
+            surface,
+            serve_stats,
+            serve_data_valid=serve_stats["valid"],
+            is_deciding_set=deciding_set,
+        )
+        update_elo_and_match_counts(players, winner, loser, surface, k=ELO_K)
+        update_h2h_records(h2h_records, winner, loser, surface, match_date)
+        update_fatigue_state(players, winner, loser, match_date, row)
 
-# --- Resolve CSV names to internal ids (last id wins on duplicate spellings) ---
-name_to_id: dict[str, object] = {}
-for player_id, info in players.items():
-    name_to_id[info["name"]] = player_id
+    # --- Resolve CSV names to internal ids (last id wins on duplicate spellings) ---
+    name_to_id: dict[str, object] = {}
+    for player_id, info in players.items():
+        name_to_id[info["name"]] = player_id
+
+    return players, h2h_records, name_to_id
 
 predict_df = pd.read_csv(path_predict_today_csv(root))
+if "tourney_level" not in predict_df.columns:
+    predict_df["tourney_level"] = "A"
 predict_columns = predict_df.columns
 default_prediction_as_of = df["tourney_date"].max()
 
@@ -115,12 +120,15 @@ for row in predict_df.itertuples(index=False):
     surface = row.surface
     tourney_level_encoded = encode_tourney_level(row.tourney_level)
 
-    player_a_id = name_to_id[player_a_name]
-    player_b_id = name_to_id[player_b_name]
-
     ref_date = reference_date_for_prediction_row(
         row, predict_columns, default_prediction_as_of
     )
+    history_df = df[df["tourney_date"] < ref_date].copy()
+    players, h2h_records, name_to_id = build_player_state(history_df)
+
+    player_a_id = name_to_id[player_a_name]
+    player_b_id = name_to_id[player_b_name]
+
     refresh_two_players_rankings(
         players, rankings_by_player, player_a_id, player_b_id, ref_date
     )

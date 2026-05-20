@@ -64,37 +64,37 @@ MODEL_TUNING_VALIDATION_FRACTION = 0.20
 
 def project_root() -> Path:
     """Return repo root (directory above ``scripts/``)."""
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
 def path_raw_dir(root: Path | None = None) -> Path:
     """Directory containing raw ATP CSVs (matches + rankings)."""
-    return (root or project_root()) / "data" / "raw"
+    return (root or project_root()) / "data" / "raw" / "atp"
 
 
 def path_processed_features_csv(root: Path | None = None) -> Path:
     """Processed feature matrix produced by ``build_features.py``."""
-    return (root or project_root()) / "data" / "processed" / "features.csv"
+    return (root or project_root()) / "data" / "processed" / "atp" / "features.csv"
 
 
 def path_predict_today_csv(root: Path | None = None) -> Path:
     """Input: upcoming matches (player_a, player_b, surface)."""
-    return (root or project_root()) / "data" / "predict" / "today_matches.csv"
+    return (root or project_root()) / "data" / "predict" / "atp" / "today_matches.csv"
 
 
 def path_predict_output_csv(root: Path | None = None) -> Path:
     """Output: batch predictions from ``predict_match.py``."""
-    return (root or project_root()) / "data" / "predict" / "predictions.csv"
+    return (root or project_root()) / "data" / "predict" / "atp" / "predictions.csv"
 
 
 def path_processed_backtest_predictions_csv(root: Path | None = None) -> Path:
     """Output: retroactive predictions from ``backtest_predictions.py``."""
-    return (root or project_root()) / "data" / "processed" / "backtest_predictions.csv"
+    return (root or project_root()) / "data" / "processed" / "atp" / "backtest_predictions.csv"
 
 
 def path_processed_clv_results_csv(root: Path | None = None) -> Path:
     """Output: CLV report built from backtest predictions and historical odds."""
-    return (root or project_root()) / "data" / "processed" / "clv_results.csv"
+    return (root or project_root()) / "data" / "processed" / "atp" / "clv_results.csv"
 
 
 def path_backtest_real_2026_odds_csv(root: Path | None = None) -> Path:
@@ -104,7 +104,7 @@ def path_backtest_real_2026_odds_csv(root: Path | None = None) -> Path:
 
 def path_trained_model_pkl(root: Path | None = None) -> Path:
     """Serialized XGBoost from ``train_model.py``."""
-    return (root or project_root()) / "models" / "xgboost_model.pkl"
+    return (root or project_root()) / "models" / "atp" / "xgboost_model.pkl"
 
 
 def load_match_history_csvs(root: Path | None = None) -> pd.DataFrame:

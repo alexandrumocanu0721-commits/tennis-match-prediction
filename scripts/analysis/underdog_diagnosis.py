@@ -32,7 +32,7 @@ def print_table(headers, rows):
 
 
 def choose_model_path(models_dir: Path) -> Path:
-    preferred = models_dir / "challenger_xgboost_model.pkl"
+    preferred = models_dir / "challenger" / "challenger_xgboost_model.pkl"
     if preferred.exists():
         return preferred
     pkl_files = sorted(models_dir.rglob("*.pkl"))
@@ -96,9 +96,9 @@ def find_join_key(df_features: pd.DataFrame, df_clv: pd.DataFrame):
 
 
 def main():
-    base_dir = Path(__file__).resolve().parent
-    features_path = base_dir / "data" / "processed_chal" / "features.csv"
-    clv_path = base_dir / "data" / "processed_chal" / "clv_results_calibrated.csv"
+    base_dir = Path(__file__).resolve().parents[2]
+    features_path = base_dir / "data" / "processed" / "challenger" / "features.csv"
+    clv_path = base_dir / "data" / "processed" / "challenger" / "clv_results_calibrated.csv"
     model_path = choose_model_path(base_dir / "models")
 
     if not features_path.exists() or not clv_path.exists():

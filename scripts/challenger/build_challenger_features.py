@@ -1,3 +1,5 @@
+import copy
+
 import pandas as pd
 
 from challenger_config import (
@@ -84,13 +86,13 @@ feature_rows: list[dict] = []
 h2h_records = initialize_h2h_records()
 
 df = df.sort_values(["tourney_date", "tourney_id"], kind="mergesort")
-for (_, _), group in df.groupby(["tourney_date", "tourney_id"], sort=False, dropna=False):
+for match_date, group in df.groupby("tourney_date", sort=False, dropna=False):
     pending_updates: list[dict] = []
+    day_players = set()
 
     for row in group.itertuples(index=False):
         winner = row.winner_id
         loser = row.loser_id
-        match_date = row.tourney_date
         surface = row.surface
         if pd.isna(surface):
             continue
@@ -120,15 +122,27 @@ for (_, _), group in df.groupby(["tourney_date", "tourney_id"], sort=False, drop
             rankings_by_player=rankings_by_player,
             use_external_rankings=USE_EXTERNAL_ATP_RANKINGS_FOR_CHALLENGER,
         )
+        day_players.update([winner, loser])
+
+    player_snapshot = {
+        player_id: copy.deepcopy(players[player_id]) for player_id in day_players
+    }
+
+    for row in group.itertuples(index=False):
+        winner = row.winner_id
+        loser = row.loser_id
+        surface = row.surface
+        if pd.isna(surface):
+            continue
 
         h2h_diffs = compute_h2h_diffs(h2h_records, winner, loser, surface, match_date)
-        fatigue_stats = compute_fatigue_stats(row, players, winner, loser)
+        fatigue_stats = compute_fatigue_stats(row, player_snapshot, winner, loser)
         diffs = compute_winner_perspective_diffs(
             winner,
             loser,
             match_date,
             surface,
-            players,
+            player_snapshot,
             rankings_by_player,
             h2h_diffs=h2h_diffs,
             fatigue_stats=fatigue_stats,

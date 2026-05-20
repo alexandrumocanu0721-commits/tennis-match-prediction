@@ -4,7 +4,7 @@
 # Flow: load features.csv → temporal split (see tennis_pipeline.MODEL_EVAL_CUTOFF_DATE) →
 # Optuna minimizes log loss on a late slice of pre-cutoff data (no test leakage) →
 # refit best params on full pre-cutoff train → print held-out test metrics →
-# save models/xgboost_model.pkl.
+# save models/atp/xgboost_model.pkl.
 # =============================================================================
 
 from functools import partial
@@ -79,6 +79,18 @@ study.optimize(
 )
 
 best_params = study.best_params
+validation_model = XGBClassifier(
+    n_estimators=best_params["n_estimators"],
+    max_depth=best_params["max_depth"],
+    learning_rate=best_params["learning_rate"],
+    subsample=best_params["subsample"],
+    colsample_bytree=best_params["colsample_bytree"],
+    random_state=42,
+)
+validation_model.fit(X_fit, y_fit)
+val_probs = validation_model.predict_proba(X_val)[:, 1]
+val_log_loss = log_loss(y_val, val_probs)
+
 model = XGBClassifier(
     n_estimators=best_params["n_estimators"],
     max_depth=best_params["max_depth"],
@@ -89,10 +101,9 @@ model = XGBClassifier(
 )
 model.fit(X_train, y_train)
 
-val_probs = model.predict_proba(X_val)[:, 1]
 print(
-    "Validation Log Loss (Optuna split — for reference only, model refit on full train):",
-    log_loss(y_val, val_probs),
+    "Validation Log Loss (Optuna split before full-train refit):",
+    val_log_loss,
 )
 
 pred_probs = model.predict_proba(X_test)[:, 1]

@@ -16,7 +16,7 @@ from challenger_config import (
     project_root,
 )
 
-SOFASCORE_ODDS_RELATIVE_PATH = Path("data") / "sofascore" / "march-april_sofascore_odds.csv"
+SOFASCORE_ODDS_RELATIVE_PATH = Path("data") / "sofascore" / "challenger" / "march-april_sofascore_odds.csv"
 CLV_AMBIGUOUS_FILENAME = "clv_ambiguous.csv"
 CLV_PLACEBO_FILENAME = "clv_placebo.csv"
 MAX_DATE_DISTANCE_DAYS = 7
@@ -91,10 +91,10 @@ def _optional_existing_column(df: pd.DataFrame, options: list[str]) -> str | Non
 
 
 def _validate_output_paths(root: Path) -> None:
-    expected_results = (root / "data" / "processed_chal" / "clv_results.csv").resolve()
-    expected_unmatched = (root / "data" / "processed_chal" / "clv_unmatched.csv").resolve()
-    forbidden_results = (root / "data" / "processed" / "clv_results.csv").resolve()
-    forbidden_unmatched = (root / "data" / "processed" / "clv_unmatched.csv").resolve()
+    expected_results = (root / "data" / "processed" / "challenger" / "clv_results.csv").resolve()
+    expected_unmatched = (root / "data" / "processed" / "challenger" / "clv_unmatched.csv").resolve()
+    forbidden_results = (root / "data" / "processed" / "atp" / "clv_results.csv").resolve()
+    forbidden_unmatched = (root / "data" / "processed" / "atp" / "clv_unmatched.csv").resolve()
 
     actual_results = path_challenger_clv_results_csv(root).resolve()
     actual_unmatched = path_challenger_clv_unmatched_csv(root).resolve()
@@ -722,8 +722,10 @@ def main() -> None:
     placebo_df.to_csv(output_placebo_path, index=False)
 
     for legacy_path in legacy_diagnostic_paths:
-        if legacy_path.exists():
-            legacy_path.unlink()
+        # Disabled: do not delete files automatically. Remove manually if needed.
+        # if legacy_path.exists():
+        #     legacy_path.unlink()
+        pass
 
     summary_text = build_summary_text(
         backtest_rows=len(predictions_df),

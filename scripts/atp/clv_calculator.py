@@ -336,7 +336,7 @@ def main() -> None:
     plt.xlabel("Date")
     plt.ylabel("Cumulative Avg CLV")
     plt.tight_layout()
-    plt.savefig(root / "data" / "processed" / "clv_cumulative.png", dpi=150)
+    plt.savefig(output_path.parent / "clv_cumulative.png", dpi=150)
     plt.close()
 
 

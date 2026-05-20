@@ -6,11 +6,12 @@ from pathlib import Path
 import pandas as pd
 
 
-INPUT_CSV = Path("data/processed_chal/clv_results.csv")
-BACKTEST_CSV = Path("data/processed_chal/backtest_predictions.csv")
-OUTPUT_SUMMARY = Path("data/processed_chal/roi_summary.csv")
-OUTPUT_BY_SURFACE = Path("data/processed_chal/roi_by_surface.csv")
-OUTPUT_BY_BUCKET = Path("data/processed_chal/roi_by_bucket.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+INPUT_CSV = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results.csv"
+BACKTEST_CSV = PROJECT_ROOT / "data" / "processed" / "challenger" / "backtest_predictions.csv"
+OUTPUT_SUMMARY = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_summary.csv"
+OUTPUT_BY_SURFACE = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_by_surface.csv"
+OUTPUT_BY_BUCKET = PROJECT_ROOT / "data" / "processed" / "challenger" / "roi_by_bucket.csv"
 
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05]
 SURFACES = ["Hard", "Clay", "Grass"]

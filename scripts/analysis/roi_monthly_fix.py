@@ -7,7 +7,8 @@ import numpy as np
 import pandas as pd
 
 
-INPUT_CSV = Path("data/processed_chal/clv_results_calibrated.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+INPUT_CSV = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results_calibrated.csv"
 
 
 def _print_df(label: str, df: pd.DataFrame) -> None:

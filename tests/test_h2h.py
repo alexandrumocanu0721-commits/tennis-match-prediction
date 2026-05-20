@@ -5,7 +5,7 @@ import unittest
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS_DIR = ROOT / "scripts"
+SCRIPTS_DIR = ROOT / "scripts" / "atp"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 

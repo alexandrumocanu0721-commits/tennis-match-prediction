@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 CHALLENGER_MATCH_GLOB = "atp_matches_qual_chall_*.csv"
@@ -17,19 +18,24 @@ USE_EXTERNAL_ATP_RANKINGS_FOR_CHALLENGER = True
 
 
 def project_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
+
+
+ATP_SCRIPT_DIR = project_root() / "scripts" / "atp"
+if str(ATP_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(ATP_SCRIPT_DIR))
 
 
 def path_challenger_raw_dir(root: Path | None = None) -> Path:
-    return (root or project_root()) / "data" / "raw_chal"
+    return (root or project_root()) / "data" / "raw" / "challenger"
 
 
 def path_challenger_processed_dir(root: Path | None = None) -> Path:
-    return (root or project_root()) / "data" / "processed_chal"
+    return (root or project_root()) / "data" / "processed" / "challenger"
 
 
 def path_challenger_predict_dir(root: Path | None = None) -> Path:
-    return (root or project_root()) / "data" / "predict_chal"
+    return (root or project_root()) / "data" / "predict" / "challenger"
 
 
 def path_challenger_processed_features_csv(root: Path | None = None) -> Path:
@@ -61,18 +67,18 @@ def path_challenger_predict_output_csv(root: Path | None = None) -> Path:
 
 
 def path_challenger_model_pkl(root: Path | None = None) -> Path:
-    return (root or project_root()) / "models" / "challenger_xgboost_model.pkl"
+    return (root or project_root()) / "models" / "challenger" / "challenger_xgboost_model.pkl"
 
 
 def path_external_atp_rankings_csv(root: Path | None = None) -> Path:
-    return (root or project_root()) / "data" / "raw" / "atp_rankings_20s.csv"
+    return (root or project_root()) / "data" / "raw" / "atp" / "atp_rankings_20s.csv"
 
 
 def assert_challenger_processed_output_path(path: Path, root: Path | None = None) -> None:
     repo_root = root or project_root()
     resolved_path = path.resolve()
     processed_chal = path_challenger_processed_dir(repo_root).resolve()
-    processed_atp = (repo_root / "data" / "processed").resolve()
+    processed_atp = (repo_root / "data" / "processed" / "atp").resolve()
 
     if processed_chal not in resolved_path.parents:
         raise ValueError(f"Refusing to write outside Challenger processed dir: {path}")
@@ -84,7 +90,7 @@ def assert_challenger_model_path(path: Path, root: Path | None = None) -> None:
     repo_root = root or project_root()
     resolved_path = path.resolve()
     expected = path_challenger_model_pkl(repo_root).resolve()
-    atp_model = (repo_root / "models" / "xgboost_model.pkl").resolve()
+    atp_model = (repo_root / "models" / "atp" / "xgboost_model.pkl").resolve()
 
     if resolved_path != expected:
         raise ValueError(f"Unexpected Challenger model path: {path}")

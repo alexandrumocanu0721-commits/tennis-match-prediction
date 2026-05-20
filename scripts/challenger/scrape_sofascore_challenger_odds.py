@@ -71,7 +71,7 @@ OUTPUT_COLUMNS = [
 
 
 def project_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parents[2]
 
 
 def parse_args() -> argparse.Namespace:
@@ -86,7 +86,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         default="sofascore_challenger_2026.csv",
-        help="Output CSV path. Relative paths are resolved under data/sofascore/.",
+        help="Output CSV path. Relative paths are resolved under data/sofascore/challenger/.",
     )
     parser.add_argument(
         "--sleep-seconds",
@@ -776,8 +776,10 @@ def main() -> None:
     args = parse_args()
     root = project_root()
     sofascore_dir = root / "data" / "sofascore"
+    challenger_sofascore_dir = sofascore_dir / "challenger"
     sofascore_dir.mkdir(parents=True, exist_ok=True)
-    setup_logging(sofascore_dir)
+    challenger_sofascore_dir.mkdir(parents=True, exist_ok=True)
+    setup_logging(challenger_sofascore_dir)
 
     start = parse_iso_date(args.start_date)
     end = parse_iso_date(args.end_date)
@@ -816,11 +818,11 @@ def main() -> None:
 
     output_path = Path(args.output)
     if not output_path.is_absolute():
-        output_path = sofascore_dir / output_path
+        output_path = challenger_sofascore_dir / output_path
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     write_csv(all_records, output_path)
-    write_report(report, sofascore_dir / "sofascore_challenger_scrape_report.txt")
+    write_report(report, challenger_sofascore_dir / "sofascore_challenger_scrape_report.txt")
 
 
 if __name__ == "__main__":

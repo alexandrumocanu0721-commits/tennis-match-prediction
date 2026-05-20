@@ -5,9 +5,9 @@ import unittest
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS_DIR = ROOT / "scripts"
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
+for scripts_dir in [ROOT / "scripts" / "atp", ROOT / "scripts" / "challenger"]:
+    if str(scripts_dir) not in sys.path:
+        sys.path.insert(0, str(scripts_dir))
 
 import challenger_config as cfg  # noqa: E402
 from challenger_utils import (  # noqa: E402
@@ -19,22 +19,22 @@ from tennis_pipeline import compute_winner_perspective_diffs  # noqa: E402
 
 
 ATP_SCRIPTS = [
-    "scripts/tennis_pipeline.py",
-    "scripts/build_features.py",
-    "scripts/train_model.py",
-    "scripts/evaluate_model.py",
-    "scripts/predict_match.py",
-    "scripts/backtest_predictions.py",
-    "scripts/clv_calculator.py",
+    "scripts/atp/tennis_pipeline.py",
+    "scripts/atp/build_features.py",
+    "scripts/atp/train_model.py",
+    "scripts/atp/evaluate_model.py",
+    "scripts/atp/predict_match.py",
+    "scripts/atp/backtest_predictions.py",
+    "scripts/atp/clv_calculator.py",
 ]
 
 CHALLENGER_SCRIPTS = [
-    "scripts/challenger_config.py",
-    "scripts/challenger_utils.py",
-    "scripts/build_challenger_features.py",
-    "scripts/train_challenger_model.py",
-    "scripts/backtest_challenger_predictions.py",
-    "scripts/clv_challenger_calculator.py",
+    "scripts/challenger/challenger_config.py",
+    "scripts/challenger/challenger_utils.py",
+    "scripts/challenger/build_challenger_features.py",
+    "scripts/challenger/train_challenger_model.py",
+    "scripts/challenger/backtest_challenger_predictions.py",
+    "scripts/challenger/clv_challenger_calculator.py",
 ]
 
 FORBIDDEN_ATP_PATH_REFERENCES = [
@@ -42,9 +42,9 @@ FORBIDDEN_ATP_PATH_REFERENCES = [
     "path_raw_dir",
     "path_processed_features_csv",
     "path_trained_model_pkl",
-    "data/raw/atp_matches_",
-    "data/processed/features.csv",
-    "models/xgboost_model.pkl",
+    "data/raw/atp/atp_matches_",
+    "data/processed/atp/features.csv",
+    "models/atp/xgboost_model.pkl",
 ]
 
 CHALLENGER_PROCESSED_OUTPUTS = [
@@ -60,23 +60,23 @@ class ChallengerSafetyTests(unittest.TestCase):
         root = cfg.project_root()
         self.assertEqual(
             cfg.path_challenger_raw_dir(root),
-            root / "data" / "raw_chal",
+            root / "data" / "raw" / "challenger",
         )
         self.assertEqual(
             cfg.path_challenger_processed_features_csv(root),
-            root / "data" / "processed_chal" / "features.csv",
+            root / "data" / "processed" / "challenger" / "features.csv",
         )
         self.assertEqual(
             cfg.path_challenger_predict_today_csv(root),
-            root / "data" / "predict_chal" / "today_matches.csv",
+            root / "data" / "predict" / "challenger" / "today_matches.csv",
         )
         self.assertEqual(
             cfg.path_challenger_model_pkl(root),
-            root / "models" / "challenger_xgboost_model.pkl",
+            root / "models" / "challenger" / "challenger_xgboost_model.pkl",
         )
         self.assertEqual(
             cfg.path_external_atp_rankings_csv(root),
-            root / "data" / "raw" / "atp_rankings_20s.csv",
+            root / "data" / "raw" / "atp" / "atp_rankings_20s.csv",
         )
 
     def test_challenger_match_glob_only_points_to_raw_chal(self):
@@ -97,22 +97,22 @@ class ChallengerSafetyTests(unittest.TestCase):
                 )
 
     def test_challenger_feature_builder_does_not_write_atp_features(self):
-        script = ROOT / "scripts" / "build_challenger_features.py"
+        script = ROOT / "scripts" / "challenger" / "build_challenger_features.py"
         text = script.read_text(encoding="utf-8")
         self.assertIn("path_challenger_processed_features_csv", text)
-        self.assertNotIn("data/processed/features.csv", text)
+        self.assertNotIn("data/processed/atp/features.csv", text)
 
     def test_challenger_training_does_not_write_atp_model(self):
-        script = ROOT / "scripts" / "train_challenger_model.py"
+        script = ROOT / "scripts" / "challenger" / "train_challenger_model.py"
         text = script.read_text(encoding="utf-8")
         self.assertIn("path_challenger_model_pkl", text)
         self.assertNotIn("path_trained_model_pkl", text)
-        self.assertNotIn("models/xgboost_model.pkl", text)
+        self.assertNotIn("models/atp/xgboost_model.pkl", text)
 
-    def test_challenger_outputs_stay_under_processed_chal(self):
+    def test_challenger_outputs_stay_under_processed_challenger(self):
         root = cfg.project_root()
-        processed_chal = (root / "data" / "processed_chal").resolve()
-        processed_atp = (root / "data" / "processed").resolve()
+        processed_chal = (root / "data" / "processed" / "challenger").resolve()
+        processed_atp = (root / "data" / "processed" / "atp").resolve()
 
         for helper_name in CHALLENGER_PROCESSED_OUTPUTS:
             output_path = getattr(cfg, helper_name)(root).resolve()
@@ -123,11 +123,11 @@ class ChallengerSafetyTests(unittest.TestCase):
         root = cfg.project_root()
         self.assertEqual(
             cfg.path_challenger_model_pkl(root),
-            root / "models" / "challenger_xgboost_model.pkl",
+            root / "models" / "challenger" / "challenger_xgboost_model.pkl",
         )
         self.assertNotEqual(
             cfg.path_challenger_model_pkl(root),
-            root / "models" / "xgboost_model.pkl",
+            root / "models" / "atp" / "xgboost_model.pkl",
         )
 
     def test_atp_scripts_do_not_import_challenger_modules(self):
@@ -146,7 +146,7 @@ class ChallengerSafetyTests(unittest.TestCase):
             for script in CHALLENGER_SCRIPTS
         )
         self.assertIn("atp_rankings_20s.csv", all_text)
-        self.assertNotIn("data/raw/atp_matches_", all_text)
+        self.assertNotIn("data/raw/atp/atp_matches_", all_text)
 
     def test_challenger_rank_refresh_is_time_aware_and_momentum_is_12_week(self):
         rankings_df = pd.DataFrame(

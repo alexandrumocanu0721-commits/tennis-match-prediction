@@ -8,11 +8,12 @@ import pandas as pd
 from sklearn.isotonic import IsotonicRegression
 
 
-MODEL_PREFERRED = Path("models/challenger/xgb_model.pkl")
-MODELS_DIR = Path("models")
-CLV_RESULTS = Path("data/processed_chal/clv_results.csv")
-BACKTEST_PREDICTIONS = Path("data/processed_chal/backtest_predictions.csv")
-OUTPUT_CALIBRATED = Path("data/processed_chal/clv_results_calibrated.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+MODEL_PREFERRED = PROJECT_ROOT / "models" / "challenger" / "challenger_xgboost_model.pkl"
+MODELS_DIR = PROJECT_ROOT / "models" / "challenger"
+CLV_RESULTS = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results.csv"
+BACKTEST_PREDICTIONS = PROJECT_ROOT / "data" / "processed" / "challenger" / "backtest_predictions.csv"
+OUTPUT_CALIBRATED = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results_calibrated.csv"
 
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05]
 MIN_CALIBRATION_ROWS = 50

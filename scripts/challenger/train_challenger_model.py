@@ -129,6 +129,19 @@ def main() -> None:
     )
 
     best_params = study.best_params
+    validation_model = XGBClassifier(
+        n_estimators=best_params["n_estimators"],
+        max_depth=best_params["max_depth"],
+        learning_rate=best_params["learning_rate"],
+        subsample=best_params["subsample"],
+        colsample_bytree=best_params["colsample_bytree"],
+        random_state=42,
+        eval_metric="logloss",
+    )
+    validation_model.fit(X_fit, y_fit)
+    val_probs = validation_model.predict_proba(X_val)[:, 1]
+    val_log_loss = log_loss(y_val, val_probs)
+
     model = XGBClassifier(
         n_estimators=best_params["n_estimators"],
         max_depth=best_params["max_depth"],
@@ -140,7 +153,6 @@ def main() -> None:
     )
     model.fit(X_train, y_train)
 
-    val_probs = model.predict_proba(X_val)[:, 1]
     test_probs = model.predict_proba(X_test)[:, 1]
     test_preds = (test_probs >= 0.5).astype(int)
     test_match_df = dedupe_match_rows(test_df)
@@ -159,7 +171,7 @@ def main() -> None:
     )
 
     print(f"Best Optuna params: {best_params}")
-    print(f"Validation log loss: {log_loss(y_val, val_probs):.6f}")
+    print(f"Validation log loss before full-train refit: {val_log_loss:.6f}")
     print(f"2026 mirrored-row test accuracy: {accuracy_score(y_test, test_preds):.6f}")
     print(f"2026 mirrored-row test log loss: {log_loss(y_test, test_probs):.6f}")
     print(

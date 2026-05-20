@@ -17,8 +17,8 @@ from tennis_pipeline import FEATURES
 
 def _validate_output_path(root) -> None:
     output_path = path_challenger_backtest_predictions_csv(root).resolve()
-    expected = (root / "data" / "processed_chal" / "backtest_predictions.csv").resolve()
-    forbidden = (root / "data" / "processed" / "backtest_predictions.csv").resolve()
+    expected = (root / "data" / "processed" / "challenger" / "backtest_predictions.csv").resolve()
+    forbidden = (root / "data" / "processed" / "atp" / "backtest_predictions.csv").resolve()
 
     if output_path != expected:
         raise ValueError(
