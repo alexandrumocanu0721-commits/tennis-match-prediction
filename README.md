@@ -95,6 +95,10 @@ python3 scripts/analysis/roi_simulation.py
 python3 scripts/analysis/roi_favorites_only.py
 python3 scripts/analysis/roi_monthly_fix.py
 python3 scripts/analysis/underdog_diagnosis.py
+python3 scripts/analysis/underdog_rescue.py --tour all
+python3 scripts/analysis/build_near_dog_dataset.py --tour all
+python3 scripts/analysis/train_near_dog_model.py
+python3 scripts/analysis/backtest_near_dog_model.py
 ```
 
 Optional SofaScore scrape:
@@ -116,6 +120,11 @@ Key outputs:
 - `data/processed/challenger/roi_favorites_summary.csv`
 - `data/processed/challenger/roi_favorites_by_surface.csv`
 - `data/processed/challenger/roi_favorites_by_month.csv`
+- `data/processed/{atp,challenger}/underdog_rescue/`
+- `data/processed/underdog_specialist/near_dog_dataset.csv`
+- `data/processed/underdog_specialist/near_dog_backtest_summary.csv`
+- `data/processed/underdog_specialist/near_dog_backtest_by_tour.csv`
+- `models/underdog_specialist/near_dog_specialist.pkl`
 
 ## Models
 
@@ -131,6 +140,15 @@ Challenger:
 - Hard-court favorites showed approximately `9%` ROI over `130` bets from February to April 2026.
 - Clay favorites were close to breakeven in the available sample.
 - Underdog betting is structurally broken in the current Challenger setup and should not be used as a live signal.
+- The underdog rescue workflow now tests odds-bucket calibration, underdog-only probability caps,
+  market-anchored shrinkage, and dog-only logistic feature-family ablations with train/tune/final
+  walk-forward splits. Current generated recommendations still block underdogs unless an untouched
+  final period passes ROI, CLV, calibration, and concentration checks.
+- A separate near-underdog specialist pipeline builds two-sided `2.20-3.00` odds candidates,
+  trains regularized market-aware logistic gates on the train period, selects the shrinkage factor
+  and edge threshold on tune data only, and backtests the saved gate on the untouched final period
+  with ATP/Challenger split reports. The current generated specialist still blocks near dogs because
+  the final sample is too small/concentrated and calibration remains above the pass threshold.
 
 ATP Main Tour:
 
@@ -181,6 +199,10 @@ python3 scripts/analysis/roi_simulation.py
 python3 scripts/analysis/roi_favorites_only.py
 python3 scripts/analysis/roi_monthly_fix.py
 python3 scripts/analysis/underdog_diagnosis.py
+python3 scripts/analysis/underdog_rescue.py --tour all
+python3 scripts/analysis/build_near_dog_dataset.py --tour all
+python3 scripts/analysis/train_near_dog_model.py
+python3 scripts/analysis/backtest_near_dog_model.py
 ```
 
 Scrape Challenger SofaScore odds when needed:

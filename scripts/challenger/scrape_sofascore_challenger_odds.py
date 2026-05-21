@@ -342,11 +342,23 @@ def is_challenger_event(event: dict[str, Any]) -> bool:
 
 def is_mens_singles_event(event: dict[str, Any]) -> bool:
     filters = as_dict(event.get("eventFilters"))
-    return contains_token(
-        filters.get("category"),
-        "singles",
-        case_sensitive=False,
-    ) and contains_token(filters.get("gender"), "M", case_sensitive=True)
+    # 2026+ payloads: prefer explicit eventFilters when category or gender is present.
+    if filters.get("category") is not None or filters.get("gender") is not None:
+        return contains_token(
+            filters.get("category"),
+            "singles",
+            case_sensitive=False,
+        ) and contains_token(filters.get("gender"), "M", case_sensitive=True)
+
+    # 2025 fallback: infer from season name and require both competitors to be men.
+    season = as_dict(event.get("season"))
+    season_name = str(season.get("name", "")).lower()
+    if "singles" not in season_name or "men" not in season_name:
+        return False
+
+    home_team = as_dict(event.get("homeTeam"))
+    away_team = as_dict(event.get("awayTeam"))
+    return home_team.get("gender") == "M" and away_team.get("gender") == "M"
 
 
 def has_scores(event: dict[str, Any]) -> bool:
