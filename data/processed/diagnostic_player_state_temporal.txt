@@ -1,0 +1,35 @@
+=== Task 1: State Engine Trace — ATP ===
+scripts/atp/build_features.py replays every ATP match in chronological order, grouped by tourney_date.
+For each date, it initializes players, refreshes rankings as of that match_date, snapshots state, builds feature rows from the snapshot, then applies post-match updates to Elo, surface Elo, form, H2H, fatigue, wins, and match counts.
+The ranking helpers in scripts/atp/tennis_pipeline.py use the latest ranking_date <= match_date. Elo/form/H2H/fatigue updates are driven only by prior replayed matches; there is no cutoff check in feature generation.
+Answer: ATP player state is live as of each match date, including 2025 and 2026 rows. It is not frozen at 2025-01-01.
+
+=== Task 1: State Engine Trace — Challenger ===
+scripts/challenger/build_challenger_features.py does the same chronological replay for Challenger matches, sorted by tourney_date and tourney_id, with per-day snapshots before feature creation and post-match state updates after rows are written.
+Challenger Elo/form/H2H/fatigue state also keeps updating through the replay. Rankings are refreshed as of match_date when external ATP rankings are enabled; otherwise Challenger rank/points are neutral constants by configuration.
+Answer: Challenger player state is also live as of each match date for dynamic features. Rank/points may be neutral-by-design if external rankings are disabled, but the state engine itself is not frozen at the training cutoff.
+
+=== Task 2: ATP Concrete Examples ===
+2024-Q4: 2024-12-27 | Taylor Fritz vs Hubert Hurkacz | elo_diff=78.18996162611916 | surface_elo_diff=105.35292484241336 | rank_diff=12 | recent_form_diff=0.0949181784899964
+2025-Q2: 2025-05-18 | Hubert Hurkacz vs Taylor Fritz | elo_diff=-59.94220692708632 | surface_elo_diff=8.83506521995173 | rank_diff=-27 | recent_form_diff=-0.004978505062421479
+2026-Q1: 2026-01-05 | Hubert Hurkacz vs Taylor Fritz | elo_diff=-90.01468206432378 | surface_elo_diff=-115.19037647828554 | rank_diff=-66 | recent_form_diff=0.23456795846069722
+Feature movement check: elo_diff=changed, surface_elo_diff=changed, rank_diff=changed, recent_form_diff=changed
+The three ATP period examples are not the same player, so these rows mainly verify that post-2024 feature values are not globally frozen.
+ATP same-player check for Marton Fucsovics:
+  2024-Q4: 2024-10-14 | Marton Fucsovics vs Raphael Collignon | elo_diff=112.03418147801494 | surface_elo_diff=47.067806442873916 | rank_diff=71 | recent_form_diff=-0.08876281235544731
+  2025-Q2: 2025-05-18 | Marton Fucsovics vs Novak Djokovic | elo_diff=-315.18304414977274 | surface_elo_diff=-201.59353749415754 | rank_diff=-128 | recent_form_diff=0.03011603553705089
+  2026-Q1: 2026-01-04 | Marton Fucsovics vs Daniil Medvedev | elo_diff=-132.31470177764731 | surface_elo_diff=-210.37439792905548 | rank_diff=-42 | recent_form_diff=-0.2070020060044634
+  Movement: elo_diff=changed, surface_elo_diff=changed, rank_diff=changed, recent_form_diff=changed
+
+=== Task 3: Challenger Concrete Examples ===
+2024-Q4: 2024-10-07 | Lautaro Midon vs Hernan Casanova | elo_diff=-95.90868318285038 | surface_elo_diff=-103.23589069751142 | rank_diff=5 | recent_form_diff=-0.12049195251133155
+2025-Q2: 2025-04-07 | Dimitar Kuzmanov vs Cedrik Marcel Stebe | elo_diff=94.51256597701013 | surface_elo_diff=63.10272706323303 | rank_diff=1100 | recent_form_diff=0.35433519705804906
+2026-Q1: 2026-01-05 | Bernard Tomic vs Daniil Glinka | elo_diff=-32.81716272225958 | surface_elo_diff=-43.897641578997536 | rank_diff=6 | recent_form_diff=-0.3293457937873948
+Challenger same-player comparison for Gastao Elias:
+  2024-Q4: 2024-10-07 | Gastao Elias vs Nicolas Alvarez Varona | elo_diff=19.570388053861734 | surface_elo_diff=32.35112841118803 | rank_diff=129 | recent_form_diff=-0.4032106339938199
+  2025-Q2: 2025-04-14 | Gastao Elias vs Francisco Comesana | elo_diff=-270.3470986490786 | surface_elo_diff=-210.6656572356992 | rank_diff=-260 | recent_form_diff=-0.45037177408492146
+  2026-Q1: 2026-01-19 | Gastao Elias vs Mikhail Kukushkin | elo_diff=-197.01479380729666 | surface_elo_diff=-155.67937764913154 | rank_diff=-73 | recent_form_diff=-0.594166058042902
+  Movement: elo_diff=changed, surface_elo_diff=changed, rank_diff=changed, recent_form_diff=changed
+
+=== Verdict ===
+Player state is live as of each match date, not frozen at the 2025-01-01 training cutoff. The feature builders keep replaying historical matches into 2025 and 2026, and the sampled post-cutoff rows show evolving Elo/form values rather than a static 2024 snapshot.

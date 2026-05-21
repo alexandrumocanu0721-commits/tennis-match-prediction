@@ -33,7 +33,13 @@ def _format_optional_float(value: float | None, decimals: int) -> float | str:
     return round(float(value), decimals)
 
 
-def _summarize_bets(df: pd.DataFrame, ev_threshold: float, group_label: str | None = None, group_value: str | None = None) -> dict:
+def _summarize_bets(
+    df: pd.DataFrame,
+    ev_threshold: float,
+    year: int,
+    group_label: str | None = None,
+    group_value: str | None = None,
+) -> dict:
     working = df.loc[
         df["clv_bet365"].ge(ev_threshold)
         & df["actual_result"].notna()
@@ -46,6 +52,7 @@ def _summarize_bets(df: pd.DataFrame, ev_threshold: float, group_label: str | No
     bet_count = int(len(working))
     if bet_count == 0:
         result = {
+            "year": year,
             "ev_threshold": ev_threshold,
             "bet_count": 0,
             "hit_rate": float("nan"),
@@ -66,6 +73,7 @@ def _summarize_bets(df: pd.DataFrame, ev_threshold: float, group_label: str | No
     roi = total_profit / bet_count
 
     result = {
+        "year": year,
         "ev_threshold": ev_threshold,
         "bet_count": bet_count,
         "hit_rate": hit_rate,
@@ -120,6 +128,9 @@ def main() -> None:
         return
 
     df = df.copy()
+    if "year" not in df.columns:
+        df["year"] = pd.to_datetime(df["date"], errors="coerce").dt.year.astype("Int64")
+    df["odds_a"] = pd.to_numeric(df["odds_a"], errors="coerce")
     df["odds_bucket"] = pd.cut(
         df["odds_a"],
         bins=[float("-inf"), 1.80, 2.20, float("inf")],
@@ -132,14 +143,16 @@ def main() -> None:
     surface_rows = []
     bucket_rows = []
 
-    for threshold in EV_THRESHOLDS:
-        summary_rows.append(_summarize_bets(df, threshold))
-        for surface in SURFACES:
-            row = _summarize_bets(df, threshold, "surface", surface)
-            surface_rows.append(row)
-        for bucket in ODDS_BUCKETS:
-            row = _summarize_bets(df, threshold, "odds_bucket", bucket)
-            bucket_rows.append(row)
+    for year in sorted(df["year"].dropna().astype(int).unique()):
+        year_df = df.loc[df["year"].eq(year)].copy()
+        for threshold in EV_THRESHOLDS:
+            summary_rows.append(_summarize_bets(year_df, threshold, year))
+            for surface in SURFACES:
+                row = _summarize_bets(year_df, threshold, year, "surface", surface)
+                surface_rows.append(row)
+            for bucket in ODDS_BUCKETS:
+                row = _summarize_bets(year_df, threshold, year, "odds_bucket", bucket)
+                bucket_rows.append(row)
 
     summary = pd.DataFrame(summary_rows)
     by_surface = pd.DataFrame(surface_rows)

@@ -6,8 +6,8 @@
 # so training and inference see the same definitions.
 #
 # Temporal split for train_model / evaluate_model (match ``date`` from features.csv):
-#   • Train: date < MODEL_EVAL_CUTOFF_DATE (everything strictly before start of 2026).
-#   • Test:  date >= MODEL_EVAL_CUTOFF_DATE (from 2026-01-01 onward, any later year).
+#   • Train: date < MODEL_EVAL_CUTOFF_DATE (everything strictly before start of 2025).
+#   • Test:  date >= MODEL_EVAL_CUTOFF_DATE (from 2025-01-01 onward, any later year).
 # features.csv rows are chronological by construction (build_features replay order);
 # the split only needs parsed dates, not row order.
 # =============================================================================
@@ -56,7 +56,10 @@ RANK_MOMENTUM_WEEKS = 12
 
 # --- Temporal split: single calendar boundary (ISO date, midnight) ---
 # Train / Optuna never see rows at or after this instant; evaluation uses this instant onward.
-MODEL_EVAL_CUTOFF_DATE = "2026-01-01"
+MODEL_EVAL_CUTOFF_DATE = "2025-01-01"
+
+# Historical Jeff Sackmann match files used for state replay.
+MATCH_HISTORY_START_YEAR = 2019
 
 # Portion of pre-cutoff training dates reserved for Optuna temporal validation.
 MODEL_TUNING_VALIDATION_FRACTION = 0.20
@@ -97,9 +100,23 @@ def path_processed_clv_results_csv(root: Path | None = None) -> Path:
     return (root or project_root()) / "data" / "processed" / "atp" / "clv_results.csv"
 
 
+def path_backtest_real_2025_odds_csv(root: Path | None = None) -> Path:
+    """Historical ATP odds snapshot for the 2025 evaluation season."""
+    return (root or project_root()) / "data" / "backtest" / "real_2025_odds.csv"
+
+
 def path_backtest_real_2026_odds_csv(root: Path | None = None) -> Path:
-    """Historical odds snapshot used to benchmark backtest predictions."""
+    """Historical ATP odds snapshot for the completed 2026 evaluation season."""
     return (root or project_root()) / "data" / "backtest" / "real_2026_odds.csv"
+
+
+def path_backtest_real_odds_csvs(root: Path | None = None) -> list[Path]:
+    """Historical ATP odds snapshots used to benchmark backtest predictions."""
+    repo_root = root or project_root()
+    return [
+        path_backtest_real_2025_odds_csv(repo_root),
+        path_backtest_real_2026_odds_csv(repo_root),
+    ]
 
 
 def path_trained_model_pkl(root: Path | None = None) -> Path:
@@ -107,10 +124,24 @@ def path_trained_model_pkl(root: Path | None = None) -> Path:
     return (root or project_root()) / "models" / "atp" / "xgboost_model.pkl"
 
 
+def _year_from_match_filename(path: Path, prefix: str) -> int | None:
+    match = re.fullmatch(rf"{re.escape(prefix)}(\d{{4}})\.csv", path.name)
+    return int(match.group(1)) if match else None
+
+
 def load_match_history_csvs(root: Path | None = None) -> pd.DataFrame:
-    """Load and concatenate all ``atp_matches_*.csv`` files (not yet sorted)."""
+    """Load and concatenate ATP match files from 2019 onward (not yet sorted)."""
     raw = path_raw_dir(root)
-    csv_files = sorted(raw.glob("atp_matches_*.csv"))
+    csv_files = [
+        file
+        for file in sorted(raw.glob("atp_matches_*.csv"))
+        if (_year_from_match_filename(file, "atp_matches_") or 0)
+        >= MATCH_HISTORY_START_YEAR
+    ]
+    if not csv_files:
+        raise FileNotFoundError(
+            f"No ATP match files from {MATCH_HISTORY_START_YEAR} onward found in {raw}"
+        )
     dfs = [pd.read_csv(file) for file in csv_files]
     return pd.concat(dfs, ignore_index=True)
 
@@ -1081,7 +1112,7 @@ def temporal_train_test_split_for_modeling(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Train on ``date < MODEL_EVAL_CUTOFF_DATE``; test on ``date >=`` that cutoff.
 
-    Matches “all history until the start of 2026” vs “from 2026 onward”. Later
+    Matches “all history until the start of 2025” vs “from 2025 onward”. Later
     seasons (2027+, if present in ``features.csv``) stay in the evaluation set.
     """
     dates = pd.to_datetime(df[date_column])

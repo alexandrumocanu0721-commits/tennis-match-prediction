@@ -1,0 +1,7 @@
+candidate,status,removed_family,feature_count,description
+dog_logit_all,OK,,22,"separate underdog logistic model using market, raw model, and all merged features"
+dog_logit_no_rank,OK,rank,19,underdog logistic ablation removing rank feature family
+dog_logit_no_elo,OK,elo,20,underdog logistic ablation removing elo feature family
+dog_logit_no_serve_return,OK,serve_return,14,underdog logistic ablation removing serve_return feature family
+dog_logit_no_recent_form,OK,recent_form,17,underdog logistic ablation removing recent_form feature family
+dog_logit_no_h2h,OK,h2h,20,underdog logistic ablation removing h2h feature family

@@ -1,0 +1,9 @@
+section,name,bet_count,hit_rate,avg_odds,mean_prob,mean_market_prob,mean_edge,roi,calibration_error,log_loss,note
+period,all,883,0.355606,2.487858,0.407936,0.383603,0.024333,-0.124193,0.05233,0.664502,
+period,train,387,0.338501,2.509595,0.410631,0.384975,0.025656,-0.166741,0.07213,0.644951,
+period,tune,184,0.429348,2.48743,0.408202,0.384061,0.024142,0.066327,0.021146,0.697788,
+period,final,312,0.333333,2.461149,0.404435,0.381631,0.022804,-0.183773,0.071102,0.669124,
+tour,atp,225,0.377778,2.539862,0.413435,0.396511,0.016924,-0.04692,0.035657,0.689967,
+tour,challenger,658,0.348024,2.470076,0.406055,0.379189,0.026867,-0.150616,0.058031,0.655795,
+merge,atp,225,,,,,,,,,"merged 557/557 CLV rows with feature values using keys ['date_key', 'player_a_name', 'player_b_name', 'surface']"
+merge,challenger,658,,,,,,,,,"merged 1712/1712 CLV rows with feature values using keys ['date_key', 'player_a_name', 'player_b_name', 'surface', 'tourney_id', 'round']"

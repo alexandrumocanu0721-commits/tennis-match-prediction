@@ -7,10 +7,9 @@ __pycache__/
 .matplotlib/
 .vscode/.env
 
-data/raw/
-data/raw_chal/
-data/backtest/
-data
+data/raw
+data/sofascore
+data/backtest
 models/
 notebooks/
 

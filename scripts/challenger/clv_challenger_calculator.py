@@ -16,7 +16,11 @@ from challenger_config import (
     project_root,
 )
 
-SOFASCORE_ODDS_RELATIVE_PATH = Path("data") / "sofascore" / "challenger" / "march-april_sofascore_odds.csv"
+SOFASCORE_ODDS_RELATIVE_DIR = Path("data") / "sofascore" / "challenger"
+SOFASCORE_FULL_YEAR_ODDS_FILENAMES = [
+    "challenger_2025_odds.csv",
+    "challenger_2026_odds.csv",
+]
 CLV_AMBIGUOUS_FILENAME = "clv_ambiguous.csv"
 CLV_PLACEBO_FILENAME = "clv_placebo.csv"
 MAX_DATE_DISTANCE_DAYS = 7
@@ -107,8 +111,11 @@ def _validate_output_paths(root: Path) -> None:
     assert_challenger_processed_output_path(actual_unmatched, root)
 
 
-def prepare_predictions(path: Path) -> pd.DataFrame:
-    df = pd.read_csv(path)
+def prepare_predictions(path_or_df: Path | pd.DataFrame) -> pd.DataFrame:
+    if isinstance(path_or_df, pd.DataFrame):
+        df = path_or_df.copy()
+    else:
+        df = pd.read_csv(path_or_df)
 
     player_a_col = _first_existing_column(df, ["player_a_name", "player_a"])
     player_b_col = _first_existing_column(df, ["player_b_name", "player_b"])
@@ -255,6 +262,47 @@ def prepare_sofascore_odds(path: Path) -> tuple[pd.DataFrame, pd.DataFrame, str]
     invalid_out = out[~valid_mask].copy()
     valid_out, singles_note = _apply_singles_filter(valid_out)
     return valid_out.copy(), invalid_out.copy(), singles_note
+
+
+def load_sofascore_full_year_odds(root: Path) -> tuple[pd.DataFrame, pd.DataFrame, list[str]]:
+    odds_dir = root / SOFASCORE_ODDS_RELATIVE_DIR
+    odds_paths = [
+        odds_dir / filename
+        for filename in SOFASCORE_FULL_YEAR_ODDS_FILENAMES
+        if (odds_dir / filename).exists()
+    ]
+    if not odds_paths:
+        raise FileNotFoundError(f"No full-year Challenger odds files found in {odds_dir}")
+
+    odds_frames: list[pd.DataFrame] = []
+    invalid_frames: list[pd.DataFrame] = []
+    notes: list[str] = []
+    for odds_path in odds_paths:
+        odds_df, invalid_df, singles_filter_note = prepare_sofascore_odds(odds_path)
+        odds_df["odds_source_file"] = odds_path.name
+        invalid_df["odds_source_file"] = odds_path.name
+        odds_frames.append(odds_df)
+        invalid_frames.append(invalid_df)
+        notes.append(f"{odds_path.name}: {singles_filter_note}")
+
+    odds_df = pd.concat(odds_frames, ignore_index=True)
+    invalid_odds_df = pd.concat(invalid_frames, ignore_index=True)
+
+    odds_df["match_identity"] = odds_df.apply(
+        lambda row: (
+            row["match_start_date_utc"],
+            row["tournament_key"],
+            tuple(sorted((row["home_player_key"], row["away_player_key"]))),
+        ),
+        axis=1,
+    )
+    before = len(odds_df)
+    odds_df = odds_df.sort_values(
+        ["match_start_date_utc", "tournament_key", "home_player_key", "away_player_key"],
+        kind="mergesort",
+    ).drop_duplicates(subset=["match_identity"], keep="last")
+    notes.append(f"valid rows before dedupe: {before}; after dedupe: {len(odds_df)}")
+    return odds_df.copy(), invalid_odds_df.copy(), notes
 
 
 def resolve_candidate(
@@ -557,7 +605,6 @@ def main() -> None:
     _validate_output_paths(root)
 
     prediction_path = path_challenger_backtest_predictions_csv(root)
-    sofascore_odds_path = root / SOFASCORE_ODDS_RELATIVE_PATH
     output_results_path = path_challenger_clv_results_csv(root)
     output_unmatched_path = path_challenger_clv_unmatched_csv(root)
     output_ambiguous_path = output_results_path.parent / CLV_AMBIGUOUS_FILENAME
@@ -574,10 +621,10 @@ def main() -> None:
 
     predictions_df = prepare_predictions(prediction_path)
     predictions_df = enrich_predictions_with_rank_diff(predictions_df, root)
-    odds_df, invalid_odds_df, singles_filter_note = prepare_sofascore_odds(
-        sofascore_odds_path
-    )
-    print(f"SofaScore odds filter: {singles_filter_note}")
+    odds_df, invalid_odds_df, odds_notes = load_sofascore_full_year_odds(root)
+    print("SofaScore odds filters:")
+    for note in odds_notes:
+        print(f"- {note}")
     print(f"valid odds rows: {len(odds_df)}")
     print(f"invalid odds rows filtered out: {len(invalid_odds_df)}")
 
@@ -597,6 +644,7 @@ def main() -> None:
             matched_records.append(
                 {
                     "date": prediction_row["date"].strftime("%Y-%m-%d"),
+                    "year": int(prediction_row["date"].year),
                     "prediction_row_id": prediction_row["prediction_row_id"],
                     "tourney_id": prediction_row["tourney_id"],
                     "tourney_name": prediction_row["tourney_name"],
@@ -624,6 +672,7 @@ def main() -> None:
         unmatched_records.append(
             {
                 "date": prediction_row["date"].strftime("%Y-%m-%d"),
+                "year": int(prediction_row["date"].year),
                 "tourney_id": prediction_row["tourney_id"],
                 "tourney_name": prediction_row["tourney_name"],
                 "tourney_date": prediction_row["tourney_date"].strftime("%Y-%m-%d"),
@@ -642,6 +691,7 @@ def main() -> None:
                 ambiguous_records.append(
                     {
                         "date": prediction_row["date"].strftime("%Y-%m-%d"),
+                        "year": int(prediction_row["date"].year),
                         "tourney_id": prediction_row["tourney_id"],
                         "tourney_name": prediction_row["tourney_name"],
                         "tourney_date": prediction_row["tourney_date"].strftime(
@@ -669,6 +719,7 @@ def main() -> None:
         matched_records,
         columns=[
             "date",
+            "year",
             "prediction_row_id",
             "tourney_id",
             "tourney_name",

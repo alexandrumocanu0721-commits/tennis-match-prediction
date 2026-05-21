@@ -1,0 +1,33 @@
+candidate,wf_period,selectable,status,description,removed_family,feature_count,edge_threshold,bet_count,hit_rate,avg_odds,actual_win_rate,mean_model_prob,mean_market_prob,mean_clv,calibration_error,brier,log_loss,roi
+raw_model,tune,False,BASELINE,uncalibrated model probability baseline,,0,0.0,53,0.320755,5.571804,0.320755,0.386631,0.289951,0.096681,0.065877,0.224015,0.637666,0.128204
+raw_model,final,False,BASELINE,uncalibrated model probability baseline,,0,0.0,48,0.25,5.184904,0.25,0.399476,0.287828,0.111648,0.149476,0.194431,0.56914,-0.277859
+artifact_current,tune,False,DIAGNOSTIC_ONLY,current persisted artifact probability; not selectable because it may include global calibration fitted outside the walk-forward train period,,0,0.0,53,0.320755,5.571804,0.320755,0.386631,0.289951,0.096681,0.065877,0.224015,0.637666,0.128204
+artifact_current,final,False,DIAGNOSTIC_ONLY,current persisted artifact probability; not selectable because it may include global calibration fitted outside the walk-forward train period,,0,0.0,48,0.25,5.184904,0.25,0.399476,0.287828,0.111648,0.149476,0.194431,0.56914,-0.277859
+bucket_isotonic,tune,True,OK,"post-model isotonic calibration fit for buckets: favorite,underdog",,0,0.0,26,0.346154,3.539027,0.346154,0.357611,0.28777,0.069841,0.011457,0.226924,0.646298,0.18048
+bucket_isotonic,final,True,OK,"post-model isotonic calibration fit for buckets: favorite,underdog",,0,0.0,24,0.25,3.805635,0.25,0.368035,0.271741,0.096294,0.118035,0.21034,0.612093,-0.139937
+dog_isotonic,tune,True,OK,underdog-only isotonic calibration fit on train period,,0,0.0,26,0.346154,3.539027,0.346154,0.357611,0.28777,0.069841,0.011457,0.226924,0.646298,0.18048
+dog_isotonic,final,True,OK,underdog-only isotonic calibration fit on train period,,0,0.0,24,0.25,3.805635,0.25,0.368035,0.271741,0.096294,0.118035,0.21034,0.612093,-0.139937
+dog_cap_03,tune,True,OK,lower-cap underdog model probability at 0.30,,0,0.0,27,0.222222,8.257052,0.222222,0.265951,0.217442,0.048509,0.043729,0.176248,0.537191,0.020537
+dog_cap_03,final,True,OK,lower-cap underdog model probability at 0.30,,0,0.0,25,0.12,7.482773,0.12,0.258386,0.203664,0.054721,0.138386,0.119894,0.404838,-0.543049
+dog_cap_035,tune,True,OK,lower-cap underdog model probability at 0.35,,0,0.0,38,0.315789,6.781194,0.315789,0.30458,0.246294,0.058285,0.01121,0.209375,0.607214,0.228304
+dog_cap_035,final,True,OK,lower-cap underdog model probability at 0.35,,0,0.0,32,0.15625,6.546004,0.15625,0.298138,0.227592,0.070546,0.141888,0.142644,0.457082,-0.446634
+dog_cap_04,tune,True,OK,lower-cap underdog model probability at 0.40,,0,0.0,45,0.355556,6.141259,0.355556,0.333997,0.266396,0.067601,0.021559,0.217295,0.623527,0.274468
+dog_cap_04,final,True,OK,lower-cap underdog model probability at 0.40,,0,0.0,40,0.2,5.762982,0.2,0.337577,0.258163,0.079414,0.137577,0.167634,0.512152,-0.362778
+dog_market_delta_shrink_25,tune,True,OK,market-implied probability anchor: market_prob + 0.25 * model_edge for underdogs,,0,0.0,53,0.320755,5.571804,0.320755,0.314121,0.289951,0.02417,0.006634,0.216023,0.61994,0.128204
+dog_market_delta_shrink_25,final,True,OK,market-implied probability anchor: market_prob + 0.25 * model_edge for underdogs,,0,0.0,48,0.25,5.184904,0.25,0.31574,0.287828,0.027912,0.06574,0.168107,0.508707,-0.277859
+dog_market_delta_shrink_50,tune,True,OK,market-implied probability anchor: market_prob + 0.50 * model_edge for underdogs,,0,0.0,53,0.320755,5.571804,0.320755,0.338291,0.289951,0.04834,0.017536,0.216915,0.622257,0.128204
+dog_market_delta_shrink_50,final,True,OK,market-implied probability anchor: market_prob + 0.50 * model_edge for underdogs,,0,0.0,48,0.25,5.184904,0.25,0.343652,0.287828,0.055824,0.093652,0.174496,0.524595,-0.277859
+dog_market_delta_shrink_75,tune,True,OK,market-implied probability anchor: market_prob + 0.75 * model_edge for underdogs,,0,0.0,53,0.320755,5.571804,0.320755,0.362461,0.289951,0.072511,0.041707,0.219579,0.628174,0.128204
+dog_market_delta_shrink_75,final,True,OK,market-implied probability anchor: market_prob + 0.75 * model_edge for underdogs,,0,0.0,48,0.25,5.184904,0.25,0.371564,0.287828,0.083736,0.121564,0.183271,0.544621,-0.277859
+dog_logit_all,tune,True,OK,"separate underdog logistic model using market, raw model, and all merged features",,22,0.0,21,0.333333,8.34941,0.333333,0.509377,0.282874,0.226503,0.176043,0.25054,0.688425,0.06593
+dog_logit_all,final,True,OK,"separate underdog logistic model using market, raw model, and all merged features",,22,0.0,19,0.421053,3.027837,0.421053,0.537419,0.352876,0.184543,0.116366,0.302513,0.831833,0.205952
+dog_logit_no_rank,tune,True,OK,underdog logistic ablation removing rank feature family,rank,19,0.0,19,0.263158,9.019415,0.263158,0.524198,0.274818,0.249381,0.26104,0.21682,0.616843,-0.147131
+dog_logit_no_rank,final,True,OK,underdog logistic ablation removing rank feature family,rank,19,0.0,21,0.333333,5.031643,0.333333,0.496015,0.330789,0.165226,0.162681,0.25448,0.723058,-0.116308
+dog_logit_no_elo,tune,True,OK,underdog logistic ablation removing elo feature family,elo,20,0.0,24,0.333333,3.798788,0.333333,0.508913,0.29693,0.211982,0.17558,0.252442,0.697041,0.04503
+dog_logit_no_elo,final,True,OK,underdog logistic ablation removing elo feature family,elo,20,0.0,19,0.368421,3.087032,0.368421,0.527984,0.346357,0.181626,0.159563,0.282904,0.785896,0.074213
+dog_logit_no_serve_return,tune,True,OK,underdog logistic ablation removing serve_return feature family,serve_return,14,0.0,21,0.285714,8.361108,0.285714,0.445377,0.280105,0.165271,0.159662,0.171159,0.514636,-0.074917
+dog_logit_no_serve_return,final,True,OK,underdog logistic ablation removing serve_return feature family,serve_return,14,0.0,18,0.333333,3.484641,0.333333,0.497463,0.351157,0.146306,0.164129,0.252961,0.694637,-0.10604
+dog_logit_no_recent_form,tune,True,OK,underdog logistic ablation removing recent_form feature family,recent_form,17,0.0,24,0.416667,3.610448,0.416667,0.450622,0.307183,0.143439,0.033955,0.219318,0.624766,0.309794
+dog_logit_no_recent_form,final,True,OK,underdog logistic ablation removing recent_form feature family,recent_form,17,0.0,22,0.318182,3.786538,0.318182,0.467248,0.32541,0.141838,0.149066,0.243144,0.675885,-0.07227
+dog_logit_no_h2h,tune,True,OK,underdog logistic ablation removing h2h feature family,h2h,20,0.0,19,0.315789,8.666937,0.315789,0.498019,0.298961,0.199059,0.18223,0.274914,0.744478,-0.019816
+dog_logit_no_h2h,final,True,OK,underdog logistic ablation removing h2h feature family,h2h,20,0.0,20,0.45,2.886458,0.45,0.545003,0.368551,0.176452,0.095003,0.303431,0.84225,0.256765

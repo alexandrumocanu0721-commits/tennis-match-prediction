@@ -3,6 +3,7 @@ import copy
 import pandas as pd
 
 from challenger_config import (
+    CHALLENGER_MATCH_HISTORY_START_YEAR,
     USE_EXTERNAL_ATP_RANKINGS_FOR_CHALLENGER,
     assert_challenger_processed_output_path,
     path_challenger_processed_features_csv,
@@ -70,6 +71,9 @@ def match_metadata(row, match_date) -> dict:
 
 df = load_challenger_match_history_csvs(root)
 df = prepare_challenger_matches_dataframe(df)
+df = df[
+    df["tourney_date"] >= pd.Timestamp(f"{CHALLENGER_MATCH_HISTORY_START_YEAR}-01-01")
+]
 original_len = len(df)
 df = filter_challenger_matches(df)
 print(f"Removed {original_len - len(df)} non-Challenger/invalid-outcome rows")

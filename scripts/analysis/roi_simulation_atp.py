@@ -16,6 +16,8 @@ OUTPUT_BY_BUCKET = PROJECT_ROOT / "data" / "processed" / "atp" / "roi_by_bucket_
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05]
 SURFACES = ["Hard", "Clay", "Grass"]
 ODDS_BUCKETS = ["favorite", "balanced", "underdog"]
+PRIMARY_CLV_COL = "clv_b365"
+PRIMARY_MARKET_PROB_COL = "market_prob_b365"
 
 
 def _print_labeled_df(label: str, df: pd.DataFrame) -> None:
@@ -49,11 +51,11 @@ def _format_float(val: float, decimals: int) -> float | str:
     return round(float(val), decimals)
 
 
-def _summarize(df: pd.DataFrame, threshold: float) -> dict:
+def _summarize(df: pd.DataFrame, threshold: float, year: int) -> dict:
     filtered = df.loc[
-        df["clv_betfair"].ge(threshold)
+        df[PRIMARY_CLV_COL].ge(threshold)
         & df["actual_winner"].notna()
-        & df["betfair_true_prob_a"].notna()
+        & df[PRIMARY_MARKET_PROB_COL].notna()
         & df["odds_a"].notna()
     ].copy()
 
@@ -61,6 +63,7 @@ def _summarize(df: pd.DataFrame, threshold: float) -> dict:
     if bet_count == 0:
         return {
             "ev_threshold": threshold,
+            "year": year,
             "bet_count": 0,
             "hit_rate": np.nan,
             "avg_odds": np.nan,
@@ -74,11 +77,12 @@ def _summarize(df: pd.DataFrame, threshold: float) -> dict:
 
     hit_rate = float(wins.mean())
     avg_odds = float(filtered["odds_a"].mean())
-    mean_clv = float(filtered["clv_betfair"].mean())
+    mean_clv = float(filtered[PRIMARY_CLV_COL].mean())
     roi = float(np.sum(profits) / bet_count)
 
     return {
         "ev_threshold": threshold,
+        "year": year,
         "bet_count": bet_count,
         "hit_rate": hit_rate,
         "avg_odds": avg_odds,
@@ -123,16 +127,16 @@ def main() -> None:
     print(df.head(3).to_string(index=False))
     print()
     print("Null counts (key columns):")
-    print(df[["clv_betfair", "betfair_true_prob_a", "actual_winner"]].isna().sum().to_string())
+    print(df[[PRIMARY_CLV_COL, PRIMARY_MARKET_PROB_COL, "actual_winner"]].isna().sum().to_string())
     print()
     print("Surface counts:")
     print(df["surface"].value_counts(dropna=False).to_string())
     print()
 
-    print("CLV Betfair distribution (0.05 bins):")
-    clv_dist = _distribution_bins(df["clv_betfair"], 0.05)
+    print("CLV Bet365 distribution (0.05 bins):")
+    clv_dist = _distribution_bins(df[PRIMARY_CLV_COL], 0.05)
     if clv_dist.empty:
-        print("(no non-null clv_betfair values)")
+        print(f"(no non-null {PRIMARY_CLV_COL} values)")
     else:
         print(clv_dist.to_string())
     print()
@@ -152,8 +156,12 @@ def main() -> None:
         return
 
     df = df.copy()
-    prob = df["betfair_true_prob_a"].astype(float)
-    df["odds_a"] = np.where(prob > 0, 1.0 / prob, np.nan)
+    if "year" not in df.columns:
+        df["year"] = pd.to_datetime(df["date"], errors="coerce").dt.year.astype("Int64")
+    if "odds_a" not in df.columns:
+        prob = df[PRIMARY_MARKET_PROB_COL].astype(float)
+        df["odds_a"] = np.where(prob > 0, 1.0 / prob, np.nan)
+    df["odds_a"] = pd.to_numeric(df["odds_a"], errors="coerce")
 
     df["odds_bucket"] = pd.cut(
         df["odds_a"],
@@ -171,30 +179,32 @@ def main() -> None:
     by_surface_rows: list[dict] = []
     by_bucket_rows: list[dict] = []
 
-    for threshold in EV_THRESHOLDS:
-        base_row = _summarize(df, threshold)
-        summary_rows.append(base_row)
+    for year in sorted(df["year"].dropna().astype(int).unique()):
+        year_df = df.loc[df["year"].eq(year)].copy()
+        for threshold in EV_THRESHOLDS:
+            base_row = _summarize(year_df, threshold, year)
+            summary_rows.append(base_row)
 
-        for surface in SURFACES:
-            row = _summarize(df.loc[df["surface"].eq(surface)], threshold)
-            row["surface"] = surface
-            row["sample_flag"] = "LOW_SAMPLE" if row["bet_count"] < 20 else ""
-            by_surface_rows.append(row)
+            for surface in SURFACES:
+                row = _summarize(year_df.loc[year_df["surface"].eq(surface)], threshold, year)
+                row["surface"] = surface
+                row["sample_flag"] = "LOW_SAMPLE" if row["bet_count"] < 20 else ""
+                by_surface_rows.append(row)
 
-        for bucket in ODDS_BUCKETS:
-            row = _summarize(df.loc[df["odds_bucket"].eq(bucket)], threshold)
-            row["odds_bucket"] = bucket
-            row["sample_flag"] = "LOW_SAMPLE" if row["bet_count"] < 20 else ""
-            by_bucket_rows.append(row)
+            for bucket in ODDS_BUCKETS:
+                row = _summarize(year_df.loc[year_df["odds_bucket"].eq(bucket)], threshold, year)
+                row["odds_bucket"] = bucket
+                row["sample_flag"] = "LOW_SAMPLE" if row["bet_count"] < 20 else ""
+                by_bucket_rows.append(row)
 
     summary_df = pd.DataFrame(summary_rows)[
-        ["ev_threshold", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi"]
+        ["year", "ev_threshold", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi"]
     ]
     by_surface_df = pd.DataFrame(by_surface_rows)[
-        ["ev_threshold", "surface", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi", "sample_flag"]
+        ["year", "ev_threshold", "surface", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi", "sample_flag"]
     ]
     by_bucket_df = pd.DataFrame(by_bucket_rows)[
-        ["ev_threshold", "odds_bucket", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi", "sample_flag"]
+        ["year", "ev_threshold", "odds_bucket", "bet_count", "hit_rate", "avg_odds", "mean_clv", "roi", "sample_flag"]
     ]
 
     assert (summary_df["bet_count"] > 0).any(), "No bets found for any threshold."

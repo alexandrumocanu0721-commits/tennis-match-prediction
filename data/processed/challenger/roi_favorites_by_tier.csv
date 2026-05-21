@@ -1,0 +1,4 @@
+tier,bet_count,hit_rate,avg_odds,mean_calibrated_clv,roi,flag
+low_edge,1097,0.716,1.399,0.0212,-0.0197,
+medium_edge,792,0.686,1.428,0.0703,-0.0468,
+high_edge,502,0.661,1.503,0.1496,-0.022,

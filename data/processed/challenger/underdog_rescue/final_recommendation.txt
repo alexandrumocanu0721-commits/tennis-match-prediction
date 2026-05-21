@@ -1,0 +1,14 @@
+Underdog Rescue Recommendation
+==============================
+
+feature merge: merged 1712/1712 CLV rows with feature values using keys ['date_key', 'player_a_name', 'player_b_name', 'surface', 'tourney_id', 'round']
+selection status: BEST_TUNE_ONLY_NO_PASS
+selected candidate: dog_market_delta_shrink_25
+selected description: market-implied probability anchor: market_prob + 0.25 * model_edge for underdogs
+final bet count: 99
+final roi: -0.3659
+final mean_clv: 0.0258
+final calibration_error: 0.0867
+final max month/surface/tournament share: 1.0000
+recommendation: BLOCK_UNDERDOGS
+reason: selected tune-period rescue did not satisfy all untouched final-period pass criteria.

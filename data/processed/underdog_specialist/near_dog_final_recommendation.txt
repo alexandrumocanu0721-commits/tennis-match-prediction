@@ -1,0 +1,14 @@
+Near-Dog Specialist Recommendation
+==================================
+
+candidate: near_dog_market_only
+selection_status: TUNE_PASS
+shrinkage_factor: 0.75
+edge_threshold: 0.1000
+final_bet_count: 39
+final_roi: 0.0887
+final_mean_edge: 0.1601
+final_calibration_error: 0.0968
+final_max_cluster_share: 1.0000
+recommendation: BLOCK_NEAR_DOGS
+reason: near-dog specialist did not satisfy untouched final-period pass criteria.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 from typing import Any
 
 import pandas as pd
@@ -11,6 +12,7 @@ from challenger_config import (
     CHALLENGER_DEFAULT_PLAYER_RANK,
     CHALLENGER_INVALID_OUTCOME_REGEX,
     CHALLENGER_MATCH_GLOB,
+    CHALLENGER_MATCH_HISTORY_START_YEAR,
     path_challenger_raw_dir,
     path_external_atp_rankings_csv,
 )
@@ -33,12 +35,24 @@ def _assert_challenger_match_path(path: Path, raw_dir: Path) -> None:
         raise ValueError(f"Unsafe Challenger filename: {path.name}")
 
 
+def _year_from_challenger_match_filename(path: Path) -> int | None:
+    match = re.fullmatch(r"atp_matches_qual_chall_(\d{4})\.csv", path.name)
+    return int(match.group(1)) if match else None
+
+
 def load_challenger_match_history_csvs(root: Path | None = None) -> pd.DataFrame:
     raw_dir = path_challenger_raw_dir(root)
-    csv_files = sorted(raw_dir.glob(CHALLENGER_MATCH_GLOB))
+    csv_files = [
+        file
+        for file in sorted(raw_dir.glob(CHALLENGER_MATCH_GLOB))
+        if (_year_from_challenger_match_filename(file) or 0)
+        >= CHALLENGER_MATCH_HISTORY_START_YEAR
+    ]
     if not csv_files:
         raise FileNotFoundError(
-            f"No Challenger match files found in {raw_dir} with glob {CHALLENGER_MATCH_GLOB}"
+            "No Challenger match files found in "
+            f"{raw_dir} with glob {CHALLENGER_MATCH_GLOB} "
+            f"from {CHALLENGER_MATCH_HISTORY_START_YEAR} onward"
         )
     frames: list[pd.DataFrame] = []
     for csv_path in csv_files:

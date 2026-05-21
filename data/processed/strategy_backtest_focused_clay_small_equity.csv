@@ -1,0 +1,123 @@
+date,tour,player_a,player_b,surface,edge,edge_tier,stake_eur,odds,result,pnl_eur,bankroll_after
+2025-01-20,Challenger,Juan Bautista Torres,Federico Aguilar Cardozo,Clay,0.0321,Small,2.0,1.06,1,0.12,200.12
+2025-02-03,Challenger,Sebastian Baez,Francesco Passaro,Clay,0.0307,Small,2.0,1.44,1,0.88,201.72
+2025-02-03,Challenger,Juan Manuel Cerundolo,Juan Carlos Prado Angelo,Clay,0.0371,Small,2.0,1.36,1,0.72,201.72
+2025-02-17,Challenger,Calvin Hemery,Maximus Jones,Clay,0.0402,Small,2.01,1.22,1,0.44,202.67
+2025-02-17,Challenger,Geoffrey Blancaneaux,Paulo Andre Saraiva Dos Santos,Clay,0.0354,Small,2.01,1.25,1,0.5,202.67
+2025-03-03,Challenger,Valerio Aboian,Carlos Maria Zarate,Clay,0.0399,Small,2.02,1.07,1,0.14,202.81
+2025-03-10,Challenger,Daniel Elahi Galan,Matheus Pucinelli De Almeida,Clay,0.0371,Small,2.02,1.36,1,0.73,203.54
+2025-03-17,Challenger,Thiago Monteiro,Remy Bertola,Clay,0.0402,Small,2.03,1.22,1,0.45,203.94
+2025-03-17,Challenger,Joao Lucas Reis Da Silva,Alex Santino Nunez Vera,Clay,0.0336,Small,2.03,1.05,1,0.1,203.94
+2025-03-17,Challenger,Patrick Maloney,Alan Fernando Rubio Fierros,Clay,0.0337,Small,2.03,1.33,1,0.67,203.94
+2025-03-17,Challenger,Trey Hilderbrand,Diego Bustamante,Clay,0.0484,Small,2.03,1.01,1,0.03,203.94
+2025-03-17,Challenger,David Jorda Sanchis,Eneko Rios Perez,Clay,0.0321,Small,2.03,1.06,1,0.13,203.94
+2025-03-17,Challenger,Andrej Martin,Frane Nincevic,Clay,0.0489,Small,2.03,1.08,1,0.17,203.94
+2025-03-17,Challenger,Damir Dzumhur,Luka Pavlovic,Clay,0.0426,Small,2.03,1.44,1,0.89,203.94
+2025-03-17,Challenger,Marco Cecchinato,Josip Simundza,Clay,0.0489,Small,2.03,1.08,0,-2.03,203.94
+2025-03-24,Challenger,Jesper De Jong,Filip Misolic,Clay,0.0336,Small,2.03,1.4,1,0.81,204.76
+2025-03-31,Challenger,Sebastian Ofner,Vilius Gaubas,Clay,0.0307,Small,2.04,1.44,0,-2.04,203.29
+2025-03-31,Challenger,Lukas Neumayer,Felipe Virgili Berini,Clay,0.0404,Small,2.04,1.03,1,0.06,203.29
+2025-03-31,Challenger,Wilson Leite,Paul Valsecchi,Clay,0.0489,Small,2.04,1.08,1,0.17,203.29
+2025-03-31,Challenger,Tomas Barrios Vera,Eduardo Ribeiro,Clay,0.0368,Small,2.04,1.17,1,0.35,203.29
+2025-04-07,Challenger,Sumit Nagal,Federico Iannaccone,Clay,0.0377,Small,2.03,1.36,1,0.74,204.61
+2025-04-07,Challenger,Marc Polmans,Blaise Bicknell,Clay,0.038,Small,2.03,1.4,0,-2.03,204.61
+2025-04-07,Challenger,Tomas Barrios Vera,Genaro Alberto Olivieri,Clay,0.0336,Small,2.03,1.4,1,0.81,204.61
+2025-04-07,Challenger,Gabi Adrian Boitan,Blaise Bicknell,Clay,0.038,Small,2.03,1.4,1,0.81,204.61
+2025-04-07,Challenger,Inaki Montes De La Torre,Jack Satterfield,Clay,0.0489,Small,2.03,1.08,1,0.17,204.61
+2025-04-07,Challenger,Marc Andrea Huesler,Aziz Dougaz,Clay,0.0336,Small,2.03,1.4,1,0.81,204.61
+2025-04-14,Challenger,Zsombor Piros,Dino Molokova Ferreira,Clay,0.032,Small,2.04,1.0,1,0.01,204.62
+2025-04-21,Challenger,Samuel Vincent Ruggeri,Jacopo Bilardo,Clay,0.0333,Small,2.04,1.14,1,0.29,204.19
+2025-04-21,Challenger,Lukas Neumayer,Lukas Pokorny,Clay,0.0354,Small,2.04,1.25,1,0.51,204.19
+2025-04-21,Challenger,Juan Sebastian Osorio,Tadeo Meneo,Clay,0.0333,Small,2.04,1.14,0,-2.04,204.19
+2025-04-21,Challenger,Liam Draxl,Garrett Johns,Clay,0.0336,Small,2.04,1.4,1,0.82,204.19
+2025-04-28,Challenger,Daniel Evans,Jan Jermar,Clay,0.0423,Small,2.04,1.06,1,0.12,204.38
+2025-04-28,Challenger,Stefano Napolitano,Manuel Lazic,Clay,0.0398,Small,2.04,1.03,1,0.06,204.38
+2025-04-29,Challenger,Arthur Rinderknech,Mark Lajal,Clay,0.0336,Small,2.04,1.4,1,0.82,203.15
+2025-04-29,Challenger,Jaume Munar,Valentin Vacherot,Clay,0.0336,Small,2.04,1.4,0,-2.04,203.15
+2025-05-05,Challenger,Daniel Rincon,Mees Rottgering,Clay,0.0332,Small,2.03,1.2,0,-2.03,203.38
+2025-05-05,Challenger,Jose Pereira,Fermin Tenti,Clay,0.0319,Small,2.03,1.44,1,0.9,203.38
+2025-05-05,Challenger,Nicolas Kicker,Lorenzo Joaquin Rodriguez,Clay,0.0437,Small,2.03,1.44,1,0.9,203.38
+2025-05-05,Challenger,Samuel Vincent Ruggeri,Lorenzo Sciahbasi ,Clay,0.0449,Small,2.03,1.22,1,0.45,203.38
+2025-05-12,Challenger,Zsombor Piros,Francesco Maestrelli,Clay,0.0337,Small,2.03,1.33,1,0.67,204.86
+2025-05-12,Challenger,Harold Mayot,Milos Karol,Clay,0.038,Small,2.03,1.4,1,0.81,204.86
+2025-05-13,Challenger,Carlos Sanchez Jover,Edoardo Zanada,Clay,0.0399,Small,2.04,1.07,1,0.15,205.01
+2025-05-19,Challenger,Nerman Fatic,Amar Huseinovic,Clay,0.0371,Small,2.05,1.0,1,0.0,205.52
+2025-05-19,Challenger,Marat Sharipov,Yanaki Milev,Clay,0.0354,Small,2.05,1.25,1,0.51,205.52
+2025-06-02,Challenger,Hugo Dellien,Dimitar Kuzmanov,Clay,0.0426,Small,2.05,1.44,1,0.9,206.77
+2025-06-02,Challenger,Zsombor Piros,Jonas Forejtek,Clay,0.0368,Small,2.05,1.17,1,0.35,206.77
+2025-06-09,Challenger,Lorenzo Joaquin Rodriguez,Segundo Goity Zapico,Clay,0.0489,Small,2.06,1.08,1,0.17,206.94
+2025-06-16,Challenger,Titouan Droguet,Luka Mikrut,Clay,0.0336,Small,2.06,1.4,1,0.82,208.74
+2025-06-16,Challenger,Pedro Rodrigues,Carlos Maria Zarate,Clay,0.0354,Small,2.06,1.25,1,0.52,208.74
+2025-06-16,Challenger,Lucas Gerch,Christopher Li,Clay,0.0449,Small,2.06,1.22,1,0.46,208.74
+2025-06-23,Challenger,Genaro Alberto Olivieri,Blaise Bicknell,Clay,0.0354,Small,2.08,1.25,1,0.52,209.26
+2025-06-30,Challenger,Norbert Gombos,Tristan Lamasine,Clay,0.0371,Small,2.09,1.36,1,0.75,209.68
+2025-06-30,Challenger,David Jorda Sanchis,Arthur Nagel ,Clay,0.0437,Small,2.09,1.44,0,-2.09,209.68
+2025-06-30,Challenger,Jacopo Berrettini,Thomas Faurel,Clay,0.0426,Small,2.09,1.44,1,0.92,209.68
+2025-06-30,Challenger,Radu Albot,Tommaso Compagnucci,Clay,0.038,Small,2.09,1.4,1,0.84,209.68
+2025-07-07,Challenger,Jozef Kovalik,Tom Zeuch,Clay,0.0399,Small,2.09,1.07,1,0.15,207.74
+2025-07-07,Challenger,Denis Yevseyev,Sebastian Gima,Clay,0.0342,Small,2.09,1.33,0,-2.09,207.74
+2025-07-14,Challenger,Stefano Travaglia,Martin Krumich,Clay,0.0342,Small,2.07,1.33,0,-2.07,205.83
+2025-07-14,Challenger,Jan Choinski,Manvydas Balciunas,Clay,0.0338,Small,2.07,1.08,1,0.17,205.83
+2025-07-21,Challenger,Mariano Kestelboim,Nikola Djosic,Clay,0.0333,Small,2.05,1.14,1,0.29,206.13
+2025-07-28,Challenger,Gonzalo Villanueva,Fons Van Sambeek,Clay,0.0303,Small,2.06,1.12,1,0.26,206.38
+2025-08-04,Challenger,Jan Choinski,Geoffrey Blancaneaux,Clay,0.0371,Small,2.06,1.36,0,-2.06,204.32
+2025-08-11,Challenger,Franco Agamenone,Stefan Latinovic,Clay,0.0333,Small,2.04,1.14,1,0.29,204.79
+2025-08-11,Challenger,Kirill Kivattsev,Viktor Kirov,Clay,0.0489,Small,2.04,1.08,1,0.17,204.79
+2025-08-18,Challenger,Dali Blanch,Anas Mazdrashki,Clay,0.0377,Small,2.04,1.36,1,0.74,205.53
+2025-09-01,Challenger,Miguel Damas,Szymon Kielan,Clay,0.0333,Small,2.05,1.14,1,0.29,206.64
+2025-09-01,Challenger,Marco Trungelliti,Sandro Kopp,Clay,0.0336,Small,2.05,1.4,1,0.82,206.64
+2025-09-08,Challenger,Dimitar Kuzmanov,Alan Wazny,Clay,0.0338,Small,2.06,1.08,1,0.16,207.32
+2025-09-08,Challenger,Marco Trungelliti,Franco Agamenone,Clay,0.0354,Small,2.06,1.25,1,0.52,207.32
+2025-09-15,Challenger,Santiago De La Fuente,Julian Cundom,Clay,0.0336,Small,2.07,1.4,1,0.83,208.17
+2025-09-15,Challenger,Dennis Novak,Syl Gaxherri,Clay,0.0484,Small,2.07,1.01,1,0.03,208.17
+2025-09-16,Challenger,Gianluca Cadenasso ,Alejandro Mateo Berge Nourescu,Clay,0.0489,Small,2.08,1.08,1,0.17,208.35
+2025-09-22,Challenger,Javier Barranco Cosano,Francisco Rocha,Clay,0.0332,Small,2.08,1.2,0,-2.08,206.27
+2025-09-29,Challenger,Marco Trungelliti,Henri Squire,Clay,0.0336,Small,2.06,1.4,1,0.82,205.92
+2025-09-29,Challenger,Dusan Lajovic,Daniel Rincon,Clay,0.0371,Small,2.06,1.36,1,0.74,205.92
+2025-09-29,Challenger,Carlos Taberner,Javier Barranco Cosano,Clay,0.0336,Small,2.06,1.4,0,-2.06,205.92
+2025-09-29,Challenger,Enrico Dalla Valle,Hugo Maia,Clay,0.0399,Small,2.06,1.07,1,0.15,205.92
+2025-10-06,Challenger,Jan Choinski,Miguel Damas,Clay,0.0371,Small,2.05,1.36,1,0.74,207.63
+2025-10-06,Challenger,Carlos Sanchez Jover,Sergio Planella Hernandez,Clay,0.0333,Small,2.05,1.14,1,0.29,207.63
+2025-10-06,Challenger,Tomas Barrios Vera,Juan Bautista Torres,Clay,0.0337,Small,2.05,1.33,1,0.68,207.63
+2025-10-13,Challenger,Pedro Boscardin Dias,Paulo Andre Saraiva Dos Santos,Clay,0.038,Small,2.07,1.4,1,0.83,208.46
+2025-10-20,Challenger,Roman Andres Burruchaga,Joao Eduardo Schiessl,Clay,0.0332,Small,2.08,1.2,1,0.42,208.87
+2025-10-27,Challenger,Sebastian Gima,Dakotah Bobo,Clay,0.0489,Small,2.08,1.08,1,0.17,209.05
+2025-11-03,Challenger,Nicolas Kicker,Sebastian Gima,Clay,0.0377,Small,2.09,1.36,1,0.76,209.81
+2025-11-10,Challenger,David Jorda Sanchis,Ignacio Carou,Clay,0.0399,Small,2.09,1.07,1,0.15,210.79
+2025-11-10,Challenger,Tomas Barrios Vera,Juan Carlos Prado Angelo,Clay,0.038,Small,2.09,1.4,1,0.84,210.79
+2025-11-17,Challenger,Elmer Moller,Tiago Pereira,Clay,0.0337,Small,2.1,1.33,1,0.69,212.89
+2025-11-17,Challenger,Alvaro Guillen Meza,Emilio Camacho,Clay,0.0432,Small,2.1,1.06,1,0.13,212.89
+2025-11-17,Challenger,Andrea Collarini,Maximo Zeitune,Clay,0.0368,Small,2.1,1.17,1,0.36,212.89
+2025-11-17,Challenger,Pedro Sakamoto,Orlando Luz,Clay,0.0426,Small,2.1,1.44,1,0.92,212.89
+2026-01-12,Challenger,Tomas Farjat,Ezequiel Monferrer,Clay,0.0437,Small,2.12,1.44,0,-2.12,210.77
+2026-01-27,Challenger,Dusan Lajovic,Facundo Mena,Clay,0.0426,Small,2.1,1.44,1,0.92,213.29
+2026-01-27,Challenger,Facundo Mena,Joaquin  Aguilar Cardozo ,Clay,0.0336,Small,2.1,1.4,1,0.84,213.29
+2026-01-27,Challenger,Tomas Barrios Vera,Gonzalo Bueno,Clay,0.0371,Small,2.1,1.36,1,0.76,213.29
+2026-03-02,Challenger,Carlos Sanchez Jover,Breno Braga,Clay,0.0393,Small,2.13,1.01,1,0.02,213.31
+2026-03-09,Challenger,Thiago Monteiro,Gianluca Cadenasso ,Clay,0.0336,Small,2.13,1.4,1,0.85,214.17
+2026-03-09,Challenger,Guido Ivan Justo,Anders Matta,Clay,0.0371,Small,2.13,1.0,1,0.0,214.17
+2026-03-16,Challenger,Gonzalo Bueno,Joao Pedro Didoni Bonini,Clay,0.0336,Small,2.14,1.05,1,0.11,215.0
+2026-03-16,Challenger,Mirza Basic,Nazar Oliynykov,Clay,0.0354,Small,2.14,1.02,1,0.05,215.0
+2026-03-16,Challenger,Laurent Lokoli,Karlo Kajin,Clay,0.0321,Small,2.14,1.06,1,0.13,215.0
+2026-03-16,Challenger,Martin Krumich,John Sperle,Clay,0.0354,Small,2.14,1.25,1,0.54,215.0
+2026-03-23,Challenger,Hynek Barton,Niels Mcdonald,Clay,0.0332,Small,2.14,1.2,1,0.43,216.41
+2026-03-23,Challenger,Wilson Leite,Glauco Pinheiro Da Cruz Junior,Clay,0.0321,Small,2.14,1.06,1,0.13,216.41
+2026-03-23,Challenger,Juan Manuel La Serna,Carlos Maria Zarate,Clay,0.038,Small,2.14,1.4,1,0.86,216.41
+2026-03-30,Challenger,Hugo Dellien,Lautaro Midon,Clay,0.0426,Small,2.16,1.44,1,0.95,219.01
+2026-03-30,Challenger,Lorenzo Joaquin Rodriguez,Maximo Zeitune,Clay,0.0336,Small,2.16,1.4,1,0.86,219.01
+2026-03-30,Challenger,Valentin Royer,Edas Butvilas,Clay,0.0371,Small,2.16,1.36,1,0.78,219.01
+2026-04-06,Challenger,Raphael Collignon,Martin Landaluce,Clay,0.0426,Small,2.19,1.44,1,0.96,219.04
+2026-04-06,Challenger,Yibing Wu,Darwin Blanch,Clay,0.0377,Small,2.19,1.36,1,0.8,219.04
+2026-04-06,Challenger,Liam Draxl,Kaylan Bigun,Clay,0.0333,Small,2.19,1.14,1,0.31,219.04
+2026-04-06,Challenger,Liam Draxl,Teodor Davidov,Clay,0.0321,Small,2.19,1.06,1,0.14,219.04
+2026-04-06,Challenger,Juan Pablo Varillas,Victor Braga,Clay,0.032,Small,2.19,1.0,1,0.01,219.04
+2026-04-06,Challenger,Pablo Llamas Ruiz,Alejandro Moro Canas,Clay,0.0437,Small,2.19,1.44,0,-2.19,219.04
+2026-04-13,Challenger,Hugo Dellien,Juan Estevez,Clay,0.0354,Small,2.19,1.25,1,0.55,219.58
+2026-04-20,Challenger,Nick Hardt,Boris Kozlov,Clay,0.0489,Small,2.19,1.08,1,0.18,219.77
+2026-04-27,Challenger,Jonas Forejtek,Martin Doskocil,Clay,0.0363,Small,2.19,1.02,1,0.05,219.78
+2026-04-27,Challenger,Dominic Stricker,Matyas Cerny,Clay,0.0332,Small,2.19,1.2,0,-2.19,219.78
+2026-04-27,Challenger,Edas Butvilas,Gerard Campana Lee,Clay,0.038,Small,2.19,1.4,1,0.88,219.78
+2026-04-27,Challenger,David Jorda Sanchis,Daniel Cukierman,Clay,0.0371,Small,2.19,1.36,1,0.79,219.78
+2026-04-27,Challenger,David Jorda Sanchis,Stefan Latinovic,Clay,0.0332,Small,2.19,1.2,1,0.44,219.78
+2026-04-27,Challenger,Cezar Cretu,Bastian Berenz,Clay,0.0322,Small,2.19,1.02,1,0.04,219.78
+2026-04-28,Challenger,Martin Landaluce,Daniel Jade,Clay,0.0404,Small,2.19,1.03,1,0.07,219.84

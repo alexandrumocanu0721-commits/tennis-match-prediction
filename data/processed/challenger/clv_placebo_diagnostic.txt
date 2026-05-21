@@ -1,0 +1,68 @@
+=== 1. Odds Bucket Definition ===
+Definition in scripts/challenger/clv_challenger_calculator.py:
+- 'favorite' if market_prob_a > 0.65
+- 'balanced' otherwise
+- 'underdog' if market_prob_a < 0.35
+Bucket is assigned from market-implied probability (SofaScore/bet365 latest no-vig), not from model probability.
+Interpretation: "underdog" here means underdog by market. If the model tends to rate those matches closer than the market does, underdog CLV will rise mechanically even before testing whether the model adds signal.
+
+=== 2. Placebo by Odds Bucket ===
+odds_bucket | actual_predictions | shuffled_predictions | random_market_centered | row_count
+------------+--------------------+----------------------+------------------------+----------
+favorite    | -0.037063          | -0.231524            | 0.003059               | 3126     
+balanced    | 0.018831           | 0.034218             | 0.001572               | 6228     
+underdog    | 0.064029           | 0.276766             | 0.001714               | 2407     
+
+=== 3. Placebo by Distance ===
+distance_days | actual_mean_clv | shuffled_mean_clv | row_count
+--------------+-----------------+-------------------+----------
+0             | 0.010196        | 0.015773          | 2339     
+1             | 0.010129        | -0.001613         | 5081     
+2             | 0.017666        | 0.028816          | 1507     
+3             | 0.019262        | 0.020999          | 1165     
+4             | 0.020927        | 0.046351          | 941      
+5             | 0.016788        | 0.028663          | 497      
+6             | 0.011501        | 0.003030          | 223      
+7             | 0.070729        | 0.052112          | 8        
+
+=== 4. Odds Timing ===
+Scraper behavior from scripts/challenger/scrape_sofascore_challenger_odds.py:
+- opening odds come from initial/opening fields: initialFractionalValue / openingFractionalValue / openFractionalValue
+- comparison odds come from latest/current fields: fractionalValue / latestFractionalValue / currentFractionalValue
+- CLV calculator then uses home_latest_no_vig / away_latest_no_vig, not the opening odds.
+- odds_source_confidence in stored CSV rows: {'latest_pre_match_assumed': 13050}
+- rows where opening and latest odds differ: 6381 of 13050
+- sample rows where opening != latest:
+  2025-01-06 Geoffrey Blancaneaux vs Daniel Michalski | home 1.50->1.36, away 2.50->3.00
+  2025-01-06 Jelle Sels vs Clement Tabur | home 1.83->2.38, away 1.83->1.53
+  2025-01-06 Murphy Cassone vs Remy Bertola | home 1.83->1.57, away 1.83->2.25
+- sample rows where endpoint_date is after match_start_date_utc, meaning the scrape day can be later than the UTC match date:
+  endpoint_date 2025-01-06, match_start_date_utc 2025-01-05, match_start_utc 2025-01-05T12:50:00Z, Tristan Lamasine vs Charlie Robertson
+  endpoint_date 2025-01-06, match_start_date_utc 2025-01-05, match_start_utc 2025-01-05T13:10:00Z, Daniel Batista vs Kaichi Uchida
+  endpoint_date 2025-01-06, match_start_date_utc 2025-01-05, match_start_utc 2025-01-05T13:15:00Z, Lui Maxted vs Lukas Pokorny
+- raw odds JSON choice keys sampled from data/sofascore/odds/2025-01-06.json: ['initialFractionalValue', 'fractionalValue', 'sourceId', 'name', 'winning', 'change']
+- those choice objects expose opening/latest price fields and a change flag, but no explicit odds timestamp field in the sampled payload.
+Conclusion: the stored comparison price is the latest price visible in the SofaScore payload at scrape time, not a verified closing line with a price timestamp. The CLV code treats it as a closing-equivalent benchmark, but the data only supports "latest pre-match assumed" / scrape-time latest, so the true timing is unknown rather than confirmed closing.
+
+=== 5. Survivor Bias Check ===
+Note: `features.csv` has `result` but no model or market probability columns. `backtest_predictions.csv` has model probabilities but no market probability column for unmatched rows. The table below reports all directly observable quantities from the existing files.
+population                     | row_count | mean_actual_result | mean_model_prob | mean_market_prob
+-------------------------------+-----------+--------------------+-----------------+-----------------
+matched_clv_rows               | 11761     | 0.519003           | 0.534383        | 0.521158        
+backtest_predictions_full      | 11761     | 0.519003           | 0.534383        | N/A             
+backtest_predictions_unmatched | 0         | N/A                | N/A             | N/A             
+features_full_csv              | 112258    | 0.500000           | N/A             | N/A             
+features_not_in_clv_match      | 100495    | 0.497776           | N/A             | N/A             
+
+=== 6. Year-Split Placebo ===
+year | actual_mean_clv | shuffled_mean_clv | row_count
+-----+-----------------+-------------------+----------
+2025 | 0.011985        | 0.013720          | 8552     
+2026 | 0.016531        | 0.011906          | 3209     
+
+=== Summary ===
+The underdog effect is not unique to the model: underdog mean CLV is 6.40% for actual predictions and 27.68% for shuffled predictions, while favorites are -3.71% actual vs -23.15% shuffled.
+CLV rises with match distance in both series: day 0 is 1.02% actual / 1.58% shuffled, versus day 7 at 7.07% actual / 5.21% shuffled.
+The odds benchmark is not verified closing. The scraper stores both opening and latest prices, but the price used in CLV is only the latest value present in the SofaScore payload at scrape time; the stored confidence label itself is `latest_pre_match_assumed`, and the sampled raw JSON does not contain an explicit odds timestamp.
+Matched CLV rows are the full backtest prediction set (11761 of 11761 predictions), not 10% of predictions. The 10% figure comes from comparing against the much larger `features.csv` history (112258 rows), which does not carry model probabilities for the non-backtest rows.
+Year split does not isolate the drift to one season: 2025 actual/shuffled mean CLV is 1.20% / 1.37%, and 2026 is 1.65% / 1.19%.

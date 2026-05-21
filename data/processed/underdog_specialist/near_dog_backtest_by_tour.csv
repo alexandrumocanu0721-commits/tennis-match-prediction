@@ -1,0 +1,9 @@
+tour,wf_period,bet_count,hit_rate,avg_odds,mean_prob,mean_market_prob,mean_edge,roi,calibration_error,log_loss,max_cluster_share,recommendation
+atp,train,0,,,,,,,,,,BLOCK_NEAR_DOGS
+atp,tune,0,,,,,,,,,,BLOCK_NEAR_DOGS
+atp,final,0,,,,,,,,,,BLOCK_NEAR_DOGS
+atp,all,0,,,,,,,,,,BLOCK_NEAR_DOGS
+challenger,train,25,0.56,2.4304,0.533867,0.3849,0.148968,0.3518,0.026133,0.658746,0.96,BLOCK_NEAR_DOGS
+challenger,tune,27,0.62963,2.345185,0.553101,0.398162,0.154939,0.467778,0.076528,0.668385,1.0,BLOCK_NEAR_DOGS
+challenger,final,39,0.461538,2.342949,0.558301,0.398227,0.160074,0.088718,0.096763,0.699982,1.0,BLOCK_NEAR_DOGS
+challenger,all,91,0.538462,2.367637,0.550046,0.394547,0.155499,0.273462,0.011584,0.679279,0.692308,BLOCK_NEAR_DOGS

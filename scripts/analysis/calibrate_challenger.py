@@ -14,6 +14,8 @@ MODELS_DIR = PROJECT_ROOT / "models" / "challenger"
 CLV_RESULTS = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results.csv"
 BACKTEST_PREDICTIONS = PROJECT_ROOT / "data" / "processed" / "challenger" / "backtest_predictions.csv"
 OUTPUT_CALIBRATED = PROJECT_ROOT / "data" / "processed" / "challenger" / "clv_results_calibrated.csv"
+OUTPUT_RELIABILITY_BY_YEAR = PROJECT_ROOT / "data" / "processed" / "challenger" / "calibration_reliability_by_year.csv"
+OUTPUT_BUCKET_BY_YEAR = PROJECT_ROOT / "data" / "processed" / "challenger" / "calibration_bucket_by_year.csv"
 
 EV_THRESHOLDS = [0.00, 0.01, 0.02, 0.03, 0.05]
 MIN_CALIBRATION_ROWS = 50
@@ -147,6 +149,17 @@ def _reliability_table(df: pd.DataFrame, prob_col: str, label: str) -> pd.DataFr
     return grouped[["table", "bin", "n", "mean_pred", "actual_rate"]]
 
 
+def _reliability_table_by_year(df: pd.DataFrame, prob_col: str, label: str) -> pd.DataFrame:
+    rows = []
+    for year in sorted(df["year"].dropna().astype(int).unique()):
+        table = _reliability_table(df.loc[df["year"].eq(year)].copy(), prob_col, label)
+        table.insert(0, "year", int(year))
+        rows.append(table)
+    if not rows:
+        return pd.DataFrame(columns=["year", "table", "bin", "n", "mean_pred", "actual_rate"])
+    return pd.concat(rows, ignore_index=True)
+
+
 def main() -> None:
     start = time.perf_counter()
 
@@ -156,6 +169,8 @@ def main() -> None:
     df, source_name = _load_calibration_source()
     print(f"Calibration data source: {source_name}")
     print()
+    if "year" not in df.columns:
+        df["year"] = pd.to_datetime(df["date"], errors="coerce").dt.year.astype("Int64")
 
     required_columns = ["predicted_prob_a", "actual_result", "odds_a", "surface", "market_prob_a"]
     missing = [col for col in required_columns if col not in df.columns]
@@ -223,28 +238,33 @@ def main() -> None:
         & df["predicted_prob_a"].notna()
         & df["calibrated_prob_a"].notna()
     ].copy()
+    if "year" not in eval_df.columns:
+        eval_df["year"] = pd.to_datetime(eval_df["date"], errors="coerce").dt.year.astype("Int64")
     eval_df["odds_bucket"] = _assign_odds_bucket(eval_df["odds_a"])
 
     bucket_rows = []
-    for bucket in ["favorite", "balanced", "underdog"]:
-        bucket_df = eval_df.loc[eval_df["odds_bucket"].eq(bucket)]
-        n = int(len(bucket_df))
-        mean_raw_prob = float(bucket_df["predicted_prob_a"].mean()) if n else np.nan
-        mean_cal_prob = float(bucket_df["calibrated_prob_a"].mean()) if n else np.nan
-        mean_actual_bucket = float(bucket_df["actual_result"].mean()) if n else np.nan
-        raw_error = abs(mean_raw_prob - mean_actual_bucket) if n else np.nan
-        cal_error = abs(mean_cal_prob - mean_actual_bucket) if n else np.nan
-        bucket_rows.append(
-            {
-                "bucket": bucket,
-                "n": n,
-                "mean_raw_prob": mean_raw_prob,
-                "mean_calibrated_prob": mean_cal_prob,
-                "mean_actual_result": mean_actual_bucket,
-                "raw_error": raw_error,
-                "calibrated_error": cal_error,
-            }
-        )
+    for year in sorted(eval_df["year"].dropna().astype(int).unique()):
+        year_eval_df = eval_df.loc[eval_df["year"].eq(year)].copy()
+        for bucket in ["favorite", "balanced", "underdog"]:
+            bucket_df = year_eval_df.loc[year_eval_df["odds_bucket"].eq(bucket)]
+            n = int(len(bucket_df))
+            mean_raw_prob = float(bucket_df["predicted_prob_a"].mean()) if n else np.nan
+            mean_cal_prob = float(bucket_df["calibrated_prob_a"].mean()) if n else np.nan
+            mean_actual_bucket = float(bucket_df["actual_result"].mean()) if n else np.nan
+            raw_error = abs(mean_raw_prob - mean_actual_bucket) if n else np.nan
+            cal_error = abs(mean_cal_prob - mean_actual_bucket) if n else np.nan
+            bucket_rows.append(
+                {
+                    "year": int(year),
+                    "bucket": bucket,
+                    "n": n,
+                    "mean_raw_prob": mean_raw_prob,
+                    "mean_calibrated_prob": mean_cal_prob,
+                    "mean_actual_result": mean_actual_bucket,
+                    "raw_error": raw_error,
+                    "calibrated_error": cal_error,
+                }
+            )
 
     bucket_summary = pd.DataFrame(bucket_rows)
     _print_table(
@@ -259,20 +279,20 @@ def main() -> None:
         },
     )
 
-    underdog_row = bucket_summary.loc[bucket_summary["bucket"].eq("underdog")].iloc[0]
-    if pd.notna(underdog_row["calibrated_error"]) and pd.notna(underdog_row["raw_error"]):
-        if float(underdog_row["calibrated_error"]) > float(underdog_row["raw_error"]):
+    underdog_rows = bucket_summary.loc[bucket_summary["bucket"].eq("underdog")]
+    for _, underdog_row in underdog_rows.iterrows():
+        if pd.notna(underdog_row["calibrated_error"]) and pd.notna(underdog_row["raw_error"]) and float(underdog_row["calibrated_error"]) > float(underdog_row["raw_error"]):
             print(
-                "WARNING: Underdog calibrated_error is worse than raw_error. "
+                f"WARNING: {int(underdog_row['year'])} underdog calibrated_error is worse than raw_error. "
                 "Global isotonic fit can prioritize other probability regions when the underdog slice is sparse/noisy."
             )
             print()
 
-    raw_reliability = _reliability_table(df, "predicted_prob_a", "raw")
-    calibrated_reliability = _reliability_table(df, "calibrated_prob_a", "calibrated")
+    raw_reliability = _reliability_table_by_year(df, "predicted_prob_a", "raw")
+    calibrated_reliability = _reliability_table_by_year(df, "calibrated_prob_a", "calibrated")
     reliability = pd.concat([raw_reliability, calibrated_reliability], ignore_index=True)
     _print_table(
-        "Reliability table (10 equal-width bins):",
+        "Reliability table by year (10 equal-width bins):",
         reliability,
         {"mean_pred": 4, "actual_rate": 4},
     )
@@ -280,7 +300,11 @@ def main() -> None:
     print("STEP 4 — SAVE CALIBRATED PREDICTIONS")
     df["calibrated_clv"] = df["calibrated_prob_a"] - df["market_prob_a"]
     df.to_csv(OUTPUT_CALIBRATED, index=False)
+    reliability.to_csv(OUTPUT_RELIABILITY_BY_YEAR, index=False)
+    bucket_summary.to_csv(OUTPUT_BUCKET_BY_YEAR, index=False)
     print(f"Saved: {OUTPUT_CALIBRATED}")
+    print(f"Saved: {OUTPUT_RELIABILITY_BY_YEAR}")
+    print(f"Saved: {OUTPUT_BUCKET_BY_YEAR}")
     print()
 
     print("STEP 5 — QUICK ROI PREVIEW ON CALIBRATED CLV")

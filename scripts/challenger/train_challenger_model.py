@@ -83,9 +83,13 @@ def main() -> None:
     test_df = df[df["date"] >= cutoff].copy()
 
     if train_df.empty:
-        raise ValueError("Training split is empty (date < 2026-01-01).")
+        raise ValueError(
+            f"Training split is empty (date < {CHALLENGER_MODEL_EVAL_CUTOFF_DATE})."
+        )
     if test_df.empty:
-        raise ValueError("Test split is empty (date >= 2026-01-01).")
+        raise ValueError(
+            f"Test split is empty (date >= {CHALLENGER_MODEL_EVAL_CUTOFF_DATE})."
+        )
 
     print(f"Train size: {len(train_df)}", flush=True)
     print(f"Test size: {len(test_df)}", flush=True)
@@ -172,14 +176,14 @@ def main() -> None:
 
     print(f"Best Optuna params: {best_params}")
     print(f"Validation log loss before full-train refit: {val_log_loss:.6f}")
-    print(f"2026 mirrored-row test accuracy: {accuracy_score(y_test, test_preds):.6f}")
-    print(f"2026 mirrored-row test log loss: {log_loss(y_test, test_probs):.6f}")
+    print(f"Evaluation mirrored-row test accuracy: {accuracy_score(y_test, test_preds):.6f}")
+    print(f"Evaluation mirrored-row test log loss: {log_loss(y_test, test_probs):.6f}")
     print(
-        "2026 one-row-per-match test accuracy: "
+        "Evaluation one-row-per-match test accuracy: "
         f"{accuracy_score(test_match_y, test_match_preds):.6f}"
     )
     print(
-        "2026 one-row-per-match test log loss: "
+        "Evaluation one-row-per-match test log loss: "
         f"{log_loss(test_match_y, test_match_probs, labels=[0, 1]):.6f}"
     )
     print("Feature importance (descending):")

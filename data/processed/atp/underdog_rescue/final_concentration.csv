@@ -1,0 +1,4 @@
+candidate,group,value,bet_count,share
+candidate_prob__dog_logit_no_recent_form,month,2026-04,12,0.545455
+candidate_prob__dog_logit_no_recent_form,month,2026-03,10,0.454545
+candidate_prob__dog_logit_no_recent_form,surface,Clay,22,1.0

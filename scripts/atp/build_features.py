@@ -13,6 +13,7 @@ import pandas as pd
 
 from tennis_pipeline import (
     ELO_K,
+    MATCH_HISTORY_START_YEAR,
     append_recent_result_lists,
     build_rankings_by_player,
     build_symmetric_training_rows,
@@ -42,6 +43,7 @@ root = project_root()
 
 # --- Raw ATP matches + rankings, chronologically ordered ---
 df = prepare_matches_dataframe(load_match_history_csvs(root))
+df = df[df["tourney_date"] >= pd.Timestamp(f"{MATCH_HISTORY_START_YEAR}-01-01")]
 original_len = len(df)
 df = df[
     ~df["score"].str.contains(

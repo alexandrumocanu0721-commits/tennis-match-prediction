@@ -1,0 +1,16 @@
+candidate,group,value,bet_count,share
+candidate_prob__dog_market_delta_shrink_25,month,2026-04,99,1.0
+candidate_prob__dog_market_delta_shrink_25,surface,Clay,69,0.69697
+candidate_prob__dog_market_delta_shrink_25,surface,Hard,30,0.30303
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Shymkent 1 CH,14,0.141414
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Shymkent 2 CH,12,0.121212
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Gwangju CH,11,0.111111
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Rome CH,10,0.10101
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Aix-en-Provence CH,9,0.090909
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Abidjan 1 CH,8,0.080808
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Abidjan 2 CH,8,0.080808
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Mauthausen CH,8,0.080808
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Savannah CH,7,0.070707
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Cagliari CH,6,0.060606
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Ostrava CH,3,0.030303
+candidate_prob__dog_market_delta_shrink_25,tourney_name,Jiujiang CH,3,0.030303

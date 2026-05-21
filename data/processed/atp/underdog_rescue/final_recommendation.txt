@@ -1,0 +1,14 @@
+Underdog Rescue Recommendation
+==============================
+
+feature merge: merged 557/557 CLV rows with feature values using keys ['date_key', 'player_a_name', 'player_b_name', 'surface']
+selection status: TUNE_PASS
+selected candidate: dog_logit_no_recent_form
+selected description: underdog logistic ablation removing recent_form feature family
+final bet count: 22
+final roi: -0.0723
+final mean_clv: 0.1418
+final calibration_error: 0.1491
+final max month/surface/tournament share: 1.0000
+recommendation: BLOCK_UNDERDOGS
+reason: selected tune-period rescue did not satisfy all untouched final-period pass criteria.

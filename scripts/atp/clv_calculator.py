@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from tennis_pipeline import (
-    path_backtest_real_2026_odds_csv,
+    path_backtest_real_odds_csvs,
     path_processed_backtest_predictions_csv,
     path_processed_clv_results_csv,
     project_root,
@@ -78,6 +78,42 @@ def true_prob_from_pair(winner_odd: object, loser_odd: object) -> tuple[float, f
     return raw_prob_winner / overround, raw_prob_loser / overround
 
 
+def _first_existing_column(df: pd.DataFrame, options: list[str]) -> str:
+    normalized = {str(column).strip().lstrip("\ufeff").upper(): column for column in df.columns}
+    for option in options:
+        existing = normalized.get(option.upper())
+        if existing is not None:
+            return existing
+    raise KeyError(f"None of these columns exist: {options}")
+
+
+def load_atp_backtest_odds(root) -> pd.DataFrame:
+    frames = []
+    for odds_path in path_backtest_real_odds_csvs(root):
+        odds_df = pd.read_csv(odds_path)
+        odds_df.columns = [str(column).strip().lstrip("\ufeff") for column in odds_df.columns]
+        rename_map = {
+            _first_existing_column(odds_df, ["Date"]): "Date",
+            _first_existing_column(odds_df, ["Surface"]): "Surface",
+            _first_existing_column(odds_df, ["Winner"]): "Winner",
+            _first_existing_column(odds_df, ["Loser"]): "Loser",
+            _first_existing_column(odds_df, ["B365W", "B365 W"]): "B365W",
+            _first_existing_column(odds_df, ["B365L", "B365 L"]): "B365L",
+            _first_existing_column(odds_df, ["BFEW", "BFW", "BetfairW", "Betfair W"]): "BFEW",
+            _first_existing_column(odds_df, ["BFEL", "BFL", "BetfairL", "Betfair L"]): "BFEL",
+        }
+        optional_cols = [column for column in ["PSW", "PSL", "MaxW", "MaxL"] if column in odds_df.columns]
+        odds_df = odds_df.rename(columns=rename_map)
+        keep_cols = ["Date", "Surface", "Winner", "Loser", "B365W", "B365L", "BFEW", "BFEL", *optional_cols]
+        odds_df = odds_df[keep_cols].copy()
+        odds_df["odds_source_file"] = odds_path.name
+        frames.append(odds_df)
+
+    if not frames:
+        raise FileNotFoundError("No ATP backtest odds files found.")
+    return pd.concat(frames, ignore_index=True)
+
+
 def add_benchmark_probabilities(
     df: pd.DataFrame, benchmark_name: str, odds_prefix: str
 ) -> pd.DataFrame:
@@ -137,6 +173,7 @@ def match_single_prediction(
 
     record = {
         "date": prediction_row["date"],
+        "year": int(prediction_row["date"].year),
         "player_a": prediction_row["player_a"],
         "player_b": prediction_row["player_b"],
         "surface": prediction_row["surface"],
@@ -157,8 +194,30 @@ def match_single_prediction(
         "match_orientation": orientation,
         "date_diff_days": int(abs((prediction_row["date"] - odds_row["odds_date"]).days)),
         "surface_match": prediction_row["surface_key"] == odds_row["odds_surface_key"],
-        "betfair_true_prob_winner": odds_row["betfair_true_prob_winner"],
-        "betfair_true_prob_loser": odds_row["betfair_true_prob_loser"],
+        "b365_true_prob_winner": odds_row["b365_true_prob_winner"],
+        "b365_true_prob_loser": odds_row["b365_true_prob_loser"],
+        "bf_true_prob_winner": odds_row["bf_true_prob_winner"],
+        "bf_true_prob_loser": odds_row["bf_true_prob_loser"],
+        "odds_a_b365": (
+            odds_row["B365W"]
+            if orientation == "player_a_is_winner"
+            else odds_row["B365L"]
+        ),
+        "odds_b_b365": (
+            odds_row["B365L"]
+            if orientation == "player_a_is_winner"
+            else odds_row["B365W"]
+        ),
+        "odds_a_bf": (
+            odds_row["BFEW"]
+            if orientation == "player_a_is_winner"
+            else odds_row["BFEL"]
+        ),
+        "odds_b_bf": (
+            odds_row["BFEL"]
+            if orientation == "player_a_is_winner"
+            else odds_row["BFEW"]
+        ),
         "pinnacle_true_prob_winner": odds_row["pinnacle_true_prob_winner"],
         "pinnacle_true_prob_loser": odds_row["pinnacle_true_prob_loser"],
         "max_true_prob_winner": odds_row["max_true_prob_winner"],
@@ -172,7 +231,7 @@ def main() -> None:
 
     # Load the two historical views: model backtest output and the odds snapshot.
     predictions_df = pd.read_csv(path_processed_backtest_predictions_csv(root))
-    odds_df = pd.read_csv(path_backtest_real_2026_odds_csv(root))
+    odds_df = load_atp_backtest_odds(root)
 
     predictions_df["date"] = pd.to_datetime(predictions_df["date"], errors="coerce").dt.normalize()
     predictions_df["surface_key"] = predictions_df["surface"].map(surface_key)
@@ -188,11 +247,13 @@ def main() -> None:
     odds_df["odds_row_id"] = range(len(odds_df))
 
     for benchmark_name, odds_prefix in (
-        ("betfair", "BFE"),
+        ("b365", "B365"),
+        ("bf", "BFE"),
         ("pinnacle", "PS"),
         ("max", "Max"),
     ):
-        odds_df = add_benchmark_probabilities(odds_df, benchmark_name, odds_prefix)
+        if f"{odds_prefix}W" in odds_df.columns and f"{odds_prefix}L" in odds_df.columns:
+            odds_df = add_benchmark_probabilities(odds_df, benchmark_name, odds_prefix)
 
     matched_records: list[dict] = []
     name_mismatch_examples: list[dict] = []
@@ -211,12 +272,18 @@ def main() -> None:
     if matched_df.empty:
         output_columns = [
             "date",
+            "year",
             "player_a",
             "player_b",
             "surface",
             "predicted_prob_a",
-            "betfair_true_prob_a",
-            "clv_betfair",
+            "market_prob_b365",
+            "clv_b365",
+            "market_prob_bf",
+            "clv_bf",
+            "odds_a",
+            "odds_a_b365",
+            "odds_a_bf",
             "pinnacle_true_prob_a",
             "clv_pinnacle",
             "max_true_prob_a",
@@ -226,6 +293,7 @@ def main() -> None:
         empty_df = pd.DataFrame(columns=output_columns)
         empty_df.to_csv(path_processed_clv_results_csv(root), index=False)
         print("Matched matches: 0")
+        print("Average CLV Bet365: n/a")
         print("Average CLV Betfair: n/a")
         print("Average CLV Pinnacle: n/a")
         print("Average CLV Max: n/a")
@@ -241,10 +309,16 @@ def main() -> None:
     matched_df = matched_df.drop_duplicates(subset=["prediction_row_id"], keep="first")
 
     # Map the odds-side benchmark probabilities to player_a's side.
-    matched_df["betfair_true_prob_a"] = matched_df.apply(
-        lambda row: row["betfair_true_prob_winner"]
+    matched_df["market_prob_b365"] = matched_df.apply(
+        lambda row: row["b365_true_prob_winner"]
         if row["match_orientation"] == "player_a_is_winner"
-        else row["betfair_true_prob_loser"],
+        else row["b365_true_prob_loser"],
+        axis=1,
+    )
+    matched_df["market_prob_bf"] = matched_df.apply(
+        lambda row: row["bf_true_prob_winner"]
+        if row["match_orientation"] == "player_a_is_winner"
+        else row["bf_true_prob_loser"],
         axis=1,
     )
     matched_df["pinnacle_true_prob_a"] = matched_df.apply(
@@ -260,19 +334,39 @@ def main() -> None:
         axis=1,
     )
 
-    matched_df["clv_betfair"] = matched_df["predicted_prob_a"] - matched_df["betfair_true_prob_a"]
+    matched_df["clv_b365"] = matched_df["predicted_prob_a"] - matched_df["market_prob_b365"]
+    matched_df["clv_bf"] = matched_df["predicted_prob_a"] - matched_df["market_prob_bf"]
     matched_df["clv_pinnacle"] = matched_df["predicted_prob_a"] - matched_df["pinnacle_true_prob_a"]
     matched_df["clv_max"] = matched_df["predicted_prob_a"] - matched_df["max_true_prob_a"]
+    matched_df["odds_a"] = pd.to_numeric(matched_df["odds_a_b365"], errors="coerce")
+    matched_df["odds_b"] = pd.to_numeric(matched_df["odds_b_b365"], errors="coerce")
+    matched_df["bet365_true_prob_a"] = matched_df["market_prob_b365"]
+    matched_df["betfair_true_prob_a"] = matched_df["market_prob_bf"]
+    matched_df["clv_bet365"] = matched_df["clv_b365"]
+    matched_df["clv_betfair"] = matched_df["clv_bf"]
 
     output_df = matched_df[
         [
             "date",
+            "year",
             "player_a",
             "player_b",
             "surface",
             "predicted_prob_a",
+            "market_prob_b365",
+            "clv_b365",
+            "market_prob_bf",
+            "clv_bf",
+            "bet365_true_prob_a",
+            "clv_bet365",
             "betfair_true_prob_a",
             "clv_betfair",
+            "odds_a",
+            "odds_b",
+            "odds_a_b365",
+            "odds_b_b365",
+            "odds_a_bf",
+            "odds_b_bf",
             "pinnacle_true_prob_a",
             "clv_pinnacle",
             "max_true_prob_a",
@@ -287,13 +381,14 @@ def main() -> None:
     output_df.to_csv(output_path, index=False)
 
     print(f"Matched matches: {len(output_df)}")
-    print(f"Average CLV Betfair: {output_df['clv_betfair'].mean(skipna=True):.6f}")
+    print(f"Average CLV Bet365: {output_df['clv_b365'].mean(skipna=True):.6f}")
+    print(f"Average CLV Betfair: {output_df['clv_bf'].mean(skipna=True):.6f}")
     print(f"Average CLV Pinnacle: {output_df['clv_pinnacle'].mean(skipna=True):.6f}")
     print(f"Average CLV Max: {output_df['clv_max'].mean(skipna=True):.6f}")
     print()
     print("CLV by surface:")
     surface_summary = output_df.groupby("surface", dropna=False)[
-        ["clv_betfair", "clv_pinnacle", "clv_max"]
+        ["clv_b365", "clv_bf", "clv_pinnacle", "clv_max"]
     ].mean(numeric_only=True)
     print(surface_summary.to_string(float_format=lambda value: f"{value:.6f}"))
 
@@ -306,7 +401,11 @@ def main() -> None:
     monthly_summary = (
         clv_df.assign(month=clv_df["date"].dt.to_period("M").astype(str))
         .groupby("month")
-        .agg(match_count=("clv_betfair", "size"), avg_clv_betfair=("clv_betfair", "mean"))
+        .agg(
+            match_count=("clv_b365", "size"),
+            avg_clv_b365=("clv_b365", "mean"),
+            avg_clv_bf=("clv_bf", "mean"),
+        )
     )
     print(monthly_summary.to_string(float_format=lambda value: f"{value:.6f}"))
 
@@ -323,16 +422,20 @@ def main() -> None:
     )
     bucket_summary = (
         clv_df.groupby("probability_bucket", dropna=False)
-        .agg(match_count=("clv_betfair", "size"), avg_clv_betfair=("clv_betfair", "mean"))
+        .agg(
+            match_count=("clv_b365", "size"),
+            avg_clv_b365=("clv_b365", "mean"),
+            avg_clv_bf=("clv_bf", "mean"),
+        )
     )
     print(bucket_summary.to_string(float_format=lambda value: f"{value:.6f}"))
 
     # Cumulative average CLV over time, saved for quick visual inspection.
     cumulative_df = clv_df.sort_values("date", kind="mergesort").copy()
-    cumulative_df["cumulative_avg_clv_betfair"] = cumulative_df["clv_betfair"].expanding().mean()
+    cumulative_df["cumulative_avg_clv_b365"] = cumulative_df["clv_b365"].expanding().mean()
     plt.figure(figsize=(10, 5))
-    plt.plot(cumulative_df["date"], cumulative_df["cumulative_avg_clv_betfair"])
-    plt.title("Cumulative Average CLV Betfair")
+    plt.plot(cumulative_df["date"], cumulative_df["cumulative_avg_clv_b365"])
+    plt.title("Cumulative Average CLV Bet365")
     plt.xlabel("Date")
     plt.ylabel("Cumulative Avg CLV")
     plt.tight_layout()
